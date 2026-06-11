@@ -2,8 +2,9 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v2.4　|　日期 2026-06-08
+     版本 v2.5　|　日期 2026-06-11
      版本紀錄：
+       v2.5 (2026-06-11) 頁尾新增「累計瀏覽人數」統計（免註冊第三方計數服務）
        v2.4 (2026-06-08) 新增 115年第二次初級考題 100 題（題庫達 463 題）；
                          學習指引螢光重點依新考題重新計算
        v2.3 (2026-06-08) 更新 Vicky 社群形象圖（含 LINE 入群 QR code、媽咪AI賦能共學團
@@ -220,6 +221,9 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
 .scorebig{font-size:56px;font-weight:800;color:var(--brand);line-height:1.1}
 .notice{background:#eaf1ff;border:1px solid #cfddff;border-radius:10px;padding:13px 15px;font-size:14px;color:#2c3a57}
 .footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;padding:22px 0;text-align:center}
+#visit-counter .vc-pill{display:inline-flex;align-items:center;gap:6px;background:var(--chip);
+  border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--brand-d);font-weight:600}
+#visit-counter .vc-num{font-variant-numeric:tabular-nums}
 .hide{display:none!important}
 @media(max-width:560px){.cd .num{font-size:32px}.cd .box{min-width:74px;padding:11px}h1{font-size:24px}}
 </style>
@@ -442,6 +446,7 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
   所有資料來源：題庫及學習指引皆取自 iPAS 官方公告試題及學習指引、考試資訊請以
   <a href="https://ipd.nat.gov.tw/ipas/certification/AIAP" target="_blank">官方網站</a> 為準，及 Vicky 提供社群交流圈等資訊<br>
   主要為個人備考整理使用，請勿作為商業用途<span id="build-stamp"></span>
+  <div id="visit-counter" style="margin-top:10px;font-size:13px;color:var(--muted)"></div>
 </div>
 </div>
 
@@ -827,7 +832,23 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v2.4（2026-06-08）';
+$('#build-stamp').textContent='　·　版本 v2.5（2026-06-11）';
+/* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
+(function(){
+  var el=document.getElementById('visit-counter');
+  if(!el)return;
+  var ns='ipas-study-github-io', key='ipas-ai-study-home';
+  // 首選 counterapi v1 up（每次載入+1並回傳累計）
+  fetch('https://api.counterapi.dev/v1/'+ns+'/'+key+'/up')
+   .then(function(r){return r.json();})
+   .then(function(d){
+     var n=(d&&(d.count!=null?d.count:d.value));
+     if(n==null)throw 0;
+     el.innerHTML='<span class="vc-pill">\uD83D\uDC41\uFE0F 累計瀏覽 <span class="vc-num">'+Number(n).toLocaleString()+'</span> 次</span>';
+   })
+   .catch(function(){ el.style.display='none'; });
+})();
+
 </script>
 </body>
 </html>

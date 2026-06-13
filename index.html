@@ -627,6 +627,67 @@ function fillSubjFilter(){
 fillSubjFilter();
 $('#bank-count').textContent='共 '+D.questions.length+' 題';
 
+/* ════════════════════════════════
+   錯題本 & 收藏 (NB module)
+   ════════════════════════════════ */
+const NB=(function(){
+  const KEY='ipas_nb_v1';
+  let _d=null;
+  function load(){if(!_d){try{_d=JSON.parse(localStorage.getItem(KEY)||'{"fav":[],"wrong":[]}')}catch(e){_d={fav:[],wrong:[]};}}return _d;}
+  function save(){localStorage.setItem(KEY,JSON.stringify(load()));}
+  function updateBadges(){
+    const fb=document.getElementById('nb-fav-count');if(fb)fb.textContent=load().fav.length;
+    const wb=document.getElementById('nb-wrong-count');if(wb)wb.textContent=load().wrong.length;
+  }
+  return {
+    get fav(){return load().fav;},
+    get wrong(){return load().wrong;},
+    addWrong(id){const d=load();if(!d.wrong.includes(id)){d.wrong.push(id);save();updateBadges();}},
+    toggleFav(id){const d=load();const i=d.fav.indexOf(id);if(i>=0)d.fav.splice(i,1);else d.fav.push(id);save();updateBadges();},
+    clear(type){load()[type]=[];save();updateBadges();},
+    updateBadges
+  };
+})();
+NB.updateBadges();
+
+/* ════════════════════════════════
+   模擬考進度 Save / Resume
+   ════════════════════════════════ */
+const MOCK_KEY='ipas_mock_progress_v1';
+function saveMockProgress(){
+  if(!M.list||!M.list.length)return;
+  localStorage.setItem(MOCK_KEY,JSON.stringify({listIds:M.list.map(q=>q.id),ans:M.ans,idx:M.idx,perQ:M.perQ,scope:M.scope||'',num:M.num||M.list.length,savedAt:Date.now()}));
+}
+function clearMockProgress(){localStorage.removeItem(MOCK_KEY);}
+(function checkResume(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(MOCK_KEY));
+    if(!saved||!saved.listIds||!saved.listIds.length)return;
+    const ageMin=Math.round((Date.now()-saved.savedAt)/60000);
+    const modal=document.getElementById('mock-resume-modal');
+    if(!modal)return;
+    document.getElementById('resume-info').textContent='第 '+(saved.idx+1)+' / '+saved.listIds.length+' 題，'+ageMin+' 分鐘前暫停。';
+    modal.classList.add('show');
+    document.getElementById('resume-yes').onclick=()=>{
+      modal.classList.remove('show');
+      const qMap={};D.questions.forEach(q=>{qMap[q.id]=q;});
+      const list=saved.listIds.map(id=>qMap[id]).filter(Boolean);
+      if(!list.length){clearMockProgress();return;}
+      M.list=list;M.ans=saved.ans;M.idx=saved.idx;M.perQ=saved.perQ;M.num=saved.num;M.scope=saved.scope;
+      document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+      document.querySelector('[data-go="mock"]').classList.add('active');
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById('mock').classList.add('active');
+      document.getElementById('mock-setup').classList.add('hide');
+      document.getElementById('mock-result').classList.add('hide');
+      document.getElementById('mock-run').classList.remove('hide');
+      document.getElementById('m-total').textContent=list.length;
+      showQ();
+    };
+    document.getElementById('resume-no').onclick=()=>{clearMockProgress();modal.classList.remove('show');};
+  }catch(e){clearMockProgress();}
+})();
+
 function qCard(q,i){
   const c=el('div','q');c.dataset.id=q.id;
   const starred=NB.fav.includes(q.id);
@@ -970,67 +1031,6 @@ function renderTools(){
 renderTools();
 
 $('#build-stamp').textContent='　·　版本 v3.0（2026-06-13）';
-/* ════════════════════════════════
-   錯題本 & 收藏 (NB module)
-   ════════════════════════════════ */
-const NB=(function(){
-  const KEY='ipas_nb_v1';
-  let _d=null;
-  function load(){if(!_d){try{_d=JSON.parse(localStorage.getItem(KEY)||'{"fav":[],"wrong":[]}')}catch(e){_d={fav:[],wrong:[]};}}return _d;}
-  function save(){localStorage.setItem(KEY,JSON.stringify(load()));}
-  function updateBadges(){
-    const fb=document.getElementById('nb-fav-count');if(fb)fb.textContent=load().fav.length;
-    const wb=document.getElementById('nb-wrong-count');if(wb)wb.textContent=load().wrong.length;
-  }
-  return {
-    get fav(){return load().fav;},
-    get wrong(){return load().wrong;},
-    addWrong(id){const d=load();if(!d.wrong.includes(id)){d.wrong.push(id);save();updateBadges();}},
-    toggleFav(id){const d=load();const i=d.fav.indexOf(id);if(i>=0)d.fav.splice(i,1);else d.fav.push(id);save();updateBadges();},
-    clear(type){load()[type]=[];save();updateBadges();},
-    updateBadges
-  };
-})();
-NB.updateBadges();
-
-/* ════════════════════════════════
-   模擬考進度 Save / Resume
-   ════════════════════════════════ */
-const MOCK_KEY='ipas_mock_progress_v1';
-function saveMockProgress(){
-  if(!M.list||!M.list.length)return;
-  localStorage.setItem(MOCK_KEY,JSON.stringify({listIds:M.list.map(q=>q.id),ans:M.ans,idx:M.idx,perQ:M.perQ,scope:M.scope||'',num:M.num||M.list.length,savedAt:Date.now()}));
-}
-function clearMockProgress(){localStorage.removeItem(MOCK_KEY);}
-(function checkResume(){
-  try{
-    const saved=JSON.parse(localStorage.getItem(MOCK_KEY));
-    if(!saved||!saved.listIds||!saved.listIds.length)return;
-    const ageMin=Math.round((Date.now()-saved.savedAt)/60000);
-    const modal=document.getElementById('mock-resume-modal');
-    if(!modal)return;
-    document.getElementById('resume-info').textContent='第 '+(saved.idx+1)+' / '+saved.listIds.length+' 題，'+ageMin+' 分鐘前暫停。';
-    modal.classList.add('show');
-    document.getElementById('resume-yes').onclick=()=>{
-      modal.classList.remove('show');
-      const qMap={};D.questions.forEach(q=>{qMap[q.id]=q;});
-      const list=saved.listIds.map(id=>qMap[id]).filter(Boolean);
-      if(!list.length){clearMockProgress();return;}
-      M.list=list;M.ans=saved.ans;M.idx=saved.idx;M.perQ=saved.perQ;M.num=saved.num;M.scope=saved.scope;
-      document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
-      document.querySelector('[data-go="mock"]').classList.add('active');
-      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-      document.getElementById('mock').classList.add('active');
-      document.getElementById('mock-setup').classList.add('hide');
-      document.getElementById('mock-result').classList.add('hide');
-      document.getElementById('mock-run').classList.remove('hide');
-      document.getElementById('m-total').textContent=list.length;
-      showQ();
-    };
-    document.getElementById('resume-no').onclick=()=>{clearMockProgress();modal.classList.remove('show');};
-  }catch(e){clearMockProgress();}
-})();
-
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

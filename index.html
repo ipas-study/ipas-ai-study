@@ -2,8 +2,9 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v3.2　|　日期 2026-06-14
+     版本 v3.3　|　日期 2026-06-14
      版本紀錄：
+       v3.3 (2026-06-14) AI工具頁「本週新工具」標題加日期標示
        v3.2 (2026-06-14) 新增「知識管理工具」分類（Notion/Heptabase/Obsidian）；AI導師Prompt增第4點說明新發展；修正 iPAS 官方連結；首頁最新消息加日期標示
 v3.1 (2026-06-13) 週更排程執行
 v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStorage）；AI導師Prompt；
@@ -1007,8 +1008,9 @@ function toolCard(x){
 }
 function renderTools(){
   const dyn=(window.DYNAMIC&&window.DYNAMIC.tools)?window.DYNAMIC.tools:[];
+  const _toolUpd=(window.DYNAMIC&&window.DYNAMIC.lastUpdated)?' <span class="muted" style="font-size:13px;font-weight:400">更新於 '+window.DYNAMIC.lastUpdated+'</span>':'';
   let tdh = dyn.length?
-    ('<h2><span class="bar"></span>本週新工具 / 新消息</h2><div class="toolgrid">'+dyn.map(toolCard).join('')+'</div>'):'';
+    ('<h2><span class="bar"></span>本週新工具 / 新消息'+_toolUpd+'</h2><div class="toolgrid">'+dyn.map(toolCard).join('')+'</div>'):'';
   const thist=(window.DYNAMIC&&window.DYNAMIC.toolsHistory)||[];
   if(thist.length)tdh+=`<details class="hist"><summary>\uD83D\uDCDC 過往介紹過的工具（${thist.length} 個）</summary><div class="toolgrid" style="margin-top:10px">${thist.map(toolCard).join('')}</div></details>`;
   $('#tools-dynamic').innerHTML = tdh;
@@ -1018,7 +1020,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v3.2（2026-06-14）';
+$('#build-stamp').textContent='　·　版本 v3.3（2026-06-14）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

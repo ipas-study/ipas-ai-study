@@ -2,8 +2,10 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v2.5　|　日期 2026-06-11
+     版本 v3.0　|　日期 2026-06-13
      版本紀錄：
+       v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStorage）；AI導師Prompt；
+                         模擬考進度保存/恢復；修正導覽列爆行；資安優化；README同步
        v2.5 (2026-06-11) 頁尾新增「累計瀏覽人數」統計（免註冊第三方計數服務）
        v2.4 (2026-06-08) 新增 115年第二次初級考題 100 題（題庫達 463 題）；
                          學習指引螢光重點依新考題重新計算
@@ -44,8 +46,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
 .nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;padding:11px 20px;max-width:1040px;margin:0 auto}
 .logo{font-weight:800;font-size:17px;margin-right:auto;display:flex;align-items:center;gap:9px;color:var(--txt)}
 .logo .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2))}
-.nav button{background:transparent;border:0;color:var(--muted);padding:8px 13px;border-radius:9px;
-  cursor:pointer;font-size:14px;font-weight:600;transition:.15s}
+.nav button{background:transparent;border:0;color:var(--muted);padding:6px 10px;border-radius:9px;
+  cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
 .nav button:hover{color:var(--brand);background:var(--chip)}
 .nav button.active{color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-d));box-shadow:0 2px 6px rgba(54,103,224,.3)}
 /* page */
@@ -226,6 +228,27 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
 #visit-counter .vc-num{font-variant-numeric:tabular-nums}
 .hide{display:none!important}
 @media(max-width:560px){.cd .num{font-size:32px}.cd .box{min-width:74px;padding:11px}h1{font-size:24px}}
+/* ---- 錯題本 & 收藏 ---- */
+.star-btn{background:none;border:none;font-size:18px;cursor:pointer;color:#ccc;padding:0 3px;line-height:1;transition:.15s;vertical-align:middle}
+.star-btn:hover,.star-btn.starred{color:#f59e0b}
+.nb-filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.nb-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;background:var(--bad);color:#fff;border-radius:999px;font-size:11px;font-weight:700;padding:0 4px;margin-left:4px;vertical-align:middle}
+.nb-badge.fav-badge{background:#f59e0b}
+.ai-tutor-btn{margin-top:10px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border:none;padding:8px 14px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:5px}
+.ai-tutor-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.q-meta-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+/* ---- 模擬考恢復 modal ---- */
+#mock-resume-modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);align-items:center;justify-content:center}
+#mock-resume-modal.show{display:flex}
+/* ---- 使用說明分頁 ---- */
+.info-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:8px}
+.info-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.info-card h4{margin:0 0 7px;font-size:15px;color:var(--brand);display:flex;align-items:center;gap:6px}
+.info-card p{margin:0;font-size:14px;color:#3c465c;line-height:1.75}
+.changelog-table{width:100%;border-collapse:collapse;font-size:14px}
+.changelog-table th{text-align:left;padding:9px 8px;color:var(--muted);border-bottom:2px solid var(--line);font-size:12px}
+.changelog-table td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
+.changelog-table .cur-ver td{background:linear-gradient(90deg,#eef2ff,#f5f8ff);font-weight:700}
 </style>
 </head>
 <body>
@@ -242,6 +265,7 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
     <button data-go="talent">AI人才</button>
     <button data-go="tools">AI工具</button>
     <button data-go="res">學習資源</button>
+    <button data-go="info">📋 說明</button>
   </div>
 </header>
 
@@ -312,6 +336,12 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
 <!-- BANK -->
 <section id="bank" class="page">
   <h1>考古題庫</h1>
+  <div class="nb-filter-row">
+    <button class="btn sm" id="nb-all" onclick="switchBank('all')" style="font-weight:700">📚 全部題庫</button>
+    <button class="btn sm ghost" id="nb-fav" onclick="switchBank('fav')">⭐ 我的收藏 <span class="nb-badge fav-badge" id="nb-fav-count">0</span></button>
+    <button class="btn sm ghost" id="nb-wrong" onclick="switchBank('wrong')">❌ 我的錯題 <span class="nb-badge" id="nb-wrong-count">0</span></button>
+    <button class="btn sm ghost" id="nb-clear" style="display:none;color:var(--bad)" onclick="clearNB()">🗑 清除錯題</button>
+  </div>
   <p class="sub">收錄初級 114-4、115-1、115-2 及中級歷屆題，<b id="bank-count"></b>。點選項作答即時對答案。</p>
   <div class="card" style="margin-bottom:14px">
     <div class="row">
@@ -441,6 +471,77 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
   <h2><span class="bar"></span>每週自動更新</h2><div id="res-dynamic"></div>
 </section>
 
+<!-- 模擬考中斷恢復 Modal -->
+<div id="mock-resume-modal">
+  <div class="card" style="max-width:440px;width:90%;text-align:center;padding:28px">
+    <div style="font-size:40px;margin-bottom:10px">⏸</div>
+    <h3 style="margin:0 0 8px;font-size:18px">偵測到未完成的模擬考</h3>
+    <p id="resume-info" style="color:var(--muted);margin:0 0 20px;font-size:14px"></p>
+    <div class="row" style="justify-content:center;gap:12px">
+      <button class="btn" id="resume-yes">繼續作答</button>
+      <button class="btn ghost" id="resume-no">放棄，重新開始</button>
+    </div>
+  </div>
+</div>
+
+<!-- 使用說明 -->
+<section id="info" class="page">
+  <h1>📋 使用說明</h1>
+  <p class="sub">歡迎使用 iPAS AI 應用規劃師備考網站。以下是各功能介紹、建議備考方式，以及版本更新紀錄。</p>
+
+  <h2><span class="bar"></span>各功能說明</h2>
+  <div class="info-grid">
+    <div class="info-card"><h4>🏠 首頁</h4><p>倒數計時器（精確到秒）、考試介紹、最新消息（每週自動更新）、30 天衝刺建議。</p></div>
+    <div class="info-card"><h4>📖 學習指引</h4><p>官方學習指引全文（初級 2 科＋中級 3 科）。黃色螢光＝考古題考過；綠色＝重要概念。滑鼠移到螢光詞可看白話解釋。</p></div>
+    <div class="info-card"><h4>📝 考古題庫</h4><p>共 463 題（官方 433＋自編 30），點選項即時對答案。可依級別、科目、梯次篩選。支援 ⭐ 收藏與 ❌ 錯題自動記錄。</p></div>
+    <div class="info-card"><h4>🎯 模擬考</h4><p>隨機抽題、計時作答、自動評分。支援中斷後繼續（關掉視窗不怕）；答題進度即時保存至本機。</p></div>
+    <div class="info-card"><h4>🔤 名詞解釋</h4><p>384 個 AI 專有名詞，含英文原文與白話解釋。支援中英文搜尋及分類篩選。</p></div>
+    <div class="info-card"><h4>🛠 AI工具</h4><p>22 個可落地工具，每個附使用情境與教學影片，每週自動更新新工具與消息。</p></div>
+    <div class="info-card"><h4>⭐ 錯題本 &amp; 收藏</h4><p>在考古題頁點 ★ 收藏題目；答錯時自動加入錯題。可切換「我的收藏」或「我的錯題」單獨複習。紀錄存在瀏覽器本機，請勿在無痕模式使用。</p></div>
+    <div class="info-card"><h4>🤖 AI 導師解題</h4><p>考古題答題後，點「🤖 呼叫 AI 導師」按鈕，自動複製精心設計的提問 Prompt，貼到 Claude（或其他 AI）即可獲得詳細解析。</p></div>
+    <div class="info-card"><h4>💕 Vicky 社群</h4><p>由 Vicky Mommy 玲玲經營的 AI 學習社群，含 iPAS 獲證者訪談影片牆、官方頻道、LINE 入群 QR code。</p></div>
+    <div class="info-card"><h4>🗺 AI人才</h4><p>依數位發展部《AI產業人才認定指引 3.0》整理的人才地圖，幫你定位學習方向與對應證照。</p></div>
+  </div>
+
+  <h2><span class="bar"></span>建議備考流程（30 天）</h2>
+  <div class="card">
+    <div class="topic"><h4>第一階段・打底（第 1～10 天）</h4><ul>
+      <li>精讀「學習指引」初級 2 科全文，善用螢光重點快速掌握考點</li>
+      <li>搭配「名詞解釋」，把英文專有名詞一次弄懂</li>
+      <li>遇到不懂的概念，點「AI 導師」按鈕或直接去問 Claude</li>
+    </ul></div>
+    <div class="topic"><h4>第二階段・刷題（第 11～20 天）</h4><ul>
+      <li>逐題練習「考古題庫」，⭐ 收藏不確定的題；答錯自動存入錯題本</li>
+      <li>每天結束前，切換「❌ 我的錯題」專項複習弱點</li>
+      <li>科目二靠平時用 AI 的眼界，多看 AI 新聞與工具介紹</li>
+    </ul></div>
+    <div class="topic"><h4>第三階段・模擬（第 21～30 天）</h4><ul>
+      <li>每天做一次計時「模擬考」，目標單科穩定 70 分以上</li>
+      <li>從模擬考的「錯題檢討」找弱點，回頭翻指引補強</li>
+      <li>考前一週：只刷錯題本，把弱點全部消滅</li>
+    </ul></div>
+  </div>
+
+  <h2><span class="bar"></span>版本更新紀錄</h2>
+  <div class="card" style="overflow-x:auto">
+    <table class="changelog-table">
+      <tr><th>版本</th><th>日期</th><th>更新內容</th></tr>
+      <tr class="cur-ver"><td>v3.0 🆕</td><td>2026-06-13</td><td>新增「使用說明」分頁（功能導覽＋Changelog）；錯題本＋收藏功能（localStorage）；AI 導師一鍵複製 Prompt；模擬考進度自動保存與中斷恢復；修正導覽列爆行；資安優化</td></tr>
+      <tr><td>v2.5</td><td>2026-06-11</td><td>頁尾新增累計瀏覽人數統計（免註冊第三方計數服務）</td></tr>
+      <tr><td>v2.4</td><td>2026-06-08</td><td>新增 115 年第二次初級考題 100 題（題庫達 463 題）；學習指引螢光重點依新考題重新計算</td></tr>
+      <tr><td>v2.3</td><td>2026-06-08</td><td>更新 Vicky 社群形象圖（含 LINE 入群 QR code、媽咪AI賦能共學團與 iPAS 獲證者交流群介紹）</td></tr>
+      <tr><td>v2.2</td><td>2026-06-07</td><td>歷史保留功能：新聞／新工具／資源三區「過往消息」收合（約 8 週）；教學影片累積制（每工具上限 10 支）；排程升級為讀舊→合併→去重→推送</td></tr>
+      <tr><td>v2.1</td><td>2026-06-07</td><td>修改 Vicky 社群頁簡介文字（備考經驗分享 → AI 生活應用）</td></tr>
+      <tr><td>v2.0</td><td>2026-06-07</td><td>新增 Vicky 社群分頁（形象圖、影片牆 23 支、iPAS 官方頻道）；全站連結健檢；部署至 GitHub Pages＋金鑰全自動每週更新</td></tr>
+      <tr><td>v1.0</td><td>2026-06-06</td><td>原始基準版：考試介紹／倒數／學習重點（初級＋中級）／學習指引全文（螢光重點＋白話導讀）／考古題／模擬考／名詞解釋／AI 工具／AI 人才地圖／學習資源</td></tr>
+    </table>
+  </div>
+
+  <div class="notice" style="margin-top:16px">
+    💡 <b>錯題本注意事項</b>：收藏與錯題紀錄存在瀏覽器本機（localStorage）。清除瀏覽器資料、或使用無痕模式，關閉視窗後紀錄會消失。建議在一般模式下使用，資料可持續累積。
+  </div>
+</section>
+
 <div class="footer">
   本站由「<b>Justin-阿輝</b>」利用 AI 進行製作整理 © 2026<br>
   所有資料來源：題庫及學習指引皆取自 iPAS 官方公告試題及學習指引、考試資訊請以
@@ -528,8 +629,8 @@ $('#bank-count').textContent='共 '+D.questions.length+' 題';
 
 function qCard(q,i){
   const c=el('div','q');c.dataset.id=q.id;
-  c.innerHTML=`<div class="meta">#${i+1} · ${q.exam} · ${q.level} ${q.subjectName}</div>
-    <div class="stem">${q.q}</div>`;
+  const starred=NB.fav.includes(q.id);
+  c.innerHTML=`<div class="q-meta-row"><span class="meta" style="margin-bottom:0">#${i+1} · ${q.exam} · ${q.level} ${q.subjectName}</span><button class="star-btn${starred?' starred':''}" title="收藏此題">★</button></div><div class="stem">${q.q}</div>`;
   LT.forEach(l=>{ if(!q.options[l])return;
     const b=el('button','opt',`<span class="lt">${l}</span>${q.options[l]}`);
     b.onclick=()=>{
@@ -538,20 +639,53 @@ function qCard(q,i){
       [...c.querySelectorAll('.opt')].forEach(o=>{
         const ll=o.querySelector('.lt').textContent;
         if(ll===q.answer)o.classList.add('correct');
-        if(ll===l&&l!==q.answer)o.classList.add('wrong');
+        if(ll===l&&l!==q.answer){o.classList.add('wrong');NB.addWrong(q.id);}
       });
     };
     c.appendChild(b);
   });
   c.appendChild(el('div','ans-line','✔ 正確答案：'+q.answer+(q.exp?'　—　'+q.exp:'')));
+  const tb=el('button','ai-tutor-btn','🤖 呼叫 AI 導師解題');
+  tb.onclick=()=>{
+    const opts=LT.filter(l=>q.options[l]).map(l=>l+'. '+q.options[l]).join('\n');
+    const prompt='你是 iPAS AI應用規劃師考試的專業輔導老師。請詳細分析以下考題：\n\n題目：'+q.q+'\n\n'+opts+'\n\n正確答案是【'+q.answer+'】\n\n請說明：\n1. 為什麼答案是 '+q.answer+'？\n2. 其他選項各自錯在哪裡？\n3. 這個概念在考試中還有哪些延伸重點需要記住？';
+    navigator.clipboard.writeText(prompt).then(()=>{
+      tb.textContent='✅ Prompt 已複製！去貼給 Claude';tb.style.background='var(--good)';
+      setTimeout(()=>{tb.innerHTML='🤖 呼叫 AI 導師解題';tb.style.background='';},3000);
+    }).catch(()=>{alert('複製失敗，請確認瀏覽器權限。');});
+  };
+  c.appendChild(tb);
+  c.querySelector('.star-btn').onclick=(e)=>{
+    e.stopPropagation();NB.toggleFav(q.id);
+    e.target.classList.toggle('starred');NB.updateBadges();
+  };
   return c;
+}
+let bankMode='all';
+function switchBank(mode){
+  bankMode=mode;
+  ['all','fav','wrong'].forEach(m=>{
+    const btn=document.getElementById('nb-'+m);if(!btn)return;
+    if(m===mode){btn.style.fontWeight='700';btn.classList.remove('ghost');}
+    else{btn.style.fontWeight='';btn.classList.add('ghost');}
+  });
+  const clr=document.getElementById('nb-clear');
+  if(clr)clr.style.display=mode==='wrong'?'inline-flex':'none';
+  filterBank();
+}
+function clearNB(){
+  if(!confirm('確定清除所有錯題紀錄？'))return;
+  NB.clear('wrong');filterBank();
 }
 function filterBank(){
   const lv=$('#f-level').value,sj=$('#f-subj').value,ex=$('#f-exam').value;
   let list=D.questions.filter(q=>(!lv||q.level===lv)&&(!sj||(q.level+' '+q.subjectName)===sj)&&(!ex||q.exam===ex));
+  if(bankMode==='fav')list=list.filter(q=>NB.fav.includes(q.id));
+  if(bankMode==='wrong')list=list.filter(q=>NB.wrong.includes(q.id));
   const box=$('#bank-list');box.innerHTML='';
   list.forEach((q,i)=>box.appendChild(qCard(q,i)));
   $('#bank-shown').textContent='顯示 '+list.length+' 題';
+  NB.updateBadges();
 }
 ['#f-level','#f-subj','#f-exam'].forEach(s=>$(s).onchange=filterBank);
 $('#reveal-all').onclick=()=>$$('#bank-list .q').forEach(c=>{
@@ -623,10 +757,12 @@ function pickScope(v){
 }
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
 $('#m-start').onclick=()=>{
+  clearMockProgress();
   const pool=pickScope($('#m-scope').value);
   const n=Math.min(+$('#m-num').value,pool.length);
   M.list=shuffle(pool).slice(0,n);
   M.ans=Array(n).fill(null);M.idx=0;M.perQ=+$('#m-time').value;
+  M.scope=$('#m-scope').value;M.num=n;
   $('#mock-setup').classList.add('hide');$('#mock-result').classList.add('hide');
   $('#mock-run').classList.remove('hide');
   $('#m-total').textContent=n;
@@ -642,7 +778,7 @@ function showQ(){
   LT.forEach(l=>{if(!q.options[l])return;
     const b=el('button','opt',`<span class="lt">${l}</span>${q.options[l]}`);
     if(M.ans[M.idx]===l)b.style.borderColor='var(--brand)',b.style.background='rgba(79,140,255,.15)';
-    b.onclick=()=>{M.ans[M.idx]=l;showQ();};
+    b.onclick=()=>{M.ans[M.idx]=l;saveMockProgress();showQ();};
     c.appendChild(b);
   });
   box.appendChild(c);
@@ -664,6 +800,7 @@ $('#m-next').onclick=()=>{if(M.idx<M.list.length-1){M.idx++;showQ();}else finish
 $('#m-submit').onclick=()=>{if(confirm('確定交卷？'))finish();};
 function finish(){
   clearInterval(M.timer);
+  clearMockProgress();
   let correct=0;M.list.forEach((q,i)=>{if(M.ans[i]===q.answer)correct++;});
   const score=Math.round(correct/M.list.length*100);
   $('#mock-run').classList.add('hide');$('#mock-result').classList.remove('hide');
@@ -832,7 +969,68 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v2.5（2026-06-11）';
+$('#build-stamp').textContent='　·　版本 v3.0（2026-06-13）';
+/* ════════════════════════════════
+   錯題本 & 收藏 (NB module)
+   ════════════════════════════════ */
+const NB=(function(){
+  const KEY='ipas_nb_v1';
+  let _d=null;
+  function load(){if(!_d){try{_d=JSON.parse(localStorage.getItem(KEY)||'{"fav":[],"wrong":[]}')}catch(e){_d={fav:[],wrong:[]};}}return _d;}
+  function save(){localStorage.setItem(KEY,JSON.stringify(load()));}
+  function updateBadges(){
+    const fb=document.getElementById('nb-fav-count');if(fb)fb.textContent=load().fav.length;
+    const wb=document.getElementById('nb-wrong-count');if(wb)wb.textContent=load().wrong.length;
+  }
+  return {
+    get fav(){return load().fav;},
+    get wrong(){return load().wrong;},
+    addWrong(id){const d=load();if(!d.wrong.includes(id)){d.wrong.push(id);save();updateBadges();}},
+    toggleFav(id){const d=load();const i=d.fav.indexOf(id);if(i>=0)d.fav.splice(i,1);else d.fav.push(id);save();updateBadges();},
+    clear(type){load()[type]=[];save();updateBadges();},
+    updateBadges
+  };
+})();
+NB.updateBadges();
+
+/* ════════════════════════════════
+   模擬考進度 Save / Resume
+   ════════════════════════════════ */
+const MOCK_KEY='ipas_mock_progress_v1';
+function saveMockProgress(){
+  if(!M.list||!M.list.length)return;
+  localStorage.setItem(MOCK_KEY,JSON.stringify({listIds:M.list.map(q=>q.id),ans:M.ans,idx:M.idx,perQ:M.perQ,scope:M.scope||'',num:M.num||M.list.length,savedAt:Date.now()}));
+}
+function clearMockProgress(){localStorage.removeItem(MOCK_KEY);}
+(function checkResume(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(MOCK_KEY));
+    if(!saved||!saved.listIds||!saved.listIds.length)return;
+    const ageMin=Math.round((Date.now()-saved.savedAt)/60000);
+    const modal=document.getElementById('mock-resume-modal');
+    if(!modal)return;
+    document.getElementById('resume-info').textContent='第 '+(saved.idx+1)+' / '+saved.listIds.length+' 題，'+ageMin+' 分鐘前暫停。';
+    modal.classList.add('show');
+    document.getElementById('resume-yes').onclick=()=>{
+      modal.classList.remove('show');
+      const qMap={};D.questions.forEach(q=>{qMap[q.id]=q;});
+      const list=saved.listIds.map(id=>qMap[id]).filter(Boolean);
+      if(!list.length){clearMockProgress();return;}
+      M.list=list;M.ans=saved.ans;M.idx=saved.idx;M.perQ=saved.perQ;M.num=saved.num;M.scope=saved.scope;
+      document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+      document.querySelector('[data-go="mock"]').classList.add('active');
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById('mock').classList.add('active');
+      document.getElementById('mock-setup').classList.add('hide');
+      document.getElementById('mock-result').classList.add('hide');
+      document.getElementById('mock-run').classList.remove('hide');
+      document.getElementById('m-total').textContent=list.length;
+      showQ();
+    };
+    document.getElementById('resume-no').onclick=()=>{clearMockProgress();modal.classList.remove('show');};
+  }catch(e){clearMockProgress();}
+})();
+
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

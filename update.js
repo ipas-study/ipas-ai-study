@@ -1,7 +1,14 @@
-// 自動更新：2026-06-08（每週排程產生）
+// 自動更新：2026-06-13（每週排程產生）
 window.DYNAMIC = {
-  lastUpdated: "2026-06-08",
+  lastUpdated: "2026-06-13",
   news: [
+    {t:"大世科榮獲2026 AI Award優秀賞，鎖定 Agentic AI 助企業價值落地", d:"大同旗下大世科以人工智慧解決方案落地與企業應用整合成果獲獎，反映台灣 Agentic AI 商用化步伐加快，也是考試「AI導入成效評估」的實戰案例參考。", u:"https://money.udn.com/money/story/5612/9458197"},
+    {t:"Google I/O 2026 轟炸式發布 Agent 工具，Antigravity CLI 接棒 Gemini CLI 正式亮相", d:"Google 推出新一代終端 AI 工具 Antigravity（Gemini CLI 升級版），支援 MCP Server 擴展、百萬 Token 超長上下文，免費開源可直接使用 Gemini 2.5 Pro，對標 Claude Code，是了解 AI 開發工具生態的重要指標。", u:"https://www.53ai.com/news/LargeLanguageModel/2026052071903.html"},
+    {t:"UiPath 2026 CXO 報告：Agentic AI 代理式 AI 轉型四大獲利工作流解析", d:"UiPath 調查報告揭示企業 Agentic AI 規模化的四大場景：財務稽核、客服自動化、供應鏈與員工知識管理，並提出 ROI 計算框架，為 AI 應用規劃師提供具體落地藍圖。", u:"https://www.perform-global.com/blog/agentic-operating-model-2026-report"},
+    {t:"AI Agent 記憶技術三路線解析：Context Window、RAG 與持久工作區的差異與選用", d:"2026年 AI Agent 記憶技術分成三路：短期記憶（Context Window）、知識庫（RAG）與外部資料庫，本文釐清各路線的應用場景，也是中級考科「AI系統設計」的核心觀念。", u:"https://felo.ai/zh-Hant/blog/ai-agent-memory-technology-explained/"},
+    {t:"台灣 AI Agent 企業落地2026年三大場景：保險、物流與製造業實戰案例", d:"台灣企業 AI Agent 導入案例彙整：保險業法律諮詢30秒查判決書、物流業動態配送路徑規劃、製造業 MES 整合，呈現 Agentic AI 的具體效益，也是備考「AI導入規劃」的參考素材。", u:"https://www.data-di.com/blog/ai-lab-case2026"}
+  ],
+  newsHistory: [
     {t:"115年度簡章更新至115.04版：初級考試共四梯次", d:"115年初級考試日期為3/21、5/16、8/15、11/7，下一梯次為8/15。報名費調降至初級每科400元、中級500元，並新增桃園、嘉義、屏東、花蓮考點。", u:"https://ipd.nat.gov.tw/ipas/certification/AIAP/news"},
     {t:"初級學習指引勘誤表已公告", d:"官方公布「人工智慧基礎概論」等科目勘誤（如平均差定義、抽樣變異說明），備考請以最新版學習指引與勘誤表為準。", u:"https://www.ipas.org.tw/AIAP/AbilityBriefingList.aspx"},
     {t:"COMPUTEX 2026「AI TOGETHER」6/2-6/5 台北登場", d:"33國、1500家廠商規模創新高，聚焦 Agentic AI、Physical AI、Edge AI 與機器人專區，呈現 AI 從創新走向落地的趨勢。", u:"https://udn.com/news/story/7240/9536845"},
@@ -10,6 +17,11 @@ window.DYNAMIC = {
     {t:"臺灣資安大會：AI 演進下的四大資安風險", d:"趨勢科技預估2026年底多數資訊內容將由 AI 產生，提醒 AI 漏洞暴增與身分偽造等複合式威脅——也是中級考科的資安治理重點。", u:"https://www.ithome.com.tw/news/175591"}
   ],
   resources: [
+    {t:"2026 LLM 大語言模型資源懶人包｜Agent、RAG & Fine-tuning", d:"Deep Learning 101 彙整的 LLM 學習資源，涵蓋 RAG 防幻覺實作、AI Agent 框架、SLM 端側小模型與微調，是備考「AI系統架構」科目的優質補充材料。", u:"https://deep-learning-101.github.io/Large-Language-Model"},
+    {t:"AI 名詞解釋：用白話講清楚 Agent、MCP、RAG 和 Token", d:"用非技術人員也能理解的方式解釋四大關鍵 AI 術語，特別適合 iPAS 初級考試「人工智慧基礎概論」單元的概念釐清。", u:"https://www.knightli.com/zh-tw/2026/04/23/ai-terms-agent-mcp-rag-token-explained/"},
+    {t:"2026 最新 LangChain 教學：LCEL 基礎到企業級 RAG 實戰全攻略", d:"涵蓋 LangChain 最新架構 LCEL 與 LangGraph，從 RAG 知識庫搭建到 Multi-Agent 協作，附完整 Python 程式碼範例，適合中級考科深度學習。", u:"https://masonaibase.com/langchain-tutorial-2026-lcel-rag/"}
+  ],
+  resourcesHistory: [
     {t:"李宏毅：一堂課搞懂 AI Agent 的原理", d:"台大課程影片，講解 AI 如何透過經驗調整行為、使用工具與做計劃，打好 Agent 觀念基礎。", u:"https://www.youtube.com/watch?v=M2Yg1kwPpts"},
     {t:"n8n AI 實作 0 基礎入門到進階", d:"涵蓋 AI Agent、LLM、RAG、Webhook 與自動生成研究報告的繁中超詳細教學。", u:"https://www.youtube.com/watch?v=vvqhzbp4J5A"},
     {t:"15分鐘學會 AI Agent（完整講解）", d:"快速理解 AI Agent 的組成與運作流程，適合考前快速複習觀念。", u:"https://www.youtube.com/watch?v=fwdzsY9KWKk"},
@@ -21,41 +33,60 @@ window.DYNAMIC = {
     {n:"n8n", d:"開源工作流自動化平台，1200+ 節點可串接各種服務並內建 AI Agent 節點。", use:"打造企業自動化流程與 AI Agent 落地案例", url:"https://n8n.io", yt:""},
     {n:"Perplexity", d:"AI 搜尋引擎，回答附帶來源引用，適合查證與多來源比對。", use:"蒐集產業案例與最新 AI 資訊並驗證出處", url:"https://www.perplexity.ai", yt:""}
   ],
+  toolsHistory: [],
   toolVideos: {
     "ChatGPT": [
+      {t:"新手必學的「進化版 ChatGPT」！快速打造 Codex 終極知識庫，用它秒做各種檔案！", u:"https://www.youtube.com/watch?v=pTO85XkruHI"},
+      {t:"ChatGPT 超讚新功能「學習與研究」！私人家教學習模式實測，附3招技巧讓效果飆升", u:"https://www.youtube.com/watch?v=4eoqEoKqdhE"},
+      {t:"Codex 保姆級完整教學：從入門到進階，自動生成內容、網頁、影片和App", u:"https://www.youtube.com/watch?v=tfeCwDT-5m0"},
       {t:"【2026最新】你不知道的20種 ChatGPT 使用方法與隱藏功能", u:"https://www.youtube.com/watch?v=04cz8zNr33Y"},
       {t:"ChatGPT 最全教程：16種使用技巧，從入門到精通", u:"https://www.youtube.com/watch?v=FRIa3T49urg"},
       {t:"6分鐘教會你用 ChatGPT：寫出正確有效的指令", u:"https://www.youtube.com/watch?v=hqujLMQ2UeM"}
     ],
+    "Claude": [
+      {t:"【超實用】一次搞懂 Claude AI 全生態！2026全新初學者完整教程，15個超棒使用方法", u:"https://www.youtube.com/watch?v=zm3K831v470"},
+      {t:"6個 Claude 核心功能讓你超越99%的 AI 使用者！Cowork/Code 保姆級完整教學", u:"https://www.youtube.com/watch?v=8244knXN9e0"},
+      {t:"10分鐘搞懂 Claude 基礎設定！Project、Skills、Style 讓 AI 成為最強代理人", u:"https://www.youtube.com/watch?v=5Aha8QOVke4"}
+    ],
     "Gemini": [
-      {t:"Google Gemini 全系列教學（上集）：21個超強 AI 應用", u:"https://www.youtube.com/watch?v=4n8jswc2pAI"},
+      {t:"無痛把 Gemini 裝進電腦！Gemini CLI 讓 AI 直接幫你處理所有檔案，無須寫程式", u:"https://www.youtube.com/watch?v=cXEZ50vgDPw"},
+      {t:"【Google Antigravity CLI 實測】手把手安裝教學！從 Gemini CLI 完美過渡", u:"https://www.youtube.com/watch?v=0RPVIiIcD4g"},
+      {t:"Google 全系列教學（上集）：21個超強 AI 應用", u:"https://www.youtube.com/watch?v=4n8jswc2pAI"},
       {t:"Gemini 3 最強教學＋15個超強功能全場景實測", u:"https://www.youtube.com/watch?v=8o737qKO3IM"},
       {t:"Gemini 網頁版7個實用示範：臨時對話、Gem 設定、連接 Google 服務", u:"https://www.youtube.com/watch?v=9872vJcRKLg"},
       {t:"Gemini CLI 官方神器實測：安裝到實戰完整教學", u:"https://www.youtube.com/watch?v=UfrXGfivlEQ"}
     ],
     "NotebookLM": [
+      {t:"Gemini 重要更新！合體 NotebookLM + 新版多模態輸出教學，一次生成多種格式", u:"https://www.youtube.com/watch?v=kSgxHy-mqxI"},
+      {t:"重大更新！新版 Gemini 合體 NotebookLM：多模態輸出全公開，建立任何格式檔案", u:"https://www.youtube.com/watch?v=uE1XDwDOtbU"},
       {t:"NotebookLM 完整教學！93%的人還不知道的8個隱藏用法", u:"https://www.youtube.com/watch?v=zgWerTIynVA"},
       {t:"NotebookLM 完整教學！10個超強隱藏用法（2026）", u:"https://www.youtube.com/watch?v=pbds1YRoXJw"},
       {t:"Gemini × NotebookLM 史上最強合體：多筆記調用與互動儀表盤", u:"https://www.youtube.com/watch?v=41eyUBTDn3U"}
     ],
     "n8n": [
+      {t:"學會 n8n 為你省下 80% 時間！AI 助理使命必達且全天候待命", u:"https://www.youtube.com/watch?v=r9mi3ZJIWbg"},
+      {t:"【n8n 教學】一次自動發 IG/TikTok/YouTube！7 平台同步發布＋排程全自動化", u:"https://www.youtube.com/watch?v=QliMzK7aTAg"},
       {t:"n8n 手把手完整教學：從基礎到進階的自動化工作流", u:"https://www.youtube.com/watch?v=sYWCxgEF_yY"},
       {t:"2026 最強 n8n 教學！從零打造你的 AI 自動化工作流", u:"https://www.youtube.com/watch?v=6s_Z9Tl0sHU"},
       {t:"零基礎用 n8n 打造 AI 自動化工作流：抓資料到 AI 決策", u:"https://www.youtube.com/watch?v=-vKewrChihk"},
       {t:"最完整的 n8n 自動化9小時全套教學（新手到高手）", u:"https://www.youtube.com/watch?v=JnepOnstpAQ"}
     ],
     "Dify": [
+      {t:"【使用 No Code 工具 Dify】設定懂公司產品的 AI Agent 銷售助手", u:"https://www.youtube.com/watch?v=A6zsqVDo8r4"},
       {t:"Dify 完整安裝教學：生成式 AI 應用創新引擎", u:"https://www.youtube.com/watch?v=kTpC6MtYuKc"},
       {t:"Dify 零代碼革命：RAG 知識庫、自動化流程與企業級部署", u:"https://www.youtube.com/watch?v=IX8g7l578oQ"},
       {t:"Dify 1.0 基礎教學：開發你的第一個 Agent", u:"https://www.youtube.com/watch?v=hDjubHZwilo"}
     ],
     "Cursor": [
+      {t:"【Cursor 教學】安裝3款讓 Vibe Coding 效率翻倍的工具！個人形象網站實戰演練", u:"https://www.youtube.com/watch?v=5DEV_K0JauQ"},
       {t:"【Cursor 教學】入門到實戰，用 AI Agent 自動化你的工作流", u:"https://www.youtube.com/watch?v=kVniOF36GEk"},
       {t:"Cursor AI 教學：實戰4個月後的終極使用心得", u:"https://www.youtube.com/watch?v=yHiYyiWMhlI"},
       {t:"Cursor 實測：45分鐘打造聊天機器人與 Chrome 擴充功能", u:"https://www.youtube.com/watch?v=sSkveJtpHtg"}
     ]
   },
   vickyVideos: [
+    {id:"gPkg3L6FUBk", t:"【iPAS AI 應用規劃師】學長姐帶路 EP2：零基礎退伍軍人一年考取 3 張 AI 證照！版主獨家「小白通關密碼」大公開", m:"2026/03"},
+    {id:"cHYxQ3tyNdM", t:"【iPAS AI 應用規劃師】學長姐帶路 EP1：學習路上不孤單！版主手把手打造破千人 AI 共學溫暖淨土", m:"2026/02"},
     {id:"CyrGQ-K8-4Y", t:"iPAS 考前必看｜電腦測驗操作說明：作答畫面、標記題目、試題總覽一次看懂", m:"觀看 140 · 3 週前"},
     {id:"L0BTTmsCr6k", t:"【AI 應用交流分享會7】iPAS 獲證學長姊的考前陪伴分享會", m:"觀看 139 · 3 週前"},
     {id:"m-y10bR6DZI", t:"【AI 應用交流分享會6】Sandy x Vicky｜AI 影片、AI 複製人、104 AI 通用素養檢測", m:"觀看 264 · 2 個月前"},

@@ -2,9 +2,9 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v3.6　|　日期 2026-06-17
+     版本 v3.7　|　日期 2026-06-18
      版本紀錄：
-       v3.6 (2026-06-18) 擂台分頁升級：新增中級 20 組技術對決，共 33 組（初級 13 + 中級 20）
+       v3.7 (2026-06-18) 擂台 Modal 彈窗 + 33 組真實場景案例
        v3.4 (2026-06-14) 筆記與知識管理三工具影片全換 2026 最新繁中版
        v3.3 (2026-06-14) AI工具頁「本週新工具」標題加日期標示
        v3.2 (2026-06-14) 新增「知識管理工具」分類（Notion/Heptabase/Obsidian）；AI導師Prompt增第4點說明新發展；修正 iPAS 官方連結；首頁最新消息加日期標示
@@ -282,6 +282,18 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 .arena-tradeoff b{color:var(--brand)}
 .arena-errata{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:9px 13px;font-size:12.5px;margin-top:10px;line-height:1.7}
 .arena-errata b{color:#c05b00}
+.arena-realworld{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:9px 13px;font-size:12.5px;margin-top:10px;line-height:1.8}
+.arena-realworld b{color:#1b5e20}
+.arena-realworld .rw-item{padding:2px 0}
+.arena-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9000;overflow-y:auto;padding:16px}
+.arena-modal-overlay.open{display:block}
+.arena-modal{background:var(--surface);max-width:860px;margin:32px auto;border-radius:16px;box-shadow:0 10px 50px rgba(0,0,0,.35);overflow:hidden;animation:amIn .2s ease}
+@keyframes amIn{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
+.arena-modal-hdr{padding:14px 18px;background:linear-gradient(135deg,#f0f4ff,#f8f0ff);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:1}
+.arena-modal-title{font-weight:700;font-size:15px;flex:1;line-height:1.4}
+.arena-modal-close{background:#e53935;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap}
+.arena-modal-close:hover{background:#b71c1c}
+.arena-modal-body{padding:18px 20px}
 .arena-idx{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:24px}
 .arena-idx-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:12.5px;cursor:pointer;transition:.15s;text-decoration:none;color:var(--txt);display:block}
 .arena-idx-item:hover{border-color:var(--brand);background:var(--chip);text-decoration:none}
@@ -574,43 +586,43 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 
   <div class="arena-sec-hdr">🟡 初級 13 組對決・快速索引</div>
   <div class="arena-idx">
-    <a href="#am01" class="arena-idx-item" onclick="document.getElementById('am01').open=true"><span class="anum">01</span> 監督式 vs 非監督式學習<br><span class="adim">標記成本 vs 無標記探索</span></a>
-    <a href="#am02" class="arena-idx-item" onclick="document.getElementById('am02').open=true"><span class="anum">02</span> 監督式 vs 強化學習<br><span class="adim">靜態標記 vs 動態試錯獎勵</span></a>
-    <a href="#am03" class="arena-idx-item" onclick="document.getElementById('am03').open=true"><span class="anum">03 ⭐</span> 鑑別式AI vs 生成式AI<br><span class="adim">P(y|x)分類 vs P(x,y)生成</span></a>
-    <a href="#am04" class="arena-idx-item" onclick="document.getElementById('am04').open=true"><span class="anum">04</span> CNN vs RNN<br><span class="adim">空間特徵 vs 時序記憶</span></a>
-    <a href="#am05" class="arena-idx-item" onclick="document.getElementById('am05').open=true"><span class="anum">05</span> GAN vs 擴散模型<br><span class="adim">對抗速度 vs 穩定品質</span></a>
-    <a href="#am06" class="arena-idx-item" onclick="document.getElementById('am06').open=true"><span class="anum">06</span> GAN vs VAE<br><span class="adim">逼真度 vs 訓練穩定性</span></a>
-    <a href="#am07" class="arena-idx-item" onclick="document.getElementById('am07').open=true"><span class="anum">07</span> 決策樹 vs 隨機森林<br><span class="adim">解釋性 vs 準確性</span></a>
-    <a href="#am08" class="arena-idx-item" onclick="document.getElementById('am08').open=true"><span class="anum">08</span> No Code vs Low Code<br><span class="adim">零門檻 vs 彈性客製</span></a>
-    <a href="#am09" class="arena-idx-item" onclick="document.getElementById('am09').open=true"><span class="anum">09</span> 提示工程 vs 模型微調<br><span class="adim">即時靈活 vs 特定域精準</span></a>
-    <a href="#am10" class="arena-idx-item" onclick="document.getElementById('am10').open=true"><span class="anum">10</span> EDA vs CDA<br><span class="adim">探索假設 vs 驗證假設</span></a>
-    <a href="#am11" class="arena-idx-item" onclick="document.getElementById('am11').open=true"><span class="anum">11</span> 平均數 vs 中位數<br><span class="adim">易計算 vs 抗離群值</span></a>
-    <a href="#am12" class="arena-idx-item" onclick="document.getElementById('am12').open=true"><span class="anum">12</span> 雲端AIaaS vs 本地部署<br><span class="adim">低門檻便利 vs 資料隱私合規</span></a>
-    <a href="#am13" class="arena-idx-item" onclick="document.getElementById('am13').open=true"><span class="anum">13</span> BGD vs SGD vs Adam<br><span class="adim">穩定性 vs 速度 vs 自適應</span></a>
+    <a href="#am01" class="arena-idx-item" onclick="openArenaModal('am01');event.preventDefault()"><span class="anum">01</span> 監督式 vs 非監督式學習<br><span class="adim">標記成本 vs 無標記探索</span></a>
+    <a href="#am02" class="arena-idx-item" onclick="openArenaModal('am02');event.preventDefault()"><span class="anum">02</span> 監督式 vs 強化學習<br><span class="adim">靜態標記 vs 動態試錯獎勵</span></a>
+    <a href="#am03" class="arena-idx-item" onclick="openArenaModal('am03');event.preventDefault()"><span class="anum">03 ⭐</span> 鑑別式AI vs 生成式AI<br><span class="adim">P(y|x)分類 vs P(x,y)生成</span></a>
+    <a href="#am04" class="arena-idx-item" onclick="openArenaModal('am04');event.preventDefault()"><span class="anum">04</span> CNN vs RNN<br><span class="adim">空間特徵 vs 時序記憶</span></a>
+    <a href="#am05" class="arena-idx-item" onclick="openArenaModal('am05');event.preventDefault()"><span class="anum">05</span> GAN vs 擴散模型<br><span class="adim">對抗速度 vs 穩定品質</span></a>
+    <a href="#am06" class="arena-idx-item" onclick="openArenaModal('am06');event.preventDefault()"><span class="anum">06</span> GAN vs VAE<br><span class="adim">逼真度 vs 訓練穩定性</span></a>
+    <a href="#am07" class="arena-idx-item" onclick="openArenaModal('am07');event.preventDefault()"><span class="anum">07</span> 決策樹 vs 隨機森林<br><span class="adim">解釋性 vs 準確性</span></a>
+    <a href="#am08" class="arena-idx-item" onclick="openArenaModal('am08');event.preventDefault()"><span class="anum">08</span> No Code vs Low Code<br><span class="adim">零門檻 vs 彈性客製</span></a>
+    <a href="#am09" class="arena-idx-item" onclick="openArenaModal('am09');event.preventDefault()"><span class="anum">09</span> 提示工程 vs 模型微調<br><span class="adim">即時靈活 vs 特定域精準</span></a>
+    <a href="#am10" class="arena-idx-item" onclick="openArenaModal('am10');event.preventDefault()"><span class="anum">10</span> EDA vs CDA<br><span class="adim">探索假設 vs 驗證假設</span></a>
+    <a href="#am11" class="arena-idx-item" onclick="openArenaModal('am11');event.preventDefault()"><span class="anum">11</span> 平均數 vs 中位數<br><span class="adim">易計算 vs 抗離群值</span></a>
+    <a href="#am12" class="arena-idx-item" onclick="openArenaModal('am12');event.preventDefault()"><span class="anum">12</span> 雲端AIaaS vs 本地部署<br><span class="adim">低門檻便利 vs 資料隱私合規</span></a>
+    <a href="#am13" class="arena-idx-item" onclick="openArenaModal('am13');event.preventDefault()"><span class="anum">13</span> BGD vs SGD vs Adam<br><span class="adim">穩定性 vs 速度 vs 自適應</span></a>
   </div>
 
   <div class="arena-sec-hdr">🟣 中級 20 組對決・快速索引</div>
   <div class="arena-idx">
-    <a href="#bm01" class="arena-idx-item" onclick="document.getElementById('bm01').open=true"><span class="anum">M01</span> RNN vs Transformer<br><span class="adim">遞迴時序 vs 自注意力並行</span></a>
-    <a href="#bm02" class="arena-idx-item" onclick="document.getElementById('bm02').open=true"><span class="anum">M02</span> BERT vs GPT<br><span class="adim">雙向理解 vs 自回歸生成</span></a>
-    <a href="#bm03" class="arena-idx-item" onclick="document.getElementById('bm03').open=true"><span class="anum">M03</span> 靜態詞向量 vs 情境化詞向量<br><span class="adim">快速查表 vs 多義動態</span></a>
-    <a href="#bm04" class="arena-idx-item" onclick="document.getElementById('bm04').open=true"><span class="anum">M04</span> RAG vs LoRA<br><span class="adim">知識即時檢索 vs 行為微調</span></a>
-    <a href="#bm05" class="arena-idx-item" onclick="document.getElementById('bm05').open=true"><span class="anum">M05</span> 語意分割 vs 實例分割<br><span class="adim">場景理解 vs 個體區分</span></a>
-    <a href="#bm06" class="arena-idx-item" onclick="document.getElementById('bm06').open=true"><span class="anum">M06</span> 鑑別式AI vs 生成式AI<br><span class="adim">P(y|x)分類 vs P(x,y)生成</span></a>
-    <a href="#bm07" class="arena-idx-item" onclick="document.getElementById('bm07').open=true"><span class="anum">M07</span> RDBMS vs NoSQL<br><span class="adim">ACID強一致 vs BASE水平擴展</span></a>
-    <a href="#bm08" class="arena-idx-item" onclick="document.getElementById('bm08').open=true"><span class="anum">M08</span> 資料湖 vs 資料倉儲<br><span class="adim">Schema-on-Read vs Schema-on-Write</span></a>
-    <a href="#bm09" class="arena-idx-item" onclick="document.getElementById('bm09').open=true"><span class="anum">M09</span> MapReduce vs Spark<br><span class="adim">磁碟穩健 vs 記憶體加速</span></a>
-    <a href="#bm10" class="arena-idx-item" onclick="document.getElementById('bm10').open=true"><span class="anum">M10</span> Spark vs Flink<br><span class="adim">微批次生態 vs 真即時串流</span></a>
-    <a href="#bm11" class="arena-idx-item" onclick="document.getElementById('bm11').open=true"><span class="anum">M11</span> RBAC vs ABAC<br><span class="adim">角色簡易 vs 屬性細粒度</span></a>
-    <a href="#bm12" class="arena-idx-item" onclick="document.getElementById('bm12').open=true"><span class="anum">M12</span> Apriori vs FP-Growth<br><span class="adim">直觀候選集 vs 壓縮樹快速</span></a>
-    <a href="#bm13" class="arena-idx-item" onclick="document.getElementById('bm13').open=true"><span class="anum">M13</span> 強一致性 vs 最終一致性<br><span class="adim">金融正確 vs 高吞吐量</span></a>
-    <a href="#bm14" class="arena-idx-item" onclick="document.getElementById('bm14').open=true"><span class="anum">M14</span> Lasso vs Ridge<br><span class="adim">稀疏特徵選擇 vs 共線穩定</span></a>
-    <a href="#bm15" class="arena-idx-item" onclick="document.getElementById('bm15').open=true"><span class="anum">M15</span> 隨機森林 vs 梯度提升<br><span class="adim">並行穩健 vs 序列精準</span></a>
-    <a href="#bm16" class="arena-idx-item" onclick="document.getElementById('bm16').open=true"><span class="anum">M16</span> XGBoost vs LightGBM<br><span class="adim">二階梯度精確 vs 葉優先快速</span></a>
-    <a href="#bm17" class="arena-idx-item" onclick="document.getElementById('bm17').open=true"><span class="anum">M17</span> K-means vs DBSCAN<br><span class="adim">球形快速 vs 任意形狀異常</span></a>
-    <a href="#bm18" class="arena-idx-item" onclick="document.getElementById('bm18').open=true"><span class="anum">M18</span> PCA vs t-SNE<br><span class="adim">線性特徵工程 vs 非線性視覺化</span></a>
-    <a href="#bm19" class="arena-idx-item" onclick="document.getElementById('bm19').open=true"><span class="anum">M19</span> 自編碼器 vs GAN<br><span class="adim">重構異常偵測 vs 生成逼真樣本</span></a>
-    <a href="#bm20" class="arena-idx-item" onclick="document.getElementById('bm20').open=true"><span class="anum">M20</span> Isolation Forest vs One-Class SVM<br><span class="adim">大規模快速 vs 小樣本精密</span></a>
+    <a href="#bm01" class="arena-idx-item" onclick="openArenaModal('bm01');event.preventDefault()"><span class="anum">M01</span> RNN vs Transformer<br><span class="adim">遞迴時序 vs 自注意力並行</span></a>
+    <a href="#bm02" class="arena-idx-item" onclick="openArenaModal('bm02');event.preventDefault()"><span class="anum">M02</span> BERT vs GPT<br><span class="adim">雙向理解 vs 自回歸生成</span></a>
+    <a href="#bm03" class="arena-idx-item" onclick="openArenaModal('bm03');event.preventDefault()"><span class="anum">M03</span> 靜態詞向量 vs 情境化詞向量<br><span class="adim">快速查表 vs 多義動態</span></a>
+    <a href="#bm04" class="arena-idx-item" onclick="openArenaModal('bm04');event.preventDefault()"><span class="anum">M04</span> RAG vs LoRA<br><span class="adim">知識即時檢索 vs 行為微調</span></a>
+    <a href="#bm05" class="arena-idx-item" onclick="openArenaModal('bm05');event.preventDefault()"><span class="anum">M05</span> 語意分割 vs 實例分割<br><span class="adim">場景理解 vs 個體區分</span></a>
+    <a href="#bm06" class="arena-idx-item" onclick="openArenaModal('bm06');event.preventDefault()"><span class="anum">M06</span> 鑑別式AI vs 生成式AI<br><span class="adim">P(y|x)分類 vs P(x,y)生成</span></a>
+    <a href="#bm07" class="arena-idx-item" onclick="openArenaModal('bm07');event.preventDefault()"><span class="anum">M07</span> RDBMS vs NoSQL<br><span class="adim">ACID強一致 vs BASE水平擴展</span></a>
+    <a href="#bm08" class="arena-idx-item" onclick="openArenaModal('bm08');event.preventDefault()"><span class="anum">M08</span> 資料湖 vs 資料倉儲<br><span class="adim">Schema-on-Read vs Schema-on-Write</span></a>
+    <a href="#bm09" class="arena-idx-item" onclick="openArenaModal('bm09');event.preventDefault()"><span class="anum">M09</span> MapReduce vs Spark<br><span class="adim">磁碟穩健 vs 記憶體加速</span></a>
+    <a href="#bm10" class="arena-idx-item" onclick="openArenaModal('bm10');event.preventDefault()"><span class="anum">M10</span> Spark vs Flink<br><span class="adim">微批次生態 vs 真即時串流</span></a>
+    <a href="#bm11" class="arena-idx-item" onclick="openArenaModal('bm11');event.preventDefault()"><span class="anum">M11</span> RBAC vs ABAC<br><span class="adim">角色簡易 vs 屬性細粒度</span></a>
+    <a href="#bm12" class="arena-idx-item" onclick="openArenaModal('bm12');event.preventDefault()"><span class="anum">M12</span> Apriori vs FP-Growth<br><span class="adim">直觀候選集 vs 壓縮樹快速</span></a>
+    <a href="#bm13" class="arena-idx-item" onclick="openArenaModal('bm13');event.preventDefault()"><span class="anum">M13</span> 強一致性 vs 最終一致性<br><span class="adim">金融正確 vs 高吞吐量</span></a>
+    <a href="#bm14" class="arena-idx-item" onclick="openArenaModal('bm14');event.preventDefault()"><span class="anum">M14</span> Lasso vs Ridge<br><span class="adim">稀疏特徵選擇 vs 共線穩定</span></a>
+    <a href="#bm15" class="arena-idx-item" onclick="openArenaModal('bm15');event.preventDefault()"><span class="anum">M15</span> 隨機森林 vs 梯度提升<br><span class="adim">並行穩健 vs 序列精準</span></a>
+    <a href="#bm16" class="arena-idx-item" onclick="openArenaModal('bm16');event.preventDefault()"><span class="anum">M16</span> XGBoost vs LightGBM<br><span class="adim">二階梯度精確 vs 葉優先快速</span></a>
+    <a href="#bm17" class="arena-idx-item" onclick="openArenaModal('bm17');event.preventDefault()"><span class="anum">M17</span> K-means vs DBSCAN<br><span class="adim">球形快速 vs 任意形狀異常</span></a>
+    <a href="#bm18" class="arena-idx-item" onclick="openArenaModal('bm18');event.preventDefault()"><span class="anum">M18</span> PCA vs t-SNE<br><span class="adim">線性特徵工程 vs 非線性視覺化</span></a>
+    <a href="#bm19" class="arena-idx-item" onclick="openArenaModal('bm19');event.preventDefault()"><span class="anum">M19</span> 自編碼器 vs GAN<br><span class="adim">重構異常偵測 vs 生成逼真樣本</span></a>
+    <a href="#bm20" class="arena-idx-item" onclick="openArenaModal('bm20');event.preventDefault()"><span class="anum">M20</span> Isolation Forest vs One-Class SVM<br><span class="adim">大規模快速 vs 小樣本精密</span></a>
   </div>
 
   <h2><span class="bar"></span>初級 13 組對決・詳情</h2>
@@ -650,6 +662,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>標記資料完整度↑ → 監督式優勢增 ／ 資料規模無標記量↑ → 非監督式優勢增</div>
       <div class="arena-errata"><b>勘誤：</b>K-Means 特點答案由 B（可結合其他方法較彈性）修正為 <b>A（原理相對簡單）</b></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📸 <b>監督式：</b>Google Photos 自動標注人臉相簿（有標籤分類訓練）</span><br><span class="rw-item">🎵 <b>非監督式：</b>Spotify 將數百萬首歌曲自動分群，發現「深夜 Lo-Fi」等隱性類別</span></div>
     </div>
   </details>
 
@@ -687,6 +700,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>環境互動次數↑ → RL 優勢增 ／ 標記資料完整度↑ → 監督式優勢增</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📧 <b>監督式：</b>Gmail 垃圾郵件過濾（數億封人工標注訓練）</span><br><span class="rw-item">🤖 <b>強化學習：</b>DeepMind AlphaGo 圍棋世界冠軍；Tesla FSD 自動駕駛累積獎勵優化</span></div>
     </div>
   </details>
 
@@ -726,6 +740,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>標記數據完整度↑ → 鑑別式更精準 ／ 創新多樣性需求↑ → 生成式更有優勢<br><b>整合策略：</b>GAI 生成增強數據 → DAI 訓練分類模型</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔒 <b>鑑別式：</b>Apple Face ID 臉部識別（分類「本人 vs 他人」）；LINE 詐欺訊息 AI 篩選</span><br><span class="rw-item">✨ <b>生成式：</b>ChatGPT 文字生成；Midjourney 商業圖像創作；Adobe Firefly 圖像修復</span></div>
     </div>
   </details>
 
@@ -764,6 +779,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>空間維度複雜度↑ → CNN 主場 ／ 序列長度/時間依賴↑ → RNN/LSTM 主場</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🖼️ <b>CNN：</b>Google 圖像搜尋引擎；台大醫院 AI 眼底視網膜病變診斷（CNN 偵測局部特徵）</span><br><span class="rw-item">🔤 <b>RNN：</b>Google Translate 早期 seq2seq（2016 年，已被 Transformer 取代）</span></div>
     </div>
   </details>
 
@@ -800,6 +816,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>訓練穩定性要求↑ → 擴散模型優先 ／ 即時性/速度要求↑ → GAN 優先<br><b>解決方案：</b>GAN 不穩定可採 Wasserstein GAN（WGAN）改進型</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">⚡ <b>GAN：</b>NVIDIA StyleGAN3 生成超高解析度逼真人臉；三星 Galaxy AI 相片智慧補幀</span><br><span class="rw-item">🎨 <b>擴散模型：</b>Stable Diffusion / DALL-E 3（OpenAI）圖像創作；Adobe Firefly 商業圖像生成</span></div>
     </div>
   </details>
 
@@ -836,6 +853,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>視覺逼真度要求↑ → GAN 優先 ／ 訓練穩定性/異常偵測↑ → VAE 優先</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🎭 <b>GAN：</b>DeepFake 換臉技術（電影特效）；Adobe 相片修復/補全（inpainting）</span><br><span class="rw-item">🧬 <b>VAE：</b>新藥研發——輝瑞等藥廠用 VAE 生成並探索分子結構潛在空間</span></div>
     </div>
   </details>
 
@@ -873,6 +891,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>解釋性要求↑ → 決策樹優先 ／ 泛化準確性要求↑ → 隨機森林優先</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📋 <b>決策樹：</b>台灣銀行信用審核規則樹（監管要求可解釋）；醫療診斷輔助決策</span><br><span class="rw-item">📈 <b>隨機森林：</b>PayPal 詐欺交易偵測；各大量化基金用隨機森林過濾股票信號</span></div>
     </div>
   </details>
 
@@ -911,6 +930,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>技術門檻要求↓ → No Code 優先 ／ 業務複雜度/彈性↑ → Low Code 優先<br><b>共同風險：</b>資料隱私/GDPR‧CCPA 合規/偏見歧視，均需風險管理機制</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🫧 <b>No Code：</b>Bubble.io（非工程師創業者建 SaaS 產品）；Glide 從 Google Sheets 建 App</span><br><span class="rw-item">⚙️ <b>Low Code：</b>Microsoft Power Automate（企業財務/HR 流程自動化）；OutSystems 銀行客戶系統</span></div>
     </div>
   </details>
 
@@ -948,6 +968,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>時效性/成本限制↑ → 提示工程優先 ／ 任務精準度/專業深度↑ → 微調優先</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💬 <b>提示工程：</b>GitHub Copilot 系統提示設計（引導程式碼補全）；企業 RAG 系統 Prompt 模板</span><br><span class="rw-item">🏥 <b>模型微調：</b>BloombergGPT（金融語料微調）；台大醫院醫療 LLM 微調（繁中醫學術語）</span></div>
     </div>
   </details>
 
@@ -986,6 +1007,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>資料陌生/初期探索 → EDA 先行 ／ 假設已建立/嚴謹驗證 → CDA 接手（標準工作流程：先探索再驗證）</div>
       <div class="arena-errata"><b>勘誤：</b>假設檢定表中「拒絕H₀，H₀為真」欄位由 Type II 修正為 <b>Type I 錯誤（α）</b></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>EDA：</b>Kaggle 競賽選手初期特徵探索（視覺化分佈、相關性矩陣）找潛在信號</span><br><span class="rw-item">📊 <b>CDA：</b>新冠疫苗臨床三期試驗（BNT162b2 有效性 95%，p&lt;0.0001 統計顯著性驗證）</span></div>
     </div>
   </details>
 
@@ -1023,6 +1045,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>極端值比例↑ → 中位數更可靠 ／ 資料對稱性↑ → 平均數更精確</div>
       <div class="arena-errata"><b>勘誤：</b>平均差（Mean Deviation）定義修正為「<b>所有觀察值與平均數之間絕對差值的平均</b>」（非單一觀察值與平均數的差距）</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📊 <b>平均數：</b>行政院公告「台灣平均薪資 67K」（被高薪族群拉高，常被批評失真）</span><br><span class="rw-item">🏠 <b>中位數：</b>信義房屋公布「台北市中位數房價 1,850 萬」（抗高價豪宅干擾，更代表市場實態）</span></div>
     </div>
   </details>
 
@@ -1060,6 +1083,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>資料敏感度↑ → 本地部署優先 ／ 成本/速度限制↑ → 雲端優先<br><b>防護措施：</b>差分隱私 + 加密 + 身份驗證 + 授權機制</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">☁️ <b>雲端 AIaaS：</b>台灣新創公司直接呼叫 OpenAI API（按量付費，零基礎建設成本快速驗證）</span><br><span class="rw-item">🏦 <b>本地部署：</b>玉山銀行、兆豐銀行導入 On-premise LLM（金管會資安規範，客戶資料不得出境）</span></div>
     </div>
   </details>
 
@@ -1094,6 +1118,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>小數據/穩定性 → BGD ／ 大數據/速度 → SGD ／ 深度學習/自適應 → Adam（官方首選）</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📐 <b>BGD：</b>小型線性模型訓練（如傳統統計迴歸）；Scikit-learn 預設使用 full-batch 梯度</span><br><span class="rw-item">🔥 <b>Adam：</b>ResNet / BERT / GPT 等幾乎所有深度學習大模型訓練的事實標準（PyTorch 官方推薦）</span></div>
     </div>
   </details>
 
@@ -1130,6 +1155,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>序列必須並行/長依賴 → Transformer ／ 資源有限/短序列即時串流 → RNN</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔤 <b>RNN 時代：</b>Google Translate 2016 年 seq2seq LSTM 翻譯（當時 SOTA）</span><br><span class="rw-item">🚀 <b>Transformer 革命：</b>2017 年「Attention Is All You Need」→ GPT-4、Claude、Gemini 全部基於 Transformer</span></div>
     </div>
   </details>
 
@@ -1164,6 +1190,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>語意理解/NLU/少標籤微調 → BERT ／ 文本生成/Zero-shot 泛化 → GPT</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>BERT：</b>Google 搜尋引擎 2019 年導入 BERT，搜尋語意理解大幅提升（尤其長尾查詢）</span><br><span class="rw-item">💬 <b>GPT：</b>OpenAI ChatGPT（GPT-3.5/4）、Microsoft Copilot — 全球最廣泛部署的生成式 AI</span></div>
     </div>
   </details>
 
@@ -1198,6 +1225,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>推理速度/輕量部署 → 靜態詞向量 ／ 多義詞理解/長距離語境 → 情境化詞向量</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📦 <b>靜態詞向量：</b>Google News Word2Vec（2013）早期推薦系統；Facebook GloVe 情感分析</span><br><span class="rw-item">🌐 <b>情境化：</b>Google BERT 導入 Search（2019），理解「Can you get medicine for someone?」的真實意圖</span></div>
     </div>
   </details>
 
@@ -1233,6 +1261,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>知識即時更新/可溯源 → RAG ／ 行為風格對齊/微調成本低 → LoRA</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📚 <b>RAG：</b>Notion AI 即時查詢企業文件庫；Microsoft 365 Copilot 搜尋公司內部 SharePoint 資料</span><br><span class="rw-item">🎯 <b>LoRA：</b>Meta LLaMA-2 醫療版（少量醫學語料微調，參數量僅 0.1%）；客服機器人語氣對齊</span></div>
     </div>
   </details>
 
@@ -1268,6 +1297,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>計算效率/全場景理解 → 語意分割 ／ 個體區分/物件計數 → 實例分割</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🛣️ <b>語意分割：</b>Waymo 自駕車道路/行人/建物場景解析；長庚醫院 U-Net 腦部腫瘤分割</span><br><span class="rw-item">🏭 <b>實例分割：</b>台積電晶圓外觀缺陷個別標記（Mask R-CNN）；Amazon Go 無人商店商品辨識計數</span></div>
     </div>
   </details>
 
@@ -1302,6 +1332,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>標籤準確率/決策可解釋 → 鑑別式AI ／ 內容創生/無標籤資料利用 → 生成式AI</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔒 <b>鑑別式：</b>LINE 詐欺連結 AI 分類器；Meta Facebook 仇恨言論自動偵測（每日數十億則貼文）</span><br><span class="rw-item">🎨 <b>生成式：</b>GitHub Copilot 程式碼補全；Adobe Firefly 商業圖像；Google NotebookLM 播客生成</span></div>
     </div>
   </details>
 
@@ -1338,6 +1369,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>ACID 強一致/複雜 JOIN → RDBMS ／ 水平擴展/Schema 彈性 → NoSQL</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏦 <b>RDBMS：</b>台灣各大銀行核心帳務系統（Oracle / PostgreSQL）；勞保局退休金計算</span><br><span class="rw-item">🛒 <b>NoSQL：</b>Airbnb 房源搜尋（MongoDB 文件型）；蝦皮商城商品 SKU 儲存（Redis 鍵值快取）</span></div>
     </div>
   </details>
 
@@ -1373,6 +1405,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>儲存彈性/原始資料保留 → 資料湖 ／ 查詢效能/資料品質 → 資料倉儲 ／ 延伸：Lakehouse（Delta Lake/Iceberg）= 兩者優點合一</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🌊 <b>資料湖：</b>Netflix 以 AWS S3 儲存全量用戶觀看行為原始日誌（每日 TB 級），供 ML 模型訓練</span><br><span class="rw-item">📊 <b>資料倉儲：</b>Amazon Redshift 供 BI 團隊分析廣告 ROI；台積電使用 Snowflake 製程良率報表</span></div>
     </div>
   </details>
 
@@ -1407,6 +1440,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>磁碟穩定/記憶體成本 → MapReduce ／ 迭代速度/API 豐富度 → Spark</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🗄️ <b>MapReduce：</b>Yahoo 2008 年搭建 4,000 節點 Hadoop 叢集處理網頁索引（當年規模最大）</span><br><span class="rw-item">⚡ <b>Spark：</b>Databricks 平台服務全球企業 ML 工作負載；Netflix 以 Spark MLlib 訓練推薦模型</span></div>
     </div>
   </details>
 
@@ -1439,6 +1473,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>批次生態/學習資源 → Spark ／ 真即時低延遲/精確狀態管理 → Flink</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📦 <b>Spark：</b>Uber 批次行程統計報表（每日司機收入結算）；Airbnb 每週用戶行為分析</span><br><span class="rw-item">⚡ <b>Flink：</b>Uber 即時動態定價系統（毫秒級計算當前路況與供需）；阿里巴巴雙十一即時交易監控</span></div>
     </div>
   </details>
 
@@ -1473,6 +1508,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>管理簡易/授權效能 → RBAC ／ 細粒度控制/動態環境適應 → ABAC</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">👥 <b>RBAC：</b>AWS IAM 預設角色（AdministratorAccess / ReadOnlyAccess）；GitHub 組織的 Owner/Member 角色</span><br><span class="rw-item">🔐 <b>ABAC：</b>Google BeyondCorp 零信任（IP + 裝置健康狀態 + 時間 + 職位屬性聯合授權，不依賴 VPN）</span></div>
     </div>
   </details>
 
@@ -1505,6 +1541,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>可理解性/稀疏資料 → Apriori ／ 大規模效能/掃描次數 → FP-Growth</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🛒 <b>FP-Growth：</b>Walmart 著名「尿布 + 啤酒」購物籃分析；Amazon「經常一起購買」推薦模組</span><br><span class="rw-item">🇹🇼 <b>台灣電商：</b>蝦皮/momo 購物車關聯推薦、超商門市熱銷商品組合陳列優化</span></div>
     </div>
   </details>
 
@@ -1539,6 +1576,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長（CAP 定理）：</b>資料正確性/金融合規 → 強一致性 ／ 吞吐量/分區容忍 → 最終一致性</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💳 <b>強一致性：</b>PayPal 支付交易採 Paxos 共識（不允許出現「錢扣了但對方沒收到」）</span><br><span class="rw-item">🛍️ <b>最終一致性：</b>Amazon 購物車設計（Werner Vogels 2007 論文「Dynamo」：寧可兩個購物車合併也要保持高可用）</span></div>
     </div>
   </details>
 
@@ -1573,6 +1611,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>特徵選擇/稀疏性 → Lasso ／ 共線穩定性/封閉解 → Ridge ／ 延伸：Elastic Net = L1+L2 混合</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🧬 <b>Lasso：</b>基因組關聯研究（GWAS）從數百萬 SNP 位點中篩選出真正相關的致病基因</span><br><span class="rw-item">📈 <b>Ridge：</b>金融多因子風險模型（市場/規模/價值因子高度共線，Ridge 均勻分散係數穩定估計）</span></div>
     </div>
   </details>
 
@@ -1608,6 +1647,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>訓練速度/過擬合抵抗 → 隨機森林 ／ 準確率上限/殘差修正精度 → 梯度提升</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏦 <b>隨機森林：</b>台灣金融機構信用風險評分（穩定、可輸出特徵重要性供信貸審核解釋）</span><br><span class="rw-item">🏆 <b>梯度提升：</b>Kaggle 結構化數據競賽 2016-2023 年前三名幾乎全為 XGBoost 或 LightGBM</span></div>
     </div>
   </details>
 
@@ -1642,6 +1682,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>梯度精確度/小數據穩定 → XGBoost ／ 大數據訓練速度/記憶體效率 → LightGBM</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏅 <b>XGBoost：</b>贏得 Kaggle Higgs Boson（2014）等多項頂級競賽；2016-2018 年結構化數據事實標準</span><br><span class="rw-item">⚡ <b>LightGBM：</b>微軟 Bing 廣告 CTR 預測（億級特徵，LightGBM 訓練速度比 XGBoost 快 10 倍）</span></div>
     </div>
   </details>
 
@@ -1677,6 +1718,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>大規模可擴展/計算效率 → K-means ／ 任意形狀簇/異常值識別 → DBSCAN</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🎯 <b>K-means：</b>Netflix 用戶分群（VIP 重度用戶 / 週末休閒型 / 流失預警型）驅動個人化推薦</span><br><span class="rw-item">🔭 <b>DBSCAN：</b>天文學家用 DBSCAN 從星系目錄中識別任意形狀的星系團；網路攻擊 IP 群組偵測</span></div>
     </div>
   </details>
 
@@ -1711,6 +1753,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>計算速度/可用於訓練特徵 → PCA ／ 非線性結構可視化/聚類視覺效果 → t-SNE ／ 延伸：UMAP = 非線性且比 t-SNE 快、更好保留全域結構</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📐 <b>PCA：</b>人臉辨識前置降維（Eigenfaces）；金融風控多指標降維為 2-3 個主成分做監控儀表板</span><br><span class="rw-item">🔬 <b>t-SNE：</b>單細胞 RNA 定序（scRNA-seq）可視化，發現罕見細胞亞型（Nature / Cell 論文標配圖）</span></div>
     </div>
   </details>
 
@@ -1745,6 +1788,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>異常偵測/訓練穩定 → 自編碼器 ／ 生成樣本逼真度/多樣性上限 → GAN</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>自編碼器：</b>信用卡詐欺偵測（重構誤差大 = 異常交易）；工廠設備感測器異常預警（正常數據訓練）</span><br><span class="rw-item">🎨 <b>GAN：</b>NVIDIA StyleGAN3 生成超逼真人臉（This Person Does Not Exist）；三星 Galaxy 相片修補</span></div>
     </div>
   </details>
 
@@ -1779,6 +1823,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>大規模訓練速度/高維擴展 → Isolation Forest ／ 局部密度異常/小樣本精密邊界 → One-Class SVM</div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💳 <b>Isolation Forest：</b>台灣金融機構（聯信中心）信用卡詐欺即時偵測（每秒萬筆交易，毫秒級響應）</span><br><span class="rw-item">🏭 <b>One-Class SVM：</b>台積電機台設備振動/溫度異常早期預警（少量正常樣本訓練，找出異常邊界）</span></div>
     </div>
   </details>
 
@@ -1791,6 +1836,16 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     ⑤ 科目二節標題：「(3)企業導入階段性實施策略」（非「資源與基礎設施評估」）
   </div>
 </section>
+
+<div id="arenaModal" class="arena-modal-overlay" onclick="if(event.target===this)closeArenaModal()">
+  <div class="arena-modal">
+    <div class="arena-modal-hdr">
+      <div class="arena-modal-title" id="arenaModalTitle"></div>
+      <button class="arena-modal-close" onclick="closeArenaModal()">✕ 退出對決</button>
+    </div>
+    <div class="arena-modal-body" id="arenaModalBody"></div>
+  </div>
+</div>
 
 <div class="footer">
   本站由「<b>Justin-阿輝</b>」利用 AI 進行製作整理 © 2026<br>
@@ -2282,7 +2337,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v3.6（2026-06-17）';
+$('#build-stamp').textContent='　·　版本 v3.7（2026-06-18）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
@@ -2299,6 +2354,23 @@ $('#build-stamp').textContent='　·　版本 v3.6（2026-06-17）';
    .catch(function(){ el.style.display='none'; });
 })();
 
+
+// ── ⚔️ 擂台 Modal ─────────────────────────────
+function openArenaModal(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  var sumEl=el.querySelector('.arena-sum');
+  var bodyEl=el.querySelector('.arena-body');
+  document.getElementById('arenaModalTitle').innerHTML=sumEl?sumEl.innerHTML:'';
+  document.getElementById('arenaModalBody').innerHTML=bodyEl?bodyEl.innerHTML:'';
+  document.getElementById('arenaModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeArenaModal(){
+  document.getElementById('arenaModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaModal();});
 </script>
 </body>
 </html>

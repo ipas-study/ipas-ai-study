@@ -2,9 +2,9 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v3.5　|　日期 2026-06-17
+     版本 v3.6　|　日期 2026-06-17
      版本紀錄：
-       v3.5 (2026-06-17) 新增「⚔️ 擂台」分頁：13 組官方技術對決 HTML 卡片
+       v3.6 (2026-06-18) 擂台分頁升級：新增中級 20 組技術對決，共 33 組（初級 13 + 中級 20）
        v3.4 (2026-06-14) 筆記與知識管理三工具影片全換 2026 最新繁中版
        v3.3 (2026-06-14) AI工具頁「本週新工具」標題加日期標示
        v3.2 (2026-06-14) 新增「知識管理工具」分類（Notion/Heptabase/Obsidian）；AI導師Prompt增第4點說明新發展；修正 iPAS 官方連結；首頁最新消息加日期標示
@@ -261,6 +261,11 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
 .arena-sum::marker,.arena-sum::-webkit-details-marker{display:none}
 .arena-tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px;background:#e8edff;color:#3667e0;white-space:nowrap;flex-shrink:0}
 .arena-tag.s2{background:#fff0e8;color:#c05b00}
+.arena-tag.m1{background:#e8f5e9;color:#1b5e20}
+.arena-tag.m2{background:#e8eaf6;color:#283593}
+.arena-tag.m3{background:#fce4ec;color:#880e4f}
+.arena-tag.mid-badge{background:#4a148c;color:#fff;font-size:10px;padding:2px 7px;border-radius:4px;margin-left:6px}
+.arena-sec-hdr{margin:28px 0 14px;padding:10px 16px;background:linear-gradient(90deg,#f3e5f5,#ede7f6);border-left:4px solid #7b1fa2;border-radius:0 8px 8px 0;font-weight:700;font-size:15px;color:#4a148c}
 details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-gradient(135deg,#e6ecff,#f0e8ff)}
 .arena-body{padding:16px 18px}
 .arena-vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
@@ -535,7 +540,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <div class="info-card"><h4>🤖 AI 導師解題</h4><p>考古題答題後，點「🤖 呼叫 AI 導師」按鈕，自動複製精心設計的提問 Prompt，貼到 Claude（或其他 AI）即可獲得詳細解析。</p></div>
     <div class="info-card"><h4>💕 Vicky 社群</h4><p>由 Vicky Mommy 玲玲經營的 AI 學習社群，含 iPAS 獲證者訪談影片牆、官方頻道、LINE 入群 QR code。</p></div>
     <div class="info-card"><h4>🗺 AI人才</h4><p>依數位發展部《AI產業人才認定指引 3.0》整理的人才地圖，幫你定位學習方向與對應證照。</p></div>
-    <div class="info-card"><h4>⚔️ 技術擂台</h4><p>13 組官方技術對決卡片，嚴格依據初級學習指引原文（科目一＋科目二）及勘誤表撰寫。每組對決並列核心優勢、致命弱點，並標注勘誤修正重點，是考前快速掌握「技術取捨邏輯」的利器。</p></div>
+    <div class="info-card"><h4>⚔️ 技術擂台</h4><p>初級 13 組 ＋ 中級 20 組，共 <b>33 組</b>官方技術對決卡片。嚴格依據初級（科目一、二）＋ 中級（科目一、二、三）官方學習指引及勘誤表撰寫。每組對決並列核心優勢、致命弱點，是考前快速掌握「技術取捨邏輯」的利器。</p></div>
   </div>
 
   <h2><span class="bar"></span>建議備考流程（30 天）</h2>
@@ -565,9 +570,9 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 <!-- ⚔️ 技術擂台 -->
 <section id="arena" class="page">
   <h1>⚔️ 技術擂台</h1>
-  <p class="sub">13 組官方技術對決・嚴格依據初級學習指引原文・結合勘誤表修正</p>
+  <p class="sub">初級 13 組 ＋ 中級 20 組・嚴格依據官方學習指引（初級科目一二、中級科目一二三）及勘誤表・共 33 組技術對決</p>
 
-  <h2><span class="bar"></span>快速索引</h2>
+  <div class="arena-sec-hdr">🟡 初級 13 組對決・快速索引</div>
   <div class="arena-idx">
     <a href="#am01" class="arena-idx-item" onclick="document.getElementById('am01').open=true"><span class="anum">01</span> 監督式 vs 非監督式學習<br><span class="adim">標記成本 vs 無標記探索</span></a>
     <a href="#am02" class="arena-idx-item" onclick="document.getElementById('am02').open=true"><span class="anum">02</span> 監督式 vs 強化學習<br><span class="adim">靜態標記 vs 動態試錯獎勵</span></a>
@@ -584,7 +589,31 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <a href="#am13" class="arena-idx-item" onclick="document.getElementById('am13').open=true"><span class="anum">13</span> BGD vs SGD vs Adam<br><span class="adim">穩定性 vs 速度 vs 自適應</span></a>
   </div>
 
-  <h2><span class="bar"></span>對決詳情</h2>
+  <div class="arena-sec-hdr">🟣 中級 20 組對決・快速索引</div>
+  <div class="arena-idx">
+    <a href="#bm01" class="arena-idx-item" onclick="document.getElementById('bm01').open=true"><span class="anum">M01</span> RNN vs Transformer<br><span class="adim">遞迴時序 vs 自注意力並行</span></a>
+    <a href="#bm02" class="arena-idx-item" onclick="document.getElementById('bm02').open=true"><span class="anum">M02</span> BERT vs GPT<br><span class="adim">雙向理解 vs 自回歸生成</span></a>
+    <a href="#bm03" class="arena-idx-item" onclick="document.getElementById('bm03').open=true"><span class="anum">M03</span> 靜態詞向量 vs 情境化詞向量<br><span class="adim">快速查表 vs 多義動態</span></a>
+    <a href="#bm04" class="arena-idx-item" onclick="document.getElementById('bm04').open=true"><span class="anum">M04</span> RAG vs LoRA<br><span class="adim">知識即時檢索 vs 行為微調</span></a>
+    <a href="#bm05" class="arena-idx-item" onclick="document.getElementById('bm05').open=true"><span class="anum">M05</span> 語意分割 vs 實例分割<br><span class="adim">場景理解 vs 個體區分</span></a>
+    <a href="#bm06" class="arena-idx-item" onclick="document.getElementById('bm06').open=true"><span class="anum">M06</span> 鑑別式AI vs 生成式AI<br><span class="adim">P(y|x)分類 vs P(x,y)生成</span></a>
+    <a href="#bm07" class="arena-idx-item" onclick="document.getElementById('bm07').open=true"><span class="anum">M07</span> RDBMS vs NoSQL<br><span class="adim">ACID強一致 vs BASE水平擴展</span></a>
+    <a href="#bm08" class="arena-idx-item" onclick="document.getElementById('bm08').open=true"><span class="anum">M08</span> 資料湖 vs 資料倉儲<br><span class="adim">Schema-on-Read vs Schema-on-Write</span></a>
+    <a href="#bm09" class="arena-idx-item" onclick="document.getElementById('bm09').open=true"><span class="anum">M09</span> MapReduce vs Spark<br><span class="adim">磁碟穩健 vs 記憶體加速</span></a>
+    <a href="#bm10" class="arena-idx-item" onclick="document.getElementById('bm10').open=true"><span class="anum">M10</span> Spark vs Flink<br><span class="adim">微批次生態 vs 真即時串流</span></a>
+    <a href="#bm11" class="arena-idx-item" onclick="document.getElementById('bm11').open=true"><span class="anum">M11</span> RBAC vs ABAC<br><span class="adim">角色簡易 vs 屬性細粒度</span></a>
+    <a href="#bm12" class="arena-idx-item" onclick="document.getElementById('bm12').open=true"><span class="anum">M12</span> Apriori vs FP-Growth<br><span class="adim">直觀候選集 vs 壓縮樹快速</span></a>
+    <a href="#bm13" class="arena-idx-item" onclick="document.getElementById('bm13').open=true"><span class="anum">M13</span> 強一致性 vs 最終一致性<br><span class="adim">金融正確 vs 高吞吐量</span></a>
+    <a href="#bm14" class="arena-idx-item" onclick="document.getElementById('bm14').open=true"><span class="anum">M14</span> Lasso vs Ridge<br><span class="adim">稀疏特徵選擇 vs 共線穩定</span></a>
+    <a href="#bm15" class="arena-idx-item" onclick="document.getElementById('bm15').open=true"><span class="anum">M15</span> 隨機森林 vs 梯度提升<br><span class="adim">並行穩健 vs 序列精準</span></a>
+    <a href="#bm16" class="arena-idx-item" onclick="document.getElementById('bm16').open=true"><span class="anum">M16</span> XGBoost vs LightGBM<br><span class="adim">二階梯度精確 vs 葉優先快速</span></a>
+    <a href="#bm17" class="arena-idx-item" onclick="document.getElementById('bm17').open=true"><span class="anum">M17</span> K-means vs DBSCAN<br><span class="adim">球形快速 vs 任意形狀異常</span></a>
+    <a href="#bm18" class="arena-idx-item" onclick="document.getElementById('bm18').open=true"><span class="anum">M18</span> PCA vs t-SNE<br><span class="adim">線性特徵工程 vs 非線性視覺化</span></a>
+    <a href="#bm19" class="arena-idx-item" onclick="document.getElementById('bm19').open=true"><span class="anum">M19</span> 自編碼器 vs GAN<br><span class="adim">重構異常偵測 vs 生成逼真樣本</span></a>
+    <a href="#bm20" class="arena-idx-item" onclick="document.getElementById('bm20').open=true"><span class="anum">M20</span> Isolation Forest vs One-Class SVM<br><span class="adim">大規模快速 vs 小樣本精密</span></a>
+  </div>
+
+  <h2><span class="bar"></span>初級 13 組對決・詳情</h2>
 
   <!-- 01 -->
   <details class="arena-match" id="am01" open>
@@ -1065,6 +1094,691 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>小數據/穩定性 → BGD ／ 大數據/速度 → SGD ／ 深度學習/自適應 → Adam（官方首選）</div>
+    </div>
+  </details>
+
+  <div class="arena-sec-hdr">🟣 中級 20 組對決・詳情</div>
+
+  <!-- M01 -->
+  <details class="arena-match" id="bm01">
+    <summary class="arena-sum"><span class="arena-tag m1">中級科目一</span>⚔️ 對決 M01・RNN vs Transformer</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>RNN（含 LSTM/GRU）</h4>
+          <ul class="arena-list arena-pros">
+            <li>按時間步遞迴，天然捕捉序列順序</li>
+            <li>LSTM 三閘門（遺忘/輸入/輸出）緩解梯度消失</li>
+            <li>參數量少，短序列記憶體佔用低，邊緣端友善</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>必須串列運算，無法並行訓練，速度慢</li>
+            <li>長序列依然有梯度消失風險（即使 LSTM）</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>Transformer</h4>
+          <ul class="arena-list arena-pros">
+            <li>自注意力（Q-K-V 點積）一次看全序列，GPU 高度並行</li>
+            <li>直連任意距離位置，長距離依賴無遞迴衰減</li>
+            <li>BERT / GPT / T5 等大模型的基礎架構</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>自注意力複雜度 O(n²)，超長序列記憶體爆炸</li>
+            <li>無內建位置感知，需外加位置編碼（Positional Encoding）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>序列必須並行/長依賴 → Transformer ／ 資源有限/短序列即時串流 → RNN</div>
+    </div>
+  </details>
+
+  <!-- M02 -->
+  <details class="arena-match" id="bm02">
+    <summary class="arena-sum"><span class="arena-tag m1">中級科目一</span>⚔️ 對決 M02・BERT vs GPT</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>BERT（Encoder，雙向）</h4>
+          <ul class="arena-list arena-pros">
+            <li>雙向 Transformer Encoder，MLM + NSP 預訓練</li>
+            <li>雙向上下文理解，NLU 任務（分類/NER/QA）卓越</li>
+            <li>加分類頭直接微調，少標籤效率高</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>天生不擅文本生成（Decoder 缺失）</li>
+            <li>MLM 遮蔽導致推理時與預訓練分佈不一致</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>GPT（Decoder，單向自回歸）</h4>
+          <ul class="arena-list arena-pros">
+            <li>自回歸語言模型，生成流暢自然語言</li>
+            <li>Zero-shot / Few-shot 泛化能力強</li>
+            <li>提示工程（Prompt Engineering）+ 指令微調</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>單向模式讀不到右側上下文</li>
+            <li>雙向推理理解任務天然劣於 BERT</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>語意理解/NLU/少標籤微調 → BERT ／ 文本生成/Zero-shot 泛化 → GPT</div>
+    </div>
+  </details>
+
+  <!-- M03 -->
+  <details class="arena-match" id="bm03">
+    <summary class="arena-sum"><span class="arena-tag m1">中級科目一</span>⚔️ 對決 M03・靜態詞向量 vs 情境化詞向量</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>靜態詞向量（Word2Vec / GloVe / FastText）</h4>
+          <ul class="arena-list arena-pros">
+            <li>CBOW / Skip-gram 訓練，預計算後即時查表</li>
+            <li>推理極快，記憶體佔用小，部署輕量</li>
+            <li>FastText 字元 n-gram 可處理未登錄詞（OOV）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>每詞一個固定向量，無法區分多義（銀行金融 vs 銀行河岸）</li>
+            <li>長距離句法依賴捕捉能力弱</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>情境化詞向量（ELMo / BERT）</h4>
+          <ul class="arena-list arena-pros">
+            <li>依句子上下文動態生成，同一詞多義均可表徵</li>
+            <li>WordPiece/BPE 切詞，天然處理 OOV</li>
+            <li>深層語境理解，下游任務精度更高</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>需過神經網路前向傳播，推理成本高</li>
+            <li>模型龐大，依賴大規模語料預訓練</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>推理速度/輕量部署 → 靜態詞向量 ／ 多義詞理解/長距離語境 → 情境化詞向量</div>
+    </div>
+  </details>
+
+  <!-- M04 -->
+  <details class="arena-match" id="bm04">
+    <summary class="arena-sum"><span class="arena-tag m1">中級科目一</span>⚔️ 對決 M04・RAG vs LoRA</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>RAG（檢索增強生成）</h4>
+          <ul class="arena-list arena-pros">
+            <li>外掛向量資料庫，推理時動態檢索文件注入 Prompt</li>
+            <li>更新向量庫即可，無需重訓，知識即時性高</li>
+            <li>提供可引用來源，幻覺可追溯</li>
+            <li>適合知識密集型問答（企業文件庫、法規庫）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>檢索品質瓶頸：Chunk 策略、向量化模型優劣直接影響</li>
+            <li>推理多一個檢索步驟，延遲略增</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>LoRA（低秩適應）</h4>
+          <ul class="arena-list arena-pros">
+            <li>凍結原始模型，僅訓練低秩分解矩陣 ΔW = BA</li>
+            <li>訓練參數低至原模型 0.1%，微調成本大幅降低</li>
+            <li>適合特定風格/任務行為對齊（客服語氣、醫療術語）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>知識固化在微調權重，更新需重新訓練</li>
+            <li>無法即時納入訓練後新知識</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>知識即時更新/可溯源 → RAG ／ 行為風格對齊/微調成本低 → LoRA</div>
+    </div>
+  </details>
+
+  <!-- M05 -->
+  <details class="arena-match" id="bm05">
+    <summary class="arena-sum"><span class="arena-tag m1">中級科目一</span>⚔️ 對決 M05・語意分割 vs 實例分割</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>語意分割（Semantic Segmentation）</h4>
+          <ul class="arena-list arena-pros">
+            <li>每個像素標記類別，同類物件視為整體</li>
+            <li>代表：FCN、U-Net、DeepLab</li>
+            <li>計算成本低，全像素分類一次完成</li>
+            <li>適用：道路偵測、醫學影像器官分割、背景替換</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>無法區分同類物件個體（兩人緊靠合成一塊）</li>
+            <li>無法計數個別物件</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>實例分割（Instance Segmentation）</h4>
+          <ul class="arena-list arena-pros">
+            <li>每個像素標記類別＋獨立物件 ID</li>
+            <li>代表：Mask R-CNN（Faster R-CNN + 像素遮罩分支）</li>
+            <li>適用：行人計數、目標追蹤、工業瑕疵個別標記</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>需先偵測邊界框再生成遮罩，計算量大</li>
+            <li>重疊/遮擋物件（Occlusion）處理仍有挑戰</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>計算效率/全場景理解 → 語意分割 ／ 個體區分/物件計數 → 實例分割</div>
+    </div>
+  </details>
+
+  <!-- M06 -->
+  <details class="arena-match" id="bm06">
+    <summary class="arena-sum"><span class="arena-tag m1">中級科目一</span>⚔️ 對決 M06・鑑別式AI vs 生成式AI</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>鑑別式 AI（Discriminative AI）</h4>
+          <ul class="arena-list arena-pros">
+            <li>建模條件機率 P(Y|X)，直接學習決策邊界</li>
+            <li>典型：Logistic Regression、SVM、CNN 分類器、BERT</li>
+            <li>有標籤資料下準確率高，精確分類/標記/判斷</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>高度依賴標籤數據；對分佈偏移敏感</li>
+            <li>無法生成新內容</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>生成式 AI（Generative AI）</h4>
+          <ul class="arena-list arena-pros">
+            <li>建模聯合機率 P(X,Y) 或邊際 P(X)，理解數據分佈</li>
+            <li>典型：GPT 系列、GAN、VAE、擴散模型</li>
+            <li>生成新樣本（圖像/文字/語音）；零標籤資料利用</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>幻覺問題（Hallucination）；生成內容真偽難辨</li>
+            <li>訓練計算成本龐大</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>標籤準確率/決策可解釋 → 鑑別式AI ／ 內容創生/無標籤資料利用 → 生成式AI</div>
+    </div>
+  </details>
+
+  <!-- M07 -->
+  <details class="arena-match" id="bm07">
+    <summary class="arena-sum"><span class="arena-tag m2">中級科目二</span>⚔️ 對決 M07・RDBMS vs NoSQL</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>RDBMS（關聯式資料庫）</h4>
+          <ul class="arena-list arena-pros">
+            <li>表格 + 嚴格 Schema，Schema-on-Write</li>
+            <li>ACID（原子性、一致性、隔離性、持久性）強保證</li>
+            <li>標準 SQL，複雜 JOIN 支援完整</li>
+            <li>適用：金融交易、ERP、需強一致性業務</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>固定 Schema 難應對快速變化的資料結構</li>
+            <li>水平分片（Sharding）複雜，大規模擴展代價高</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>NoSQL（文件/鍵值/圖/欄族）</h4>
+          <ul class="arena-list arena-pros">
+            <li>Schema-on-Read，文件/鍵值/圖/欄族靈活選型</li>
+            <li>BASE（Basically Available, Soft state, Eventually consistent）</li>
+            <li>原生水平擴展設計，Partition Tolerance 優先</li>
+            <li>適用：高寫入吞吐、IoT、非結構化大數據</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>缺乏統一查詢標準；JOIN 能力弱或不支援</li>
+            <li>部分系統弱化一致性，金融場景不適用</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>ACID 強一致/複雜 JOIN → RDBMS ／ 水平擴展/Schema 彈性 → NoSQL</div>
+    </div>
+  </details>
+
+  <!-- M08 -->
+  <details class="arena-match" id="bm08">
+    <summary class="arena-sum"><span class="arena-tag m2">中級科目二</span>⚔️ 對決 M08・資料湖 vs 資料倉儲</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>資料湖（Data Lake）</h4>
+          <ul class="arena-list arena-pros">
+            <li>原始格式，結構化＋半結構化＋非結構化均可儲存</li>
+            <li>Schema-on-Read（讀取時定義）</li>
+            <li>物件儲存（S3、HDFS），成本極低</li>
+            <li>使用者：資料科學家、ML 工程師</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>治理不佳易淪為「資料沼澤（Data Swamp）」</li>
+            <li>原始查詢效能低，需配合 Spark/Hive</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>資料倉儲（Data Warehouse）</h4>
+          <ul class="arena-list arena-pros">
+            <li>預先 ETL，嚴格 Schema，Schema-on-Write</li>
+            <li>列式儲存優化（Columnar Storage），BI 查詢速度快</li>
+            <li>資料品質有保障，使用者：業務分析師、BI</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>ETL 流程僵化，非結構化資料無法直接入倉</li>
+            <li>儲存成本高</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>儲存彈性/原始資料保留 → 資料湖 ／ 查詢效能/資料品質 → 資料倉儲 ／ 延伸：Lakehouse（Delta Lake/Iceberg）= 兩者優點合一</div>
+    </div>
+  </details>
+
+  <!-- M09 -->
+  <details class="arena-match" id="bm09">
+    <summary class="arena-sum"><span class="arena-tag m2">中級科目二</span>⚔️ 對決 M09・Hadoop MapReduce vs Apache Spark</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>Hadoop MapReduce</h4>
+          <ul class="arena-list arena-pros">
+            <li>Map → Shuffle → Reduce，中間結果寫 HDFS</li>
+            <li>磁碟副本容錯，成熟穩定，記憶體需求低</li>
+            <li>YARN 資源管理，大規模批次可靠</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>磁碟 I/O 密集，ML 迭代訓練極慢</li>
+            <li>程式設計模型受限 Map/Reduce 兩階段</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>Apache Spark</h4>
+          <ul class="arena-list arena-pros">
+            <li>DAG 多階段，中間結果優先存記憶體（In-Memory）</li>
+            <li>迭代速度比 MapReduce 快 10～100 倍</li>
+            <li>Spark SQL / MLlib / Streaming / GraphX 一體化生態</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>記憶體需求高，叢集成本大</li>
+            <li>Streaming 為微批次，非真正即時</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>磁碟穩定/記憶體成本 → MapReduce ／ 迭代速度/API 豐富度 → Spark</div>
+    </div>
+  </details>
+
+  <!-- M10 -->
+  <details class="arena-match" id="bm10">
+    <summary class="arena-sum"><span class="arena-tag m2">中級科目二</span>⚔️ 對決 M10・Apache Spark vs Apache Flink</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>Apache Spark</h4>
+          <ul class="arena-list arena-pros">
+            <li>微批次（Micro-batch），Structured Streaming 最低延遲約 100ms</li>
+            <li>批次處理原生強項，DataFrame / Dataset API 成熟</li>
+            <li>生態最豐富（MLlib / Spark SQL），社群規模最大</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>微批次本質，真正低延遲場景（&lt;10ms）無法勝任</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>Apache Flink</h4>
+          <ul class="arena-list arena-pros">
+            <li>真正事件驅動串流（Event-driven Streaming），毫秒級延遲</li>
+            <li>強大有狀態串流（Stateful Streaming），Exactly-Once 語義</li>
+            <li>原生精確事件時間語義 + 水位線（Watermark）機制</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>批次生態成熟度不及 Spark；學習曲線陡</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>批次生態/學習資源 → Spark ／ 真即時低延遲/精確狀態管理 → Flink</div>
+    </div>
+  </details>
+
+  <!-- M11 -->
+  <details class="arena-match" id="bm11">
+    <summary class="arena-sum"><span class="arena-tag m2">中級科目二</span>⚔️ 對決 M11・RBAC vs ABAC</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>RBAC（角色型存取控制）</h4>
+          <ul class="arena-list arena-pros">
+            <li>依使用者角色授權（管理員/分析師/唯讀）</li>
+            <li>角色少時管理簡單，授權效能高</li>
+            <li>GDPR / HIPAA 基本合規常用</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>角色爆炸（Role Explosion）是主要痛點</li>
+            <li>靜態授權，無法應對跨部門細粒度需求</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>ABAC（屬性型存取控制）</h4>
+          <ul class="arena-list arena-pros">
+            <li>主體屬性 + 資源屬性 + 環境屬性三向聯合判斷</li>
+            <li>細粒度：「IP 在台灣境內且上班時間才可讀 PII」</li>
+            <li>動態評估，環境條件即時影響授權；零信任架構首選</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>策略設計複雜，需強力策略引擎（XACML/OPA）</li>
+            <li>效能開銷高（每次請求需計算多維屬性）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>管理簡易/授權效能 → RBAC ／ 細粒度控制/動態環境適應 → ABAC</div>
+    </div>
+  </details>
+
+  <!-- M12 -->
+  <details class="arena-match" id="bm12">
+    <summary class="arena-sum"><span class="arena-tag m2">中級科目二</span>⚔️ 對決 M12・Apriori vs FP-Growth</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>Apriori</h4>
+          <ul class="arena-list arena-pros">
+            <li>逐層產生候選項目集，利用反單調性（Apriori Property）剪枝</li>
+            <li>實作簡單直觀，易理解，適合稀疏資料/教學</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>頻繁項目集長度大時，候選集指數爆炸</li>
+            <li>需多次全庫掃描（最大項目集長度 k 次），I/O 成本高</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>FP-Growth（FP-Tree）</h4>
+          <ul class="arena-list arena-pros">
+            <li>壓縮資料庫為 FP-Tree（前綴樹），固定兩次全庫掃描</li>
+            <li>無候選項目集，大型零售交易資料庫效能卓越</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>FP-Tree 需載入記憶體；超大稀疏資料集樹結構龐大</li>
+            <li>實作複雜，條件模式基遞迴較難調試</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>可理解性/稀疏資料 → Apriori ／ 大規模效能/掃描次數 → FP-Growth</div>
+    </div>
+  </details>
+
+  <!-- M13 -->
+  <details class="arena-match" id="bm13">
+    <summary class="arena-sum"><span class="arena-tag m2">中級科目二</span>⚔️ 對決 M13・強一致性 vs 最終一致性</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>強一致性（Strong Consistency）</h4>
+          <ul class="arena-list arena-pros">
+            <li>任何節點任意時刻讀到最新寫入值（線性一致性）</li>
+            <li>代表：RDBMS（ACID）、Delta Lake、ZooKeeper</li>
+            <li>適用：金融轉帳、庫存扣減、強序列化業務</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>需 Raft/Paxos 共識協議，延遲高</li>
+            <li>分區故障時可能拒絕服務（犧牲可用性）</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>最終一致性（Eventual Consistency）</h4>
+          <ul class="arena-list arena-pros">
+            <li>無新寫入後，所有副本最終收斂；過渡期允許讀到舊值</li>
+            <li>代表：HDFS、Amazon S3、Cassandra、DynamoDB</li>
+            <li>無需全域協調，寫入延遲低，吞吐量高</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>Conflict Resolution 複雜（Last-Write-Wins / Vector Clock）</li>
+            <li>應用層需處理讀到過期值的情況</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長（CAP 定理）：</b>資料正確性/金融合規 → 強一致性 ／ 吞吐量/分區容忍 → 最終一致性</div>
+    </div>
+  </details>
+
+  <!-- M14 -->
+  <details class="arena-match" id="bm14">
+    <summary class="arena-sum"><span class="arena-tag m3">中級科目三</span>⚔️ 對決 M14・Lasso (L1) vs Ridge (L2)</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>Lasso（L1 正則化）</h4>
+          <ul class="arena-list arena-pros">
+            <li>懲罰項：λΣ|wᵢ| — 絕對值之和</li>
+            <li>可將部分權重壓縮至精確為零 → 自動特徵選擇</li>
+            <li>天然稀疏模型，高維度少有效特徵場景首選</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>多重共線性下傾向隨機選一，不穩定</li>
+            <li>無封閉解，需次梯度/座標下降法求解</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>Ridge（L2 正則化）</h4>
+          <ul class="arena-list arena-pros">
+            <li>懲罰項：λΣwᵢ² — 平方和</li>
+            <li>共線性特徵均勻分散懲罰，係數估計更穩定</li>
+            <li>有封閉解：w = (X&#7488;X + λI)⁻¹X&#7488;y</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>權重均勻縮小但不為零，無法清零無關特徵</li>
+            <li>不適合做特徵選擇</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>特徵選擇/稀疏性 → Lasso ／ 共線穩定性/封閉解 → Ridge ／ 延伸：Elastic Net = L1+L2 混合</div>
+    </div>
+  </details>
+
+  <!-- M15 -->
+  <details class="arena-match" id="bm15">
+    <summary class="arena-sum"><span class="arena-tag m3">中級科目三</span>⚔️ 對決 M15・隨機森林 vs 梯度提升樹</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>隨機森林（Random Forest）</h4>
+          <ul class="arena-list arena-pros">
+            <li>平行 Bagging：多棵決策樹獨立訓練，投票/平均</li>
+            <li>可完全並行訓練，速度快</li>
+            <li>隨機特徵子集（Feature Subsampling）+ Bagging 抗過擬合</li>
+            <li>對異常值穩健（多棵樹平均化影響）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>準確率上限通常低於精良調參的梯度提升</li>
+            <li>特徵重要性解釋存在偏差（偏好高基數特徵）</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>梯度提升樹（Gradient Boosting）</h4>
+          <ul class="arena-list arena-pros">
+            <li>序列 Boosting：每棵樹修正前一棵的偽殘差</li>
+            <li>調參得當時結構化數據通常達最高準確率</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>序列依賴，訓練慢；易過擬合需 Early Stopping</li>
+            <li>超參數（學習率/最大深度/子採樣率）調參複雜</li>
+            <li>對異常值較敏感（殘差直接受影響）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>訓練速度/過擬合抵抗 → 隨機森林 ／ 準確率上限/殘差修正精度 → 梯度提升</div>
+    </div>
+  </details>
+
+  <!-- M16 -->
+  <details class="arena-match" id="bm16">
+    <summary class="arena-sum"><span class="arena-tag m3">中級科目三</span>⚔️ 對決 M16・XGBoost vs LightGBM</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>XGBoost</h4>
+          <ul class="arena-list arena-pros">
+            <li>Level-wise 逐層生長，每層所有節點均等分裂</li>
+            <li>二階泰勒展開（梯度 g + Hessian h），更精確</li>
+            <li>小資料集穩定，不易過擬合</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>Level-wise 浪費計算在低增益分裂</li>
+            <li>大規模資料訓練相對較慢</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>LightGBM</h4>
+          <ul class="arena-list arena-pros">
+            <li>Leaf-wise 最佳葉節點優先分裂，增益集中</li>
+            <li>GOSS 採樣 + EFB 特徵捆綁 + 直方圖，記憶體省</li>
+            <li>比 XGBoost 快 3～10 倍（大型資料集）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>Leaf-wise 小數據集易深度過擬合，需設 min_data_in_leaf</li>
+            <li>類別特徵若基數極高，EFB 效果不穩定</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>梯度精確度/小數據穩定 → XGBoost ／ 大數據訓練速度/記憶體效率 → LightGBM</div>
+    </div>
+  </details>
+
+  <!-- M17 -->
+  <details class="arena-match" id="bm17">
+    <summary class="arena-sum"><span class="arena-tag m3">中級科目三</span>⚔️ 對決 M17・K-means vs DBSCAN</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>K-means</h4>
+          <ul class="arena-list arena-pros">
+            <li>迭代分配樣本至最近質心，最小化簇內平方和（WCSS）</li>
+            <li>計算複雜度 O(nKd)，大規模資料擴展好</li>
+            <li>概念簡單，易實作與解釋</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>需預先指定 K 值（肘部法/輪廓係數輔助）</li>
+            <li>假設球形（各向同性）簇，非凸形狀效果差</li>
+            <li>無法識別異常值，強制分配至某一簇</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>DBSCAN（密度型聚類）</h4>
+          <ul class="arena-list arena-pros">
+            <li>依 ε（鄰域半徑）和 MinPts 定義核心點/邊界點/雜訊點</li>
+            <li>無需指定簇數，可發現任意形狀（月牙形/螺旋形）</li>
+            <li>原生識別雜訊點（標記為 -1）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>ε 和 MinPts 參數調整困難</li>
+            <li>密度不均勻（高密度與低密度混合）表現差</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>大規模可擴展/計算效率 → K-means ／ 任意形狀簇/異常值識別 → DBSCAN</div>
+    </div>
+  </details>
+
+  <!-- M18 -->
+  <details class="arena-match" id="bm18">
+    <summary class="arena-sum"><span class="arena-tag m3">中級科目三</span>⚔️ 對決 M18・PCA vs t-SNE</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>PCA（主成分分析）</h4>
+          <ul class="arena-list arena-pros">
+            <li>線性降維，最大化方差方向（特徵值分解協方差矩陣）</li>
+            <li>保留全域方差結構，主成分有數學可解釋意義</li>
+            <li>計算快，可用於訓練特徵，映射可推廣至新樣本</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>只捕捉線性關係；非線性流形（Manifold）效果差</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>t-SNE</h4>
+          <ul class="arena-list arena-pros">
+            <li>非線性降維，用 Student-t 分佈建模低維相似度</li>
+            <li>優先保留局部鄰域結構，聚類視覺效果極佳</li>
+            <li>Barnes-Hut 優化至 O(n log n)</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li><b>純視覺化工具</b>，不建議作為 ML 特徵</li>
+            <li>隨機初始化，不同運行結果可能不同</li>
+            <li>全域距離可能失真；超參數 Perplexity 對結果影響顯著</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>計算速度/可用於訓練特徵 → PCA ／ 非線性結構可視化/聚類視覺效果 → t-SNE ／ 延伸：UMAP = 非線性且比 t-SNE 快、更好保留全域結構</div>
+    </div>
+  </details>
+
+  <!-- M19 -->
+  <details class="arena-match" id="bm19">
+    <summary class="arena-sum"><span class="arena-tag m3">中級科目三</span>⚔️ 對決 M19・自編碼器 vs GAN</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>自編碼器（Autoencoder）</h4>
+          <ul class="arena-list arena-pros">
+            <li>編碼器（→瓶頸層）+ 解碼器，最小化重構誤差（MSE/BCE）</li>
+            <li>訓練穩定，損失函數明確</li>
+            <li>核心應用：降維、特徵學習、資料去噪、<b>異常偵測</b>（重構誤差大＝異常）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>潛在空間缺乏連續性，隨機採樣不保證生成有意義樣本</li>
+            <li>生成全新多樣樣本能力受限</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>GAN（生成對抗網路）</h4>
+          <ul class="arena-list arena-pros">
+            <li>生成器（G）vs 判別器（D）對抗訓練，達到納什均衡</li>
+            <li>能生成極高逼真度的全新樣本（圖像/語音/影片）</li>
+            <li>應用：圖像合成、資料增強、風格遷移、超解析度重建</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>訓練不穩定，易發生模式崩潰（Mode Collapse）</li>
+            <li>超參數極敏感；品質評估無客觀指標（FID/IS 為間接）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>異常偵測/訓練穩定 → 自編碼器 ／ 生成樣本逼真度/多樣性上限 → GAN</div>
+    </div>
+  </details>
+
+  <!-- M20 -->
+  <details class="arena-match" id="bm20">
+    <summary class="arena-sum"><span class="arena-tag m3">中級科目三</span>⚔️ 對決 M20・Isolation Forest vs One-Class SVM</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>Isolation Forest</h4>
+          <ul class="arena-list arena-pros">
+            <li>隨機分割特徵空間：異常點路徑長度短（更易被隔離）</li>
+            <li>計算複雜度 O(n log n)，線性擴展，訓練超快</li>
+            <li>高維不衰退，適合大規模網路安全/金融詐欺偵測</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>對局部密度異常（Local Outliers）偵測能力弱</li>
+            <li>contamination（污染率）需估計，錯估影響閾值</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>One-Class SVM</h4>
+          <ul class="arena-list arena-pros">
+            <li>在特徵空間找超球面/超平面包住正常樣本</li>
+            <li>小規模、中低維度、正常樣本分佈緊密場景表現好</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>計算複雜度 O(n²)～O(n³)，大規模資料極慢</li>
+            <li>高維空間效能下降（維度詛咒）</li>
+            <li>核函數選擇 + ν 參數調參複雜</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>大規模訓練速度/高維擴展 → Isolation Forest ／ 局部密度異常/小樣本精密邊界 → One-Class SVM</div>
     </div>
   </details>
 
@@ -1568,7 +2282,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v3.5（2026-06-17）';
+$('#build-stamp').textContent='　·　版本 v3.6（2026-06-17）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

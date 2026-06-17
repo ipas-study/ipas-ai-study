@@ -2,7 +2,7 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v3.7　|　日期 2026-06-18
+     版本 v3.8　|　日期 2026-06-18
      版本紀錄：
        v3.7 (2026-06-18) 擂台 Modal 彈窗 + 33 組真實場景案例
        v3.4 (2026-06-14) 筆記與知識管理三工具影片全換 2026 最新繁中版
@@ -284,6 +284,8 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 .arena-errata b{color:#c05b00}
 .arena-realworld{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:9px 13px;font-size:12.5px;margin-top:10px;line-height:1.8}
 .arena-realworld b{color:#1b5e20}
+.arena-realworld a{color:#1b5e20;font-weight:600;text-underline-offset:2px}
+.arena-realworld a:hover{color:#4caf50}
 .arena-realworld .rw-item{padding:2px 0}
 .arena-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9000;overflow-y:auto;padding:16px}
 .arena-modal-overlay.open{display:block}
@@ -662,7 +664,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>標記資料完整度↑ → 監督式優勢增 ／ 資料規模無標記量↑ → 非監督式優勢增</div>
       <div class="arena-errata"><b>勘誤：</b>K-Means 特點答案由 B（可結合其他方法較彈性）修正為 <b>A（原理相對簡單）</b></div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📸 <b>監督式：</b>Google Photos 自動標注人臉相簿（有標籤分類訓練）</span><br><span class="rw-item">🎵 <b>非監督式：</b>Spotify 將數百萬首歌曲自動分群，發現「深夜 Lo-Fi」等隱性類別</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📸 <b>監督式：</b><a href="https://blog.google/products/photos/" target="_blank" rel="noopener">Google Photos</a> 自動標注人臉相簿（有標籤分類訓練）</span><br><span class="rw-item">🎵 <b>非監督式：</b><a href="https://research.atspotify.com/2020/09/understanding-users-music-listening-sessions/" target="_blank" rel="noopener">Spotify</a> 將數百萬首歌曲自動分群，發現「深夜 Lo-Fi」等隱性類別（<a href="https://research.atspotify.com/" target="_blank" rel="noopener">Spotify Research</a>）</span></div>
     </div>
   </details>
 
@@ -700,7 +702,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>環境互動次數↑ → RL 優勢增 ／ 標記資料完整度↑ → 監督式優勢增</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📧 <b>監督式：</b>Gmail 垃圾郵件過濾（數億封人工標注訓練）</span><br><span class="rw-item">🤖 <b>強化學習：</b>DeepMind AlphaGo 圍棋世界冠軍；Tesla FSD 自動駕駛累積獎勵優化</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📧 <b>監督式：</b><a href="https://workspace.google.com/blog/productivity-collaboration/gmail-protections" target="_blank" rel="noopener">Gmail</a> 垃圾郵件過濾（數億封人工標注訓練）</span><br><span class="rw-item">🤖 <b>強化學習：</b><a href="https://deepmind.google/technologies/alphago/" target="_blank" rel="noopener">DeepMind AlphaGo</a> 圍棋世界冠軍；<a href="https://www.tesla.com/autopilot" target="_blank" rel="noopener">Tesla FSD</a> 自動駕駛累積獎勵優化</span></div>
     </div>
   </details>
 
@@ -740,7 +742,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>標記數據完整度↑ → 鑑別式更精準 ／ 創新多樣性需求↑ → 生成式更有優勢<br><b>整合策略：</b>GAI 生成增強數據 → DAI 訓練分類模型</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔒 <b>鑑別式：</b>Apple Face ID 臉部識別（分類「本人 vs 他人」）；LINE 詐欺訊息 AI 篩選</span><br><span class="rw-item">✨ <b>生成式：</b>ChatGPT 文字生成；Midjourney 商業圖像創作；Adobe Firefly 圖像修復</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔒 <b>鑑別式：</b><a href="https://support.apple.com/guide/security/face-id-security-sec067eb0c9/web" target="_blank" rel="noopener">Apple Face ID</a> 臉部識別（分類「本人 vs 他人」）；LINE 詐欺訊息 AI 篩選</span><br><span class="rw-item">✨ <b>生成式：</b><a href="https://openai.com/chatgpt" target="_blank" rel="noopener">ChatGPT</a> 文字生成；<a href="https://www.midjourney.com/" target="_blank" rel="noopener">Midjourney</a> 商業圖像創作；<a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener">Adobe Firefly</a> 圖像修復</span></div>
     </div>
   </details>
 
@@ -779,7 +781,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>空間維度複雜度↑ → CNN 主場 ／ 序列長度/時間依賴↑ → RNN/LSTM 主場</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🖼️ <b>CNN：</b>Google 圖像搜尋引擎；台大醫院 AI 眼底視網膜病變診斷（CNN 偵測局部特徵）</span><br><span class="rw-item">🔤 <b>RNN：</b>Google Translate 早期 seq2seq（2016 年，已被 Transformer 取代）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🖼️ <b>CNN：</b><a href="https://lens.google/" target="_blank" rel="noopener">Google 圖像搜尋</a>；台大醫院 AI 眼底視網膜病變診斷（CNN 偵測局部特徵）</span><br><span class="rw-item">🔤 <b>RNN：</b><a href="https://blog.google/products/translate/found-translation-more-accurate-fluent-sentences-google-translate/" target="_blank" rel="noopener">Google Translate 早期 seq2seq（2016 年）</a>，已被 Transformer 取代</span></div>
     </div>
   </details>
 
@@ -816,7 +818,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>訓練穩定性要求↑ → 擴散模型優先 ／ 即時性/速度要求↑ → GAN 優先<br><b>解決方案：</b>GAN 不穩定可採 Wasserstein GAN（WGAN）改進型</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">⚡ <b>GAN：</b>NVIDIA StyleGAN3 生成超高解析度逼真人臉；三星 Galaxy AI 相片智慧補幀</span><br><span class="rw-item">🎨 <b>擴散模型：</b>Stable Diffusion / DALL-E 3（OpenAI）圖像創作；Adobe Firefly 商業圖像生成</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">⚡ <b>GAN：</b><a href="https://nvlabs.github.io/stylegan3/" target="_blank" rel="noopener">NVIDIA StyleGAN3</a> 生成超高解析度逼真人臉；<a href="https://news.samsung.com/global/galaxy-ai" target="_blank" rel="noopener">三星 Galaxy AI</a> 相片智慧補幀</span><br><span class="rw-item">🎨 <b>擴散模型：</b><a href="https://stability.ai/stable-image" target="_blank" rel="noopener">Stable Diffusion</a> / <a href="https://openai.com/dall-e-3" target="_blank" rel="noopener">DALL-E 3（OpenAI）</a> 圖像創作；<a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener">Adobe Firefly</a> 商業圖像生成</span></div>
     </div>
   </details>
 
@@ -853,7 +855,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>視覺逼真度要求↑ → GAN 優先 ／ 訓練穩定性/異常偵測↑ → VAE 優先</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🎭 <b>GAN：</b>DeepFake 換臉技術（電影特效）；Adobe 相片修復/補全（inpainting）</span><br><span class="rw-item">🧬 <b>VAE：</b>新藥研發——輝瑞等藥廠用 VAE 生成並探索分子結構潛在空間</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🎭 <b>GAN：</b><a href="https://en.wikipedia.org/wiki/Deepfake" target="_blank" rel="noopener">DeepFake 換臉技術（電影特效）</a>；<a href="https://www.adobe.com/products/photoshop/generative-fill.html" target="_blank" rel="noopener">Adobe Photoshop 生成填色（inpainting）</a>)</span><br><span class="rw-item">🧬 <b>VAE：</b>新藥研發——輝瑞等藥廠用 VAE 生成並探索分子結構潛在空間（<a href="https://www.nature.com/articles/s41586-023-06221-2" target="_blank" rel="noopener">Nature 2023 藥物設計論文</a>）</span></div>
     </div>
   </details>
 
@@ -891,7 +893,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>解釋性要求↑ → 決策樹優先 ／ 泛化準確性要求↑ → 隨機森林優先</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📋 <b>決策樹：</b>台灣銀行信用審核規則樹（監管要求可解釋）；醫療診斷輔助決策</span><br><span class="rw-item">📈 <b>隨機森林：</b>PayPal 詐欺交易偵測；各大量化基金用隨機森林過濾股票信號</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📋 <b>決策樹：</b>台灣銀行信用審核規則樹（監管要求可解釋）；醫療診斷輔助決策（<a href="https://arxiv.org/abs/2202.07125" target="_blank" rel="noopener">可解釋 AI 綜述</a>）</span><br><span class="rw-item">📈 <b>隨機森林：</b><a href="https://medium.com/paypal-tech" target="_blank" rel="noopener">PayPal</a> 詐欺交易偵測；各大量化基金用隨機森林過濾股票信號（<a href="https://link.springer.com/article/10.1023/A:1010933404324" target="_blank" rel="noopener">Breiman 2001 論文</a>）</span></div>
     </div>
   </details>
 
@@ -930,7 +932,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>技術門檻要求↓ → No Code 優先 ／ 業務複雜度/彈性↑ → Low Code 優先<br><b>共同風險：</b>資料隱私/GDPR‧CCPA 合規/偏見歧視，均需風險管理機制</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🫧 <b>No Code：</b>Bubble.io（非工程師創業者建 SaaS 產品）；Glide 從 Google Sheets 建 App</span><br><span class="rw-item">⚙️ <b>Low Code：</b>Microsoft Power Automate（企業財務/HR 流程自動化）；OutSystems 銀行客戶系統</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🫧 <b>No Code：</b><a href="https://bubble.io/" target="_blank" rel="noopener">Bubble.io</a>（非工程師創業者建 SaaS 產品）；<a href="https://www.glideapps.com/" target="_blank" rel="noopener">Glide</a> 從 Google Sheets 建 App</span><br><span class="rw-item">⚙️ <b>Low Code：</b><a href="https://powerautomate.microsoft.com/" target="_blank" rel="noopener">Microsoft Power Automate</a>（企業財務/HR 流程自動化）；<a href="https://www.outsystems.com/" target="_blank" rel="noopener">OutSystems</a> 銀行客戶系統</span></div>
     </div>
   </details>
 
@@ -968,7 +970,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>時效性/成本限制↑ → 提示工程優先 ／ 任務精準度/專業深度↑ → 微調優先</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💬 <b>提示工程：</b>GitHub Copilot 系統提示設計（引導程式碼補全）；企業 RAG 系統 Prompt 模板</span><br><span class="rw-item">🏥 <b>模型微調：</b>BloombergGPT（金融語料微調）；台大醫院醫療 LLM 微調（繁中醫學術語）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💬 <b>提示工程：</b><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot</a> 系統提示設計（引導程式碼補全）；企業 RAG 系統 Prompt 模板</span><br><span class="rw-item">🏥 <b>模型微調：</b><a href="https://www.bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-purpose-built-finance/" target="_blank" rel="noopener">BloombergGPT</a>（金融語料微調）；台大醫院醫療 LLM 微調（繁中醫學術語）</span></div>
     </div>
   </details>
 
@@ -1007,7 +1009,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>資料陌生/初期探索 → EDA 先行 ／ 假設已建立/嚴謹驗證 → CDA 接手（標準工作流程：先探索再驗證）</div>
       <div class="arena-errata"><b>勘誤：</b>假設檢定表中「拒絕H₀，H₀為真」欄位由 Type II 修正為 <b>Type I 錯誤（α）</b></div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>EDA：</b>Kaggle 競賽選手初期特徵探索（視覺化分佈、相關性矩陣）找潛在信號</span><br><span class="rw-item">📊 <b>CDA：</b>新冠疫苗臨床三期試驗（BNT162b2 有效性 95%，p&lt;0.0001 統計顯著性驗證）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>EDA：</b><a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a> 競賽選手初期特徵探索（視覺化分佈、相關性矩陣）找潛在信號</span><br><span class="rw-item">📊 <b>CDA：</b><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2034577" target="_blank" rel="noopener">新冠疫苗臨床三期試驗</a>（BNT162b2 有效性 95%，p&lt;0.0001，NEJM 2020）</span></div>
     </div>
   </details>
 
@@ -1045,7 +1047,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>極端值比例↑ → 中位數更可靠 ／ 資料對稱性↑ → 平均數更精確</div>
       <div class="arena-errata"><b>勘誤：</b>平均差（Mean Deviation）定義修正為「<b>所有觀察值與平均數之間絕對差值的平均</b>」（非單一觀察值與平均數的差距）</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📊 <b>平均數：</b>行政院公告「台灣平均薪資 67K」（被高薪族群拉高，常被批評失真）</span><br><span class="rw-item">🏠 <b>中位數：</b>信義房屋公布「台北市中位數房價 1,850 萬」（抗高價豪宅干擾，更代表市場實態）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📊 <b>平均數：</b><a href="https://www.dgbas.gov.tw/News.aspx?n=3403&sms=11459" target="_blank" rel="noopener">行政院主計總處</a>公告「台灣平均薪資 67K」（被高薪族群拉高，常被批評失真）</span><br><span class="rw-item">🏠 <b>中位數：</b><a href="https://www.sinyi.com.tw/knowledge/article/" target="_blank" rel="noopener">信義房屋</a>公布「台北市中位數房價」（抗高價豪宅干擾，更代表市場實態）</span></div>
     </div>
   </details>
 
@@ -1083,7 +1085,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>資料敏感度↑ → 本地部署優先 ／ 成本/速度限制↑ → 雲端優先<br><b>防護措施：</b>差分隱私 + 加密 + 身份驗證 + 授權機制</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">☁️ <b>雲端 AIaaS：</b>台灣新創公司直接呼叫 OpenAI API（按量付費，零基礎建設成本快速驗證）</span><br><span class="rw-item">🏦 <b>本地部署：</b>玉山銀行、兆豐銀行導入 On-premise LLM（金管會資安規範，客戶資料不得出境）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">☁️ <b>雲端 AIaaS：</b>台灣新創公司直接呼叫 <a href="https://openai.com/api/" target="_blank" rel="noopener">OpenAI API</a>（按量付費，零基礎建設成本快速驗證）</span><br><span class="rw-item">🏦 <b>本地部署：</b>玉山銀行、兆豐銀行導入 On-premise LLM（<a href="https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=202307270007" target="_blank" rel="noopener">金管會 AI 指引</a>，客戶資料不得出境）</span></div>
     </div>
   </details>
 
@@ -1118,7 +1120,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>小數據/穩定性 → BGD ／ 大數據/速度 → SGD ／ 深度學習/自適應 → Adam（官方首選）</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📐 <b>BGD：</b>小型線性模型訓練（如傳統統計迴歸）；Scikit-learn 預設使用 full-batch 梯度</span><br><span class="rw-item">🔥 <b>Adam：</b>ResNet / BERT / GPT 等幾乎所有深度學習大模型訓練的事實標準（PyTorch 官方推薦）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📐 <b>BGD：</b>小型線性模型訓練（如傳統統計迴歸）；<a href="https://scikit-learn.org/" target="_blank" rel="noopener">Scikit-learn</a> 預設使用 full-batch 梯度</span><br><span class="rw-item">🔥 <b>Adam：</b>ResNet / BERT / GPT 等幾乎所有深度學習大模型訓練的事實標準（<a href="https://pytorch.org/docs/stable/generated/torch.optim.Adam.html" target="_blank" rel="noopener">PyTorch 官方推薦</a>；<a href="https://arxiv.org/abs/1412.6980" target="_blank" rel="noopener">Adam 原論文 Kingma & Ba 2014</a>）</span></div>
     </div>
   </details>
 
@@ -1155,7 +1157,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>序列必須並行/長依賴 → Transformer ／ 資源有限/短序列即時串流 → RNN</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔤 <b>RNN 時代：</b>Google Translate 2016 年 seq2seq LSTM 翻譯（當時 SOTA）</span><br><span class="rw-item">🚀 <b>Transformer 革命：</b>2017 年「Attention Is All You Need」→ GPT-4、Claude、Gemini 全部基於 Transformer</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔤 <b>RNN 時代：</b><a href="https://blog.google/products/translate/found-translation-more-accurate-fluent-sentences-google-translate/" target="_blank" rel="noopener">Google Translate 2016 年 seq2seq LSTM</a>（當時 SOTA）</span><br><span class="rw-item">🚀 <b>Transformer 革命：</b><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">2017 年「Attention Is All You Need」</a> → GPT-4、Claude、Gemini 全部基於 Transformer</span></div>
     </div>
   </details>
 
@@ -1190,7 +1192,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>語意理解/NLU/少標籤微調 → BERT ／ 文本生成/Zero-shot 泛化 → GPT</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>BERT：</b>Google 搜尋引擎 2019 年導入 BERT，搜尋語意理解大幅提升（尤其長尾查詢）</span><br><span class="rw-item">💬 <b>GPT：</b>OpenAI ChatGPT（GPT-3.5/4）、Microsoft Copilot — 全球最廣泛部署的生成式 AI</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>BERT：</b><a href="https://blog.google/products/search/search-language-understanding-bert/" target="_blank" rel="noopener">Google 搜尋引擎 2019 年導入 BERT</a>，搜尋語意理解大幅提升（尤其長尾查詢）</span><br><span class="rw-item">💬 <b>GPT：</b><a href="https://openai.com/chatgpt" target="_blank" rel="noopener">OpenAI ChatGPT（GPT-3.5/4）</a>、<a href="https://copilot.microsoft.com/" target="_blank" rel="noopener">Microsoft Copilot</a> — 全球最廣泛部署的生成式 AI</span></div>
     </div>
   </details>
 
@@ -1225,7 +1227,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>推理速度/輕量部署 → 靜態詞向量 ／ 多義詞理解/長距離語境 → 情境化詞向量</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📦 <b>靜態詞向量：</b>Google News Word2Vec（2013）早期推薦系統；Facebook GloVe 情感分析</span><br><span class="rw-item">🌐 <b>情境化：</b>Google BERT 導入 Search（2019），理解「Can you get medicine for someone?」的真實意圖</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📦 <b>靜態詞向量：</b><a href="https://arxiv.org/abs/1301.3781" target="_blank" rel="noopener">Google News Word2Vec（2013）</a> 早期推薦系統；<a href="https://nlp.stanford.edu/projects/glove/" target="_blank" rel="noopener">Stanford GloVe</a> 情感分析</span><br><span class="rw-item">🌐 <b>情境化：</b><a href="https://blog.google/products/search/search-language-understanding-bert/" target="_blank" rel="noopener">Google BERT 導入 Search（2019）</a>，理解「Can you get medicine for someone?」的真實意圖（<a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">BERT 論文</a>）</span></div>
     </div>
   </details>
 
@@ -1261,7 +1263,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>知識即時更新/可溯源 → RAG ／ 行為風格對齊/微調成本低 → LoRA</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📚 <b>RAG：</b>Notion AI 即時查詢企業文件庫；Microsoft 365 Copilot 搜尋公司內部 SharePoint 資料</span><br><span class="rw-item">🎯 <b>LoRA：</b>Meta LLaMA-2 醫療版（少量醫學語料微調，參數量僅 0.1%）；客服機器人語氣對齊</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📚 <b>RAG：</b><a href="https://www.notion.so/product/ai" target="_blank" rel="noopener">Notion AI</a> 即時查詢企業文件庫；<a href="https://www.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot" target="_blank" rel="noopener">Microsoft 365 Copilot</a> 搜尋公司內部 SharePoint 資料</span><br><span class="rw-item">🎯 <b>LoRA：</b><a href="https://ai.meta.com/llama/" target="_blank" rel="noopener">Meta LLaMA-2</a> 醫療版（少量醫學語料微調，參數量僅 0.1%；<a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener">LoRA 原論文</a>）；客服機器人語氣對齊</span></div>
     </div>
   </details>
 
@@ -1297,7 +1299,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>計算效率/全場景理解 → 語意分割 ／ 個體區分/物件計數 → 實例分割</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🛣️ <b>語意分割：</b>Waymo 自駕車道路/行人/建物場景解析；長庚醫院 U-Net 腦部腫瘤分割</span><br><span class="rw-item">🏭 <b>實例分割：</b>台積電晶圓外觀缺陷個別標記（Mask R-CNN）；Amazon Go 無人商店商品辨識計數</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🛣️ <b>語意分割：</b><a href="https://waymo.com/open/" target="_blank" rel="noopener">Waymo</a> 自駕車道路/行人/建物場景解析；長庚醫院 U-Net 腦部腫瘤分割（<a href="https://arxiv.org/abs/1505.04597" target="_blank" rel="noopener">U-Net 論文</a>）</span><br><span class="rw-item">🏭 <b>實例分割：</b>台積電晶圓外觀缺陷個別標記（<a href="https://arxiv.org/abs/1703.06870" target="_blank" rel="noopener">Mask R-CNN</a>）；<a href="https://www.amazon.com/b?ie=UTF8&node=16008589011" target="_blank" rel="noopener">Amazon Go</a> 無人商店商品辨識計數</span></div>
     </div>
   </details>
 
@@ -1332,7 +1334,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>標籤準確率/決策可解釋 → 鑑別式AI ／ 內容創生/無標籤資料利用 → 生成式AI</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔒 <b>鑑別式：</b>LINE 詐欺連結 AI 分類器；Meta Facebook 仇恨言論自動偵測（每日數十億則貼文）</span><br><span class="rw-item">🎨 <b>生成式：</b>GitHub Copilot 程式碼補全；Adobe Firefly 商業圖像；Google NotebookLM 播客生成</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔒 <b>鑑別式：</b>LINE 詐欺連結 AI 分類器；<a href="https://ai.meta.com/blog/harmful-content-can-evolve-quickly-our-new-ai-system-adapts-to-tackle-it/" target="_blank" rel="noopener">Meta Facebook 仇恨言論自動偵測</a>（每日數十億則貼文）</span><br><span class="rw-item">🎨 <b>生成式：</b><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot</a> 程式碼補全；<a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener">Adobe Firefly</a> 商業圖像；<a href="https://notebooklm.google.com/" target="_blank" rel="noopener">Google NotebookLM</a> 播客生成</span></div>
     </div>
   </details>
 
@@ -1369,7 +1371,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>ACID 強一致/複雜 JOIN → RDBMS ／ 水平擴展/Schema 彈性 → NoSQL</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏦 <b>RDBMS：</b>台灣各大銀行核心帳務系統（Oracle / PostgreSQL）；勞保局退休金計算</span><br><span class="rw-item">🛒 <b>NoSQL：</b>Airbnb 房源搜尋（MongoDB 文件型）；蝦皮商城商品 SKU 儲存（Redis 鍵值快取）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏦 <b>RDBMS：</b>台灣各大銀行核心帳務系統（<a href="https://www.oracle.com/database/" target="_blank" rel="noopener">Oracle</a> / <a href="https://www.postgresql.org/" target="_blank" rel="noopener">PostgreSQL</a>）；勞保局退休金計算</span><br><span class="rw-item">🛒 <b>NoSQL：</b><a href="https://medium.com/airbnb-engineering" target="_blank" rel="noopener">Airbnb</a> 房源搜尋（<a href="https://www.mongodb.com/" target="_blank" rel="noopener">MongoDB</a> 文件型）；蝦皮商城商品 SKU 儲存（<a href="https://redis.io/" target="_blank" rel="noopener">Redis</a> 鍵值快取）</span></div>
     </div>
   </details>
 
@@ -1405,7 +1407,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>儲存彈性/原始資料保留 → 資料湖 ／ 查詢效能/資料品質 → 資料倉儲 ／ 延伸：Lakehouse（Delta Lake/Iceberg）= 兩者優點合一</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🌊 <b>資料湖：</b>Netflix 以 AWS S3 儲存全量用戶觀看行為原始日誌（每日 TB 級），供 ML 模型訓練</span><br><span class="rw-item">📊 <b>資料倉儲：</b>Amazon Redshift 供 BI 團隊分析廣告 ROI；台積電使用 Snowflake 製程良率報表</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🌊 <b>資料湖：</b><a href="https://netflixtechblog.com/evolution-of-the-netflix-data-pipeline-da246ca36905" target="_blank" rel="noopener">Netflix</a> 以 <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener">AWS S3</a> 儲存全量用戶觀看行為原始日誌（每日 TB 級），供 ML 模型訓練</span><br><span class="rw-item">📊 <b>資料倉儲：</b><a href="https://aws.amazon.com/redshift/" target="_blank" rel="noopener">Amazon Redshift</a> 供 BI 團隊分析廣告 ROI；台積電使用 <a href="https://www.snowflake.com/" target="_blank" rel="noopener">Snowflake</a> 製程良率報表</span></div>
     </div>
   </details>
 
@@ -1440,7 +1442,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>磁碟穩定/記憶體成本 → MapReduce ／ 迭代速度/API 豐富度 → Spark</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🗄️ <b>MapReduce：</b>Yahoo 2008 年搭建 4,000 節點 Hadoop 叢集處理網頁索引（當年規模最大）</span><br><span class="rw-item">⚡ <b>Spark：</b>Databricks 平台服務全球企業 ML 工作負載；Netflix 以 Spark MLlib 訓練推薦模型</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🗄️ <b>MapReduce：</b>Yahoo 2008 年搭建 4,000 節點 <a href="https://hadoop.apache.org/" target="_blank" rel="noopener">Hadoop</a> 叢集處理網頁索引（當年規模最大）</span><br><span class="rw-item">⚡ <b>Spark：</b><a href="https://databricks.com/" target="_blank" rel="noopener">Databricks</a> 平台服務全球企業 ML 工作負載；Netflix 以 <a href="https://spark.apache.org/mllib/" target="_blank" rel="noopener">Spark MLlib</a> 訓練推薦模型</span></div>
     </div>
   </details>
 
@@ -1473,7 +1475,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>批次生態/學習資源 → Spark ／ 真即時低延遲/精確狀態管理 → Flink</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📦 <b>Spark：</b>Uber 批次行程統計報表（每日司機收入結算）；Airbnb 每週用戶行為分析</span><br><span class="rw-item">⚡ <b>Flink：</b>Uber 即時動態定價系統（毫秒級計算當前路況與供需）；阿里巴巴雙十一即時交易監控</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📦 <b>Spark：</b><a href="https://www.uber.com/blog/tech/" target="_blank" rel="noopener">Uber</a> 批次行程統計報表（每日司機收入結算）；<a href="https://medium.com/airbnb-engineering" target="_blank" rel="noopener">Airbnb</a> 每週用戶行為分析</span><br><span class="rw-item">⚡ <b>Flink：</b><a href="https://www.uber.com/blog/real-time-exactly-once-ad-event-processing/" target="_blank" rel="noopener">Uber 即時動態定價系統</a>（毫秒級計算當前路況與供需）；阿里巴巴雙十一即時交易監控（<a href="https://flink.apache.org/" target="_blank" rel="noopener">Apache Flink 官網</a>）</span></div>
     </div>
   </details>
 
@@ -1508,7 +1510,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>管理簡易/授權效能 → RBAC ／ 細粒度控制/動態環境適應 → ABAC</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">👥 <b>RBAC：</b>AWS IAM 預設角色（AdministratorAccess / ReadOnlyAccess）；GitHub 組織的 Owner/Member 角色</span><br><span class="rw-item">🔐 <b>ABAC：</b>Google BeyondCorp 零信任（IP + 裝置健康狀態 + 時間 + 職位屬性聯合授權，不依賴 VPN）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">👥 <b>RBAC：</b><a href="https://aws.amazon.com/iam/" target="_blank" rel="noopener">AWS IAM</a> 預設角色（AdministratorAccess / ReadOnlyAccess）；<a href="https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles" target="_blank" rel="noopener">GitHub 組織</a>的 Owner/Member 角色</span><br><span class="rw-item">🔐 <b>ABAC：</b><a href="https://cloud.google.com/beyondcorp" target="_blank" rel="noopener">Google BeyondCorp 零信任</a>（IP + 裝置健康狀態 + 時間 + 職位屬性聯合授權，不依賴 VPN；<a href="https://research.google/pubs/beyondcorp-a-new-approach-to-enterprise-security/" target="_blank" rel="noopener">Google Research 論文</a>）</span></div>
     </div>
   </details>
 
@@ -1541,7 +1543,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>可理解性/稀疏資料 → Apriori ／ 大規模效能/掃描次數 → FP-Growth</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🛒 <b>FP-Growth：</b>Walmart 著名「尿布 + 啤酒」購物籃分析；Amazon「經常一起購買」推薦模組</span><br><span class="rw-item">🇹🇼 <b>台灣電商：</b>蝦皮/momo 購物車關聯推薦、超商門市熱銷商品組合陳列優化</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🛒 <b>FP-Growth：</b>Walmart 著名「尿布 + 啤酒」購物籃分析（<a href="https://en.wikipedia.org/wiki/Apriori_algorithm" target="_blank" rel="noopener">Apriori 算法維基</a>）；<a href="https://www.amazon.science/the-history-of-amazons-recommendation-algorithm" target="_blank" rel="noopener">Amazon「經常一起購買」推薦</a>（FP-Growth 大規模版本）</span><br><span class="rw-item">🇹🇼 <b>台灣電商：</b>蝦皮/momo 購物車關聯推薦、超商門市熱銷商品組合陳列優化（<a href="https://dl.acm.org/doi/10.1145/342009.335372" target="_blank" rel="noopener">FP-Growth 原論文 Han et al. 2000</a>）</span></div>
     </div>
   </details>
 
@@ -1576,7 +1578,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長（CAP 定理）：</b>資料正確性/金融合規 → 強一致性 ／ 吞吐量/分區容忍 → 最終一致性</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💳 <b>強一致性：</b>PayPal 支付交易採 Paxos 共識（不允許出現「錢扣了但對方沒收到」）</span><br><span class="rw-item">🛍️ <b>最終一致性：</b>Amazon 購物車設計（Werner Vogels 2007 論文「Dynamo」：寧可兩個購物車合併也要保持高可用）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💳 <b>強一致性：</b><a href="https://medium.com/paypal-tech" target="_blank" rel="noopener">PayPal</a> 支付交易採 Paxos 共識（不允許出現「錢扣了但對方沒收到」）</span><br><span class="rw-item">🛍️ <b>最終一致性：</b>Amazon 購物車設計（<a href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf" target="_blank" rel="noopener">Werner Vogels 2007「Dynamo」論文</a>：寧可兩個購物車合併也要保持高可用）</span></div>
     </div>
   </details>
 
@@ -1611,7 +1613,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>特徵選擇/稀疏性 → Lasso ／ 共線穩定性/封閉解 → Ridge ／ 延伸：Elastic Net = L1+L2 混合</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🧬 <b>Lasso：</b>基因組關聯研究（GWAS）從數百萬 SNP 位點中篩選出真正相關的致病基因</span><br><span class="rw-item">📈 <b>Ridge：</b>金融多因子風險模型（市場/規模/價值因子高度共線，Ridge 均勻分散係數穩定估計）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🧬 <b>Lasso：</b>基因組關聯研究（GWAS）從數百萬 SNP 位點中篩選出真正相關的致病基因（<a href="https://www.nature.com/articles/s41576-019-0127-1" target="_blank" rel="noopener">Nature Reviews Genetics GWAS 綜述</a>）</span><br><span class="rw-item">📈 <b>Ridge：</b>金融多因子風險模型（市場/規模/價值因子高度共線，Ridge 均勻分散係數穩定估計；<a href="https://arxiv.org/abs/math/9802109" target="_blank" rel="noopener">Tibshirani 1996 Lasso 論文</a>）</span></div>
     </div>
   </details>
 
@@ -1647,7 +1649,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>訓練速度/過擬合抵抗 → 隨機森林 ／ 準確率上限/殘差修正精度 → 梯度提升</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏦 <b>隨機森林：</b>台灣金融機構信用風險評分（穩定、可輸出特徵重要性供信貸審核解釋）</span><br><span class="rw-item">🏆 <b>梯度提升：</b>Kaggle 結構化數據競賽 2016-2023 年前三名幾乎全為 XGBoost 或 LightGBM</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏦 <b>隨機森林：</b>台灣金融機構信用風險評分（穩定、可輸出特徵重要性供信貸審核解釋；<a href="https://link.springer.com/article/10.1023/A:1010933404324" target="_blank" rel="noopener">Breiman 2001 Random Forest 論文</a>）</span><br><span class="rw-item">🏆 <b>梯度提升：</b><a href="https://www.kaggle.com/competitions" target="_blank" rel="noopener">Kaggle</a> 結構化數據競賽 2016-2023 年前三名幾乎全為 XGBoost 或 LightGBM（<a href="https://arxiv.org/abs/1603.02754" target="_blank" rel="noopener">XGBoost 論文</a>）</span></div>
     </div>
   </details>
 
@@ -1682,7 +1684,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>梯度精確度/小數據穩定 → XGBoost ／ 大數據訓練速度/記憶體效率 → LightGBM</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏅 <b>XGBoost：</b>贏得 Kaggle Higgs Boson（2014）等多項頂級競賽；2016-2018 年結構化數據事實標準</span><br><span class="rw-item">⚡ <b>LightGBM：</b>微軟 Bing 廣告 CTR 預測（億級特徵，LightGBM 訓練速度比 XGBoost 快 10 倍）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🏅 <b>XGBoost：</b>贏得 <a href="https://www.kaggle.com/c/higgs-boson" target="_blank" rel="noopener">Kaggle Higgs Boson（2014）</a> 等多項頂級競賽；2016-2018 年結構化數據事實標準（<a href="https://arxiv.org/abs/1603.02754" target="_blank" rel="noopener">XGBoost 論文</a>）</span><br><span class="rw-item">⚡ <b>LightGBM：</b><a href="https://www.microsoft.com/en-us/research/project/lightgbm/" target="_blank" rel="noopener">微軟 Bing</a> 廣告 CTR 預測（億級特徵，LightGBM 訓練速度比 XGBoost 快 10 倍；<a href="https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html" target="_blank" rel="noopener">LightGBM NeurIPS 2017 論文</a>）</span></div>
     </div>
   </details>
 
@@ -1718,7 +1720,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>大規模可擴展/計算效率 → K-means ／ 任意形狀簇/異常值識別 → DBSCAN</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🎯 <b>K-means：</b>Netflix 用戶分群（VIP 重度用戶 / 週末休閒型 / 流失預警型）驅動個人化推薦</span><br><span class="rw-item">🔭 <b>DBSCAN：</b>天文學家用 DBSCAN 從星系目錄中識別任意形狀的星系團；網路攻擊 IP 群組偵測</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🎯 <b>K-means：</b><a href="https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429" target="_blank" rel="noopener">Netflix 用戶分群</a>（VIP 重度用戶 / 週末休閒型 / 流失預警型）驅動個人化推薦</span><br><span class="rw-item">🔭 <b>DBSCAN：</b>天文學家用 DBSCAN 從星系目錄中識別任意形狀的星系團（<a href="https://arxiv.org/abs/astro-ph/9805203" target="_blank" rel="noopener">天文 DBSCAN 應用</a>）；網路攻擊 IP 群組偵測</span></div>
     </div>
   </details>
 
@@ -1753,7 +1755,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>計算速度/可用於訓練特徵 → PCA ／ 非線性結構可視化/聚類視覺效果 → t-SNE ／ 延伸：UMAP = 非線性且比 t-SNE 快、更好保留全域結構</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📐 <b>PCA：</b>人臉辨識前置降維（Eigenfaces）；金融風控多指標降維為 2-3 個主成分做監控儀表板</span><br><span class="rw-item">🔬 <b>t-SNE：</b>單細胞 RNA 定序（scRNA-seq）可視化，發現罕見細胞亞型（Nature / Cell 論文標配圖）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📐 <b>PCA：</b>人臉辨識前置降維（<a href="https://en.wikipedia.org/wiki/Eigenface" target="_blank" rel="noopener">Eigenfaces</a>）；金融風控多指標降維為 2-3 個主成分做監控儀表板</span><br><span class="rw-item">🔬 <b>t-SNE：</b>單細胞 RNA 定序（scRNA-seq）可視化，發現罕見細胞亞型（<a href="https://jmlr.org/papers/v9/vandermaaten08a.html" target="_blank" rel="noopener">t-SNE 原論文 van der Maaten 2008</a>；Nature / Cell 論文標配圖）</span></div>
     </div>
   </details>
 
@@ -1788,7 +1790,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>異常偵測/訓練穩定 → 自編碼器 ／ 生成樣本逼真度/多樣性上限 → GAN</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>自編碼器：</b>信用卡詐欺偵測（重構誤差大 = 異常交易）；工廠設備感測器異常預警（正常數據訓練）</span><br><span class="rw-item">🎨 <b>GAN：</b>NVIDIA StyleGAN3 生成超逼真人臉（This Person Does Not Exist）；三星 Galaxy 相片修補</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">🔍 <b>自編碼器：</b>信用卡詐欺偵測（重構誤差大 = 異常交易）；工廠設備感測器異常預警（<a href="https://arxiv.org/abs/2101.03064" target="_blank" rel="noopener">工業異常偵測綜述</a>）</span><br><span class="rw-item">🎨 <b>GAN：</b><a href="https://nvlabs.github.io/stylegan3/" target="_blank" rel="noopener">NVIDIA StyleGAN3</a> 生成超逼真人臉（<a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">This Person Does Not Exist</a>）；<a href="https://news.samsung.com/global/galaxy-ai" target="_blank" rel="noopener">三星 Galaxy AI</a> 相片修補</span></div>
     </div>
   </details>
 
@@ -1823,7 +1825,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
         </div>
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>大規模訓練速度/高維擴展 → Isolation Forest ／ 局部密度異常/小樣本精密邊界 → One-Class SVM</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💳 <b>Isolation Forest：</b>台灣金融機構（聯信中心）信用卡詐欺即時偵測（每秒萬筆交易，毫秒級響應）</span><br><span class="rw-item">🏭 <b>One-Class SVM：</b>台積電機台設備振動/溫度異常早期預警（少量正常樣本訓練，找出異常邊界）</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">💳 <b>Isolation Forest：</b>台灣金融機構信用卡詐欺即時偵測（<a href="https://arxiv.org/abs/2208.00420" target="_blank" rel="noopener">Isolation Forest 研究綜述</a>，每秒萬筆交易，毫秒級響應）</span><br><span class="rw-item">🏭 <b>One-Class SVM：</b>台積電機台設備振動/溫度異常早期預警（少量正常樣本訓練；<a href="https://arxiv.org/abs/2004.09698" target="_blank" rel="noopener">One-Class SVM 工業應用論文</a>）</span></div>
     </div>
   </details>
 
@@ -2337,7 +2339,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v3.7（2026-06-18）';
+$('#build-stamp').textContent='　·　版本 v3.8（2026-06-18）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

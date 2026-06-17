@@ -2,8 +2,9 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v3.4　|　日期 2026-06-14
+     版本 v3.5　|　日期 2026-06-17
      版本紀錄：
+       v3.5 (2026-06-17) 新增「⚔️ 擂台」分頁：13 組官方技術對決 HTML 卡片
        v3.4 (2026-06-14) 筆記與知識管理三工具影片全換 2026 最新繁中版
        v3.3 (2026-06-14) AI工具頁「本週新工具」標題加日期標示
        v3.2 (2026-06-14) 新增「知識管理工具」分類（Notion/Heptabase/Obsidian）；AI導師Prompt增第4點說明新發展；修正 iPAS 官方連結；首頁最新消息加日期標示
@@ -50,8 +51,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
 .nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;padding:11px 20px;max-width:1040px;margin:0 auto}
 .logo{font-weight:800;font-size:17px;margin-right:auto;display:flex;align-items:center;gap:9px;color:var(--txt)}
 .logo .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2))}
-.nav button{background:transparent;border:0;color:var(--muted);padding:6px 10px;border-radius:9px;
-  cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
+.nav button{background:transparent;border:0;color:var(--muted);padding:5px 9px;border-radius:9px;
+  cursor:pointer;font-size:12px;font-weight:600;transition:.15s}
 .nav button:hover{color:var(--brand);background:var(--chip)}
 .nav button.active{color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-d));box-shadow:0 2px 6px rgba(54,103,224,.3)}
 /* page */
@@ -253,6 +254,34 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
 .changelog-table th{text-align:left;padding:9px 8px;color:var(--muted);border-bottom:2px solid var(--line);font-size:12px}
 .changelog-table td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
 .changelog-table .cur-ver td{background:linear-gradient(90deg,#eef2ff,#f5f8ff);font-weight:700}
+
+/* ======== ⚔️ 技術擂台 ======== */
+.arena-match{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:14px}
+.arena-sum{cursor:pointer;background:linear-gradient(135deg,#f0f4ff,#f8f0ff);padding:14px 18px;font-weight:700;font-size:15px;list-style:none;display:flex;align-items:center;gap:10px}
+.arena-sum::marker,.arena-sum::-webkit-details-marker{display:none}
+.arena-tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px;background:#e8edff;color:#3667e0;white-space:nowrap;flex-shrink:0}
+.arena-tag.s2{background:#fff0e8;color:#c05b00}
+details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-gradient(135deg,#e6ecff,#f0e8ff)}
+.arena-body{padding:16px 18px}
+.arena-vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+@media(max-width:560px){.arena-vs{grid-template-columns:1fr}}
+.arena-col h4{margin:0 0 8px;font-size:13.5px;font-weight:700;padding:6px 10px;border-radius:8px}
+.arena-col.left h4{background:#e8f5e9;color:#1b5e20}
+.arena-col.right h4{background:#e3f2fd;color:#0d47a1}
+.arena-col.triple h4{background:#fce4ec;color:#880e4f}
+.arena-list{margin:0 0 8px;padding:0 0 0 4px;list-style:none;font-size:13px;line-height:1.65}
+.arena-pros li:before{content:"✅ "}
+.arena-cons li:before{content:"❌ "}
+.arena-list li{padding:1px 0}
+.arena-tradeoff{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:9px 13px;font-size:12.5px;line-height:1.7}
+.arena-tradeoff b{color:var(--brand)}
+.arena-errata{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:9px 13px;font-size:12.5px;margin-top:10px;line-height:1.7}
+.arena-errata b{color:#c05b00}
+.arena-idx{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:24px}
+.arena-idx-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:12.5px;cursor:pointer;transition:.15s;text-decoration:none;color:var(--txt);display:block}
+.arena-idx-item:hover{border-color:var(--brand);background:var(--chip);text-decoration:none}
+.arena-idx-item .anum{font-weight:700;color:var(--brand);font-size:13px}
+.arena-idx-item .adim{color:var(--muted);font-size:12px}
 </style>
 </head>
 <body>
@@ -270,6 +299,7 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
     <button data-go="tools">AI工具</button>
     <button data-go="res">學習資源</button>
     <button data-go="info">📋 說明</button>
+    <button data-go="arena">⚔️ 擂台</button>
   </div>
 </header>
 
@@ -528,6 +558,522 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--brand)}
 
   <div class="notice" style="margin-top:16px">
     💡 <b>錯題本注意事項</b>：收藏與錯題紀錄存在瀏覽器本機（localStorage）。清除瀏覽器資料、或使用無痕模式，關閉視窗後紀錄會消失。建議在一般模式下使用，資料可持續累積。
+  </div>
+</section>
+
+<!-- ⚔️ 技術擂台 -->
+<section id="arena" class="page">
+  <h1>⚔️ 技術擂台</h1>
+  <p class="sub">13 組官方技術對決・嚴格依據初級學習指引原文・結合勘誤表修正</p>
+
+  <h2><span class="bar"></span>快速索引</h2>
+  <div class="arena-idx">
+    <a href="#am01" class="arena-idx-item" onclick="document.getElementById('am01').open=true"><span class="anum">01</span> 監督式 vs 非監督式學習<br><span class="adim">標記成本 vs 無標記探索</span></a>
+    <a href="#am02" class="arena-idx-item" onclick="document.getElementById('am02').open=true"><span class="anum">02</span> 監督式 vs 強化學習<br><span class="adim">靜態標記 vs 動態試錯獎勵</span></a>
+    <a href="#am03" class="arena-idx-item" onclick="document.getElementById('am03').open=true"><span class="anum">03 ⭐</span> 鑑別式AI vs 生成式AI<br><span class="adim">P(y|x)分類 vs P(x,y)生成</span></a>
+    <a href="#am04" class="arena-idx-item" onclick="document.getElementById('am04').open=true"><span class="anum">04</span> CNN vs RNN<br><span class="adim">空間特徵 vs 時序記憶</span></a>
+    <a href="#am05" class="arena-idx-item" onclick="document.getElementById('am05').open=true"><span class="anum">05</span> GAN vs 擴散模型<br><span class="adim">對抗速度 vs 穩定品質</span></a>
+    <a href="#am06" class="arena-idx-item" onclick="document.getElementById('am06').open=true"><span class="anum">06</span> GAN vs VAE<br><span class="adim">逼真度 vs 訓練穩定性</span></a>
+    <a href="#am07" class="arena-idx-item" onclick="document.getElementById('am07').open=true"><span class="anum">07</span> 決策樹 vs 隨機森林<br><span class="adim">解釋性 vs 準確性</span></a>
+    <a href="#am08" class="arena-idx-item" onclick="document.getElementById('am08').open=true"><span class="anum">08</span> No Code vs Low Code<br><span class="adim">零門檻 vs 彈性客製</span></a>
+    <a href="#am09" class="arena-idx-item" onclick="document.getElementById('am09').open=true"><span class="anum">09</span> 提示工程 vs 模型微調<br><span class="adim">即時靈活 vs 特定域精準</span></a>
+    <a href="#am10" class="arena-idx-item" onclick="document.getElementById('am10').open=true"><span class="anum">10</span> EDA vs CDA<br><span class="adim">探索假設 vs 驗證假設</span></a>
+    <a href="#am11" class="arena-idx-item" onclick="document.getElementById('am11').open=true"><span class="anum">11</span> 平均數 vs 中位數<br><span class="adim">易計算 vs 抗離群值</span></a>
+    <a href="#am12" class="arena-idx-item" onclick="document.getElementById('am12').open=true"><span class="anum">12</span> 雲端AIaaS vs 本地部署<br><span class="adim">低門檻便利 vs 資料隱私合規</span></a>
+    <a href="#am13" class="arena-idx-item" onclick="document.getElementById('am13').open=true"><span class="anum">13</span> BGD vs SGD vs Adam<br><span class="adim">穩定性 vs 速度 vs 自適應</span></a>
+  </div>
+
+  <h2><span class="bar"></span>對決詳情</h2>
+
+  <!-- 01 -->
+  <details class="arena-match" id="am01" open>
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 01・監督式學習 vs 非監督式學習</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>監督式學習（Supervised Learning）</h4>
+          <ul class="arena-list arena-pros">
+            <li>帶有標記（Labeled Data）訓練資料驅動，學習輸入特徵與標記的關聯性</li>
+            <li>目標明確：分類（Classification）與迴歸（Regression）</li>
+            <li>場景：垃圾郵件過濾、醫學影像識別、房價預測、股票預測</li>
+            <li>不斷調整內部參數，提升對未知資料的預測準確度</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>標記成本（Labeling Cost）極高，人工標記在醫學等領域「極具挑戰性」</li>
+            <li>資料偏見（Bias in Data）影響分類公平性與準確性</li>
+            <li>過擬合（Overfitting）風險：資料多樣性不足則泛化能力不足</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>非監督式學習（Unsupervised Learning）</h4>
+          <ul class="arena-list arena-pros">
+            <li>無需事先標記資料，演算法自動從未標記資料發掘模式、結構、分群</li>
+            <li>核心目標：聚類（Clustering）與降維（Dimensionality Reduction）</li>
+            <li>場景：市場區隔（K-Means）、異常偵測、PCA壓縮基因數據、推薦系統</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>K-Means 對非球形、密度變化大、含離群值（Outlier）群集不適用</li>
+            <li>不同起始群集中心可能造成不同分群結果（結果不穩定）</li>
+            <li>原理相對簡單（勘誤修正答案A），無法處理需因果推斷的任務</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>標記資料完整度↑ → 監督式優勢增 ／ 資料規模無標記量↑ → 非監督式優勢增</div>
+      <div class="arena-errata"><b>勘誤：</b>K-Means 特點答案由 B（可結合其他方法較彈性）修正為 <b>A（原理相對簡單）</b></div>
+    </div>
+  </details>
+
+  <!-- 02 -->
+  <details class="arena-match" id="am02">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 02・監督式學習 vs 強化學習</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>監督式學習（Supervised Learning）</h4>
+          <ul class="arena-list arena-pros">
+            <li>基於歷史帶標記資料的<b>靜態學習</b>，任務目標固定</li>
+            <li>標記資料充足、任務目標明確時，具「極高的準確性和計算效率」</li>
+            <li>場景：醫療診斷、信用風險評估、語音辨識、文本分類</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>無法處理動態序列決策場景</li>
+            <li>「正確答案」難以預先定義時（如圍棋最優策略）完全失效</li>
+            <li>模型無法根據環境回饋自主演化</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>強化學習（Reinforcement Learning, RL）</h4>
+          <ul class="arena-list arena-pros">
+            <li>基於回饋機制的<b>動態學習</b>，代理（Agent）試錯最大化累積獎勵</li>
+            <li>特別適合「動態重複互動」問題（官方例題：下圍棋、自動駕駛）</li>
+            <li>不依賴預先標記，自我評估朝最大獎勵方向學習</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>訓練代價極高：需大量與環境互動的時間與計算資源</li>
+            <li>Q-Table 在狀態空間過大時不可行（官方原文）</li>
+            <li>需「經驗回放（Experience Replay）」+「目標網路（Target Network）」穩定 Deep Q-Learning</li>
+            <li>獎勵設計不當將導致非預期策略（獎勵駭客問題）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>環境互動次數↑ → RL 優勢增 ／ 標記資料完整度↑ → 監督式優勢增</div>
+    </div>
+  </details>
+
+  <!-- 03 -->
+  <details class="arena-match" id="am03">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 03・鑑別式AI vs 生成式AI ⭐ 核心主軸</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>鑑別式AI（Discriminative AI, DAI）</h4>
+          <ul class="arena-list arena-pros">
+            <li>學習條件概率 <b>P(y|x)</b>，不建構數據生成的內在機制</li>
+            <li>核心任務：分類、預測、模式識別</li>
+            <li>標記資料充足時「具有極高的準確性和計算效率」</li>
+            <li>場景：醫療影像分類、信用風險評估、語音辨識、金融詐欺偵測</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>標記成本極高，資料偏見影響公平性</li>
+            <li>過擬合（Overfitting）風險</li>
+            <li>無法創造新內容，輸出只能是分類標籤或數值預測</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>生成式AI（Generative AI, GAI）</h4>
+          <ul class="arena-list arena-pros">
+            <li>學習聯合分佈 <b>P(x,y) 或 P(x)</b>，能生成具創新性的新數據樣本</li>
+            <li>主要目標：生成新數據（文字、圖像、音訊、影片）</li>
+            <li>提示工程（Prompt Engineering）驅動，反覆調整提示直到任務解決</li>
+            <li>無標記數據或數據稀缺時可有效增強數據集</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>AI 幻覺（AI Hallucinations）：生成內容可能不準確或虛構</li>
+            <li>可控性低，無法精確生成符合特定需求的結果</li>
+            <li>計算成本高昂，訓練不穩定（GAN 可能模式崩潰）</li>
+            <li>倫理與版權：可能侵害智慧財產權（GDPR/CCPA 合規要求）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>標記數據完整度↑ → 鑑別式更精準 ／ 創新多樣性需求↑ → 生成式更有優勢<br><b>整合策略：</b>GAI 生成增強數據 → DAI 訓練分類模型</div>
+    </div>
+  </details>
+
+  <!-- 04 -->
+  <details class="arena-match" id="am04">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 04・CNN vs RNN</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>卷積神經網路（CNN）</h4>
+          <ul class="arena-list arena-pros">
+            <li>設計靈感來自動物視覺皮層，<b>特別擅長處理圖像數據</b></li>
+            <li>架構：卷積層（局部特徵提取）→ 池化層（降維防過擬合）→ 全連接層</li>
+            <li>參數量相比全連接網路顯著減少，可提取層次化特徵（低層邊緣→高層語義）</li>
+            <li>場景：人臉辨識、手寫數字（MNIST）、自動駕駛、醫學病變影像</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>無記憶機制，不適合序列/時序數據</li>
+            <li>對圖像以外的非結構化序列（文本、語音流）效果差</li>
+            <li>需大量標記影像訓練資料</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>循環神經網路（RNN / LSTM / GRU）</h4>
+          <ul class="arena-list arena-pros">
+            <li>專為序列數據設計，每個節點<b>記憶前一時刻狀態</b>，捕捉時間依賴</li>
+            <li>LSTM 三門（遺忘門、輸入門、輸出門）有效解決梯度消失問題</li>
+            <li>GRU 結構比 LSTM 更簡單，大多數應用效果相近</li>
+            <li>場景：機器翻譯、文本生成、語音轉文字、股票時間序列預測</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>訓練過程容易出現梯度消失或梯度爆炸（官方明確指出）</li>
+            <li>處理長序列數據時計算效率較低（官方明確指出）</li>
+            <li>難以並行化（Transformer 架構已在大多數 NLP 任務中取代 RNN）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>空間維度複雜度↑ → CNN 主場 ／ 序列長度/時間依賴↑ → RNN/LSTM 主場</div>
+    </div>
+  </details>
+
+  <!-- 05 -->
+  <details class="arena-match" id="am05">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 05・GAN vs 擴散模型</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>生成對抗網路（GAN）</h4>
+          <ul class="arena-list arena-pros">
+            <li>生成器（Generator）與判別器（Discriminator）<b>對抗學習</b>共同進步</li>
+            <li>「在數據增強和模擬中有極大的應用潛力」（官方原文）</li>
+            <li>場景：高真實感圖像（StyleGAN）、風格遷移、醫療影像生成、虛擬場景</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>訓練過程不穩定，可能出現模式崩潰（Mode Collapse）（官方明確）</li>
+            <li>需大量計算資源，對網路結構設計要求高（官方明確）</li>
+            <li>生成器與判別器訓練需高度平衡，失衡則訓練失敗</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>擴散模型（Diffusion Models）</h4>
+          <ul class="arena-list arena-pros">
+            <li>基於<b>逐步添加與去除雜訊</b>的生成方法</li>
+            <li>生成品質「更具真實性與細膩度」（官方原文）</li>
+            <li>場景：高品質高解析度圖像（設計/藝術）、醫療影像合成、Text-to-Image</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>生成速度慢：需多個去噪步驟（推理速度遠低於 GAN）</li>
+            <li>計算資源需求高，尤其處理高解析度生成時</li>
+            <li>可控性相對 GAN 較複雜</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>訓練穩定性要求↑ → 擴散模型優先 ／ 即時性/速度要求↑ → GAN 優先<br><b>解決方案：</b>GAN 不穩定可採 Wasserstein GAN（WGAN）改進型</div>
+    </div>
+  </details>
+
+  <!-- 06 -->
+  <details class="arena-match" id="am06">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 06・GAN vs VAE</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>GAN（生成對抗網路）</h4>
+          <ul class="arena-list arena-pros">
+            <li>能夠「生成高品質的數據樣本，適用於影像、文本、語音等多領域」（官方原文）</li>
+            <li>圖像生成視覺逼真度卓越（StyleGAN 等）</li>
+            <li>場景：高真實感圖像、影視風格遷移、遊戲場景虛擬模擬</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>訓練不穩定（Mode Collapse 模式崩潰）</li>
+            <li>隱空間不規則，難以進行有意義的插值或受控生成</li>
+            <li>無法直接進行數據修復/重建（缺乏編碼器）</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>VAE（變分自編碼器）</h4>
+          <ul class="arena-list arena-pros">
+            <li>將數據映射到<b>隱變量空間（Latent Space）</b>並重建原始數據</li>
+            <li>引入「隨機變量和正則化技術，有效平衡生成能力和學習穩定性」（官方原文）</li>
+            <li>場景：數據修復與重建、<b>異常檢測</b>（學習正常分佈識別異常）、醫療數據增強</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>生成圖像品質通常<b>比 GAN 模糊</b>（損失函數均方誤差導致）</li>
+            <li>隱空間假設資料符合高斯分佈，對複雜分佈建模能力受限</li>
+            <li>在極高視覺真實感任務上遜於 GAN</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>視覺逼真度要求↑ → GAN 優先 ／ 訓練穩定性/異常偵測↑ → VAE 優先</div>
+    </div>
+  </details>
+
+  <!-- 07 -->
+  <details class="arena-match" id="am07">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 07・決策樹 vs 隨機森林</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>決策樹（Decision Tree）</h4>
+          <ul class="arena-list arena-pros">
+            <li>樹形結構分類，每個節點表示特徵條件、葉節點表示類別標籤</li>
+            <li><b>核心優勢：良好的可解釋性</b>（官方例題答案）——分支結構清晰直觀</li>
+            <li>場景：醫療診斷（逐步排除疾病）、金融風險評估（解釋清楚合規）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>過擬合（Overfitting）傾向高：單棵樹容易學習訓練資料的雜訊</li>
+            <li>對資料小幅變動敏感（不穩定性高）</li>
+            <li>分類邊界呈直角切割，非線性複雜邊界表達能力有限</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>隨機森林（Random Forest）</h4>
+          <ul class="arena-list arena-pros">
+            <li>決策樹的<b>集成學習（Ensemble Learning）</b>方法</li>
+            <li>Bootstrap 取樣法隨機抽取樣本，構建多棵獨立決策樹後投票/平均</li>
+            <li><b>有效降低過擬合風險</b>（官方例題答案）</li>
+            <li>場景：醫學影像分類、金融市場分析、生態環境監測</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li><b>可解釋性顯著下降</b>：多棵樹集成後無法直觀解釋決策過程</li>
+            <li>訓練與預測計算資源需求較決策樹高</li>
+            <li>高度可解釋性合規場景（如金融信貸審查）解釋成本較高</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>解釋性要求↑ → 決策樹優先 ／ 泛化準確性要求↑ → 隨機森林優先</div>
+    </div>
+  </details>
+
+  <!-- 08 -->
+  <details class="arena-match" id="am08">
+    <summary class="arena-sum"><span class="arena-tag s2">科目二</span>⚔️ 對決 08・No Code vs Low Code</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>No Code</h4>
+          <ul class="arena-list arena-pros">
+            <li>「視覺化介面和拖放操作，讓使用者無需編寫程式碼即可快速開發應用」（官方原文）</li>
+            <li>目標用戶：<b>非技術背景者</b>（市民開發者 Citizen Developer）</li>
+            <li>支持 AI 民主化（AI Democratization），降低技術門檻</li>
+            <li>場景：快速原型設計、小型應用開發、簡易工作流程</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>無限客製化不可行：平台限制客製化能力（官方例題答案D錯誤）</li>
+            <li><b>不能完全取代專業技術人員</b>（官方例題答案C）</li>
+            <li>使用者可能缺乏 AI 深層理解，引發模型偏差或誤用風險</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>Low Code</h4>
+          <ul class="arena-list arena-pros">
+            <li>「視覺化開發工具與程式碼擴充，讓有技術背景者透過少量程式碼實現深度整合」（官方原文）</li>
+            <li>目標用戶：具備基本技術背景的開發者</li>
+            <li>開發<b>靈活且可擴展的解決方案</b>（官方例題答案）</li>
+            <li>場景：<b>中大型企業、需要高彈性功能的應用開發</b>（官方原文）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>仍需一定技術門檻，非完全面向非技術人員</li>
+            <li>相較 No Code 學習曲線較高</li>
+            <li>在純非技術部門推廣有難度</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>技術門檻要求↓ → No Code 優先 ／ 業務複雜度/彈性↑ → Low Code 優先<br><b>共同風險：</b>資料隱私/GDPR‧CCPA 合規/偏見歧視，均需風險管理機制</div>
+    </div>
+  </details>
+
+  <!-- 09 -->
+  <details class="arena-match" id="am09">
+    <summary class="arena-sum"><span class="arena-tag s2">科目二</span>⚔️ 對決 09・提示工程 vs 模型微調</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>提示工程（Prompt Engineering）</h4>
+          <ul class="arena-list arena-pros">
+            <li>「反覆調整輸入提示，以指定期望完成的任務，直到任務解決為止」（官方原文）</li>
+            <li><b>無需重新訓練模型</b>，直接優化提示詞指導既有模型輸出</li>
+            <li>核心技術：溫度（Temperature）、Top-k 採樣、核採樣（Nucleus Sampling）</li>
+            <li>成本極低、靈活快速，無需 GPU 資源</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>固有變異性（Inherent Variance）：相同提示可能產生不同輸出（官方原文）</li>
+            <li>無法根本改變模型在特定領域的性能極限</li>
+            <li>無法解決模型底層的偏見或知識盲區</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>模型微調（Fine-tuning）</h4>
+          <ul class="arena-list arena-pros">
+            <li>「在預訓練模型基礎上，使用特定領域/任務數據進行進一步訓練，提升特定任務表現」（官方原文）</li>
+            <li>調整超參數（學習率、批量大小）、添加特定層，數據增強提升泛化能力</li>
+            <li>場景：特定領域高精準需求（法律文本、醫療診斷、金融報告）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li><b>需大量計算資源</b>：再訓練大型模型成本高昂</li>
+            <li>需高品質特定領域標記數據，數據準備成本高</li>
+            <li>過度微調可能導致<b>災難性遺忘（Catastrophic Forgetting）</b>：喪失原有通用能力</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>時效性/成本限制↑ → 提示工程優先 ／ 任務精準度/專業深度↑ → 微調優先</div>
+    </div>
+  </details>
+
+  <!-- 10 -->
+  <details class="arena-match" id="am10">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 10・EDA vs CDA</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>EDA（探索性資料分析）</h4>
+          <ul class="arena-list arena-pros">
+            <li>「強調靈活且開放的探索過程，從資料中發現潛在的模式、關係和異常值」（官方原文）</li>
+            <li><b>無需預設假設</b>，多角度探索資料</li>
+            <li>「在研究初期，對資料特徵尚不熟悉的情況下進行，為後續分析奠定基礎」（官方原文）</li>
+            <li>工具：散佈圖矩陣、熱圖（Heatmap）、異常檢測</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>缺乏嚴謹統計框架，無法提供確定性結論</li>
+            <li>結果取決於分析者的主觀判斷和視覺化選擇</li>
+            <li>僅能「提出假設」，不能「驗證假設」</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>CDA（驗證性資料分析）</h4>
+          <ul class="arena-list arena-pros">
+            <li>「更注重於驗證研究者提出的假設，透過分類、分群、相關性分析及預測模型進行深入挖掘」（官方原文）</li>
+            <li>嚴謹統計檢驗：迴歸分析、判別分析、A/B 測試、因果圖</li>
+            <li>場景：驗證行銷活動效果、確認藥物療效、決策支持</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li><b>需要預先明確假設</b>，假設設定錯誤則分析方向偏誤</li>
+            <li>假設檢定的 Type I 錯誤（α）：在 H₀ 為真時拒絕 H₀ 的機率（勘誤修正）</li>
+            <li>過度依賴統計顯著性，忽視實務意義</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>資料陌生/初期探索 → EDA 先行 ／ 假設已建立/嚴謹驗證 → CDA 接手（標準工作流程：先探索再驗證）</div>
+      <div class="arena-errata"><b>勘誤：</b>假設檢定表中「拒絕H₀，H₀為真」欄位由 Type II 修正為 <b>Type I 錯誤（α）</b></div>
+    </div>
+  </details>
+
+  <!-- 11 -->
+  <details class="arena-match" id="am11">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 11・平均數 vs 中位數</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>平均數（Mean）</h4>
+          <ul class="arena-list arena-pros">
+            <li>「將所有資料數值相加後除以資料的個數，代表了資料的平均水準」（官方原文）</li>
+            <li>「計算簡單，易於理解」（官方優點）</li>
+            <li>資料呈<b>正態分佈（對稱分佈）</b>時最適合作為集中趨勢代表值</li>
+            <li>正偏態：平均數 &gt; 中位數 ／ 負偏態：平均數 &lt; 中位數（官方例題答案C）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>「極端值的影響較大，若有極端值，平均值可能偏離資料的中心趨勢」（官方原文）</li>
+            <li>在偏態分佈資料中，平均數被拉向尾部，不代表典型值</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>中位數（Median）</h4>
+          <ul class="arena-list arena-pros">
+            <li>「將資料按大小排列，位於中間位置的值」</li>
+            <li>「不受極端值影響，能更好地反映資料的中心趨勢」（官方原文）</li>
+            <li>場景：<b>資料包含少數極端高價（如房屋價格含豪宅）</b>（官方例題答案B）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>「對資料分布的變動性不敏感」（官方原文）</li>
+            <li>計算相對複雜，對較大數據集計算量較大</li>
+            <li>無法反映極端值的存在（有時極端值本身才是關鍵資訊）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>極端值比例↑ → 中位數更可靠 ／ 資料對稱性↑ → 平均數更精確</div>
+      <div class="arena-errata"><b>勘誤：</b>平均差（Mean Deviation）定義修正為「<b>所有觀察值與平均數之間絕對差值的平均</b>」（非單一觀察值與平均數的差距）</div>
+    </div>
+  </details>
+
+  <!-- 12 -->
+  <details class="arena-match" id="am12">
+    <summary class="arena-sum"><span class="arena-tag s2">科目二</span>⚔️ 對決 12・雲端AIaaS vs 本地部署</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>AI即服務（AIaaS）— 雲端部署</h4>
+          <ul class="arena-list arena-pros">
+            <li>「用戶無需高階硬體或專業知識，即可透過雲端平台存取高效能AI工具」（官方原文）</li>
+            <li>降低硬體投資門檻，支援按需付費</li>
+            <li>API 介接與外掛讓企業輕鬆整合 AI 工具至現有流程</li>
+            <li>場景：中小企業快速導入、跨平台整合</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>「生成式AI處理大量資料時，容易暴露用戶隱私或企業機密」（官方原文）</li>
+            <li>「合規風險：需遵循個資法（GDPR、CCPA）等相關法規」（官方原文）</li>
+            <li>對抗性攻擊：攻擊者可能透過反向工程推斷模型參數或訓練資料</li>
+          </ul>
+        </div>
+        <div class="arena-col right">
+          <h4>本地部署（On-Premises）</h4>
+          <ul class="arena-list arena-pros">
+            <li><b>確保敏感資料不外洩</b>（官方原文），企業對資料擁有完全控制權</li>
+            <li>符合 GDPR/CCPA 的「資料主權」要求</li>
+            <li>場景：醫療（病患個人資訊）、金融（交易機密）、法律（客戶保密資料）</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>硬體成本高昂：需具備高效能伺服器、雲端服務與安全機制</li>
+            <li>維護複雜度高、IT 資源需求大</li>
+            <li>更新與擴展靈活性受限</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>資料敏感度↑ → 本地部署優先 ／ 成本/速度限制↑ → 雲端優先<br><b>防護措施：</b>差分隱私 + 加密 + 身份驗證 + 授權機制</div>
+    </div>
+  </details>
+
+  <!-- 13 -->
+  <details class="arena-match" id="am13">
+    <summary class="arena-sum"><span class="arena-tag">科目一</span>⚔️ 對決 13・BGD vs SGD vs Adam</summary>
+    <div class="arena-body">
+      <div class="arena-vs">
+        <div class="arena-col left">
+          <h4>批次梯度下降（BGD）</h4>
+          <ul class="arena-list arena-pros">
+            <li>「基於整個數據集計算損失函數的梯度並更新參數」（官方原文）</li>
+            <li>梯度方向準確，收斂穩定</li>
+            <li>場景：小型數據集、需要穩定收斂的任務</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li>每次更新需掃描全部數據，<b>計算成本隨數據量線性增長</b></li>
+            <li>對大型數據集完全不可行（時間成本過高）</li>
+          </ul>
+        </div>
+        <div class="arena-col right triple">
+          <h4>SGD → Adam（最廣泛使用）</h4>
+          <ul class="arena-list arena-pros">
+            <li><b>SGD：</b>「每次迭代僅使用一個樣本更新參數，速度較快但收斂不穩定」（官方原文）</li>
+            <li><b>Adam：</b>「結合了動量法和RMSProp，能夠自適應學習率」（官方原文）</li>
+            <li>Adam 為「<b>目前最廣泛使用的優化方法之一</b>」（官方明確），大型深度學習/LLM 首選</li>
+          </ul>
+          <ul class="arena-list arena-cons">
+            <li><b>SGD：</b>收斂不穩定，梯度噪聲大，學習率設定困難，難跳出局部最優</li>
+            <li><b>Adam：</b>超參數較多（β₁、β₂、ε 需調整），記憶體佔用略高</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arena-tradeoff"><b>核心消長：</b>小數據/穩定性 → BGD ／ 大數據/速度 → SGD ／ 深度學習/自適應 → Adam（官方首選）</div>
+    </div>
+  </details>
+
+  <div class="notice" style="margin-top:20px">
+    ⚠️ <b>勘誤表五項必考修正</b>（11404版）：
+    ① Type I 錯誤（α）= 拒絕H₀時H₀為真（原指引誤寫 Type II）
+    ② K-Means 特點答案A（原理相對簡單，非複雜）
+    ③ 假設檢定題答案：在95%信心水準下拒絕虛無假設
+    ④ 平均差 = 所有|xi − x̄|的平均（非單一差距）
+    ⑤ 科目二節標題：「(3)企業導入階段性實施策略」（非「資源與基礎設施評估」）
   </div>
 </section>
 
@@ -1021,7 +1567,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v3.4（2026-06-14）';
+$('#build-stamp').textContent='　·　版本 v3.5（2026-06-17）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- iPAS 學習副本地圖 v2.0 (2026-06-18) — 全新 RPG 風格 -->
+<!-- iPAS 學習副本地圖 v3.0 (2026-06-18) — 三大賽道 -->
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -11,42 +11,80 @@
 body{font-family:'Microsoft JhengHei','PingFang TC',system-ui,sans-serif;background:#EEF2F7;color:#1a1a1a;min-height:100vh}
 a{text-decoration:none;color:inherit}
 
-/* ════ HUD 頂部面板 ════ */
+/* ════ 歡迎 Modal ════ */
+.welcome-bg{position:fixed;inset:0;background:linear-gradient(135deg,#1A1A2E,#0F3460);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
+.welcome-bg.hide{display:none}
+.welcome-box{background:#fff;border-radius:24px;padding:36px 28px;max-width:420px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.welcome-box .wb-emoji{font-size:56px;margin-bottom:12px;display:block}
+.welcome-box h2{font-size:22px;font-weight:900;color:#1A1A2E;margin-bottom:8px}
+.welcome-box .wb-desc{font-size:13px;color:#666;line-height:1.6;margin-bottom:24px}
+.welcome-input{width:100%;border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;font-size:16px;font-family:inherit;text-align:center;font-weight:700;outline:none;transition:.2s;margin-bottom:16px}
+.welcome-input:focus{border-color:#4D96FF;box-shadow:0 0 0 3px rgba(77,150,255,.15)}
+.welcome-submit{width:100%;background:linear-gradient(135deg,#4D96FF,#2E7CF6);border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:900;color:#fff;cursor:pointer;font-family:inherit;transition:.15s}
+.welcome-submit:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+/* ── 歡迎訊息畫面 ── */
+.greet-box{background:#fff;border-radius:24px;padding:36px 28px;max-width:460px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.greet-box.hide{display:none}
+.greet-box .gb-hi{font-size:28px;font-weight:900;color:#4D96FF;margin-bottom:12px}
+.greet-box .gb-msg{font-size:14px;color:#333;line-height:1.9;margin-bottom:24px}
+.greet-btn{width:100%;background:linear-gradient(135deg,#6BCB77,#44B853);border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:900;color:#fff;cursor:pointer;font-family:inherit}
+
+/* ════ HUD ════ */
 .hud{background:linear-gradient(135deg,#1A1A2E 0%,#16213E 60%,#0F3460 100%);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:50;box-shadow:0 4px 20px rgba(0,0,0,.4)}
-.hud-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.hud-inner{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
 .hud-brand{font-size:15px;font-weight:900;letter-spacing:.5px;display:flex;align-items:center;gap:6px;margin-right:auto}
 .hud-brand span{font-size:11px;opacity:.7;font-weight:400}
+.hud-name{background:rgba(255,215,0,.2);border:1px solid rgba(255,215,0,.4);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700;color:#FFD700;cursor:pointer}
 .hud-back{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;transition:.15s}
 .hud-back:hover{background:rgba(255,255,255,.25)}
-
-/* ── HUD 統計 ── */
 .hud-stats{display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%}
 .stat-chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:6px 12px;display:flex;flex-direction:column;align-items:center;min-width:64px}
 .stat-chip .sl{font-size:9px;opacity:.7;margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px}
 .stat-chip .sv{font-size:16px;font-weight:900;line-height:1}
-
-/* ── EXP Bar ── */
 .exp-wrap{flex:1;min-width:160px}
 .exp-label{display:flex;justify-content:space-between;font-size:10px;opacity:.8;margin-bottom:4px}
 .exp-bar-bg{background:rgba(255,255,255,.15);border-radius:999px;height:12px;overflow:hidden}
 .exp-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#FFD700,#FFA500);transition:width .6s}
-
-/* ── HP Bar ── */
 .hp-wrap{min-width:100px}
 .hp-label{display:flex;justify-content:space-between;font-size:10px;opacity:.8;margin-bottom:4px}
 .hp-bar-bg{background:rgba(255,255,255,.15);border-radius:999px;height:12px;overflow:hidden}
 .hp-bar-fill{height:100%;border-radius:999px;transition:width .5s}
 
-/* ════ 主內容 ════ */
-.main{max-width:900px;margin:0 auto;padding:20px 16px 40px}
+/* ════ 賽道 Tab ════ */
+.track-tabs{background:#fff;border-bottom:2px solid #e8edf5;position:sticky;top:108px;z-index:40}
+.track-tabs-inner{max-width:960px;margin:0 auto;display:flex;gap:0}
+.ttab{flex:1;padding:14px 8px;text-align:center;font-size:13px;font-weight:700;color:#888;cursor:pointer;border-bottom:3px solid transparent;transition:.15s;position:relative}
+.ttab:hover{color:#4D96FF;background:#f8faff}
+.ttab.active{color:#1A1A2E;border-bottom-color:#4D96FF;background:#f0f4ff}
+.ttab .tlock{font-size:9px;background:#FF6B6B;color:#fff;border-radius:10px;padding:1px 5px;margin-left:4px;vertical-align:middle}
+.ttab .tprog{display:block;font-size:10px;color:#aaa;margin-top:2px;font-weight:400}
+.ttab.active .tprog{color:#4D96FF}
 
-/* ── 頁首說明 ── */
+/* ════ 主內容 ════ */
+.main{max-width:960px;margin:0 auto;padding:20px 16px 60px}
+.track-section{display:none}
+.track-section.active{display:block}
+
+/* ── 說明卡 ── */
 .intro-card{background:#fff;border-radius:14px;padding:16px 20px;margin-bottom:20px;border-left:5px solid #4D96FF;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .intro-card h2{font-size:16px;font-weight:900;margin-bottom:6px}
 .intro-card p{font-size:12px;color:#555;line-height:1.6}
-.intro-steps{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+.intro-steps{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
 .step-tag{background:#F0F4FF;border:1px solid #C5D5FF;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:700;color:#4D96FF}
 .step-tag b{color:#1A1A2E}
+
+/* ── 解鎖提示 ── */
+.lock-banner{background:linear-gradient(135deg,#FF6B6B22,#FF475711);border:2px dashed #FF6B6B55;border-radius:14px;padding:20px;text-align:center;margin-bottom:20px}
+.lock-banner .lb-icon{font-size:36px;margin-bottom:8px;display:block}
+.lock-banner h3{font-size:16px;font-weight:900;color:#FF4757;margin-bottom:4px}
+.lock-banner p{font-size:12px;color:#666}
+
+/* ── 考古題 Selector ── */
+.quiz-selector{display:flex;gap:10px;margin-bottom:20px}
+.qsel-btn{flex:1;padding:12px;border:2px solid #e0e0e0;border-radius:12px;background:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;text-align:center}
+.qsel-btn.active{border-color:#4D96FF;background:#F0F4FF;color:#4D96FF}
+.qsel-btn:hover{border-color:#4D96FF}
 
 /* ── World Section ── */
 .world{margin-bottom:32px}
@@ -58,7 +96,9 @@ a{text-decoration:none;color:inherit}
 .world-banner .wb-prog{text-align:right;color:#fff}
 .world-banner .wb-prog .wp-num{font-size:22px;font-weight:900;line-height:1}
 .world-banner .wb-prog .wp-lbl{font-size:10px;opacity:.8}
-.world-clear{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);border-radius:8px;padding:3px 10px;font-size:11px;font-weight:900;color:#fff;margin-top:4px;display:inline-block}
+.world-clear-chip{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);border-radius:8px;padding:3px 10px;font-size:11px;font-weight:900;color:#fff;margin-top:4px;display:inline-block}
+.world-clear-banner{background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:12px;margin-bottom:16px;box-shadow:0 4px 12px rgba(255,165,0,.3)}
+.wcb-icon{font-size:32px}.wcb-text h4{font-size:15px;font-weight:900;margin-bottom:2px}.wcb-text p{font-size:11px;color:rgba(0,0,0,.6)}
 
 /* ── World 顏色 ── */
 .w1{background:linear-gradient(135deg,#4D96FF,#2E7CF6)}
@@ -66,49 +106,65 @@ a{text-decoration:none;color:inherit}
 .w3{background:linear-gradient(135deg,#FF6B6B,#E84040)}
 .w4{background:linear-gradient(135deg,#FF9F43,#E8861F)}
 .w5{background:linear-gradient(135deg,#9B59B6,#7D3C98)}
+.w6{background:linear-gradient(135deg,#E74C3C,#C0392B)}
+.w7{background:linear-gradient(135deg,#1ABC9C,#16A085)}
+.w8{background:linear-gradient(135deg,#2C3E50,#34495E)}
 
 /* ── 關卡格線 ── */
 .quest-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quest-grid.single{grid-template-columns:1fr}
 
 /* ── 關卡卡片 ── */
 .qcard{background:#fff;border-radius:14px;border:2px solid #e0e0e0;overflow:hidden;transition:.18s;position:relative;display:flex;flex-direction:column;box-shadow:0 2px 6px rgba(0,0,0,.06)}
 .qcard:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .qcard.done{background:#F0FFF4;border-color:#A8E6B8}
 .qcard.perfect{background:#FFFEF0;border-color:#FFD700}
-.qcard.perfect .qc-lvnum{color:#D4A000}
-
-/* 左邊色條 */
+.qcard.locked{opacity:.55;pointer-events:none}
 .qcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:14px 0 0 14px}
-.w1 .qcard::before,.qcard.w1::before{background:#4D96FF}
-.w2 .qcard::before,.qcard.w2::before{background:#6BCB77}
-.w3 .qcard::before,.qcard.w3::before{background:#FF6B6B}
-.w4 .qcard::before,.qcard.w4::before{background:#FF9F43}
-.w5 .qcard::before,.qcard.w5::before{background:#9B59B6}
-
+.qcard.w1::before{background:#4D96FF}.qcard.w2::before{background:#6BCB77}.qcard.w3::before{background:#FF6B6B}
+.qcard.w4::before{background:#FF9F43}.qcard.w5::before{background:#9B59B6}.qcard.w6::before{background:#E74C3C}
+.qcard.w7::before{background:#1ABC9C}.qcard.w8::before{background:#2C3E50}
 .qc-head{padding:12px 14px 8px 18px;display:flex;align-items:flex-start;gap:10px}
-.qc-lvnum{font-size:28px;font-weight:900;color:#BCC5CE;line-height:1;min-width:36px;text-align:center}
+.qc-lvnum{font-size:26px;font-weight:900;color:#BCC5CE;line-height:1;min-width:40px;text-align:center}
 .qc-lvnum.lit{color:#1A1A2E}
 .qc-meta{flex:1}
 .qc-sec{font-size:10px;font-weight:700;color:#888;margin-bottom:2px;letter-spacing:.3px}
 .qc-title{font-size:13px;font-weight:900;line-height:1.3;color:#1A1A2E}
 .qc-desc{font-size:11px;color:#777;margin-top:3px;line-height:1.4}
-.qc-status{display:flex;align-items:center;gap:6px;padding:0 14px 0 18px;margin-bottom:8px}
+.qc-hint{font-size:10px;color:#4D96FF;margin-top:4px;font-weight:700}
+.qc-status{display:flex;align-items:center;gap:6px;padding:0 14px 0 18px;margin-bottom:8px;flex-wrap:wrap}
 .stars-row{font-size:15px;letter-spacing:1px}
 .status-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px}
 .sb-done{background:#D4EDDA;color:#228B22}
 .sb-perfect{background:#FFF3CD;color:#D4A000}
 .sb-new{background:#F0F0F0;color:#888}
 .qc-exp{font-size:10px;color:#aaa;margin-left:auto}
-
 .qc-btns{padding:8px 14px 12px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
 .qbtn{border:none;border-radius:9px;padding:8px 6px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:4px}
 .qbtn:hover{filter:brightness(1.1);transform:translateY(-1px)}
-.qbtn.go{background:#4D96FF;color:#fff}
+.qbtn.go{background:#4D96FF;color:#fff}.qbtn.go.news{background:#1ABC9C}
 .qbtn.punch{background:#FF6B6B;color:#fff}
-.qbtn.synced{background:#eee;color:#aaa;cursor:default}
-.qbtn.synced:hover{filter:none;transform:none}
+.qbtn.full{grid-column:1/-1;background:#FF6B6B;color:#fff}
 
-/* ── 通關 Modal ── */
+/* ── 時事詳閱 Modal ── */
+.news-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.news-modal-bg.hide{display:none}
+.news-modal-box{background:#fff;border-radius:20px;padding:28px 24px;max-width:520px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3);max-height:85vh;overflow-y:auto}
+.nm-date{font-size:11px;color:#aaa;font-weight:700;margin-bottom:6px;letter-spacing:.5px}
+.nm-title{font-size:20px;font-weight:900;margin-bottom:12px;color:#1A1A2E}
+.nm-summary{font-size:13px;color:#444;line-height:1.8;margin-bottom:16px;background:#F8F9FA;border-radius:10px;padding:12px}
+.nm-points{margin-bottom:20px}
+.nm-points h4{font-size:12px;font-weight:900;color:#4D96FF;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.nm-point{display:flex;gap:8px;font-size:12px;color:#333;line-height:1.5;margin-bottom:6px;align-items:flex-start}
+.nm-point::before{content:'▸';color:#4D96FF;flex-shrink:0;margin-top:2px}
+.nm-source{font-size:11px;color:#aaa;margin-bottom:20px}
+.nm-source a{color:#4D96FF}
+.nm-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nm-btn{padding:12px;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.nm-btn.punch{background:#FF6B6B;color:#fff}
+.nm-btn.cancel{background:#f5f5f5;color:#666}
+
+/* ── 打卡 Modal ── */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
 .modal-bg.hide{display:none}
 .modal-box{background:#fff;border-radius:20px;padding:28px 24px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
@@ -123,82 +179,141 @@ a{text-decoration:none;color:inherit}
 .sc-btn.s3:hover{border-color:#FFA500;background:#FFF8E0}
 .modal-cancel{width:100%;background:#f5f5f5;border:none;border-radius:10px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#666}
 
-/* ── 世界完成橫幅 ── */
-.world-clear-banner{background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;margin-bottom:16px;box-shadow:0 4px 12px rgba(255,165,0,.3)}
-.wcb-icon{font-size:32px}
-.wcb-text h4{font-size:15px;font-weight:900;margin-bottom:2px}
-.wcb-text p{font-size:11px;color:rgba(0,0,0,.6)}
+/* ── 錯題統計卡 ── */
+.wrong-stat{background:linear-gradient(135deg,#FF6B6B22,#FF475711);border:2px solid #FF6B6B44;border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.ws-num{font-size:36px;font-weight:900;color:#FF4757}
+.ws-info .ws-title{font-size:14px;font-weight:900;color:#1A1A2E}
+.ws-info .ws-sub{font-size:11px;color:#888;margin-top:2px}
 
-/* ── Responsive ── */
 @media(max-width:560px){
   .quest-grid{grid-template-columns:1fr}
   .hud-stats{gap:6px}
   .stat-chip{min-width:52px}
   .stat-chip .sv{font-size:14px}
+  .track-tabs-inner{overflow-x:auto}
+  .ttab{min-width:80px}
 }
 </style>
 </head>
 <body>
 
-<!-- ══════ HUD 頂部 ══════ -->
+<!-- ══ 歡迎 Modal ══ -->
+<div class="welcome-bg" id="welcome-bg">
+  <div id="welcome-input-box" class="welcome-box">
+    <span class="wb-emoji">⚔️</span>
+    <h2>踏上 iPAS 學習征途</h2>
+    <p class="wb-desc">請輸入你的姓名，開始專屬的學習旅程</p>
+    <input class="welcome-input" id="name-input" type="text" placeholder="輸入你的名字…" maxlength="20">
+    <button class="welcome-submit" onclick="submitName()">✨ 開始冒險</button>
+  </div>
+  <div id="greet-box" class="greet-box hide">
+    <div class="gb-hi" id="greet-hi"></div>
+    <div class="gb-msg" id="greet-msg"></div>
+    <button class="greet-btn" onclick="closeWelcome()">⚔️ 出發！開始學習旅程</button>
+  </div>
+</div>
+
+<!-- ══ HUD ══ -->
 <div class="hud">
   <div class="hud-inner">
-    <div class="hud-brand">
-      ⚔️ iPAS 學習副本地圖
-      <span>官方學習指引・41 關全覆蓋</span>
-    </div>
+    <div class="hud-brand">⚔️ iPAS 學習副本地圖<span>三大賽道 · 全覆蓋</span></div>
+    <span class="hud-name" id="hud-name" onclick="resetName()" title="點擊更改姓名">👤 載入中…</span>
     <a href="index.html" class="hud-back">← 回主站</a>
   </div>
   <div class="hud-inner" style="margin-top:10px">
     <div class="hud-stats">
-      <div class="stat-chip">
-        <div class="sl">⏰ 倒數</div>
-        <div class="sv" id="hud-days" style="color:#FF6B6B">--</div>
-      </div>
-      <div class="stat-chip">
-        <div class="sl">🔥 連續</div>
-        <div class="sv" id="hud-streak" style="color:#FF9F43">0</div>
-      </div>
-      <div class="stat-chip">
-        <div class="sl">⚡ EXP</div>
-        <div class="sv" id="hud-exp" style="color:#FFD700">0</div>
-      </div>
-      <div class="stat-chip">
-        <div class="sl">✅ 通關</div>
-        <div class="sv" id="hud-done" style="color:#6BCB77">0/41</div>
-      </div>
+      <div class="stat-chip"><div class="sl">⏰ 倒數</div><div class="sv" id="hud-days" style="color:#FF6B6B">--</div></div>
+      <div class="stat-chip"><div class="sl">🔥 連續</div><div class="sv" id="hud-streak" style="color:#FF9F43">0天</div></div>
+      <div class="stat-chip"><div class="sl">⚡ EXP</div><div class="sv" id="hud-exp" style="color:#FFD700">0</div></div>
+      <div class="stat-chip"><div class="sl">✅ 通關</div><div class="sv" id="hud-done" style="color:#6BCB77">0</div></div>
       <div class="hp-wrap" style="flex:1;min-width:120px">
         <div class="hp-label"><span>❤️ HP</span><span id="hud-hp">100%</span></div>
         <div class="hp-bar-bg"><div class="hp-bar-fill" id="hp-fill" style="width:100%"></div></div>
       </div>
       <div class="exp-wrap">
-        <div class="exp-label"><span>⚡ EXP 進度</span><span id="exp-label-r">0 / 6150</span></div>
+        <div class="exp-label"><span>⚡ EXP 進度</span><span id="exp-label-r">0 / 9450</span></div>
         <div class="exp-bar-bg"><div class="exp-bar-fill" id="exp-fill" style="width:0%"></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══════ 主內容 ══════ -->
-<div class="main">
-
-  <!-- 操作說明 -->
-  <div class="intro-card">
-    <h2>📖 怎麼玩？三步通關</h2>
-    <p>把官方學習指引全 41 節拆成 41 個副本關卡。每次選一關，讀完該節後回來打卡，累積 EXP 升等！</p>
-    <div class="intro-steps">
-      <div class="step-tag"><b>Step 1</b> 點「🚀 開始關卡」→ 跳到對應章節（自動展開）</div>
-      <div class="step-tag"><b>Step 2</b> 讀完後回到這裡，點「🚩 打卡通關」</div>
-      <div class="step-tag"><b>Step 3</b> 自評 1-3 星獲得 EXP，3 星補血 +15% 🎉</div>
-    </div>
+<!-- ══ 賽道 Tab ══ -->
+<div class="track-tabs">
+  <div class="track-tabs-inner">
+    <div class="ttab active" id="tab1" onclick="switchTrack(1)">📚 學習指引<span class="tprog" id="tab1-prog">0/41 關</span></div>
+    <div class="ttab" id="tab2" onclick="switchTrack(2)">📝 考古題挑戰<span class="tprog" id="tab2-prog">0/9 關</span></div>
+    <div class="ttab" id="tab3" onclick="switchTrack(3)">📰 時事關卡<span class="tprog" id="tab3-prog">0/13 關</span></div>
   </div>
-
-  <!-- 關卡地圖（由 JS 渲染）-->
-  <div id="map-container"></div>
-
 </div>
 
-<!-- ══════ 打卡 Modal ══════ -->
+<!-- ══ 主內容 ══ -->
+<div class="main">
+
+<!-- ─── 賽道一：學習指引 ─── -->
+<div class="track-section active" id="track1">
+  <div class="intro-card">
+    <h2>📚 第一賽道：官方學習指引（41 關）</h2>
+    <p>把官方學習指引全 41 節拆成 41 個副本關卡，完成第一賽道後解鎖「考古題挑戰」！</p>
+    <div class="intro-steps">
+      <div class="step-tag"><b>Step 1</b> 點「🚀 開始關卡」跳到對應章節</div>
+      <div class="step-tag"><b>Step 2</b> 讀完後回來點「🚩 打卡通關」</div>
+      <div class="step-tag"><b>Step 3</b> 3星補血 +15%，解鎖下一賽道</div>
+    </div>
+  </div>
+  <div id="map-container"></div>
+</div>
+
+<!-- ─── 賽道二：考古題 ─── -->
+<div class="track-section" id="track2">
+  <div class="intro-card" style="border-color:#FF9F43">
+    <h2>📝 第二賽道：考古題挑戰（9 關）</h2>
+    <p>按科目系統刷完全部 463 題考古題，寫錯的題目自動進入「🔴 錯題煉獄」持續挑戰，直到完全掌握！</p>
+    <div class="intro-steps">
+      <div class="step-tag"><b>Step 1</b> 選擇初級或中級賽道</div>
+      <div class="step-tag"><b>Step 2</b> 點「🚀 前往考題」→ 在主站選擇對應科目</div>
+      <div class="step-tag"><b>Step 3</b> 做完一輪後回來打卡記錄星等</div>
+    </div>
+  </div>
+  <div id="lock-banner-quiz" class="lock-banner hide">
+    <span class="lb-icon">🔒</span>
+    <h3>完成學習指引後解鎖</h3>
+    <p>還需完成 <strong id="lock-remain">?</strong> 個學習指引關卡，才能解鎖考古題賽道</p>
+  </div>
+  <div id="quiz-selector-wrap">
+    <div class="quiz-selector">
+      <button class="qsel-btn active" id="qsel-chu" onclick="switchQuizTrack('chu')">🏆 初級考古題</button>
+      <button class="qsel-btn" id="qsel-mid" onclick="switchQuizTrack('mid')">⚔️ 中級考古題</button>
+      <button class="qsel-btn" id="qsel-wrong" onclick="switchQuizTrack('wrong')">🔴 錯題煉獄</button>
+    </div>
+    <div id="quiz-chu-section"></div>
+    <div id="quiz-mid-section" style="display:none"></div>
+    <div id="quiz-wrong-section" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ─── 賽道三：時事關卡 ─── -->
+<div class="track-section" id="track3">
+  <div class="intro-card" style="border-color:#1ABC9C">
+    <h2>📰 第三賽道：時事關卡（13 關）</h2>
+    <p>掌握 AI 發展大脈絡！從 ChatGPT 革命到 Agentic AI，考試愛考時事，這裡幫你快速補齊。完成第二賽道後解鎖。</p>
+    <div class="intro-steps">
+      <div class="step-tag"><b>Step 1</b> 點「📖 閱讀關卡」開啟時事摘要</div>
+      <div class="step-tag"><b>Step 2</b> 閱讀重點整理，掌握 AI 趨勢</div>
+      <div class="step-tag"><b>Step 3</b> 閱讀完後打卡，記錄掌握程度</div>
+    </div>
+  </div>
+  <div id="lock-banner-news" class="lock-banner hide">
+    <span class="lb-icon">🔒</span>
+    <h3>完成考古題賽道後解鎖</h3>
+    <p>還需完成 <strong id="lock-remain-news">?</strong> 個考古題關卡，才能解鎖時事賽道</p>
+  </div>
+  <div id="news-container"></div>
+</div>
+
+</div><!-- /.main -->
+
+<!-- ══ 打卡 Modal ══ -->
 <div class="modal-bg hide" id="modal-bg">
   <div class="modal-box">
     <h3>🚩 打卡通關</h3>
@@ -212,295 +327,515 @@ a{text-decoration:none;color:inherit}
   </div>
 </div>
 
+<!-- ══ 時事詳閱 Modal ══ -->
+<div class="news-modal-bg hide" id="news-modal-bg">
+  <div class="news-modal-box">
+    <div class="nm-date" id="nm-date"></div>
+    <div class="nm-title" id="nm-title"></div>
+    <div class="nm-summary" id="nm-summary"></div>
+    <div class="nm-points"><h4>📌 考試重點整理</h4><div id="nm-points"></div></div>
+    <div class="nm-source" id="nm-source"></div>
+    <div class="nm-actions">
+      <button class="nm-btn punch" onclick="openModalFromNews()">🚩 閱讀完畢・打卡</button>
+      <button class="nm-btn cancel" onclick="closeNewsModal()">✕ 稍後再讀</button>
+    </div>
+  </div>
+</div>
+
 <script>
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════
    常數
-   ═══════════════════════════════════════ */
+   ═══════════════════════════════ */
 const EXAM_DATE = new Date('2026-08-15T09:00:00+08:00');
 const GAME_KEY = 'ipas_game_v2';
 const EXP_PER_STAR = {1:60, 2:100, 3:150};
-const MAX_EXP = 41 * 150; // 6150
+const TOTAL_LEVELS = 41 + 9 + 13; // 63
 
-/* ═══════════════════════════════════════
-   世界 & 關卡資料（41 關，全為學習指引）
-   ═══════════════════════════════════════ */
-const WORLDS = [
-  {
-    id:'w1', cls:'w1', icon:'🏰', badge:'初級', name:'初級科一・人工智慧基礎概論',
-    gidx:0,
-    levels:[
-      {sid:0, num:'01', sec:'3.1', title:'人工智慧概念', desc:'AI定義・分類・治理概念・倫理框架'},
-      {sid:1, num:'02', sec:'3.2', title:'資料處理與分析概念', desc:'資料基本概念・整理流程・隱私安全'},
-      {sid:2, num:'03', sec:'3.3', title:'機器學習概念', desc:'監督/非監督/強化學習・常見演算法原理'},
-      {sid:3, num:'04', sec:'3.4', title:'鑑別式AI與生成式AI概念', desc:'基本原理比較・實際整合應用場景'},
-    ]
-  },
-  {
-    id:'w2', cls:'w2', icon:'🌿', badge:'初級', name:'初級科二・生成式AI應用與規劃',
-    gidx:1,
-    levels:[
-      {sid:0, num:'05', sec:'3.1', title:'No code / Low code 概念', desc:'基本概念・優勢與限制・平台比較'},
-      {sid:1, num:'06', sec:'3.2', title:'生成式AI應用領域與工具使用', desc:'主要應用領域・常見工具・善用技巧'},
-      {sid:2, num:'07', sec:'3.3', title:'生成式AI導入評估規劃', desc:'導入評估方法・導入規劃・風險管理'},
-    ]
-  },
-  {
-    id:'w3', cls:'w3', icon:'🔥', badge:'中級', name:'中級科一・人工智慧技術應用與規劃',
-    gidx:2,
-    levels:[
-      {sid:0, num:'08', sec:'3.1', title:'自然語言處理技術與應用', desc:'NLP基礎・詞嵌入・Transformer・LLM應用'},
-      {sid:1, num:'09', sec:'3.2', title:'電腦視覺技術與應用', desc:'影像分類・目標偵測・語意分割・實務應用'},
-      {sid:2, num:'10', sec:'3.3', title:'生成式AI技術與應用', desc:'GAN/VAE/擴散模型・多模態・RLHF'},
-      {sid:3, num:'11', sec:'3.4', title:'多模態人工智慧應用', desc:'跨模態融合・影像+文字+語音整合'},
-      {sid:4, num:'12', sec:'4.1', title:'AI導入評估', desc:'技術成熟度・ROI評估・風險評估框架'},
-      {sid:5, num:'13', sec:'4.2', title:'AI導入規劃', desc:'需求分析・資源規劃・專案管理'},
-      {sid:6, num:'14', sec:'4.3', title:'AI風險管理', desc:'技術風險・數據風險・倫理合規'},
-      {sid:7, num:'15', sec:'5.1', title:'數據準備與模型選擇', desc:'資料清理・特徵工程・模型評選'},
-      {sid:8, num:'16', sec:'5.2', title:'AI技術系統集成與部署', desc:'API整合・雲端部署・監控維運'},
-    ]
-  },
-  {
-    id:'w4', cls:'w4', icon:'📊', badge:'中級', name:'中級科二・大數據處理分析與應用',
-    gidx:3,
-    levels:[
-      {sid:0,  num:'17', sec:'3.1', title:'敘述性統計與資料摘要技術', desc:'平均/中位/眾數・離散程度・視覺化摘要'},
-      {sid:1,  num:'18', sec:'3.2', title:'機率分佈與資料分佈模型', desc:'常態/二項/泊松分佈・中央極限定理'},
-      {sid:2,  num:'19', sec:'3.3', title:'假設檢定與統計推論', desc:'T檢定・卡方・ANOVA・p值解讀'},
-      {sid:3,  num:'20', sec:'4.1', title:'數據收集與清理', desc:'資料品質・缺失值・異常值・ETL流程'},
-      {sid:4,  num:'21', sec:'4.2', title:'數據儲存與管理', desc:'RDBMS/NoSQL・資料湖・資料倉儲'},
-      {sid:5,  num:'22', sec:'4.3', title:'數據處理技術與工具', desc:'Hadoop/Spark・串流處理・Flink'},
-      {sid:6,  num:'23', sec:'5.1', title:'統計學在大數據中的應用', desc:'A/B測試・相關性・迴歸分析應用'},
-      {sid:7,  num:'24', sec:'5.2', title:'常見的大數據分析方法', desc:'分群・關聯規則・時序分析・Apriori'},
-      {sid:8,  num:'25', sec:'5.3', title:'數據可視化工具', desc:'Tableau/Power BI・圖表設計原則'},
-      {sid:9,  num:'26', sec:'6.1', title:'大數據與機器學習', desc:'特徵工程・大規模訓練・分散式ML'},
-      {sid:10, num:'27', sec:'6.2', title:'大數據在鑑別式AI中的應用', desc:'分類/迴歸大規模應用・模型部署'},
-      {sid:11, num:'28', sec:'6.3', title:'大數據在生成式AI中的應用', desc:'訓練數據規模・RLHF・RAG實作'},
-      {sid:12, num:'29', sec:'6.4', title:'大數據隱私保護、安全與合規', desc:'差分隱私・聯邦學習・GDPR合規'},
-    ]
-  },
-  {
-    id:'w5', cls:'w5', icon:'🤖', badge:'中級', name:'中級科三・機器學習技術與應用',
-    gidx:4,
-    levels:[
-      {sid:0,  num:'30', sec:'3.1', title:'機率/統計之機器學習基礎應用', desc:'貝葉斯・最大概似估計・信息論'},
-      {sid:1,  num:'31', sec:'3.2', title:'線性代數之機器學習基礎應用', desc:'矩陣運算・特徵值・SVD分解'},
-      {sid:2,  num:'32', sec:'3.3', title:'數值優化技術與方法', desc:'梯度下降・SGD・Adam・收斂條件'},
-      {sid:3,  num:'33', sec:'4.1', title:'機器學習原理與技術', desc:'偏差-方差・過擬合・正則化・交叉驗證'},
-      {sid:4,  num:'34', sec:'4.2', title:'常見機器學習演算法', desc:'線性/邏輯迴歸・SVM・決策樹・隨機森林'},
-      {sid:5,  num:'35', sec:'4.3', title:'深度學習原理與框架', desc:'CNN/RNN/Transformer・PyTorch/TensorFlow'},
-      {sid:6,  num:'36', sec:'5.1', title:'數據準備與特徵工程', desc:'特徵選擇・標準化・編碼・資料增強'},
-      {sid:7,  num:'37', sec:'5.2', title:'模型選擇與架構設計', desc:'基準模型・架構搜尋・遷移學習'},
-      {sid:8,  num:'38', sec:'5.3', title:'模型訓練、評估與驗證', desc:'Loss函數・評估指標・混淆矩陣・ROC'},
-      {sid:9,  num:'39', sec:'5.4', title:'模型調整與優化', desc:'超參數調整・早停・集成學習'},
-      {sid:10, num:'40', sec:'6.1', title:'數據隱私、安全與合規', desc:'模型攻擊・差分隱私・聯邦學習合規'},
-      {sid:11, num:'41', sec:'6.2', title:'演算法偏見與公平性', desc:'偏見來源・公平性指標・去偏策略'},
-    ]
-  },
+/* ═══════════════════════════════
+   學習指引 資料（5 世界 41 關）
+   ═══════════════════════════════ */
+const GUIDE_WORLDS = [
+  {id:'w1',cls:'w1',icon:'🏰',badge:'初級',name:'初級科一・人工智慧基礎概論',gidx:0,levels:[
+    {sid:0,num:'01',sec:'3.1',title:'人工智慧概念',desc:'AI定義・分類・治理概念・倫理框架'},
+    {sid:1,num:'02',sec:'3.2',title:'資料處理與分析概念',desc:'資料基本概念・整理流程・隱私安全'},
+    {sid:2,num:'03',sec:'3.3',title:'機器學習概念',desc:'監督/非監督/強化學習・常見演算法原理'},
+    {sid:3,num:'04',sec:'3.4',title:'鑑別式AI與生成式AI概念',desc:'基本原理比較・實際整合應用場景'},
+  ]},
+  {id:'w2',cls:'w2',icon:'🌿',badge:'初級',name:'初級科二・生成式AI應用與規劃',gidx:1,levels:[
+    {sid:0,num:'05',sec:'3.1',title:'No code / Low code 概念',desc:'基本概念・優勢與限制・平台比較'},
+    {sid:1,num:'06',sec:'3.2',title:'生成式AI應用領域與工具使用',desc:'主要應用領域・常見工具・善用技巧'},
+    {sid:2,num:'07',sec:'3.3',title:'生成式AI導入評估規劃',desc:'導入評估方法・導入規劃・風險管理'},
+  ]},
+  {id:'w3',cls:'w3',icon:'🔥',badge:'中級',name:'中級科一・人工智慧技術應用與規劃',gidx:2,levels:[
+    {sid:0,num:'08',sec:'3.1',title:'自然語言處理技術與應用',desc:'NLP基礎・詞嵌入・Transformer・LLM應用'},
+    {sid:1,num:'09',sec:'3.2',title:'電腦視覺技術與應用',desc:'影像分類・目標偵測・語意分割・實務應用'},
+    {sid:2,num:'10',sec:'3.3',title:'生成式AI技術與應用',desc:'GAN/VAE/擴散模型・多模態・RLHF'},
+    {sid:3,num:'11',sec:'3.4',title:'多模態人工智慧應用',desc:'跨模態融合・影像+文字+語音整合'},
+    {sid:4,num:'12',sec:'4.1',title:'AI導入評估',desc:'技術成熟度・ROI評估・風險評估框架'},
+    {sid:5,num:'13',sec:'4.2',title:'AI導入規劃',desc:'需求分析・資源規劃・專案管理'},
+    {sid:6,num:'14',sec:'4.3',title:'AI風險管理',desc:'技術風險・數據風險・倫理合規'},
+    {sid:7,num:'15',sec:'5.1',title:'數據準備與模型選擇',desc:'資料清理・特徵工程・模型評選'},
+    {sid:8,num:'16',sec:'5.2',title:'AI技術系統集成與部署',desc:'API整合・雲端部署・監控維運'},
+  ]},
+  {id:'w4',cls:'w4',icon:'📊',badge:'中級',name:'中級科二・大數據處理分析與應用',gidx:3,levels:[
+    {sid:0,num:'17',sec:'3.1',title:'敘述性統計與資料摘要技術',desc:'平均/中位/眾數・離散程度・視覺化摘要'},
+    {sid:1,num:'18',sec:'3.2',title:'機率分佈與資料分佈模型',desc:'常態/二項/泊松分佈・中央極限定理'},
+    {sid:2,num:'19',sec:'3.3',title:'假設檢定與統計推論',desc:'T檢定・卡方・ANOVA・p值解讀'},
+    {sid:3,num:'20',sec:'4.1',title:'數據收集與清理',desc:'資料品質・缺失值・異常值・ETL流程'},
+    {sid:4,num:'21',sec:'4.2',title:'數據儲存與管理',desc:'RDBMS/NoSQL・資料湖・資料倉儲'},
+    {sid:5,num:'22',sec:'4.3',title:'數據處理技術與工具',desc:'Hadoop/Spark・串流處理・Flink'},
+    {sid:6,num:'23',sec:'5.1',title:'統計學在大數據中的應用',desc:'A/B測試・相關性・迴歸分析應用'},
+    {sid:7,num:'24',sec:'5.2',title:'常見的大數據分析方法',desc:'分群・關聯規則・時序分析・Apriori'},
+    {sid:8,num:'25',sec:'5.3',title:'數據可視化工具',desc:'Tableau/Power BI・圖表設計原則'},
+    {sid:9,num:'26',sec:'6.1',title:'大數據與機器學習',desc:'特徵工程・大規模訓練・分散式ML'},
+    {sid:10,num:'27',sec:'6.2',title:'大數據在鑑別式AI中的應用',desc:'分類/迴歸大規模應用・模型部署'},
+    {sid:11,num:'28',sec:'6.3',title:'大數據在生成式AI中的應用',desc:'訓練數據規模・RLHF・RAG實作'},
+    {sid:12,num:'29',sec:'6.4',title:'大數據隱私保護、安全與合規',desc:'差分隱私・聯邦學習・GDPR合規'},
+  ]},
+  {id:'w5',cls:'w5',icon:'🤖',badge:'中級',name:'中級科三・機器學習技術與應用',gidx:4,levels:[
+    {sid:0,num:'30',sec:'3.1',title:'機率/統計之機器學習基礎應用',desc:'貝葉斯・最大概似估計・信息論'},
+    {sid:1,num:'31',sec:'3.2',title:'線性代數之機器學習基礎應用',desc:'矩陣運算・特徵值・SVD分解'},
+    {sid:2,num:'32',sec:'3.3',title:'數值優化技術與方法',desc:'梯度下降・SGD・Adam・收斂條件'},
+    {sid:3,num:'33',sec:'4.1',title:'機器學習原理與技術',desc:'偏差-方差・過擬合・正則化・交叉驗證'},
+    {sid:4,num:'34',sec:'4.2',title:'常見機器學習演算法',desc:'線性/邏輯迴歸・SVM・決策樹・隨機森林'},
+    {sid:5,num:'35',sec:'4.3',title:'深度學習原理與框架',desc:'CNN/RNN/Transformer・PyTorch/TensorFlow'},
+    {sid:6,num:'36',sec:'5.1',title:'數據準備與特徵工程',desc:'特徵選擇・標準化・編碼・資料增強'},
+    {sid:7,num:'37',sec:'5.2',title:'模型選擇與架構設計',desc:'基準模型・架構搜尋・遷移學習'},
+    {sid:8,num:'38',sec:'5.3',title:'模型訓練、評估與驗證',desc:'Loss函數・評估指標・混淆矩陣・ROC'},
+    {sid:9,num:'39',sec:'5.4',title:'模型調整與優化',desc:'超參數調整・早停・集成學習'},
+    {sid:10,num:'40',sec:'6.1',title:'數據隱私、安全與合規',desc:'模型攻擊・差分隱私・聯邦學習合規'},
+    {sid:11,num:'41',sec:'6.2',title:'演算法偏見與公平性',desc:'偏見來源・公平性指標・去偏策略'},
+  ]},
 ];
 
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════
+   考古題 資料（3 區塊 9 關）
+   ═══════════════════════════════ */
+const QUIZ_CHU = [
+  {num:'Q01',cls:'w1',sec:'初級科一',title:'AI基礎概論 考古題',desc:'人工智慧概念・資料處理・機器學習・生成式AI（約90題）',hint:'進入後請選擇「初級科目一」全科刷題',url:'index.html?go=quiz'},
+  {num:'Q02',cls:'w1',sec:'初級科二',title:'生成式AI應用 考古題',desc:'No code/Low code・AI應用領域・導入評估（約90題）',hint:'進入後請選擇「初級科目二」全科刷題',url:'index.html?go=quiz'},
+  {num:'Q03',cls:'w2',sec:'初級全科',title:'初級模擬考 綜合衝刺',desc:'混合初級科一+科二，模擬正式考試節奏',hint:'進入後選擇「初級全科」，計時完成',url:'index.html?go=mock'},
+];
+const QUIZ_MID = [
+  {num:'Q04',cls:'w3',sec:'中級科一',title:'AI技術應用 考古題',desc:'NLP・電腦視覺・生成式AI・多模態・AI導入（約80題）',hint:'進入後請選擇「中級科目一」',url:'index.html?go=quiz'},
+  {num:'Q05',cls:'w4',sec:'中級科二',title:'大數據分析 考古題',desc:'統計・數據處理・視覺化・機器學習應用（約80題）',hint:'進入後請選擇「中級科目二」',url:'index.html?go=quiz'},
+  {num:'Q06',cls:'w5',sec:'中級科三',title:'機器學習技術 考古題',desc:'ML基礎・演算法・深度學習・模型訓練與評估（約80題）',hint:'進入後請選擇「中級科目三」',url:'index.html?go=quiz'},
+  {num:'Q07',cls:'w4',sec:'中級全科',title:'中級模擬考 綜合衝刺',desc:'混合中級三科，全力衝刺最終大考！',hint:'進入後選擇「中級全科」，計時完成',url:'index.html?go=mock'},
+];
+const QUIZ_WRONG = [
+  {num:'Q08',cls:'w6',sec:'錯題煉獄',title:'錯題挑戰 第一輪',desc:'把標記過的錯題全部重做一遍，針對弱點強攻',hint:'進入考古題後點選「❌ 錯題」模式',url:'index.html?go=quiz'},
+  {num:'Q09',cls:'w6',sec:'持續挑戰',title:'錯題煉獄 持續挑戰',desc:'反覆練習直到所有錯題都變成拿手題',hint:'持續刷到錯題本歸零！',url:'index.html?go=quiz'},
+];
+
+/* ═══════════════════════════════
+   時事 資料（4 世界 13 關）
+   ═══════════════════════════════ */
+const NEWS_WORLDS = [
+  {id:'nw1',cls:'w1',icon:'🌊',name:'AI革命浪潮・2022-2023',badge:'時事',levels:[
+    {num:'N01',date:'2022年11月',title:'ChatGPT橫空出世，生成式AI元年',
+     summary:'2022年11月30日，OpenAI發布ChatGPT。5天破百萬用戶，60天突破1億，成為史上成長最快的消費應用。這一刻標誌著生成式AI（Generative AI）正式進入大眾視野，也開啟了全球AI軍備競賽。',
+     points:['基於GPT-3.5的指令微調（Instruction Fine-tuning）與RLHF技術','首次讓一般人透過自然語言操控強大AI模型','引發Google、Meta、百度等科技巨頭緊急啟動對應策略','台灣數位部開始規劃AI人才培育政策，促成iPAS認證誕生'],
+     source:'OpenAI官方部落格 · openai.com/blog/chatgpt'},
+    {num:'N02',date:'2023年3月',title:'GPT-4發布：多模態與推理能力大躍進',
+     summary:'GPT-4能同時理解圖像與文字（多模態），在各種專業考試（律師、醫師、SAT）中達到人類頂尖水準。OpenAI也發布技術報告，但拒絕公開訓練細節，引發業界對透明度的討論。',
+     points:['多模態：能分析圖片、圖表、截圖等視覺內容','通過律師考試（前10%）、醫師執照考試','「護欄」機制（safety guardrails）防止有害輸出','Context window從4K大幅提升，支援長文本理解'],
+     source:'OpenAI GPT-4技術報告 · arxiv.org/abs/2303.08774'},
+    {num:'N03',date:'2022-2023年',title:'AI圖像生成革命：Midjourney & DALL-E',
+     summary:'Stable Diffusion（開源）、Midjourney（Discord社群）、DALL-E 3相繼發布，AI圖像生成品質快速超越人類平均水準，引發設計師、插畫師等創意產業的衝擊與反思。',
+     points:['擴散模型（Diffusion Model）：加噪→去噪的生成機制','Prompt工程在圖像生成中的關鍵性','著作權與AI生成物的法律爭議浮現','台灣廣告、媒體業開始評估AI圖像的商業應用'],
+     source:'Midjourney · midjourney.com'},
+  ]},
+  {id:'nw2',cls:'w3',icon:'⚔️',name:'大模型競爭時代・2023-2024',badge:'時事',levels:[
+    {num:'N04',date:'2023年3月',title:'Claude誕生：Constitutional AI的原則',
+     summary:'Anthropic（前OpenAI核心成員創辦）發布Claude，採用「憲法AI」（Constitutional AI）訓練方法——用AI自我批評並改善，而非只靠人類標注，以此打造更安全、更可信賴的模型。',
+     points:['Constitutional AI：AI依照原則列表自我審查輸出','Anthropic強調「負責任的AI發展」為核心使命','Claude 1→2→3系列快速迭代，在長文本處理上領先','iPAS考試中「AI治理與倫理」章節的重要參考案例'],
+     source:'Anthropic官網 · anthropic.com'},
+    {num:'N05',date:'2023年12月',title:'Gemini發布：Google的多模態反攻',
+     summary:'Google DeepMind發布Gemini，分為Ultra/Pro/Nano三個版本，強調「原生多模態」設計（從訓練初期就整合文字、圖像、影片、音訊），而非事後拼接。Gemini 1.5 Pro更突破100萬Token的超長上下文。',
+     points:['原生多模態 vs 後期融合：設計哲學的根本差異','Gemini 1.5 Pro：100萬Token = 約750頁A4書籍','整合入Google Workspace（Docs、Sheets、Gmail）','台灣企業使用Vertex AI存取Gemini的成本分析'],
+     source:'Google DeepMind · deepmind.google'},
+    {num:'N06',date:'2023年起',title:'開源模型崛起：LLaMA與本地部署',
+     summary:'Meta開源LLaMA系列，引爆社群衍生模型（Alpaca、Vicuna、Mistral等）。這讓中小企業和開發者可以在自己的伺服器上跑LLM，徹底打破「只有科技巨頭才能玩AI」的格局。',
+     points:['LLaMA 2/3：效能可比GPT-3.5，可商業使用','微調（Fine-tuning）讓模型快速適應特定領域','RAG（檢索增強生成）+ 本地模型的企業私有化方案','台灣政府單位開始評估本地部署以保護資料隱私'],
+     source:'Meta AI · ai.meta.com/llama'},
+    {num:'N07',date:'2024年起',title:'AI Agent時代：從問答到自主行動',
+     summary:'GPT-4配合工具呼叫（Tool Calling）、AutoGPT、LangChain等框架出現，AI從「回答問題」進化為「自主完成任務」——能搜尋網路、執行程式碼、操作系統、協調多個AI協作。',
+     points:['Agentic AI：自主規劃→工具使用→評估結果→重試的循環','Multi-agent架構：協調多個專業AI分工完成複雜任務','RAG（Retrieval-Augmented Generation）讓AI結合最新知識','iPAS中級科一重點：AI導入規劃就是在設計Agent工作流'],
+     source:'LangChain文件 · docs.langchain.com'},
+  ]},
+  {id:'nw3',cls:'w7',icon:'⚖️',name:'AI監管與台灣政策・2024-2025',badge:'時事',levels:[
+    {num:'N08',date:'2024年8月',title:'EU AI法案生效：全球AI監管里程碑',
+     summary:'歐盟《AI法案》（EU AI Act）正式生效，成為全球第一部全面性AI法規。採用「風險分層」架構，將AI系統分為不可接受風險（禁止）、高風險（嚴格規範）、有限風險和最小風險四類。',
+     points:['不可接受風險：社會信用評分、即時人臉辨識等被禁止','高風險AI：醫療、教育、就業、執法等須通過合規審查','透明義務：用戶必須被告知他們在與AI互動','罰款：違規最高3,500萬歐元或全球年營收的7%'],
+     source:'EU AI Act · artificial-intelligence-act.eu'},
+    {num:'N09',date:'2023-2026年',title:'台灣AI發展策略與iPAS認證背景',
+     summary:'行政院核定「台灣AI行動計畫2.0」，目標培育10萬AI人才。數位部與勞動部合作推動iPAS AI應用規劃師認證，作為企業AI轉型人才標準之一。考試分初級（應用面）與中級（技術面）。',
+     points:['台灣AI行動計畫2.0：產業AI化、AI產業化雙軌並行','iPAS初級：聚焦AI應用規劃、工具使用、效益評估','iPAS中級：深入AI技術原理、資料科學、模型設計','通過認證可作為企業AI轉型主導人才的資格佐證'],
+     source:'數位部AI發展政策 · moda.gov.tw'},
+    {num:'N10',date:'2025年起',title:'AI倫理與偏見：你的模型歧視了誰？',
+     summary:'多項研究發現，AI模型存在系統性偏見——徵才AI歧視女性、面部辨識對深色皮膚錯誤率更高、醫療AI對不同族裔有差異。公平性（Fairness）成為AI開發的核心指標之一。',
+     points:['訓練資料偏見：垃圾進、垃圾出（GIGO原則）','公平性指標：群體公平、個體公平、反事實公平','差分隱私（Differential Privacy）：量化隱私保護程度','iPAS中級科三重點：演算法偏見與公平性為考試必考項'],
+     source:'AI Fairness 360 · aif360.mybluemix.net'},
+  ]},
+  {id:'nw4',cls:'w8',icon:'🚀',name:'AI落地應用・2025-2026',badge:'時事',levels:[
+    {num:'N11',date:'2025年',title:'RAG成為企業AI落地標配',
+     summary:'RAG（Retrieval-Augmented Generation，檢索增強生成）讓企業能把私有文件、資料庫與LLM結合，AI回答時先搜尋企業內部知識庫再生成答案，解決「幻覺（Hallucination）」問題。',
+     points:['RAG架構：向量資料庫 + 嵌入模型（Embedding）+ LLM','解決LLM知識截止日期問題，能回答最新資料','台灣金融、法律、醫療業已大量導入RAG系統','iPAS考試：RAG為AI應用規劃的核心落地技術之一'],
+     source:'LlamaIndex文件 · docs.llamaindex.ai'},
+    {num:'N12',date:'2025-2026年',title:'AI多模態落地：看圖、聽聲、讀文同步',
+     summary:'GPT-4o、Gemini 1.5、Claude 3等模型實現真正的多模態互動——可以「看著圖說話」、「聽聲音轉文字再分析」、「影片理解」。台灣製造業、醫療影像、教育科技開始規模化部署。',
+     points:['OCR+LLM：掃描文件自動提取關鍵資訊','醫療影像AI：輔助X光、MRI判讀，但仍需醫師確認','製造業：瑕疵檢測、設備異常聲音分析','教育科技：AI老師看學生作業圖片即時批改'],
+     source:'OpenAI GPT-4o · openai.com/index/hello-gpt-4o'},
+    {num:'N13',date:'2026年',title:'2026 AI發展趨勢：你需要知道的四件事',
+     summary:'進入2026年，AI發展聚焦在「更小更快更私密」的方向：邊緣AI（手機端跑模型）、Agentic工作流規模化、AI監管合規自動化、以及「AI+領域知識」的垂直應用爆發。',
+     points:['邊緣AI（Edge AI）：Apple Intelligence、Gemini Nano在手機端運行','Agentic工作流：企業開始用AI Agent自動處理日常業務流程','AI合規工具：自動監測AI輸出是否符合EU AI Act要求','垂直AI：法律、醫療、財務領域的專業AI超越通用AI表現'],
+     source:'Gartner AI Trends 2026 · gartner.com'},
+  ]},
+];
+
+/* ═══════════════════════════════
    LocalStorage
-   ═══════════════════════════════════════ */
-function loadG(){
-  try{ return JSON.parse(localStorage.getItem(GAME_KEY)||'{}'); }catch(e){ return {}; }
-}
-function saveG(g){ localStorage.setItem(GAME_KEY, JSON.stringify(g)); }
-
+   ═══════════════════════════════ */
+function loadG(){try{return JSON.parse(localStorage.getItem(GAME_KEY)||'{}')}catch(e){return{}}}
+function saveG(g){localStorage.setItem(GAME_KEY,JSON.stringify(g))}
 function initG(){
-  let g = loadG();
-  if(!g.progress) g.progress = {};
-  if(!g.hp) g.hp = 100;
-  if(!g.streak) g.streak = 0;
-  if(!g.lastLogin) g.lastLogin = null;
-
-  const today = new Date().toISOString().slice(0,10);
-  if(g.lastLogin && g.lastLogin !== today){
-    const daysMissed = Math.floor((new Date() - new Date(g.lastLogin)) / 86400000);
-    if(daysMissed >= 2){
-      g.hp = Math.max(10, g.hp - (daysMissed - 1) * 5);
-    }
-    // streak: 若昨天有登入，+1；否則重置
-    if(daysMissed === 1){ g.streak = (g.streak||0) + 1; }
-    else { g.streak = 1; }
-  } else if(!g.lastLogin){
-    g.streak = 1;
-  }
-  g.lastLogin = today;
+  let g=loadG();
+  if(!g.progress) g.progress={};
+  if(!g.hp) g.hp=100;
+  if(!g.streak) g.streak=0;
+  if(!g.lastLogin) g.lastLogin=null;
+  if(!g.name) g.name='';
+  const today=new Date().toISOString().slice(0,10);
+  if(g.lastLogin && g.lastLogin!==today){
+    const d=Math.floor((new Date()-new Date(g.lastLogin))/86400000);
+    if(d>=2) g.hp=Math.max(10,g.hp-(d-1)*5);
+    g.streak=d===1?(g.streak||0)+1:1;
+  } else if(!g.lastLogin) g.streak=1;
+  g.lastLogin=today;
   saveG(g);
   return g;
 }
-
+function lvlKey(num){return 'g-'+num}
 function calcExp(g){
-  return WORLDS.flatMap(w=>w.levels).reduce((sum, lvl)=>{
-    const stars = (g.progress[lvlKey(lvl)]||{}).stars || 0;
-    return sum + (stars>0 ? EXP_PER_STAR[stars] : 0);
-  }, 0);
+  let exp=0;
+  const allLevels=[
+    ...GUIDE_WORLDS.flatMap(w=>w.levels.map(l=>l.num)),
+    ...QUIZ_CHU.map(l=>l.num),...QUIZ_MID.map(l=>l.num),...QUIZ_WRONG.map(l=>l.num),
+    ...NEWS_WORLDS.flatMap(w=>w.levels.map(l=>l.num))
+  ];
+  allLevels.forEach(num=>{
+    const stars=(g.progress[lvlKey(num)]||{}).stars||0;
+    if(stars>0) exp+=EXP_PER_STAR[stars];
+  });
+  return exp;
 }
 
-function lvlKey(lvl){ return 'g-'+lvl.num; }
+/* ═══════════════════════════════
+   歡迎 Modal
+   ═══════════════════════════════ */
+function checkWelcome(){
+  const g=loadG();
+  if(!g.name){
+    document.getElementById('welcome-bg').classList.remove('hide');
+    setTimeout(()=>document.getElementById('name-input').focus(),300);
+  }
+}
+function submitName(){
+  const name=document.getElementById('name-input').value.trim();
+  if(!name) return document.getElementById('name-input').focus();
+  const g=loadG(); g.name=name; saveG(g);
+  document.getElementById('welcome-input-box').classList.add('hide');
+  const greet=document.getElementById('greet-box');
+  greet.classList.remove('hide');
+  document.getElementById('greet-hi').textContent='HI，'+name+'！';
+  document.getElementById('greet-msg').innerHTML=
+    '未來的 <strong>iPAS AI 應用規劃師</strong> 您好，<br>歡迎參加這場通往 AI 的學習旅程，<br>希望您能以愉悅的心情完成各項關卡，<br>期待取證之時與您相見。🎓';
+  confetti({particleCount:80,spread:70,origin:{y:0.6},colors:['#FFD700','#4D96FF','#6BCB77']});
+}
+function closeWelcome(){
+  document.getElementById('welcome-bg').classList.add('hide');
+  render();
+}
+function resetName(){
+  if(!confirm('要更換冒險者名稱嗎？')) return;
+  const g=loadG(); g.name=''; saveG(g);
+  document.getElementById('welcome-input-box').classList.remove('hide');
+  document.getElementById('greet-box').classList.add('hide');
+  document.getElementById('name-input').value='';
+  document.getElementById('welcome-bg').classList.remove('hide');
+}
+document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')submitName();});
 
-/* ═══════════════════════════════════════
-   渲染
-   ═══════════════════════════════════════ */
-let pendingId = null;
+/* ═══════════════════════════════
+   賽道切換
+   ═══════════════════════════════ */
+let currentTrack=1;
+function switchTrack(n){
+  currentTrack=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('tab'+i).classList.toggle('active',i===n);
+    document.getElementById('track'+i).classList.toggle('active',i===n);
+  });
+}
+let currentQuizSub='chu';
+function switchQuizTrack(sub){
+  currentQuizSub=sub;
+  ['chu','mid','wrong'].forEach(s=>{
+    document.getElementById('qsel-'+s).classList.toggle('active',s===sub);
+    document.getElementById('quiz-'+s+'-section').style.display=s===sub?'block':'none';
+  });
+}
 
-function render(){
-  const g = initG();
-
-  // 倒數
-  const daysLeft = Math.max(0, Math.floor((EXAM_DATE - new Date()) / 86400000));
-  document.getElementById('hud-days').textContent = daysLeft;
-  document.getElementById('hud-streak').textContent = (g.streak||0) + '天';
-
-  // EXP
-  const exp = calcExp(g);
-  document.getElementById('hud-exp').textContent = exp;
-  document.getElementById('exp-label-r').textContent = exp + ' / ' + MAX_EXP;
-  document.getElementById('exp-fill').style.width = Math.min(100, Math.round(exp/MAX_EXP*100)) + '%';
-
-  // HP
-  const hp = g.hp;
-  document.getElementById('hud-hp').textContent = hp + '%';
-  const hpFill = document.getElementById('hp-fill');
-  hpFill.style.width = hp + '%';
-  hpFill.style.background = hp>60 ? 'linear-gradient(90deg,#6BCB77,#44B853)' : hp>30 ? 'linear-gradient(90deg,#FF9F43,#E8861F)' : 'linear-gradient(90deg,#FF6B6B,#FF4757)';
-
+/* ═══════════════════════════════
+   HUD 更新
+   ═══════════════════════════════ */
+function updateHUD(g){
+  const days=Math.max(0,Math.floor((EXAM_DATE-new Date())/86400000));
+  document.getElementById('hud-days').textContent=days;
+  document.getElementById('hud-streak').textContent=(g.streak||0)+'天';
+  const exp=calcExp(g);
+  document.getElementById('hud-exp').textContent=exp;
+  document.getElementById('exp-label-r').textContent=exp+' / 9450';
+  document.getElementById('exp-fill').style.width=Math.min(100,Math.round(exp/9450*100))+'%';
+  const hp=g.hp;
+  document.getElementById('hud-hp').textContent=hp+'%';
+  const hpFill=document.getElementById('hp-fill');
+  hpFill.style.width=hp+'%';
+  hpFill.style.background=hp>60?'linear-gradient(90deg,#6BCB77,#44B853)':hp>30?'linear-gradient(90deg,#FF9F43,#E8861F)':'linear-gradient(90deg,#FF6B6B,#FF4757)';
+  // 名字
+  const nameEl=document.getElementById('hud-name');
+  nameEl.textContent='👤 '+(g.name||'設定名稱');
   // 通關數
-  const allLevels = WORLDS.flatMap(w=>w.levels);
-  const doneCnt = allLevels.filter(l=>(g.progress[lvlKey(l)]||{}).stars>0).length;
-  document.getElementById('hud-done').textContent = doneCnt + '/41';
-
-  // 地圖
-  renderMap(g);
+  const allNums=[
+    ...GUIDE_WORLDS.flatMap(w=>w.levels.map(l=>l.num)),
+    ...QUIZ_CHU.map(l=>l.num),...QUIZ_MID.map(l=>l.num),...QUIZ_WRONG.map(l=>l.num),
+    ...NEWS_WORLDS.flatMap(w=>w.levels.map(l=>l.num))
+  ];
+  const doneCnt=allNums.filter(n=>(g.progress[lvlKey(n)]||{}).stars>0).length;
+  document.getElementById('hud-done').textContent=doneCnt+'/'+TOTAL_LEVELS;
 }
 
-function renderMap(g){
-  const container = document.getElementById('map-container');
-  container.innerHTML = '';
+/* ═══════════════════════════════
+   Tab 進度更新
+   ═══════════════════════════════ */
+function updateTabs(g){
+  const g1Total=41, g1Done=GUIDE_WORLDS.flatMap(w=>w.levels).filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  const q1Total=9, q1Done=[...QUIZ_CHU,...QUIZ_MID,...QUIZ_WRONG].filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  const n1Total=13, n1Done=NEWS_WORLDS.flatMap(w=>w.levels).filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  document.getElementById('tab1-prog').textContent=g1Done+'/'+g1Total+' 關';
+  document.getElementById('tab2-prog').textContent=q1Done+'/'+q1Total+' 關';
+  document.getElementById('tab3-prog').textContent=n1Done+'/'+n1Total+' 關';
+  // 鎖定邏輯
+  const quiz2Unlocked=g1Done>=41;
+  const news3Unlocked=q1Done>=9;
+  const lockQuiz=document.getElementById('lock-banner-quiz');
+  const lockNews=document.getElementById('lock-banner-news');
+  const qWrap=document.getElementById('quiz-selector-wrap');
+  if(!quiz2Unlocked){
+    lockQuiz.classList.remove('hide');
+    document.getElementById('lock-remain').textContent=(41-g1Done);
+    qWrap.style.opacity='.4';
+    qWrap.style.pointerEvents='none';
+  } else {
+    lockQuiz.classList.add('hide');
+    qWrap.style.opacity='';
+    qWrap.style.pointerEvents='';
+  }
+  const newsContainer=document.getElementById('news-container');
+  if(!news3Unlocked){
+    lockNews.classList.remove('hide');
+    document.getElementById('lock-remain-news').textContent=(9-q1Done);
+    if(newsContainer) newsContainer.style.opacity='.4';
+    if(newsContainer) newsContainer.style.pointerEvents='none';
+  } else {
+    lockNews.classList.add('hide');
+    if(newsContainer) newsContainer.style.opacity='';
+    if(newsContainer) newsContainer.style.pointerEvents='';
+  }
+}
 
-  WORLDS.forEach(world => {
-    const wEl = document.createElement('div');
-    wEl.className = 'world';
-
-    // 計算世界進度
-    const wDone = world.levels.filter(l=>(g.progress[lvlKey(l)]||{}).stars>0).length;
-    const wPerf = world.levels.filter(l=>(g.progress[lvlKey(l)]||{}).stars===3).length;
-    const wTotal = world.levels.length;
-    const wClear = wDone === wTotal;
-
-    // World Clear Banner
-    if(wClear){
-      const cb = document.createElement('div');
-      cb.className = 'world-clear-banner';
-      cb.innerHTML = `<div class="wcb-icon">🏆</div><div class="wcb-text"><h4>World Clear！${world.icon} ${world.name.split('・')[1]||world.name}</h4><p>完成 ${wTotal}/${wTotal} 關・完美 ${wPerf} 關 — 繼續前進！</p></div>`;
+/* ═══════════════════════════════
+   渲染學習指引地圖
+   ═══════════════════════════════ */
+function renderGuideMap(g){
+  const container=document.getElementById('map-container');
+  container.innerHTML='';
+  GUIDE_WORLDS.forEach(world=>{
+    const wDone=world.levels.filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+    const wPerf=world.levels.filter(l=>(g.progress[lvlKey(l.num)]||{}).stars===3).length;
+    const wEl=document.createElement('div');
+    wEl.className='world';
+    if(wDone===world.levels.length){
+      const cb=document.createElement('div');
+      cb.className='world-clear-banner';
+      cb.innerHTML='<div class="wcb-icon">🏆</div><div class="wcb-text"><h4>World Clear！'+world.name+'</h4><p>完成 '+wDone+'/'+world.levels.length+' 關</p></div>';
       wEl.appendChild(cb);
     }
-
-    // Banner
-    const banner = document.createElement('div');
-    banner.className = `world-banner ${world.cls}`;
-    banner.innerHTML = `
-      <div class="wb-icon">${world.icon}</div>
-      <div class="wb-info">
-        <div class="wb-name">${world.name}</div>
-        <div class="wb-sub"><span style="background:rgba(255,255,255,.25);border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700">${world.badge}</span>　${world.levels.length} 個關卡</div>
-      </div>
-      <div class="wb-prog">
-        <div class="wp-num">${wDone}<span style="font-size:13px;font-weight:600;opacity:.8">/${wTotal}</span></div>
-        <div class="wp-lbl">通關數</div>
-        ${wPerf>0 ? `<div class="world-clear">⭐ 完美 ${wPerf}</div>` : ''}
-      </div>`;
+    const banner=document.createElement('div');
+    banner.className='world-banner '+world.cls;
+    banner.innerHTML='<div class="wb-icon">'+world.icon+'</div><div class="wb-info"><div class="wb-name">'+world.name+'</div><div class="wb-sub"><span style="background:rgba(255,255,255,.25);border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700">'+world.badge+'</span>　'+world.levels.length+' 個關卡</div></div><div class="wb-prog"><div class="wp-num">'+wDone+'<span style="font-size:13px;font-weight:600;opacity:.8">/'+world.levels.length+'</span></div><div class="wp-lbl">通關數</div>'+(wPerf>0?'<div class="world-clear-chip">⭐ 完美 '+wPerf+'</div>':'')+'</div>';
     wEl.appendChild(banner);
-
-    // 關卡格線
-    const grid = document.createElement('div');
-    grid.className = 'quest-grid';
-
-    world.levels.forEach(lvl => {
-      const key = lvlKey(lvl);
-      const prog = g.progress[key] || {};
-      const stars = prog.stars || 0;
-      const done = stars > 0;
-      const perfect = stars === 3;
-
-      const card = document.createElement('div');
-      card.className = `qcard ${world.cls}` + (perfect ? ' perfect' : done ? ' done' : '');
-
-      const starRow = done
-        ? '⭐'.repeat(stars) + '🫙'.repeat(3-stars)
-        : '<span style="color:#ccc;font-size:12px">尚未通關</span>';
-
-      const statusBadge = perfect
-        ? '<span class="status-badge sb-perfect">👑 完美</span>'
-        : done
-        ? '<span class="status-badge sb-done">✓ 通關</span>'
-        : '<span class="status-badge sb-new">NEW</span>';
-
-      const expGained = done ? EXP_PER_STAR[stars] : 0;
-      const url = `index.html?go=guide&gidx=${world.gidx}&sidx=${lvl.sid}`;
-
-      card.innerHTML = `
-        <div class="qc-head">
-          <div class="qc-lvnum ${done?'lit':''}">${lvl.num}</div>
-          <div class="qc-meta">
-            <div class="qc-sec">${world.name.split('・')[0]} · ${lvl.sec}</div>
-            <div class="qc-title">${lvl.title}</div>
-            <div class="qc-desc">${lvl.desc}</div>
-          </div>
-        </div>
-        <div class="qc-status">
-          <div class="stars-row">${starRow}</div>
-          ${statusBadge}
-          ${done ? `<div class="qc-exp">+${expGained} EXP</div>` : ''}
-        </div>
-        <div class="qc-btns">
-          <a href="${url}" target="_blank" class="qbtn go">🚀 開始關卡</a>
-          <button class="qbtn punch" onclick="openModal('${key}','${lvl.title}')">🚩 打卡通關</button>
-        </div>`;
-
+    const grid=document.createElement('div');
+    grid.className='quest-grid';
+    world.levels.forEach(lvl=>{
+      const key=lvlKey(lvl.num);
+      const stars=(g.progress[key]||{}).stars||0;
+      const done=stars>0,perfect=stars===3;
+      const card=document.createElement('div');
+      card.className='qcard '+world.cls+(perfect?' perfect':done?' done':'');
+      const starRow=done?'⭐'.repeat(stars)+'🫙'.repeat(3-stars):'<span style="color:#ccc;font-size:12px">尚未通關</span>';
+      const badge=perfect?'<span class="status-badge sb-perfect">👑 完美</span>':done?'<span class="status-badge sb-done">✓ 通關</span>':'<span class="status-badge sb-new">NEW</span>';
+      const url='index.html?go=guide&gidx='+world.gidx+'&sidx='+lvl.sid;
+      card.innerHTML='<div class="qc-head"><div class="qc-lvnum'+(done?' lit':'')+'">'+lvl.num+'</div><div class="qc-meta"><div class="qc-sec">'+world.name.split('・')[0]+' · '+lvl.sec+'</div><div class="qc-title">'+lvl.title+'</div><div class="qc-desc">'+lvl.desc+'</div></div></div><div class="qc-status"><div class="stars-row">'+starRow+'</div>'+badge+(done?'<div class="qc-exp">+'+EXP_PER_STAR[stars]+' EXP</div>':'')+'</div><div class="qc-btns"><a href="'+url+'" target="_blank" class="qbtn go">🚀 開始關卡</a><button class="qbtn punch" onclick="openModal(\''+key+'\',\''+lvl.title+'\')">🚩 打卡通關</button></div>';
       grid.appendChild(card);
     });
-
     wEl.appendChild(grid);
     container.appendChild(wEl);
   });
 }
 
-/* ═══════════════════════════════════════
-   Modal
-   ═══════════════════════════════════════ */
-function openModal(key, title){
-  pendingId = key;
-  document.getElementById('modal-title').textContent = '「' + title + '」';
+/* ═══════════════════════════════
+   渲染考古題
+   ═══════════════════════════════ */
+function renderQuizSection(levels,containerId,cls,g){
+  const container=document.getElementById(containerId);
+  container.innerHTML='';
+  // 錯題統計
+  if(containerId==='quiz-wrong-section'){
+    try{
+      const nb=JSON.parse(localStorage.getItem('ipas_nb_v1')||'{}');
+      const wrongCount=Object.values(nb).filter(v=>v&&v.wrong).length;
+      const stat=document.createElement('div');
+      stat.className='wrong-stat';
+      stat.innerHTML='<div class="ws-num">'+wrongCount+'</div><div class="ws-info"><div class="ws-title">目前錯題數</div><div class="ws-sub">進考古題→點「❌ 錯題」模式即可刷錯題</div></div>';
+      container.appendChild(stat);
+    }catch(e){}
+  }
+  const grid=document.createElement('div');
+  grid.className='quest-grid';
+  levels.forEach(lvl=>{
+    const key=lvlKey(lvl.num);
+    const stars=(g.progress[key]||{}).stars||0;
+    const done=stars>0,perfect=stars===3;
+    const card=document.createElement('div');
+    card.className='qcard '+lvl.cls+(perfect?' perfect':done?' done':'');
+    const starRow=done?'⭐'.repeat(stars)+'🫙'.repeat(3-stars):'<span style="color:#ccc;font-size:12px">尚未通關</span>';
+    const badge=perfect?'<span class="status-badge sb-perfect">👑 完美</span>':done?'<span class="status-badge sb-done">✓ 通關</span>':'<span class="status-badge sb-new">NEW</span>';
+    card.innerHTML='<div class="qc-head"><div class="qc-lvnum'+(done?' lit':'')+'">'+lvl.num+'</div><div class="qc-meta"><div class="qc-sec">'+lvl.sec+'</div><div class="qc-title">'+lvl.title+'</div><div class="qc-desc">'+lvl.desc+'</div>'+(lvl.hint?'<div class="qc-hint">💡 '+lvl.hint+'</div>':'')+'</div></div><div class="qc-status"><div class="stars-row">'+starRow+'</div>'+badge+(done?'<div class="qc-exp">+'+EXP_PER_STAR[stars]+' EXP</div>':'')+'</div><div class="qc-btns"><a href="'+(lvl.url||'index.html?go=quiz')+'" target="_blank" class="qbtn go">🚀 前往考題</a><button class="qbtn punch" onclick="openModal(\''+key+'\',\''+lvl.title+'\')">🚩 打卡通關</button></div>';
+    grid.appendChild(card);
+  });
+  container.appendChild(grid);
+}
+
+/* ═══════════════════════════════
+   渲染時事關卡
+   ═══════════════════════════════ */
+function renderNewsMap(g){
+  const container=document.getElementById('news-container');
+  container.innerHTML='';
+  NEWS_WORLDS.forEach(world=>{
+    const wDone=world.levels.filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+    const wEl=document.createElement('div');
+    wEl.className='world';
+    if(wDone===world.levels.length){
+      const cb=document.createElement('div');
+      cb.className='world-clear-banner';
+      cb.innerHTML='<div class="wcb-icon">🏆</div><div class="wcb-text"><h4>World Clear！'+world.name+'</h4><p>完成 '+wDone+'/'+world.levels.length+' 關</p></div>';
+      wEl.appendChild(cb);
+    }
+    const banner=document.createElement('div');
+    banner.className='world-banner '+world.cls;
+    banner.innerHTML='<div class="wb-icon">'+world.icon+'</div><div class="wb-info"><div class="wb-name">'+world.name+'</div><div class="wb-sub"><span style="background:rgba(255,255,255,.25);border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700">'+world.badge+'</span>　'+world.levels.length+' 個關卡</div></div><div class="wb-prog"><div class="wp-num">'+wDone+'<span style="font-size:13px;font-weight:600;opacity:.8">/'+world.levels.length+'</span></div><div class="wp-lbl">通關數</div></div>';
+    wEl.appendChild(banner);
+    const grid=document.createElement('div');
+    grid.className='quest-grid';
+    world.levels.forEach(lvl=>{
+      const key=lvlKey(lvl.num);
+      const stars=(g.progress[key]||{}).stars||0;
+      const done=stars>0,perfect=stars===3;
+      const card=document.createElement('div');
+      card.className='qcard '+world.cls+(perfect?' perfect':done?' done':'');
+      const starRow=done?'⭐'.repeat(stars)+'🫙'.repeat(3-stars):'<span style="color:#ccc;font-size:12px">尚未通關</span>';
+      const badge=perfect?'<span class="status-badge sb-perfect">👑 完美</span>':done?'<span class="status-badge sb-done">✓ 通關</span>':'<span class="status-badge sb-new">NEW</span>';
+      card.innerHTML='<div class="qc-head"><div class="qc-lvnum'+(done?' lit':'')+'">'+lvl.num+'</div><div class="qc-meta"><div class="qc-sec">'+lvl.date+'</div><div class="qc-title">'+lvl.title+'</div><div class="qc-desc">'+lvl.summary.slice(0,55)+'…</div></div></div><div class="qc-status"><div class="stars-row">'+starRow+'</div>'+badge+(done?'<div class="qc-exp">+'+EXP_PER_STAR[stars]+' EXP</div>':'')+'</div><div class="qc-btns"><button class="qbtn go news" onclick="openNews('+JSON.stringify(lvl.num)+')">📖 閱讀關卡</button><button class="qbtn punch" onclick="openModal(\''+key+'\',\''+lvl.title+'\')">🚩 打卡通關</button></div>';
+      grid.appendChild(card);
+    });
+    wEl.appendChild(grid);
+    container.appendChild(wEl);
+  });
+}
+
+/* ═══════════════════════════════
+   時事 Modal
+   ═══════════════════════════════ */
+let currentNewsKey=null;
+function openNews(num){
+  const lvl=NEWS_WORLDS.flatMap(w=>w.levels).find(l=>l.num===num);
+  if(!lvl) return;
+  currentNewsKey=lvlKey(num);
+  document.getElementById('nm-date').textContent=lvl.date;
+  document.getElementById('nm-title').textContent=lvl.title;
+  document.getElementById('nm-summary').textContent=lvl.summary;
+  document.getElementById('nm-source').innerHTML='📎 資料來源：'+lvl.source;
+  const pts=document.getElementById('nm-points');
+  pts.innerHTML='';
+  lvl.points.forEach(p=>{const d=document.createElement('div');d.className='nm-point';d.textContent=p;pts.appendChild(d);});
+  document.getElementById('news-modal-bg').classList.remove('hide');
+}
+function closeNewsModal(){
+  currentNewsKey=null;
+  document.getElementById('news-modal-bg').classList.add('hide');
+}
+function openModalFromNews(){
+  const key=currentNewsKey;
+  const num=key?key.replace('g-',''):'';
+  const lvl=NEWS_WORLDS.flatMap(w=>w.levels).find(l=>l.num===num);
+  closeNewsModal();
+  if(lvl) openModal(key,lvl.title);
+}
+
+/* ═══════════════════════════════
+   打卡 Modal
+   ═══════════════════════════════ */
+let pendingId=null;
+function openModal(key,title){
+  pendingId=key;
+  document.getElementById('modal-title').textContent='「'+title+'」';
   document.getElementById('modal-bg').classList.remove('hide');
 }
-function closeModal(){
-  pendingId = null;
-  document.getElementById('modal-bg').classList.add('hide');
-}
+function closeModal(){pendingId=null;document.getElementById('modal-bg').classList.add('hide');}
 function submitStar(stars){
   if(!pendingId) return;
-  const g = loadG();
-  const old = (g.progress[pendingId]||{}).stars || 0;
-  g.progress[pendingId] = {stars, date: new Date().toISOString().slice(0,10)};
-  // HP & Streak
-  if(stars > old){
-    if(stars===3){ g.hp = Math.min(100, g.hp + 15); }
-    else if(stars===2){ g.hp = Math.min(100, g.hp + 5); }
+  const g=loadG();
+  const old=(g.progress[pendingId]||{}).stars||0;
+  g.progress[pendingId]={stars,date:new Date().toISOString().slice(0,10)};
+  if(stars>old){
+    if(stars===3) g.hp=Math.min(100,g.hp+15);
+    else if(stars===2) g.hp=Math.min(100,g.hp+5);
   }
   saveG(g);
   closeModal();
-  if(stars >= 2){
-    confetti({particleCount: stars===3?180:80, spread:75, origin:{y:0.6},
-      colors: stars===3 ? ['#FFD700','#FFA500','#FF6B6B','#4D96FF'] : ['#6BCB77','#4D96FF']});
-  }
+  if(stars>=2) confetti({particleCount:stars===3?180:80,spread:75,origin:{y:0.6},colors:stars===3?['#FFD700','#FFA500','#FF6B6B','#4D96FF']:['#6BCB77','#4D96FF']});
   render();
 }
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeNewsModal();}});
 
-/* ═══════════════════════════════════════
-   啟動
-   ═══════════════════════════════════════ */
+/* ═══════════════════════════════
+   主渲染
+   ═══════════════════════════════ */
+function render(){
+  const g=initG();
+  updateHUD(g);
+  updateTabs(g);
+  renderGuideMap(g);
+  renderQuizSection(QUIZ_CHU,'quiz-chu-section','w1',g);
+  renderQuizSection(QUIZ_MID,'quiz-mid-section','w3',g);
+  renderQuizSection(QUIZ_WRONG,'quiz-wrong-section','w6',g);
+  renderNewsMap(g);
+}
+
+// 啟動
+checkWelcome();
 render();
 </script>
 </body>

@@ -1889,7 +1889,16 @@ $$('.nav button').forEach(b=>b.onclick=()=>{
   if(go){const b=document.querySelector(`[data-go="${go}"]`);if(b)b.click();}
   const gi=sp.get('gidx');
   /* gidx 需等 let guideIdx / renderGuide() 宣告後才能呼叫，用 setTimeout 跳出 TDZ */
-  if(gi!=null){setTimeout(function(){try{guideIdx=parseInt(gi)||0;renderGuide();}catch(e){}},150);}
+  if(gi!=null){setTimeout(function(){try{
+    guideIdx=parseInt(gi)||0;renderGuide();
+    /* sidx: 自動展開對應 section */
+    const si=parseInt(new URLSearchParams(location.search).get('sidx'));
+    if(!isNaN(si)){setTimeout(function(){
+      const secs=document.querySelectorAll('#guide-sections .gsec');
+      secs.forEach((s,i)=>{if(i===si)s.classList.add('open');else s.classList.remove('open');});
+      if(secs[si])secs[si].scrollIntoView({behavior:'smooth',block:'start'});
+    },200);}
+  }catch(e){}},150);}
 })();
 
 /* ---- countdown ---- */

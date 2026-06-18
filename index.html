@@ -561,6 +561,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <div class="info-card"><h4>💕 Vicky 社群</h4><p>由 Vicky Mommy 玲玲經營的 AI 學習社群，含 iPAS 獲證者訪談影片牆、官方頻道、LINE 入群 QR code。</p></div>
     <div class="info-card"><h4>🗺 AI人才</h4><p>依數位發展部《AI產業人才認定指引 3.0》整理的人才地圖，幫你定位學習方向與對應證照。</p></div>
     <div class="info-card"><h4>⚔️ 技術擂台</h4><p>初級 13 組 ＋ 中級 20 組，共 <b>33 組</b>官方技術對決卡片。嚴格依據初級（科目一、二）＋ 中級（科目一、二、三）官方學習指引及勘誤表撰寫。每組對決並列核心優勢、致命弱點，是考前快速掌握「技術取捨邏輯」的利器。</p></div>
+    <div class="info-card" style="border-top:3px solid #ff6b6b"><h4>🗺️ 闖關地圖</h4><p>獨立遊戲化頁面（<code>game.html</code>），三大賽道共 <b>66 關</b>全覆蓋：</p><ul style="margin:6px 0 0 16px;font-size:13px;line-height:1.8"><li>📚 <b>第一賽道</b>：官方學習指引 41 關（5 大世界，每節一關）</li><li>📝 <b>第二賽道</b>：考古題挑戰 9 關（初級3＋中級4＋錯題2，完成第一賽道解鎖）</li><li>📰 <b>第三賽道</b>：時事關卡 16 關（2022～2026 AI 大事記，完成第二賽道解鎖）</li></ul><p style="margin-top:8px">通關後顯示專屬鼓勵語；HP 血條、連續天數、EXP 進度全程追蹤。紀錄存於本機瀏覽器，請在一般模式使用。</p></div>
   </div>
 
   <h2><span class="bar"></span>建議備考流程（30 天）</h2>
@@ -2406,26 +2407,4 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaMo
 <!-- 🎮 特訓營回返懸浮按鈕（當由 game.html 帶 ?go= 參數開啟時顯示） -->
 <div id="game-back-btn" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999">
   <button onclick="window.close()" style="
-    background:linear-gradient(135deg,#ff6b6b,#ff4757);
-    color:#fff;border:3px solid #000;
-    box-shadow:4px 4px 0 #000;
-    border-radius:14px;padding:10px 16px;
-    font-size:13px;font-weight:900;
-    cursor:pointer;display:flex;align-items:center;gap:6px;
-    font-family:inherit;transition:.15s;
-  " onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='6px 6px 0 #000'"
-     onmouseout="this.style.transform='';this.style.boxShadow='4px 4px 0 #000'">
-    🎮 複習完畢・回特訓營
-  </button>
-</div>
-<script>
-/* 偵測從 game.html 帶 ?go= 開啟，顯示回返按鈕 */
-(function(){
-  if(new URLSearchParams(location.search).get('go')){
-    var btn=document.getElementById('game-back-btn');
-    if(btn)btn.style.display='block';
-  }
-})();
-</script>
-</body>
-</html>
+    background:linear-gradient(135deg,#ff6b6b,

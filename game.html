@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- iPAS 學習副本地圖 v4.0 (2026-06-19) — 四合一升級 -->
+<!-- iPAS 學習副本地圖 v4.4 (2026-06-19) — 分級解鎖重構 -->
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -84,12 +84,21 @@ a{text-decoration:none;color:inherit}
 .lock-banner .lb-icon{font-size:36px;margin-bottom:8px;display:block}
 .lock-banner h3{font-size:16px;font-weight:900;color:#FF4757;margin-bottom:4px}
 .lock-banner p{font-size:12px;color:#666}
+.lock-banner-warn{background:linear-gradient(135deg,#FF9F4322,#FF9F4311);border:2px dashed #FF9F4355;border-radius:14px;padding:16px;text-align:center;margin-bottom:16px}
+.lock-banner-warn .lb-icon{font-size:28px;margin-bottom:6px;display:block}
+.lock-banner-warn h3{font-size:14px;font-weight:900;color:#FF9F43;margin-bottom:4px}
+.lock-banner-warn p{font-size:11px;color:#888}
 
 /* ── 考古題 Selector ── */
 .quiz-selector{display:flex;gap:10px;margin-bottom:20px}
 .qsel-btn{flex:1;padding:12px;border:2px solid #e0e0e0;border-radius:12px;background:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;text-align:center}
 .qsel-btn.active{border-color:#4D96FF;background:#F0F4FF;color:#4D96FF}
 .qsel-btn:hover{border-color:#4D96FF}
+
+/* ── 錯題煉獄分隔線 ── */
+.wrong-divider{display:flex;align-items:center;gap:12px;margin:24px 0 16px}
+.wrong-divider::before,.wrong-divider::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,transparent,#FF6B6B55)}
+.wrong-divider span{font-size:13px;font-weight:900;color:#FF4757;white-space:nowrap;padding:6px 16px;background:#FFF0F0;border:2px solid #FF6B6B44;border-radius:20px}
 
 /* ── World ── */
 .world{margin-bottom:32px}
@@ -275,7 +284,7 @@ a{text-decoration:none;color:inherit}
 <div class="track-section active" id="track1">
   <div class="intro-card">
     <h2>📚 第一賽道：官方學習指引（41 關）</h2>
-    <p>官方學習指引全 41 節，拆成 41 個副本關卡。初級 7 關、中級 34 關，完成後解鎖考古題賽道！</p>
+    <p>官方學習指引全 41 節，拆成 41 個副本關卡。初級 7 關、中級 34 關，完成後各自解鎖對應考古題賽道！</p>
     <div class="intro-steps">
       <div class="step-tag"><b>Step 1</b> 點「🚀 開始關卡」跳到對應章節</div>
       <div class="step-tag"><b>Step 2</b> 讀完後回來點「🚩 打卡通關」</div>
@@ -289,27 +298,52 @@ a{text-decoration:none;color:inherit}
 <div class="track-section" id="track2">
   <div class="intro-card" style="border-color:#FF9F43">
     <h2>📝 第二賽道：考古題挑戰（9 關）</h2>
-    <p>系統刷完全部 463 題考古題！寫錯的題目進「🔴 錯題煉獄」持續挑戰。完成第一賽道後解鎖。</p>
+    <p>初級考古題（Q01-Q03）在完成初級學習指引 7 關後解鎖；中級考古題（Q04-Q07）在完成中級學習指引 34 關後解鎖。各自的錯題煉獄在對應考古題全部通關後開放。完成任一考古題即解鎖時事賽道！</p>
     <div class="intro-steps">
-      <div class="step-tag"><b>Step 1</b> 選初級或中級賽道</div>
-      <div class="step-tag"><b>Step 2</b> 點「🚀 前往考題」在主站選對應科目</div>
-      <div class="step-tag"><b>Step 3</b> 做完一輪後回來打卡</div>
+      <div class="step-tag"><b>初級解鎖</b> 完成初級學習指引 7 關</div>
+      <div class="step-tag"><b>中級解鎖</b> 完成中級學習指引 34 關</div>
+      <div class="step-tag"><b>時事解鎖</b> 完成初級或中級考古題任一</div>
     </div>
-  </div>
-  <div id="lock-banner-quiz" class="lock-banner hide">
-    <span class="lb-icon">🔒</span>
-    <h3>完成學習指引後解鎖</h3>
-    <p>還需完成 <strong id="lock-remain">?</strong> 個學習指引關卡</p>
   </div>
   <div id="quiz-selector-wrap">
     <div class="quiz-selector">
-      <button class="qsel-btn active" id="qsel-chu" onclick="switchQuizTrack('chu')">🏆 初級考古題</button>
-      <button class="qsel-btn" id="qsel-mid" onclick="switchQuizTrack('mid')">⚔️ 中級考古題</button>
-      <button class="qsel-btn" id="qsel-wrong" onclick="switchQuizTrack('wrong')">🔴 錯題煉獄</button>
+      <button class="qsel-btn active" id="qsel-chu" onclick="switchQuizTrack('chu')">🏆 初級</button>
+      <button class="qsel-btn" id="qsel-mid" onclick="switchQuizTrack('mid')">⚔️ 中級</button>
     </div>
-    <div id="quiz-chu-section"></div>
-    <div id="quiz-mid-section" style="display:none"></div>
-    <div id="quiz-wrong-section" style="display:none"></div>
+    <!-- 初級考古題 -->
+    <div id="quiz-chu-section">
+      <div id="quiz-chu-lock" class="lock-banner hide">
+        <span class="lb-icon">🔒</span>
+        <h3>完成初級學習指引後解鎖</h3>
+        <p>還需完成 <span id="lock-chu-remain">7</span> 個初級學習指引關卡（01-07）</p>
+      </div>
+      <div id="quiz-chu-content"></div>
+      <!-- 初級錯題煉獄 -->
+      <div class="wrong-divider"><span>🔴 初級錯題煉獄</span></div>
+      <div id="quiz-chu-wrong-lock" class="lock-banner-warn">
+        <span class="lb-icon">🔒</span>
+        <h3>完成初級考古題後解鎖</h3>
+        <p>Q01、Q02、Q03 全部通關後，初級錯題煉獄開放</p>
+      </div>
+      <div id="quiz-chu-wrong-content"></div>
+    </div>
+    <!-- 中級考古題 -->
+    <div id="quiz-mid-section" style="display:none">
+      <div id="quiz-mid-lock" class="lock-banner hide">
+        <span class="lb-icon">🔒</span>
+        <h3>完成中級學習指引後解鎖</h3>
+        <p>還需完成 <span id="lock-mid-remain">34</span> 個中級學習指引關卡（08-41）</p>
+      </div>
+      <div id="quiz-mid-content"></div>
+      <!-- 中級錯題煉獄 -->
+      <div class="wrong-divider"><span>🔴 中級錯題煉獄</span></div>
+      <div id="quiz-mid-wrong-lock" class="lock-banner-warn">
+        <span class="lb-icon">🔒</span>
+        <h3>完成中級考古題後解鎖</h3>
+        <p>Q04、Q05、Q06、Q07 全部通關後，中級錯題煉獄開放</p>
+      </div>
+      <div id="quiz-mid-wrong-content"></div>
+    </div>
   </div>
 </div>
 
@@ -317,7 +351,7 @@ a{text-decoration:none;color:inherit}
 <div class="track-section" id="track3">
   <div class="intro-card" style="border-color:#1ABC9C">
     <h2>📰 第三賽道：時事關卡（16 關）</h2>
-    <p>從 ChatGPT 到 2026 AI 新紀元，考試愛考的 AI 時事全在這裡！完成第二賽道後解鎖。</p>
+    <p>從 ChatGPT 到 2026 AI 新紀元，考試愛考的 AI 時事全在這裡！完成初級考古題或中級考古題任一後解鎖。</p>
     <div class="intro-steps">
       <div class="step-tag"><b>Step 1</b> 點「📖 閱讀關卡」開啟時事摘要</div>
       <div class="step-tag"><b>Step 2</b> 讀完重點後回來打卡</div>
@@ -326,8 +360,8 @@ a{text-decoration:none;color:inherit}
   </div>
   <div id="lock-banner-news" class="lock-banner hide">
     <span class="lb-icon">🔒</span>
-    <h3>完成考古題賽道後解鎖</h3>
-    <p>還需完成 <strong id="lock-remain-news">?</strong> 個考古題關卡</p>
+    <h3>完成考古題後解鎖</h3>
+    <p>完成初級考古題（Q01-Q03）或中級考古題（Q04-Q07）任一即可解鎖</p>
   </div>
   <div id="news-container"></div>
 </div>
@@ -376,20 +410,17 @@ a{text-decoration:none;color:inherit}
 const EXAM_DATE=new Date('2026-08-15T09:00:00+08:00');
 const GAME_KEY='ipas_game_v2';
 const EXP_PER_STAR={1:60,2:100,3:150};
-const TOTAL_LEVELS=66; // 41+9+16
+const TOTAL_LEVELS=66;
 
 /* ═══ 鼓勵語 ═══ */
 const CHEERS={
-  // 初級科一 (01-04)
   'g-01':'第一步最難，但你踏出去了。AI 的大門正在為你敞開。',
   'g-02':'連闖兩關！資料是 AI 的原料，你開始懂得如何料理它了。',
   'g-03':'機器學習通關！監督、非監督、強化——三種學習方式你都懂了。',
   'g-04':'🎯 初級科一制霸！鑑別式與生成式 AI 你說得清楚了！',
-  // 初級科二 (05-07)
   'g-05':'初級科二啟動！Low code、No code——這是數位轉型的語言，你開口了。',
   'g-06':'六關完成！生成式 AI 的應用領域——這是職場最前線的知識，你掌握了。',
-  'g-07':'🏆 初級全科制霸！AI 導入評估、規劃風險——你已具備 AI 應用規劃師的初級思維！中級正在呼喚你！',
-  // 中級科一 (08-16)
+  'g-07':'🏆 初級全科制霸！AI 導入評估、規劃風險——你已具備 AI 應用規劃師的初級思維！初級考古題現在為你解鎖！',
   'g-08':'中級正式啟動！NLP 的大門打開了，Transformer、LLM——這是 AI 語言的心臟。',
   'g-09':'電腦視覺通關！影像分類、目標偵測——AI 的「眼睛」你開始看懂了。',
   'g-10':'生成式 AI 技術掌握！GAN、擴散模型——你正在理解 AI 的創造力從何而來。',
@@ -399,7 +430,6 @@ const CHEERS={
   'g-14':'AI 風險管理通關！能看見風險的人，才是真正負責任的規劃師。',
   'g-15':'數據準備與模型選擇完成！特徵工程是 AI 的靈魂，你開始讀懂它了。',
   'g-16':'🎯 中級科一制霸！9 關全征服！AI 系統集成與部署——從概念到落地，你有完整圖像了！',
-  // 中級科二 (17-29)
   'g-17':'中級科二啟動！統計學不只是數學，它是 AI 理解世界的語言。',
   'g-18':'機率分佈掌握！常態分佈、中央極限——這些數字背後，是 AI 做決策的依據。',
   'g-19':'假設檢定通關！T 檢定、ANOVA——你開始用科學方式質疑和驗證了。',
@@ -413,7 +443,6 @@ const CHEERS={
   'g-27':'大規模分類、迴歸部署掌握！企業 AI 最常用的模式，你看透了。',
   'g-28':'生成式 AI + 大數據融合！RAG、RLHF——你掌握了最前沿的技術交叉點。',
   'g-29':'🔥 中級科二制霸！13 關全征服！差分隱私、聯邦學習——你連 AI 的道德底線都懂了！',
-  // 中級科三 (30-41)
   'g-30':'中級科三啟動！機率與統計是機器學習的地基，你在最深處奠基。',
   'g-31':'線性代數通關！矩陣、特徵值——這些數學工具是 AI 神經網路的骨架，你懂了。',
   'g-32':'梯度下降、Adam 掌握！你正在理解機器如何一步步「學會」事情的本質。',
@@ -425,18 +454,16 @@ const CHEERS={
   'g-38':'只剩 3 關！ROC 曲線、混淆矩陣——模型評估你已全面掌握！終點就在眼前！',
   'g-39':'倒數 2 關！超參數調整、集成學習——AI 調優的最後一哩路，你快走完了！',
   'g-40':'最後 1 關！差分隱私、模型攻擊防禦——AI 的安全底線，你懂得守護它。',
-  'g-41':'🎉🎊 學習指引 41 關全部制霸！你是真正走完這條路的人。第二賽道已解鎖，出發！',
-  // 考古題 (Q01-Q09)
+  'g-41':'🎉🎊 學習指引 41 關全部制霸！中級考古題現在也為你解鎖！出發！',
   'g-Q01':'實戰開始！理論配考題，這才是真正的備考。你上道了！',
   'g-Q02':'初級兩科完成！生成式 AI 應用，你比大多數人都更懂了。',
-  'g-Q03':'初級模擬考挑戰成功！計時、全力——考場的節奏就是這樣，你掌握了！',
+  'g-Q03':'🎯 初級考古題全制霸！模擬考節奏你掌握了，時事賽道現在解鎖！',
   'g-Q04':'中級科一通過！NLP、電腦視覺——技術深度的考題，你沒在怕的。',
   'g-Q05':'中級科二完成！大數據分析的題目，對你來說不再是天書了。',
   'g-Q06':'中級科三制霸！機器學習考題，就是你過去幾十關所有努力的實力印證。',
-  'g-Q07':'中級模擬考完成！這是最接近正式考試的練習。你準備好了，信我。',
-  'g-Q08':'錯題煉獄第一輪通過！把弱點鍛成強點，這是頂尖備考者才有的素養。',
-  'g-Q09':'🔥 錯題全部征服！只有真正認真的人才做得到這件事。你已無懈可擊。',
-  // 時事 (N01-N16)
+  'g-Q07':'🎯 中級考古題全制霸！模擬考節奏掌握，時事賽道已解鎖，中級錯題煉獄開放！',
+  'g-Q08':'💪 初級錯題煉獄征服！弱點已鍛成強點，這是真正認真備考者才有的素養。',
+  'g-Q09':'🔥 中級錯題全部征服！你的中級知識體系已無懈可擊！考場上的你，無所畏懼。',
   'g-N01':'ChatGPT 改變了世界。你現在是這段歷史的見證者，也是參與者。',
   'g-N02':'GPT-4 讓你看到 AI 的邊界在哪——然後你知道它還會繼續擴張。走在前面的人是你。',
   'g-N03':'AI 圖像革命——善用它的人才是真正的贏家。你正在成為那個人。',
@@ -516,15 +543,17 @@ const QUIZ_CHU=[
   {num:'Q02',cls:'w1',sec:'初級科二',title:'生成式AI應用 考古題',desc:'No code/Low code・AI應用領域・導入評估（約90題）',hint:'進入後請選擇「初級科目二」全科刷題',url:'index.html?go=quiz'},
   {num:'Q03',cls:'w2',sec:'初級全科',title:'初級模擬考 綜合衝刺',desc:'混合初級科一+科二，模擬正式考試節奏',hint:'進入後選擇「初級全科」，計時完成',url:'index.html?go=mock'},
 ];
+const QUIZ_CHU_WRONG=[
+  {num:'Q08',cls:'w6',sec:'🔴 初級錯題煉獄',title:'初級錯題 全面強攻',desc:'把初級答錯的題目全部重做，針對弱點強攻直到歸零',hint:'進入考古題後點選「❌ 錯題」→ 篩選初級科目',url:'index.html?go=quiz'},
+];
 const QUIZ_MID=[
   {num:'Q04',cls:'w3',sec:'中級科一',title:'AI技術應用 考古題',desc:'NLP・電腦視覺・生成式AI・多模態・AI導入（約80題）',hint:'進入後請選擇「中級科目一」',url:'index.html?go=quiz'},
   {num:'Q05',cls:'w4',sec:'中級科二',title:'大數據分析 考古題',desc:'統計・數據處理・視覺化・機器學習應用（約80題）',hint:'進入後請選擇「中級科目二」',url:'index.html?go=quiz'},
   {num:'Q06',cls:'w5',sec:'中級科三',title:'機器學習技術 考古題',desc:'ML基礎・演算法・深度學習・模型訓練與評估（約80題）',hint:'進入後請選擇「中級科目三」',url:'index.html?go=quiz'},
   {num:'Q07',cls:'w4',sec:'中級全科',title:'中級模擬考 綜合衝刺',desc:'混合中級三科，全力衝刺最終大考！',hint:'進入後選擇「中級全科」，計時完成',url:'index.html?go=mock'},
 ];
-const QUIZ_WRONG=[
-  {num:'Q08',cls:'w6',sec:'錯題煉獄',title:'錯題挑戰 第一輪',desc:'把標記過的錯題全部重做一遍，針對弱點強攻',hint:'進入考古題後點選「❌ 錯題」模式',url:'index.html?go=quiz'},
-  {num:'Q09',cls:'w6',sec:'持續挑戰',title:'錯題煉獄 持續挑戰',desc:'反覆練習直到所有錯題都變成拿手題',hint:'持續刷到錯題本歸零！',url:'index.html?go=quiz'},
+const QUIZ_MID_WRONG=[
+  {num:'Q09',cls:'w8',sec:'🔴 中級錯題煉獄',title:'中級錯題 全面強攻',desc:'反覆練習中級錯題直到所有弱點都變成強點',hint:'進入考古題後點選「❌ 錯題」→ 篩選中級科目',url:'index.html?go=quiz'},
 ];
 
 /* ═══ 時事資料（4世界 16關）═══ */
@@ -628,7 +657,8 @@ function calcExp(g){
   let exp=0;
   const allNums=[
     ...GUIDE_WORLDS.flatMap(w=>w.levels.map(l=>l.num)),
-    ...QUIZ_CHU.map(l=>l.num),...QUIZ_MID.map(l=>l.num),...QUIZ_WRONG.map(l=>l.num),
+    ...QUIZ_CHU.map(l=>l.num),...QUIZ_CHU_WRONG.map(l=>l.num),
+    ...QUIZ_MID.map(l=>l.num),...QUIZ_MID_WRONG.map(l=>l.num),
     ...NEWS_WORLDS.flatMap(w=>w.levels.map(l=>l.num))
   ];
   allNums.forEach(n=>{const s=(g.progress[lvlKey(n)]||{}).stars||0;if(s>0)exp+=EXP_PER_STAR[s];});
@@ -674,7 +704,7 @@ function switchTrack(n){
 let currentQuizSub='chu';
 function switchQuizTrack(sub){
   currentQuizSub=sub;
-  ['chu','mid','wrong'].forEach(s=>{
+  ['chu','mid'].forEach(s=>{
     document.getElementById('qsel-'+s).classList.toggle('active',s===sub);
     document.getElementById('quiz-'+s+'-section').style.display=s===sub?'block':'none';
   });
@@ -697,27 +727,66 @@ function updateHUD(g){
   document.getElementById('hud-name').textContent='👤 '+(g.name||'設定名稱');
   const allNums=[
     ...GUIDE_WORLDS.flatMap(w=>w.levels.map(l=>l.num)),
-    ...QUIZ_CHU.map(l=>l.num),...QUIZ_MID.map(l=>l.num),...QUIZ_WRONG.map(l=>l.num),
+    ...QUIZ_CHU.map(l=>l.num),...QUIZ_CHU_WRONG.map(l=>l.num),
+    ...QUIZ_MID.map(l=>l.num),...QUIZ_MID_WRONG.map(l=>l.num),
     ...NEWS_WORLDS.flatMap(w=>w.levels.map(l=>l.num))
   ];
   const doneCnt=allNums.filter(n=>(g.progress[lvlKey(n)]||{}).stars>0).length;
   document.getElementById('hud-done').textContent=doneCnt+'/'+TOTAL_LEVELS;
 }
 
-/* ═══ Tab 進度 ═══ */
+/* ═══ Tab 進度 & 解鎖邏輯 ═══ */
 function updateTabs(g){
-  const g1Done=GUIDE_WORLDS.flatMap(w=>w.levels).filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
-  const q1Done=[...QUIZ_CHU,...QUIZ_MID,...QUIZ_WRONG].filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  // 分別計算初級/中級學習指引完成數
+  const chu7Done=[GUIDE_WORLDS[0],GUIDE_WORLDS[1]].flatMap(w=>w.levels).filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  const mid34Done=[GUIDE_WORLDS[2],GUIDE_WORLDS[3],GUIDE_WORLDS[4]].flatMap(w=>w.levels).filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  // 考古題完成數
+  const chuQuizDone=QUIZ_CHU.filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;  // Q01-Q03
+  const midQuizDone=QUIZ_MID.filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;  // Q04-Q07
+  const chuWrongDone=QUIZ_CHU_WRONG.filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  const midWrongDone=QUIZ_MID_WRONG.filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
+  const g1Done=chu7Done+mid34Done;
+  const q1Done=chuQuizDone+midQuizDone+chuWrongDone+midWrongDone;
   const n1Done=NEWS_WORLDS.flatMap(w=>w.levels).filter(l=>(g.progress[lvlKey(l.num)]||{}).stars>0).length;
   document.getElementById('tab1-prog').textContent=g1Done+'/41 關';
   document.getElementById('tab2-prog').textContent=q1Done+'/9 關';
   document.getElementById('tab3-prog').textContent=n1Done+'/16 關';
-  const quizUnlocked=g1Done>=41,newsUnlocked=q1Done>=9;
-  const lockQ=document.getElementById('lock-banner-quiz'),qWrap=document.getElementById('quiz-selector-wrap');
-  if(!quizUnlocked){lockQ.classList.remove('hide');document.getElementById('lock-remain').textContent=41-g1Done;qWrap.style.opacity='.4';qWrap.style.pointerEvents='none';}
-  else{lockQ.classList.add('hide');qWrap.style.opacity='';qWrap.style.pointerEvents='';}
+
+  // ── 解鎖條件 ──
+  const chuGuideOk=chu7Done>=7;    // 初級學習指引完成 → 解鎖初級考古題
+  const midGuideOk=mid34Done>=34;  // 中級學習指引完成 → 解鎖中級考古題
+  const chuQuizOk=chuQuizDone>=3;  // 初級考古題完成 → 解鎖初級錯題 + 時事
+  const midQuizOk=midQuizDone>=4;  // 中級考古題完成 → 解鎖中級錯題 + 時事
+  const newsOk=chuQuizOk||midQuizOk;
+
+  // Tab 按鈕視覺（🔒 前綴）
+  const setBtn=(id,locked,label)=>{const b=document.getElementById(id);if(b)b.innerHTML=(locked?'🔒 ':'')+label;};
+  setBtn('qsel-chu',!chuGuideOk,'🏆 初級');
+  setBtn('qsel-mid',!midGuideOk,'⚔️ 中級');
+
+  // 初級考古題鎖
+  const lkChu=document.getElementById('quiz-chu-lock');
+  if(lkChu)lkChu.classList.toggle('hide',chuGuideOk);
+  const remChu=document.getElementById('lock-chu-remain');
+  if(remChu)remChu.textContent=Math.max(0,7-chu7Done);
+
+  // 中級考古題鎖
+  const lkMid=document.getElementById('quiz-mid-lock');
+  if(lkMid)lkMid.classList.toggle('hide',midGuideOk);
+  const remMid=document.getElementById('lock-mid-remain');
+  if(remMid)remMid.textContent=Math.max(0,34-mid34Done);
+
+  // 初級錯題鎖
+  const lkChuW=document.getElementById('quiz-chu-wrong-lock');
+  if(lkChuW)lkChuW.classList.toggle('hide',chuQuizOk);
+
+  // 中級錯題鎖
+  const lkMidW=document.getElementById('quiz-mid-wrong-lock');
+  if(lkMidW)lkMidW.classList.toggle('hide',midQuizOk);
+
+  // 時事賽道鎖
   const lockN=document.getElementById('lock-banner-news'),nc=document.getElementById('news-container');
-  if(!newsUnlocked){lockN.classList.remove('hide');document.getElementById('lock-remain-news').textContent=9-q1Done;if(nc){nc.style.opacity='.4';nc.style.pointerEvents='none';}}
+  if(!newsOk){lockN.classList.remove('hide');if(nc){nc.style.opacity='.4';nc.style.pointerEvents='none';}}
   else{lockN.classList.add('hide');if(nc){nc.style.opacity='';nc.style.pointerEvents='';}}
 }
 
@@ -748,9 +817,11 @@ function renderGuideMap(g){
 
 /* ═══ 渲染考古題 ═══ */
 function renderQuizSection(levels,containerId,g){
-  const container=document.getElementById(containerId);container.innerHTML='';
-  if(containerId==='quiz-wrong-section'){
-    try{const nb=JSON.parse(localStorage.getItem('ipas_nb_v1')||'{}');const wc=Object.values(nb).filter(v=>v&&v.wrong).length;const stat=document.createElement('div');stat.className='wrong-stat';stat.innerHTML='<div class="ws-num">'+wc+'</div><div class="ws-info"><div class="ws-title">目前錯題數</div><div class="ws-sub">進考古題→點「❌ 錯題」模式即可刷錯題</div></div>';container.appendChild(stat);}catch(e){}
+  const container=document.getElementById(containerId);
+  if(!container)return;
+  container.innerHTML='';
+  if(containerId.includes('wrong')){
+    try{const nb=JSON.parse(localStorage.getItem('ipas_nb_v1')||'{}');const wc=Object.values(nb).filter(v=>v&&v.wrong).length;const stat=document.createElement('div');stat.className='wrong-stat';stat.innerHTML='<div class="ws-num">'+wc+'</div><div class="ws-info"><div class="ws-title">目前錯題數</div><div class="ws-sub">進考古題→點「❌ 錯題」篩選對應級別</div></div>';container.appendChild(stat);}catch(e){}
   }
   const grid=document.createElement('div');grid.className='quest-grid';
   levels.forEach(lvl=>{
@@ -821,7 +892,6 @@ function submitStar(stars){
   g.progress[pendingId]={stars,date:new Date().toISOString().slice(0,10)};
   if(stars>old){if(stars===3)g.hp=Math.min(100,g.hp+15);else if(stars===2)g.hp=Math.min(100,g.hp+5);}
   saveG(g);
-  // 顯示慶祝面板
   const starRow='⭐'.repeat(stars)+'🫙'.repeat(3-stars);
   const expGained=EXP_PER_STAR[stars];
   const cheerMsg=CHEERS[pendingId]||'太棒了！繼續保持這個動力！';
@@ -841,9 +911,10 @@ function render(){
   const g=initG();
   updateHUD(g);updateTabs(g);
   renderGuideMap(g);
-  renderQuizSection(QUIZ_CHU,'quiz-chu-section',g);
-  renderQuizSection(QUIZ_MID,'quiz-mid-section',g);
-  renderQuizSection(QUIZ_WRONG,'quiz-wrong-section',g);
+  renderQuizSection(QUIZ_CHU,'quiz-chu-content',g);
+  renderQuizSection(QUIZ_CHU_WRONG,'quiz-chu-wrong-content',g);
+  renderQuizSection(QUIZ_MID,'quiz-mid-content',g);
+  renderQuizSection(QUIZ_MID_WRONG,'quiz-mid-wrong-content',g);
   renderNewsMap(g);
 }
 checkWelcome();

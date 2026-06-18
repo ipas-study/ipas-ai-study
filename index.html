@@ -324,7 +324,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <button data-go="res">學習資源</button>
     <button data-go="info">📋 說明</button>
     <button data-go="arena">⚔️ 擂台</button>
-    <a href="game.html" target="_blank" style="background:linear-gradient(135deg,#ff6b6b,#ff4757);color:#fff;border:0;padding:5px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;">🎮 特訓</a>
+  <a href="game.html" target="_blank" style="background:linear-gradient(135deg,#ff6b6b,#ff4757);color:#fff;border:0;padding:5px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;">🎮 特訓</a>
   </div>
 </header>
 
@@ -1881,6 +1881,7 @@ $$('.nav button').forEach(b=>b.onclick=()=>{
   $('#'+b.dataset.go).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 });
+
 /* ---- URL hash / query param 支援（供 game.html 深連結） ---- */
 (function(){
   const sp=new URLSearchParams(location.search);
@@ -2193,8 +2194,9 @@ function finish(){
   $('#r-msg').style.color=pass?'var(--good)':'var(--warn)';
   $('#r-detail').textContent=`答對 ${correct} / ${M.list.length} 題`;
   $('#r-reviewbox').innerHTML='';
-  /* 儲存模擬考結果供 game.html 讀取 */
-  try{const _mr=JSON.parse(localStorage.getItem('ipas_mock_results_v1')||'[]');_mr.unshift({scope:$('#m-scope').value,score,correct,total:M.list.length,date:new Date().toISOString().slice(0,10)});localStorage.setItem('ipas_mock_results_v1',JSON.stringify(_mr.slice(0,30)));}catch(e){}
+  try{const _mr=JSON.parse(localStorage.getItem('ipas_mock_results_v1')||'[]');
+  _mr.unshift({scope:$('#m-scope').value,score,correct,total:M.list.length,date:new Date().toISOString().slice(0,10)});
+  localStorage.setItem('ipas_mock_results_v1',JSON.stringify(_mr.slice(0,30)));}catch(e){}
 }
 $('#r-again').onclick=()=>{$('#mock-result').classList.add('hide');$('#mock-setup').classList.remove('hide');};
 $('#r-review').onclick=()=>{
@@ -2367,4 +2369,28 @@ $('#build-stamp').textContent='　·　版本 v4.0（2026-06-18）';
    .then(function(d){
      var n=(d&&(d.count!=null?d.count:d.value));
      if(n==null)throw 0;
-     el.innerHTML='<span class="vc-pill">\uD83
+     el.innerHTML='<span class="vc-pill">\uD83D\uDC41\uFE0F 累計瀏覽 <span class="vc-num">'+Number(n).toLocaleString()+'</span> 次</span>';
+   })
+   .catch(function(){ el.style.display='none'; });
+})();
+
+
+// ── ⚔️ 擂台 Modal ─────────────────────────────
+function openArenaModal(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  var sumEl=el.querySelector('.arena-sum');
+  var bodyEl=el.querySelector('.arena-body');
+  document.getElementById('arenaModalTitle').innerHTML=sumEl?sumEl.innerHTML:'';
+  document.getElementById('arenaModalBody').innerHTML=bodyEl?bodyEl.innerHTML:'';
+  document.getElementById('arenaModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeArenaModal(){
+  document.getElementById('arenaModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaModal();});
+</script>
+</body>
+</html>

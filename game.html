@@ -1,715 +1,506 @@
 <!DOCTYPE html>
-<!-- iPAS AI 應用規劃師 — 57天卡通風推圖特訓系統 v1.0 (2026-06-18) -->
+<!-- iPAS 學習副本地圖 v2.0 (2026-06-18) — 全新 RPG 風格 -->
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎮 57天特訓營 — iPAS AI 應用規劃師</title>
+<title>⚔️ iPAS 學習副本地圖</title>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Microsoft JhengHei','PingFang TC',system-ui,sans-serif;background:#F4F2EE;color:#1a1a1a;min-height:100vh}
+body{font-family:'Microsoft JhengHei','PingFang TC',system-ui,sans-serif;background:#EEF2F7;color:#1a1a1a;min-height:100vh}
 a{text-decoration:none;color:inherit}
 
+/* ════ HUD 頂部面板 ════ */
+.hud{background:linear-gradient(135deg,#1A1A2E 0%,#16213E 60%,#0F3460 100%);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:50;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.hud-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.hud-brand{font-size:15px;font-weight:900;letter-spacing:.5px;display:flex;align-items:center;gap:6px;margin-right:auto}
+.hud-brand span{font-size:11px;opacity:.7;font-weight:400}
+.hud-back{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;transition:.15s}
+.hud-back:hover{background:rgba(255,255,255,.25)}
 
-/* ── 規則面板 ── */
-.rules-panel{background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;border-radius:14px;margin-bottom:18px;overflow:hidden}
-.rules-panel summary{padding:14px 18px;font-size:15px;font-weight:900;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
-.rules-panel summary::-webkit-details-marker{display:none}
-.rules-panel summary::after{content:'▼';margin-left:auto;font-size:11px;transition:.2s}
-.rules-panel[open] summary::after{content:'▲'}
-.rules-body{padding:0 18px 18px}
-.rules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.rule-card{background:#F4F2EE;border:2px solid #000;border-radius:10px;padding:12px}
-.rule-icon{font-size:22px;margin-bottom:4px}
-.rule-title{font-size:13px;font-weight:900;margin-bottom:4px}
-.rule-desc{font-size:11px;color:#444;line-height:1.5}
+/* ── HUD 統計 ── */
+.hud-stats{display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%}
+.stat-chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:6px 12px;display:flex;flex-direction:column;align-items:center;min-width:64px}
+.stat-chip .sl{font-size:9px;opacity:.7;margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px}
+.stat-chip .sv{font-size:16px;font-weight:900;line-height:1}
 
-/* ── 卡通框 ── */
-.comic{border:3px solid #000;box-shadow:4px 4px 0 #000;border-radius:14px}
-.comic:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
-.comic-sm{border:2px solid #000;box-shadow:2px 2px 0 #000;border-radius:10px}
+/* ── EXP Bar ── */
+.exp-wrap{flex:1;min-width:160px}
+.exp-label{display:flex;justify-content:space-between;font-size:10px;opacity:.8;margin-bottom:4px}
+.exp-bar-bg{background:rgba(255,255,255,.15);border-radius:999px;height:12px;overflow:hidden}
+.exp-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#FFD700,#FFA500);transition:width .6s}
 
-/* ── Layout ── */
-.wrap{max-width:960px;margin:0 auto;padding:16px}
+/* ── HP Bar ── */
+.hp-wrap{min-width:100px}
+.hp-label{display:flex;justify-content:space-between;font-size:10px;opacity:.8;margin-bottom:4px}
+.hp-bar-bg{background:rgba(255,255,255,.15);border-radius:999px;height:12px;overflow:hidden}
+.hp-bar-fill{height:100%;border-radius:999px;transition:width .5s}
 
-/* ── Header ── */
-.hdr{background:#FF6B6B;color:#fff;padding:20px 24px;border-radius:18px;border:3px solid #000;box-shadow:5px 5px 0 #000;margin-bottom:18px;position:relative}
-.hdr h1{font-size:22px;font-weight:900;letter-spacing:.5px}
-.hdr .sub{font-size:13px;opacity:.9;margin-top:4px}
-.back-link{position:absolute;top:16px;right:16px;background:rgba(0,0,0,.25);color:#fff;border:2px solid #fff;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
-.back-link:hover{background:rgba(0,0,0,.45)}
+/* ════ 主內容 ════ */
+.main{max-width:900px;margin:0 auto;padding:20px 16px 40px}
 
-/* ── 資訊列 ── */
-.info-bar{display:grid;grid-template-columns:1fr 2fr 1fr;gap:12px;margin-bottom:18px}
-.info-box{background:#fff;border:3px solid #000;box-shadow:3px 3px 0 #000;border-radius:12px;padding:12px 16px;text-align:center}
-.info-box .lbl{font-size:11px;font-weight:700;color:#666;margin-bottom:4px}
-.info-box .val{font-size:26px;font-weight:900;color:#FF6B6B;line-height:1}
-.info-box .val.green{color:#4CAF50}
-.hp-wrap{text-align:left;padding:12px 16px}
-.hp-label{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:6px}
-.hp-bar-bg{background:#eee;border-radius:999px;height:20px;border:2px solid #000;overflow:hidden}
-.hp-bar-fill{height:100%;border-radius:999px;transition:width .5s;background:linear-gradient(90deg,#4D96FF,#6BCB77)}
+/* ── 頁首說明 ── */
+.intro-card{background:#fff;border-radius:14px;padding:16px 20px;margin-bottom:20px;border-left:5px solid #4D96FF;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.intro-card h2{font-size:16px;font-weight:900;margin-bottom:6px}
+.intro-card p{font-size:12px;color:#555;line-height:1.6}
+.intro-steps{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+.step-tag{background:#F0F4FF;border:1px solid #C5D5FF;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:700;color:#4D96FF}
+.step-tag b{color:#1A1A2E}
 
-/* ── 警告 Banner ── */
-.warn-banner{background:#FFD93D;border:3px solid #000;box-shadow:3px 3px 0 #000;border-radius:12px;padding:12px 16px;margin-bottom:18px;font-weight:700;font-size:13px;display:flex;align-items:center;gap:10px}
-.warn-banner.danger{background:#FF6B6B;color:#fff}
+/* ── World Section ── */
+.world{margin-bottom:32px}
+.world-banner{border-radius:14px;padding:14px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.world-banner .wb-icon{font-size:28px;line-height:1}
+.world-banner .wb-info{flex:1}
+.world-banner .wb-name{font-size:17px;font-weight:900;color:#fff;margin-bottom:2px}
+.world-banner .wb-sub{font-size:11px;color:rgba(255,255,255,.8)}
+.world-banner .wb-prog{text-align:right;color:#fff}
+.world-banner .wb-prog .wp-num{font-size:22px;font-weight:900;line-height:1}
+.world-banner .wb-prog .wp-lbl{font-size:10px;opacity:.8}
+.world-clear{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);border-radius:8px;padding:3px 10px;font-size:11px;font-weight:900;color:#fff;margin-top:4px;display:inline-block}
 
-/* ── Tab ── */
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-.tab-btn{background:#fff;border:3px solid #000;box-shadow:3px 3px 0 #000;border-radius:12px;padding:14px;font-size:16px;font-weight:900;cursor:pointer;transition:.15s;text-align:center}
-.tab-btn.active{background:#FFDE4D;box-shadow:2px 2px 0 #000}
-.tab-btn:hover:not(.active){transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}
+/* ── World 顏色 ── */
+.w1{background:linear-gradient(135deg,#4D96FF,#2E7CF6)}
+.w2{background:linear-gradient(135deg,#6BCB77,#44B853)}
+.w3{background:linear-gradient(135deg,#FF6B6B,#E84040)}
+.w4{background:linear-gradient(135deg,#FF9F43,#E8861F)}
+.w5{background:linear-gradient(135deg,#9B59B6,#7D3C98)}
 
-/* ── Section Header ── */
-.sec-hdr{display:flex;align-items:center;gap:10px;margin:22px 0 12px}
-.sec-hdr h2{font-size:16px;font-weight:900}
-.sec-badge{background:#4D96FF;color:#fff;border:2px solid #000;box-shadow:2px 2px 0 #000;border-radius:8px;padding:3px 10px;font-size:12px;font-weight:900}
-.sec-badge.green{background:#6BCB77}
-.sec-badge.orange{background:#FF9F43}
-.sec-badge.purple{background:#9B59B6}
-.sec-badge.red{background:#FF6B6B}
-.sec-badge.teal{background:#0e8f9e}
+/* ── 關卡格線 ── */
+.quest-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
 /* ── 關卡卡片 ── */
-.levels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:24px}
-.lvl-card{background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;transition:.15s}
-.lvl-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
-.lvl-card.done{background:#E8F9FD}
-.lvl-card.perfect{background:#E8FFE8}
-.type-tag{font-size:10px;font-weight:900;padding:2px 8px;border-radius:6px;border:2px solid #000;display:inline-block;width:fit-content}
-.type-study{background:#FFD93D}
-.type-guide{background:#4D96FF;color:#fff}
-.type-arena{background:#FF6B6B;color:#fff}
-.type-bank{background:#9B59B6;color:#fff}
-.type-mock{background:#FF9F43;color:#fff}
-.type-terms{background:#6BCB77}
-.lvl-chapter{font-size:11px;color:#666;font-weight:600}
-.lvl-title{font-size:14px;font-weight:900;line-height:1.35}
-.lvl-code{font-size:10px;color:#888;font-family:monospace}
-.stars{font-size:16px;letter-spacing:2px;min-height:22px}
-.stars.auto-label{font-size:11px;color:#666;font-style:italic;line-height:1.6}
-.card-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
-.card-step{font-size:10px;color:#888;margin-top:6px;display:flex;gap:6px;align-items:center}
-.card-step span{background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:1px 5px;font-weight:700}
-.cbtn{border:2px solid #000;box-shadow:2px 2px 0 #000;border-radius:8px;padding:7px 6px;font-size:12px;font-weight:700;cursor:pointer;text-align:center;transition:.15s;display:block}
-.cbtn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 #000}
-.cbtn.go{background:#6BCB77;color:#fff}
-.cbtn.punch{background:#FF6B6B;color:#fff}
-.cbtn.synced{background:#eee;color:#888;cursor:default;border-style:dashed}
-.cbtn.synced:hover{transform:none;box-shadow:2px 2px 0 #000}
+.qcard{background:#fff;border-radius:14px;border:2px solid #e0e0e0;overflow:hidden;transition:.18s;position:relative;display:flex;flex-direction:column;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.qcard:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.qcard.done{background:#F0FFF4;border-color:#A8E6B8}
+.qcard.perfect{background:#FFFEF0;border-color:#FFD700}
+.qcard.perfect .qc-lvnum{color:#D4A000}
 
-/* ── 魔王窟 ── */
-.monster-den{background:linear-gradient(135deg,#2D2D2D,#1A1A1A);color:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;border-radius:16px;padding:20px;margin-top:8px;position:relative;overflow:hidden}
-.monster-den::after{content:'🔥';position:absolute;right:16px;bottom:8px;font-size:72px;opacity:.1;pointer-events:none}
-.monster-den h3{color:#FF6B6B;font-size:18px;font-weight:900;margin-bottom:8px}
-.monster-den p{font-size:12px;color:#aaa;margin-bottom:14px;line-height:1.6}
-.monster-count-box{background:rgba(0,0,0,.35);border:2px dashed #FF6B6B;border-radius:10px;padding:12px;text-align:center}
-.monster-num{font-size:36px;font-weight:900;color:#FFD93D}
-.den-btn{margin-top:10px;background:#FF6B6B;border:2px solid #fff;box-shadow:2px 2px 0 #fff;border-radius:8px;padding:8px 18px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:.15s}
-.den-btn:hover{background:#ff4757}
+/* 左邊色條 */
+.qcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:14px 0 0 14px}
+.w1 .qcard::before,.qcard.w1::before{background:#4D96FF}
+.w2 .qcard::before,.qcard.w2::before{background:#6BCB77}
+.w3 .qcard::before,.qcard.w3::before{background:#FF6B6B}
+.w4 .qcard::before,.qcard.w4::before{background:#FF9F43}
+.w5 .qcard::before,.qcard.w5::before{background:#9B59B6}
 
-/* ── Modal（打卡通關）── */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.hide{display:none}
-.modal{background:#fff;border:4px solid #000;box-shadow:6px 6px 0 #000;border-radius:18px;padding:24px;max-width:380px;width:100%}
-.modal h3{font-size:18px;font-weight:900;margin-bottom:6px}
-.modal .modal-sub{font-size:13px;color:#666;margin-bottom:18px}
-.star-opts{display:grid;gap:10px;margin-bottom:18px}
-.star-opt{border:3px solid #000;box-shadow:3px 3px 0 #000;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:700;font-size:14px;transition:.15s;background:#fff;text-align:left}
-.star-opt:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #000}
-.star-opt.s1{border-color:#888}
-.star-opt.s2{border-color:#FF9F43;background:#FFF8F0}
-.star-opt.s3{border-color:#6BCB77;background:#F0FFF4}
-.modal-cancel{background:#eee;border:2px solid #000;box-shadow:2px 2px 0 #000;border-radius:8px;padding:8px 18px;font-size:13px;font-weight:700;cursor:pointer;width:100%}
+.qc-head{padding:12px 14px 8px 18px;display:flex;align-items:flex-start;gap:10px}
+.qc-lvnum{font-size:28px;font-weight:900;color:#BCC5CE;line-height:1;min-width:36px;text-align:center}
+.qc-lvnum.lit{color:#1A1A2E}
+.qc-meta{flex:1}
+.qc-sec{font-size:10px;font-weight:700;color:#888;margin-bottom:2px;letter-spacing:.3px}
+.qc-title{font-size:13px;font-weight:900;line-height:1.3;color:#1A1A2E}
+.qc-desc{font-size:11px;color:#777;margin-top:3px;line-height:1.4}
+.qc-status{display:flex;align-items:center;gap:6px;padding:0 14px 0 18px;margin-bottom:8px}
+.stars-row{font-size:15px;letter-spacing:1px}
+.status-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px}
+.sb-done{background:#D4EDDA;color:#228B22}
+.sb-perfect{background:#FFF3CD;color:#D4A000}
+.sb-new{background:#F0F0F0;color:#888}
+.qc-exp{font-size:10px;color:#aaa;margin-left:auto}
 
-/* ── 進度總覽 ── */
-.progress-overview{background:#fff;border:3px solid #000;box-shadow:4px 4px 0 #000;border-radius:14px;padding:14px 18px;margin-bottom:18px}
-.po-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;padding:4px 0;border-bottom:1px dashed #ddd}
-.po-row:last-child{border-bottom:0}
-.po-bar{height:8px;background:#eee;border-radius:4px;flex:1;margin:0 12px;overflow:hidden}
-.po-fill{height:100%;border-radius:4px;background:#4D96FF;transition:width .4s}
+.qc-btns{padding:8px 14px 12px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.qbtn{border:none;border-radius:9px;padding:8px 6px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:4px}
+.qbtn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.qbtn.go{background:#4D96FF;color:#fff}
+.qbtn.punch{background:#FF6B6B;color:#fff}
+.qbtn.synced{background:#eee;color:#aaa;cursor:default}
+.qbtn.synced:hover{filter:none;transform:none}
+
+/* ── 通關 Modal ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-bg.hide{display:none}
+.modal-box{background:#fff;border-radius:20px;padding:28px 24px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-box h3{font-size:20px;font-weight:900;margin-bottom:4px}
+.modal-box .msub{font-size:12px;color:#888;margin-bottom:20px;line-height:1.5}
+.star-choices{display:grid;gap:10px;margin-bottom:16px}
+.sc-btn{background:#fff;border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;cursor:pointer;font-weight:700;font-size:13px;text-align:left;transition:.15s;font-family:inherit}
+.sc-btn:hover{border-color:#4D96FF;background:#F0F4FF}
+.sc-btn.s1:hover{border-color:#FF9F43;background:#FFF8F0}
+.sc-btn.s2:hover{border-color:#6BCB77;background:#F0FFF4}
+.sc-btn.s3{border-color:#FFD700;background:#FFFEF0}
+.sc-btn.s3:hover{border-color:#FFA500;background:#FFF8E0}
+.modal-cancel{width:100%;background:#f5f5f5;border:none;border-radius:10px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#666}
+
+/* ── 世界完成橫幅 ── */
+.world-clear-banner{background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;margin-bottom:16px;box-shadow:0 4px 12px rgba(255,165,0,.3)}
+.wcb-icon{font-size:32px}
+.wcb-text h4{font-size:15px;font-weight:900;margin-bottom:2px}
+.wcb-text p{font-size:11px;color:rgba(0,0,0,.6)}
 
 /* ── Responsive ── */
-@media(max-width:600px){
-  .info-bar{grid-template-columns:1fr 1fr}
-  .info-bar .hp-wrap{grid-column:1/-1}
-  .levels-grid{grid-template-columns:1fr}
-  .hdr h1{font-size:18px}
+@media(max-width:560px){
+  .quest-grid{grid-template-columns:1fr}
+  .hud-stats{gap:6px}
+  .stat-chip{min-width:52px}
+  .stat-chip .sv{font-size:14px}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- Header -->
-  <div class="hdr">
-    <a class="back-link" href="index.html">← 回主站</a>
-    <h1>⚔️ iPAS AI 應用規劃師・57天特訓營</h1>
-    <div class="sub">官方規格全覆蓋・115 關副本地圖・邊玩邊備考</div>
+<!-- ══════ HUD 頂部 ══════ -->
+<div class="hud">
+  <div class="hud-inner">
+    <div class="hud-brand">
+      ⚔️ iPAS 學習副本地圖
+      <span>官方學習指引・41 關全覆蓋</span>
+    </div>
+    <a href="index.html" class="hud-back">← 回主站</a>
   </div>
-
-  <!-- 遊戲規則說明 -->
-  <details class="rules-panel" id="rules-panel">
-    <summary>📖 特訓規則說明（點此展開）</summary>
-    <div class="rules-body">
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-icon">🗺️</div>
-          <div class="rule-title">雙賽道地圖</div>
-          <div class="rule-desc">初級賽道 40 關、中級魔王賽道 75 關，共 115 關，全部開放自由挑戰，不鎖關。</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-icon">🚀</div>
-          <div class="rule-title">前往複習</div>
-          <div class="rule-desc">點「🚀 前往複習」跳到主站對應的學習內容（新分頁），讀完後回到這裡打卡。</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-icon">🚩</div>
-          <div class="rule-title">打卡通關</div>
-          <div class="rule-desc">閱讀完畢後點「🚩 打卡通關」，自評 1～3 星。2 星以上噴彩帶慶祝，3 星補血 +15%！</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-icon">💪</div>
-          <div class="rule-title">HP 血條</div>
-          <div class="rule-desc">初始 100%。連續兩天未登入，每多一天 -5% HP（最低 10%）。打卡升星可補血。</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-icon">⭐</div>
-          <div class="rule-title">星等說明</div>
-          <div class="rule-desc">🫙🫙🫙 尚未通關 ／ ⭐🫙🫙 大致理解 ／ ⭐⭐🫙 掌握良好 ／ ⭐⭐⭐ 完全掌握</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-icon">🤖</div>
-          <div class="rule-title">模擬考自動計分</div>
-          <div class="rule-desc">模擬考關卡無需手動打卡，在主站完成模擬考後自動同步：≥80% = 3★，60-79% = 2★，&lt;60% = 1★。</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-icon">🔥</div>
-          <div class="rule-title">錯題魔王窟</div>
-          <div class="rule-desc">在主站考古題答錯的題目會計入魔王窟數量，點「進入復仇特訓」到考古題頁補強。</div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-icon">💾</div>
-          <div class="rule-title">資料存在本機</div>
-          <div class="rule-desc">所有進度存在瀏覽器 localStorage，不需帳號。固定使用同一台裝置，避免清除快取。</div>
-        </div>
+  <div class="hud-inner" style="margin-top:10px">
+    <div class="hud-stats">
+      <div class="stat-chip">
+        <div class="sl">⏰ 倒數</div>
+        <div class="sv" id="hud-days" style="color:#FF6B6B">--</div>
+      </div>
+      <div class="stat-chip">
+        <div class="sl">🔥 連續</div>
+        <div class="sv" id="hud-streak" style="color:#FF9F43">0</div>
+      </div>
+      <div class="stat-chip">
+        <div class="sl">⚡ EXP</div>
+        <div class="sv" id="hud-exp" style="color:#FFD700">0</div>
+      </div>
+      <div class="stat-chip">
+        <div class="sl">✅ 通關</div>
+        <div class="sv" id="hud-done" style="color:#6BCB77">0/41</div>
+      </div>
+      <div class="hp-wrap" style="flex:1;min-width:120px">
+        <div class="hp-label"><span>❤️ HP</span><span id="hud-hp">100%</span></div>
+        <div class="hp-bar-bg"><div class="hp-bar-fill" id="hp-fill" style="width:100%"></div></div>
+      </div>
+      <div class="exp-wrap">
+        <div class="exp-label"><span>⚡ EXP 進度</span><span id="exp-label-r">0 / 6150</span></div>
+        <div class="exp-bar-bg"><div class="exp-bar-fill" id="exp-fill" style="width:0%"></div></div>
       </div>
     </div>
-  </details>
+  </div>
+</div>
 
+<!-- ══════ 主內容 ══════ -->
+<div class="main">
 
-  <!-- 資訊列 -->
-  <div class="info-bar">
-    <div class="info-box">
-      <div class="lbl">🔥 考試倒數</div>
-      <div class="val" id="countdown-days">--</div>
-      <div style="font-size:11px;color:#666;margin-top:2px">天</div>
-    </div>
-    <div class="info-box hp-wrap">
-      <div class="hp-label"><span>💪 備考生存 HP</span><span id="hp-text">100%</span></div>
-      <div class="hp-bar-bg"><div class="hp-bar-fill" id="hp-bar" style="width:100%"></div></div>
-      <div style="font-size:11px;color:#888;margin-top:6px" id="login-msg"></div>
-    </div>
-    <div class="info-box">
-      <div class="lbl">⭐ 通關進度</div>
-      <div class="val green" id="total-done">0</div>
-      <div style="font-size:11px;color:#666;margin-top:2px" id="total-label">/ 115 關</div>
+  <!-- 操作說明 -->
+  <div class="intro-card">
+    <h2>📖 怎麼玩？三步通關</h2>
+    <p>把官方學習指引全 41 節拆成 41 個副本關卡。每次選一關，讀完該節後回來打卡，累積 EXP 升等！</p>
+    <div class="intro-steps">
+      <div class="step-tag"><b>Step 1</b> 點「🚀 開始關卡」→ 跳到對應章節（自動展開）</div>
+      <div class="step-tag"><b>Step 2</b> 讀完後回到這裡，點「🚩 打卡通關」</div>
+      <div class="step-tag"><b>Step 3</b> 自評 1-3 星獲得 EXP，3 星補血 +15% 🎉</div>
     </div>
   </div>
 
-  <!-- 進度警告 -->
-  <div class="warn-banner" id="warn-banner">
-    <span>📢</span><span id="warn-text">歡迎來到特訓營！選擇賽道開始推圖複習。</span>
-  </div>
-
-  <!-- 賽道切換 -->
-  <div class="tabs">
-    <button class="tab-btn active" id="tab-primary" onclick="switchStage('primary')">🛡️ 初級特訓賽道<br><span style="font-size:12px;font-weight:600">40 關</span></button>
-    <button class="tab-btn" id="tab-intermediate" onclick="switchStage('intermediate')">⚔️ 中級魔王賽道<br><span style="font-size:12px;font-weight:600">75 關</span></button>
-  </div>
-
-  <!-- 進度總覽 -->
-  <div class="progress-overview" id="progress-overview"></div>
-
-  <!-- 關卡地圖 -->
-  <div id="levels-container"></div>
-
-  <!-- 錯題魔王窟 -->
-  <div class="monster-den">
-    <h3>🔥 錯題懸賞魔王窟</h3>
-    <p>在考古題答錯的題目會被關押在此。消滅牠們可大幅補回生存 HP！答錯則強制導回擂台補課。</p>
-    <div class="monster-count-box">
-      <div style="font-size:14px;font-weight:700">目前關押魔王數量</div>
-      <div class="monster-num" id="monster-count">0</div>
-      <div style="font-size:12px;color:#aaa">隻</div>
-    </div>
-    <div style="text-align:center;margin-top:10px">
-      <button class="den-btn" onclick="goMonsterDen()">⚔️ 進入復仇特訓</button>
-    </div>
-  </div>
+  <!-- 關卡地圖（由 JS 渲染）-->
+  <div id="map-container"></div>
 
 </div>
 
-<!-- 打卡通關 Modal -->
-<div class="modal-overlay hide" id="modal-overlay">
-  <div class="modal">
+<!-- ══════ 打卡 Modal ══════ -->
+<div class="modal-bg hide" id="modal-bg">
+  <div class="modal-box">
     <h3>🚩 打卡通關</h3>
-    <div class="modal-sub" id="modal-title"></div>
-    <div class="star-opts">
-      <button class="star-opt s1" onclick="submitStar(1)">🫙🫙🫙　還不太懂，需要再複習</button>
-      <button class="star-opt s2" onclick="submitStar(2)">⭐🫙🫙　大致理解，有些模糊</button>
-      <button class="star-opt s3" onclick="submitStar(3)">⭐⭐⭐　完全掌握！</button>
+    <div class="msub" id="modal-title">選擇你的掌握程度</div>
+    <div class="star-choices">
+      <button class="sc-btn s1" onclick="submitStar(1)">🫙🫙🫙　還不太懂，需要再複習</button>
+      <button class="sc-btn s2" onclick="submitStar(2)">⭐🫙🫙　大致理解，有些模糊</button>
+      <button class="sc-btn s3" onclick="submitStar(3)">⭐⭐⭐　完全掌握！拿滿分！</button>
     </div>
     <button class="modal-cancel" onclick="closeModal()">✕ 取消</button>
   </div>
 </div>
 
 <script>
-/* ════════════════════════════════════════════════════
-   常數與 LocalStorage
-   ════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   常數
+   ═══════════════════════════════════════ */
 const EXAM_DATE = new Date('2026-08-15T09:00:00+08:00');
-const GAME_KEY = 'ipas_game_v1';
-const NB_KEY = 'ipas_nb_v1';
-const MOCK_RES_KEY = 'ipas_mock_results_v1';
+const GAME_KEY = 'ipas_game_v2';
+const EXP_PER_STAR = {1:60, 2:100, 3:150};
+const MAX_EXP = 41 * 150; // 6150
 
-function loadGame(){
+/* ═══════════════════════════════════════
+   世界 & 關卡資料（41 關，全為學習指引）
+   ═══════════════════════════════════════ */
+const WORLDS = [
+  {
+    id:'w1', cls:'w1', icon:'🏰', badge:'初級', name:'初級科一・人工智慧基礎概論',
+    gidx:0,
+    levels:[
+      {sid:0, num:'01', sec:'3.1', title:'人工智慧概念', desc:'AI定義・分類・治理概念・倫理框架'},
+      {sid:1, num:'02', sec:'3.2', title:'資料處理與分析概念', desc:'資料基本概念・整理流程・隱私安全'},
+      {sid:2, num:'03', sec:'3.3', title:'機器學習概念', desc:'監督/非監督/強化學習・常見演算法原理'},
+      {sid:3, num:'04', sec:'3.4', title:'鑑別式AI與生成式AI概念', desc:'基本原理比較・實際整合應用場景'},
+    ]
+  },
+  {
+    id:'w2', cls:'w2', icon:'🌿', badge:'初級', name:'初級科二・生成式AI應用與規劃',
+    gidx:1,
+    levels:[
+      {sid:0, num:'05', sec:'3.1', title:'No code / Low code 概念', desc:'基本概念・優勢與限制・平台比較'},
+      {sid:1, num:'06', sec:'3.2', title:'生成式AI應用領域與工具使用', desc:'主要應用領域・常見工具・善用技巧'},
+      {sid:2, num:'07', sec:'3.3', title:'生成式AI導入評估規劃', desc:'導入評估方法・導入規劃・風險管理'},
+    ]
+  },
+  {
+    id:'w3', cls:'w3', icon:'🔥', badge:'中級', name:'中級科一・人工智慧技術應用與規劃',
+    gidx:2,
+    levels:[
+      {sid:0, num:'08', sec:'3.1', title:'自然語言處理技術與應用', desc:'NLP基礎・詞嵌入・Transformer・LLM應用'},
+      {sid:1, num:'09', sec:'3.2', title:'電腦視覺技術與應用', desc:'影像分類・目標偵測・語意分割・實務應用'},
+      {sid:2, num:'10', sec:'3.3', title:'生成式AI技術與應用', desc:'GAN/VAE/擴散模型・多模態・RLHF'},
+      {sid:3, num:'11', sec:'3.4', title:'多模態人工智慧應用', desc:'跨模態融合・影像+文字+語音整合'},
+      {sid:4, num:'12', sec:'4.1', title:'AI導入評估', desc:'技術成熟度・ROI評估・風險評估框架'},
+      {sid:5, num:'13', sec:'4.2', title:'AI導入規劃', desc:'需求分析・資源規劃・專案管理'},
+      {sid:6, num:'14', sec:'4.3', title:'AI風險管理', desc:'技術風險・數據風險・倫理合規'},
+      {sid:7, num:'15', sec:'5.1', title:'數據準備與模型選擇', desc:'資料清理・特徵工程・模型評選'},
+      {sid:8, num:'16', sec:'5.2', title:'AI技術系統集成與部署', desc:'API整合・雲端部署・監控維運'},
+    ]
+  },
+  {
+    id:'w4', cls:'w4', icon:'📊', badge:'中級', name:'中級科二・大數據處理分析與應用',
+    gidx:3,
+    levels:[
+      {sid:0,  num:'17', sec:'3.1', title:'敘述性統計與資料摘要技術', desc:'平均/中位/眾數・離散程度・視覺化摘要'},
+      {sid:1,  num:'18', sec:'3.2', title:'機率分佈與資料分佈模型', desc:'常態/二項/泊松分佈・中央極限定理'},
+      {sid:2,  num:'19', sec:'3.3', title:'假設檢定與統計推論', desc:'T檢定・卡方・ANOVA・p值解讀'},
+      {sid:3,  num:'20', sec:'4.1', title:'數據收集與清理', desc:'資料品質・缺失值・異常值・ETL流程'},
+      {sid:4,  num:'21', sec:'4.2', title:'數據儲存與管理', desc:'RDBMS/NoSQL・資料湖・資料倉儲'},
+      {sid:5,  num:'22', sec:'4.3', title:'數據處理技術與工具', desc:'Hadoop/Spark・串流處理・Flink'},
+      {sid:6,  num:'23', sec:'5.1', title:'統計學在大數據中的應用', desc:'A/B測試・相關性・迴歸分析應用'},
+      {sid:7,  num:'24', sec:'5.2', title:'常見的大數據分析方法', desc:'分群・關聯規則・時序分析・Apriori'},
+      {sid:8,  num:'25', sec:'5.3', title:'數據可視化工具', desc:'Tableau/Power BI・圖表設計原則'},
+      {sid:9,  num:'26', sec:'6.1', title:'大數據與機器學習', desc:'特徵工程・大規模訓練・分散式ML'},
+      {sid:10, num:'27', sec:'6.2', title:'大數據在鑑別式AI中的應用', desc:'分類/迴歸大規模應用・模型部署'},
+      {sid:11, num:'28', sec:'6.3', title:'大數據在生成式AI中的應用', desc:'訓練數據規模・RLHF・RAG實作'},
+      {sid:12, num:'29', sec:'6.4', title:'大數據隱私保護、安全與合規', desc:'差分隱私・聯邦學習・GDPR合規'},
+    ]
+  },
+  {
+    id:'w5', cls:'w5', icon:'🤖', badge:'中級', name:'中級科三・機器學習技術與應用',
+    gidx:4,
+    levels:[
+      {sid:0,  num:'30', sec:'3.1', title:'機率/統計之機器學習基礎應用', desc:'貝葉斯・最大概似估計・信息論'},
+      {sid:1,  num:'31', sec:'3.2', title:'線性代數之機器學習基礎應用', desc:'矩陣運算・特徵值・SVD分解'},
+      {sid:2,  num:'32', sec:'3.3', title:'數值優化技術與方法', desc:'梯度下降・SGD・Adam・收斂條件'},
+      {sid:3,  num:'33', sec:'4.1', title:'機器學習原理與技術', desc:'偏差-方差・過擬合・正則化・交叉驗證'},
+      {sid:4,  num:'34', sec:'4.2', title:'常見機器學習演算法', desc:'線性/邏輯迴歸・SVM・決策樹・隨機森林'},
+      {sid:5,  num:'35', sec:'4.3', title:'深度學習原理與框架', desc:'CNN/RNN/Transformer・PyTorch/TensorFlow'},
+      {sid:6,  num:'36', sec:'5.1', title:'數據準備與特徵工程', desc:'特徵選擇・標準化・編碼・資料增強'},
+      {sid:7,  num:'37', sec:'5.2', title:'模型選擇與架構設計', desc:'基準模型・架構搜尋・遷移學習'},
+      {sid:8,  num:'38', sec:'5.3', title:'模型訓練、評估與驗證', desc:'Loss函數・評估指標・混淆矩陣・ROC'},
+      {sid:9,  num:'39', sec:'5.4', title:'模型調整與優化', desc:'超參數調整・早停・集成學習'},
+      {sid:10, num:'40', sec:'6.1', title:'數據隱私、安全與合規', desc:'模型攻擊・差分隱私・聯邦學習合規'},
+      {sid:11, num:'41', sec:'6.2', title:'演算法偏見與公平性', desc:'偏見來源・公平性指標・去偏策略'},
+    ]
+  },
+];
+
+/* ═══════════════════════════════════════
+   LocalStorage
+   ═══════════════════════════════════════ */
+function loadG(){
   try{ return JSON.parse(localStorage.getItem(GAME_KEY)||'{}'); }catch(e){ return {}; }
 }
-function saveGame(g){ localStorage.setItem(GAME_KEY, JSON.stringify(g)); }
+function saveG(g){ localStorage.setItem(GAME_KEY, JSON.stringify(g)); }
 
-function initGame(){
-  let g = loadGame();
+function initG(){
+  let g = loadG();
   if(!g.progress) g.progress = {};
   if(!g.hp) g.hp = 100;
+  if(!g.streak) g.streak = 0;
   if(!g.lastLogin) g.lastLogin = null;
-  // HP 扣減：連續兩天未登入
-  if(g.lastLogin){
-    const last = new Date(g.lastLogin);
-    const now = new Date();
-    const daysMissed = Math.floor((now - last) / 86400000);
+
+  const today = new Date().toISOString().slice(0,10);
+  if(g.lastLogin && g.lastLogin !== today){
+    const daysMissed = Math.floor((new Date() - new Date(g.lastLogin)) / 86400000);
     if(daysMissed >= 2){
-      const penalty = (daysMissed - 1) * 5;
-      g.hp = Math.max(10, g.hp - penalty);
-      document.getElementById('login-msg').textContent = `⚠️ 離上次登入 ${daysMissed} 天，HP -${penalty}`;
+      g.hp = Math.max(10, g.hp - (daysMissed - 1) * 5);
     }
+    // streak: 若昨天有登入，+1；否則重置
+    if(daysMissed === 1){ g.streak = (g.streak||0) + 1; }
+    else { g.streak = 1; }
+  } else if(!g.lastLogin){
+    g.streak = 1;
   }
-  g.lastLogin = new Date().toISOString().slice(0,10);
-  saveGame(g);
+  g.lastLogin = today;
+  saveG(g);
   return g;
 }
 
-/* ════════════════════════════════════════════════════
-   關卡資料（115 關）
-   ════════════════════════════════════════════════════ */
-const LEVELS = [
-  /* ─── 初級賽道・學習重點 7 關 ─── */
-  {id:'sy-L111',stage:'primary',type:'study',chapter:'初級科一',title:'人工智慧概念',code:'L111',url:'index.html?go=study',desc:'AI 定義分類・AI 治理概念'},
-  {id:'sy-L112',stage:'primary',type:'study',chapter:'初級科一',title:'資料處理與分析概念',code:'L112',url:'index.html?go=study',desc:'資料基本概念・整理流程・隱私安全'},
-  {id:'sy-L113',stage:'primary',type:'study',chapter:'初級科一',title:'機器學習概念',code:'L113',url:'index.html?go=study',desc:'機器學習基本原理・常見模型'},
-  {id:'sy-L114',stage:'primary',type:'study',chapter:'初級科一',title:'鑑別式AI與生成式AI概念',code:'L114',url:'index.html?go=study',desc:'基本原理・整合應用'},
-  {id:'sy-L121',stage:'primary',type:'study',chapter:'初級科二',title:'No code / Low code 概念',code:'L121',url:'index.html?go=study',desc:'基本概念・優勢與限制'},
-  {id:'sy-L122',stage:'primary',type:'study',chapter:'初級科二',title:'生成式AI應用領域與工具使用',code:'L122',url:'index.html?go=study',desc:'應用領域・常見工具・善用技巧'},
-  {id:'sy-L123',stage:'primary',type:'study',chapter:'初級科二',title:'生成式AI導入評估規劃',code:'L123',url:'index.html?go=study',desc:'導入評估・導入規劃・風險管理'},
-
-  /* ─── 初級賽道・學習指引科一 4 關 ─── */
-  {id:'gd-0-0',stage:'primary',type:'guide',chapter:'學習指引・初級科一',title:'3.1 人工智慧概念',url:'index.html?go=guide&gidx=0',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-0-1',stage:'primary',type:'guide',chapter:'學習指引・初級科一',title:'3.2 資料處理與分析概念',url:'index.html?go=guide&gidx=0',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-0-2',stage:'primary',type:'guide',chapter:'學習指引・初級科一',title:'3.3 機器學習概念',url:'index.html?go=guide&gidx=0',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-0-3',stage:'primary',type:'guide',chapter:'學習指引・初級科一',title:'3.4 鑑別式AI與生成式AI概念',url:'index.html?go=guide&gidx=0',desc:'官方全文 + 螢光重點 + 白話導讀'},
-
-  /* ─── 初級賽道・學習指引科二 3 關 ─── */
-  {id:'gd-1-0',stage:'primary',type:'guide',chapter:'學習指引・初級科二',title:'3.1 No code / Low code 概念',url:'index.html?go=guide&gidx=1',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-1-1',stage:'primary',type:'guide',chapter:'學習指引・初級科二',title:'3.2 生成式AI應用領域與工具使用',url:'index.html?go=guide&gidx=1',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-1-2',stage:'primary',type:'guide',chapter:'學習指引・初級科二',title:'3.3 生成式AI導入評估規劃',url:'index.html?go=guide&gidx=1',desc:'官方全文 + 螢光重點 + 白話導讀'},
-
-  /* ─── 初級賽道・技術擂台 13 關 ─── */
-  {id:'ar-am01',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決01・監督式 vs 非監督式學習',url:'index.html?go=arena#am01',desc:''},
-  {id:'ar-am02',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決02・監督式 vs 強化學習',url:'index.html?go=arena#am02',desc:''},
-  {id:'ar-am03',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決03・鑑別式AI vs 生成式AI ⭐',url:'index.html?go=arena#am03',desc:'核心主軸'},
-  {id:'ar-am04',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決04・CNN vs RNN',url:'index.html?go=arena#am04',desc:''},
-  {id:'ar-am05',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決05・GAN vs 擴散模型',url:'index.html?go=arena#am05',desc:''},
-  {id:'ar-am06',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決06・GAN vs VAE',url:'index.html?go=arena#am06',desc:''},
-  {id:'ar-am07',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決07・決策樹 vs 隨機森林',url:'index.html?go=arena#am07',desc:''},
-  {id:'ar-am08',stage:'primary',type:'arena',chapter:'擂台・初級科二',title:'對決08・No Code vs Low Code',url:'index.html?go=arena#am08',desc:''},
-  {id:'ar-am09',stage:'primary',type:'arena',chapter:'擂台・初級科二',title:'對決09・提示工程 vs 模型微調',url:'index.html?go=arena#am09',desc:''},
-  {id:'ar-am10',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決10・EDA vs CDA',url:'index.html?go=arena#am10',desc:''},
-  {id:'ar-am11',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決11・平均數 vs 中位數',url:'index.html?go=arena#am11',desc:''},
-  {id:'ar-am12',stage:'primary',type:'arena',chapter:'擂台・初級科二',title:'對決12・雲端AIaaS vs 本地部署',url:'index.html?go=arena#am12',desc:''},
-  {id:'ar-am13',stage:'primary',type:'arena',chapter:'擂台・初級科一',title:'對決13・BGD vs SGD vs Adam',url:'index.html?go=arena#am13',desc:''},
-
-  /* ─── 初級賽道・考古題 8 關 ─── */
-  {id:'bk-p-114四-s1',stage:'primary',type:'bank',chapter:'考古題・初級',title:'114年第四梯次・科目一',url:'index.html?go=bank',desc:'人工智慧基礎概論・49題'},
-  {id:'bk-p-114四-s2',stage:'primary',type:'bank',chapter:'考古題・初級',title:'114年第四梯次・科目二',url:'index.html?go=bank',desc:'生成式AI應用與規劃・50題'},
-  {id:'bk-p-115一-s1',stage:'primary',type:'bank',chapter:'考古題・初級',title:'115年第一次・科目一',url:'index.html?go=bank',desc:'人工智慧基礎概論・50題'},
-  {id:'bk-p-115一-s2',stage:'primary',type:'bank',chapter:'考古題・初級',title:'115年第一次・科目二',url:'index.html?go=bank',desc:'生成式AI應用與規劃・50題'},
-  {id:'bk-p-115二-s1',stage:'primary',type:'bank',chapter:'考古題・初級',title:'115年第二次・科目一',url:'index.html?go=bank',desc:'人工智慧基礎概論・50題'},
-  {id:'bk-p-115二-s2',stage:'primary',type:'bank',chapter:'考古題・初級',title:'115年第二次・科目二',url:'index.html?go=bank',desc:'生成式AI應用與規劃・50題'},
-  {id:'bk-p-自編-s1',stage:'primary',type:'bank',chapter:'考古題・初級',title:'自編練習・科目一',url:'index.html?go=bank',desc:'人工智慧基礎概論・15題'},
-  {id:'bk-p-自編-s2',stage:'primary',type:'bank',chapter:'考古題・初級',title:'自編練習・科目二',url:'index.html?go=bank',desc:'生成式AI應用與規劃・15題'},
-
-  /* ─── 初級賽道・模擬考 3 關（自動計分）─── */
-  {id:'mk-L1S1',stage:'primary',type:'mock',chapter:'模擬考・初級',title:'初級模擬考・科目一',url:'index.html?go=mock',desc:'人工智慧基礎概論',scope:'L1S1'},
-  {id:'mk-L1S2',stage:'primary',type:'mock',chapter:'模擬考・初級',title:'初級模擬考・科目二',url:'index.html?go=mock',desc:'生成式AI應用與規劃',scope:'L1S2'},
-  {id:'mk-L1ALL',stage:'primary',type:'mock',chapter:'模擬考・初級',title:'初級模擬考・全科混合',url:'index.html?go=mock',desc:'兩科混合',scope:'L1ALL'},
-
-  /* ─── 初級賽道・名詞解釋 2 關 ─── */
-  {id:'tm-p1',stage:'primary',type:'terms',chapter:'名詞解釋・初級',title:'初級科一名詞解釋',url:'index.html?go=terms',desc:'機器學習・基礎・約 29 個詞'},
-  {id:'tm-p2',stage:'primary',type:'terms',chapter:'名詞解釋・初級',title:'初級科二名詞解釋',url:'index.html?go=terms',desc:'生成式AI・應用・工具・約 85 個詞'},
-
-  /* ════ 中級賽道・學習重點 11 關 ════ */
-  {id:'sy-L211',stage:'intermediate',type:'study',chapter:'中級科一',title:'AI 相關技術應用',code:'L211',url:'index.html?go=study',desc:'NLP・電腦視覺・生成式AI・多模態'},
-  {id:'sy-L212',stage:'intermediate',type:'study',chapter:'中級科一',title:'AI 導入評估規劃',code:'L212',url:'index.html?go=study',desc:'導入評估・導入規劃・風險管理'},
-  {id:'sy-L213',stage:'intermediate',type:'study',chapter:'中級科一',title:'AI 技術應用與系統部署',code:'L213',url:'index.html?go=study',desc:'數據準備・模型選擇・系統集成'},
-  {id:'sy-L221',stage:'intermediate',type:'study',chapter:'中級科二',title:'機率統計基礎',code:'L221',url:'index.html?go=study',desc:'敘述統計・機率分佈・假設檢定'},
-  {id:'sy-L222',stage:'intermediate',type:'study',chapter:'中級科二',title:'大數據處理技術',code:'L222',url:'index.html?go=study',desc:'數據收集清理・儲存管理・處理工具'},
-  {id:'sy-L223',stage:'intermediate',type:'study',chapter:'中級科二',title:'大數據分析',code:'L223',url:'index.html?go=study',desc:'統計應用・分析方法・數據可視化'},
-  {id:'sy-L224',stage:'intermediate',type:'study',chapter:'中級科二',title:'大數據在人工智慧之應用',code:'L224',url:'index.html?go=study',desc:'大數據與ML・鑑別式AI・生成式AI・隱私合規'},
-  {id:'sy-L231',stage:'intermediate',type:'study',chapter:'中級科三',title:'機器學習基礎數學',code:'L231',url:'index.html?go=study',desc:'機率統計・線性代數・數值優化'},
-  {id:'sy-L232',stage:'intermediate',type:'study',chapter:'中級科三',title:'機器學習與深度學習',code:'L232',url:'index.html?go=study',desc:'ML原理・常見演算法・深度學習框架'},
-  {id:'sy-L233',stage:'intermediate',type:'study',chapter:'中級科三',title:'機器學習建模與參數調校',code:'L233',url:'index.html?go=study',desc:'特徵工程・模型選擇・訓練評估・調整優化'},
-  {id:'sy-L234',stage:'intermediate',type:'study',chapter:'中級科三',title:'機器學習治理',code:'L234',url:'index.html?go=study',desc:'數據隱私合規・演算法偏見與公平性'},
-
-  /* ─── 中級賽道・學習指引科一 9 關 ─── */
-  {id:'gd-2-0',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'3.1 自然語言處理技術與應用',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-1',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'3.2 電腦視覺技術與應用',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-2',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'3.3 生成式AI技術與應用',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-3',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'3.4 多模態人工智慧應用',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-4',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'4.1 AI 導入評估',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-5',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'4.2 AI 導入規劃',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-6',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'4.3 AI 風險管理',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-7',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'5.1 數據準備與模型選擇',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-2-8',stage:'intermediate',type:'guide',chapter:'學習指引・中級科一',title:'5.2 AI技術系統集成與部署',url:'index.html?go=guide&gidx=2',desc:'官方全文 + 螢光重點 + 白話導讀'},
-
-  /* ─── 中級賽道・學習指引科二 13 關 ─── */
-  {id:'gd-3-0',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'3.1 敘述性統計與資料摘要技術',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-1',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'3.2 機率分佈與資料分佈模型',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-2',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'3.3 假設檢定與統計推論',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-3',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'4.1 數據收集與清理',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-4',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'4.2 數據儲存與管理',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-5',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'4.3 數據處理技術與工具',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-6',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'5.1 統計學在大數據中的應用',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-7',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'5.2 常見的大數據分析方法',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-8',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'5.3 數據可視化工具',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-9',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'6.1 大數據與機器學習',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-10',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'6.2 大數據在鑑別式AI中的應用',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-11',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'6.3 大數據在生成式AI中的應用',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-3-12',stage:'intermediate',type:'guide',chapter:'學習指引・中級科二',title:'6.4 大數據隱私保護、安全與合規',url:'index.html?go=guide&gidx=3',desc:'官方全文 + 螢光重點 + 白話導讀'},
-
-  /* ─── 中級賽道・學習指引科三 12 關 ─── */
-  {id:'gd-4-0',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'3.1 機率/統計之機器學習基礎應用',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-1',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'3.2 線性代數之機器學習基礎應用',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-2',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'3.3 數值優化技術與方法',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-3',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'4.1 機器學習原理與技術',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-4',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'4.2 常見機器學習演算法',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-5',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'4.3 深度學習原理與框架',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-6',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'5.1 數據準備與特徵工程',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-7',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'5.2 模型選擇與架構設計',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-8',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'5.3 模型訓練、評估與驗證',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-9',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'5.4 模型調整與優化',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-10',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'6.1 數據隱私、安全與合規',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-  {id:'gd-4-11',stage:'intermediate',type:'guide',chapter:'學習指引・中級科三',title:'6.2 演算法偏見與公平性',url:'index.html?go=guide&gidx=4',desc:'官方全文 + 螢光重點 + 白話導讀'},
-
-  /* ─── 中級賽道・技術擂台 20 關 ─── */
-  {id:'ar-bm01',stage:'intermediate',type:'arena',chapter:'擂台・中級科一',title:'對決M01・RNN vs Transformer',url:'index.html?go=arena#bm01',desc:''},
-  {id:'ar-bm02',stage:'intermediate',type:'arena',chapter:'擂台・中級科一',title:'對決M02・BERT vs GPT',url:'index.html?go=arena#bm02',desc:''},
-  {id:'ar-bm03',stage:'intermediate',type:'arena',chapter:'擂台・中級科一',title:'對決M03・靜態詞向量 vs 情境化詞向量',url:'index.html?go=arena#bm03',desc:''},
-  {id:'ar-bm04',stage:'intermediate',type:'arena',chapter:'擂台・中級科一',title:'對決M04・RAG vs LoRA',url:'index.html?go=arena#bm04',desc:''},
-  {id:'ar-bm05',stage:'intermediate',type:'arena',chapter:'擂台・中級科一',title:'對決M05・語意分割 vs 實例分割',url:'index.html?go=arena#bm05',desc:''},
-  {id:'ar-bm06',stage:'intermediate',type:'arena',chapter:'擂台・中級科一',title:'對決M06・鑑別式AI vs 生成式AI',url:'index.html?go=arena#bm06',desc:''},
-  {id:'ar-bm07',stage:'intermediate',type:'arena',chapter:'擂台・中級科二',title:'對決M07・RDBMS vs NoSQL',url:'index.html?go=arena#bm07',desc:''},
-  {id:'ar-bm08',stage:'intermediate',type:'arena',chapter:'擂台・中級科二',title:'對決M08・資料湖 vs 資料倉儲',url:'index.html?go=arena#bm08',desc:''},
-  {id:'ar-bm09',stage:'intermediate',type:'arena',chapter:'擂台・中級科二',title:'對決M09・Hadoop MapReduce vs Apache Spark',url:'index.html?go=arena#bm09',desc:''},
-  {id:'ar-bm10',stage:'intermediate',type:'arena',chapter:'擂台・中級科二',title:'對決M10・Apache Spark vs Apache Flink',url:'index.html?go=arena#bm10',desc:''},
-  {id:'ar-bm11',stage:'intermediate',type:'arena',chapter:'擂台・中級科二',title:'對決M11・RBAC vs ABAC',url:'index.html?go=arena#bm11',desc:''},
-  {id:'ar-bm12',stage:'intermediate',type:'arena',chapter:'擂台・中級科二',title:'對決M12・Apriori vs FP-Growth',url:'index.html?go=arena#bm12',desc:''},
-  {id:'ar-bm13',stage:'intermediate',type:'arena',chapter:'擂台・中級科二',title:'對決M13・強一致性 vs 最終一致性',url:'index.html?go=arena#bm13',desc:''},
-  {id:'ar-bm14',stage:'intermediate',type:'arena',chapter:'擂台・中級科三',title:'對決M14・Lasso vs Ridge',url:'index.html?go=arena#bm14',desc:''},
-  {id:'ar-bm15',stage:'intermediate',type:'arena',chapter:'擂台・中級科三',title:'對決M15・隨機森林 vs 梯度提升樹',url:'index.html?go=arena#bm15',desc:''},
-  {id:'ar-bm16',stage:'intermediate',type:'arena',chapter:'擂台・中級科三',title:'對決M16・XGBoost vs LightGBM',url:'index.html?go=arena#bm16',desc:''},
-  {id:'ar-bm17',stage:'intermediate',type:'arena',chapter:'擂台・中級科三',title:'對決M17・K-means vs DBSCAN',url:'index.html?go=arena#bm17',desc:''},
-  {id:'ar-bm18',stage:'intermediate',type:'arena',chapter:'擂台・中級科三',title:'對決M18・PCA vs t-SNE',url:'index.html?go=arena#bm18',desc:''},
-  {id:'ar-bm19',stage:'intermediate',type:'arena',chapter:'擂台・中級科三',title:'對決M19・自編碼器 vs GAN',url:'index.html?go=arena#bm19',desc:''},
-  {id:'ar-bm20',stage:'intermediate',type:'arena',chapter:'擂台・中級科三',title:'對決M20・Isolation Forest vs One-Class SVM',url:'index.html?go=arena#bm20',desc:''},
-
-  /* ─── 中級賽道・考古題 3 關 ─── */
-  {id:'bk-c-114二-c1',stage:'intermediate',type:'bank',chapter:'考古題・中級',title:'114年第二梯次・中級科一',url:'index.html?go=bank',desc:'人工智慧技術應用與規劃・50題'},
-  {id:'bk-c-114二-c2',stage:'intermediate',type:'bank',chapter:'考古題・中級',title:'114年第二梯次・中級科二',url:'index.html?go=bank',desc:'大數據處理分析與應用・39題'},
-  {id:'bk-c-114二-c3',stage:'intermediate',type:'bank',chapter:'考古題・中級',title:'114年第二梯次・中級科三',url:'index.html?go=bank',desc:'機器學習技術與應用・45題'},
-
-  /* ─── 中級賽道・模擬考 4 關（自動計分）─── */
-  {id:'mk-L2S1',stage:'intermediate',type:'mock',chapter:'模擬考・中級',title:'中級模擬考・科目一',url:'index.html?go=mock',desc:'人工智慧技術應用與規劃',scope:'L2S1'},
-  {id:'mk-L2S2',stage:'intermediate',type:'mock',chapter:'模擬考・中級',title:'中級模擬考・科目二',url:'index.html?go=mock',desc:'大數據處理分析與應用',scope:'L2S2'},
-  {id:'mk-L2S3',stage:'intermediate',type:'mock',chapter:'模擬考・中級',title:'中級模擬考・科目三',url:'index.html?go=mock',desc:'機器學習技術與應用',scope:'L2S3'},
-  {id:'mk-L2ALL',stage:'intermediate',type:'mock',chapter:'模擬考・中級',title:'中級模擬考・全科混合',url:'index.html?go=mock',desc:'三科混合',scope:'L2ALL'},
-
-  /* ─── 中級賽道・名詞解釋 3 關 ─── */
-  {id:'tm-c1',stage:'intermediate',type:'terms',chapter:'名詞解釋・中級',title:'中級科一名詞解釋',url:'index.html?go=terms',desc:'技術應用・部署・約 55 個詞'},
-  {id:'tm-c2',stage:'intermediate',type:'terms',chapter:'名詞解釋・中級',title:'中級科二名詞解釋',url:'index.html?go=terms',desc:'資料處理・統計・約 88 個詞'},
-  {id:'tm-c3',stage:'intermediate',type:'terms',chapter:'名詞解釋・中級',title:'中級科三名詞解釋',url:'index.html?go=terms',desc:'模型訓練・深度學習・治理・約 91 個詞'},
-];
-
-/* ════════════════════════════════════════════════════
-   型別對應
-   ════════════════════════════════════════════════════ */
-const TYPE_META = {
-  study: {label:'📋 學習重點', cls:'type-study', badgeCls:''},
-  guide: {label:'📖 學習指引', cls:'type-guide', badgeCls:'green'},
-  arena: {label:'⚔️ 技術擂台', cls:'type-arena', badgeCls:'red'},
-  bank:  {label:'📝 考古題',   cls:'type-bank',  badgeCls:'purple'},
-  mock:  {label:'🎯 模擬考',   cls:'type-mock',  badgeCls:'orange'},
-  terms: {label:'🔤 名詞解釋', cls:'type-terms', badgeCls:'teal'},
-};
-
-const CHAPTER_ORDER = [
-  '初級科一','初級科二',
-  '學習指引・初級科一','學習指引・初級科二',
-  '擂台・初級科一','擂台・初級科二',
-  '考古題・初級','模擬考・初級','名詞解釋・初級',
-  '中級科一','中級科二','中級科三',
-  '學習指引・中級科一','學習指引・中級科二','學習指引・中級科三',
-  '擂台・中級科一','擂台・中級科二','擂台・中級科三',
-  '考古題・中級','模擬考・中級','名詞解釋・中級',
-];
-
-/* ════════════════════════════════════════════════════
-   狀態
-   ════════════════════════════════════════════════════ */
-let currentStage = 'primary';
-let pendingLevelId = null;
-let gameState = null;
-
-/* ════════════════════════════════════════════════════
-   取得星等
-   ════════════════════════════════════════════════════ */
-function getStars(lvl, g){
-  if(lvl.type === 'mock'){
-    // 自動從 ipas_mock_results_v1 讀
-    try{
-      const rs = JSON.parse(localStorage.getItem(MOCK_RES_KEY)||'[]');
-      const match = rs.find(r => r.scope === lvl.scope);
-      if(!match) return 0;
-      if(match.score >= 80) return 3;
-      if(match.score >= 60) return 2;
-      return 1;
-    }catch(e){ return 0; }
-  }
-  return (g.progress[lvl.id] || {}).stars || 0;
+function calcExp(g){
+  return WORLDS.flatMap(w=>w.levels).reduce((sum, lvl)=>{
+    const stars = (g.progress[lvlKey(lvl)]||{}).stars || 0;
+    return sum + (stars>0 ? EXP_PER_STAR[stars] : 0);
+  }, 0);
 }
 
-function starDisplay(stars){
-  if(stars === 0) return '<span style="color:#aaa">🫙🫙🫙 尚未通關</span>';
-  return '⭐'.repeat(stars) + '🫙'.repeat(3-stars);
-}
+function lvlKey(lvl){ return 'g-'+lvl.num; }
 
-/* ════════════════════════════════════════════════════
-   渲染引擎
-   ════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   渲染
+   ═══════════════════════════════════════ */
+let pendingId = null;
+
 function render(){
-  gameState = initGame();
-  const g = gameState;
+  const g = initG();
 
   // 倒數
   const daysLeft = Math.max(0, Math.floor((EXAM_DATE - new Date()) / 86400000));
-  document.getElementById('countdown-days').textContent = daysLeft;
+  document.getElementById('hud-days').textContent = daysLeft;
+  document.getElementById('hud-streak').textContent = (g.streak||0) + '天';
+
+  // EXP
+  const exp = calcExp(g);
+  document.getElementById('hud-exp').textContent = exp;
+  document.getElementById('exp-label-r').textContent = exp + ' / ' + MAX_EXP;
+  document.getElementById('exp-fill').style.width = Math.min(100, Math.round(exp/MAX_EXP*100)) + '%';
 
   // HP
   const hp = g.hp;
-  document.getElementById('hp-text').textContent = hp + '%';
-  const bar = document.getElementById('hp-bar');
-  bar.style.width = hp + '%';
-  bar.style.background = hp > 60 ? 'linear-gradient(90deg,#4D96FF,#6BCB77)' : hp > 30 ? '#FF9F43' : '#FF6B6B';
+  document.getElementById('hud-hp').textContent = hp + '%';
+  const hpFill = document.getElementById('hp-fill');
+  hpFill.style.width = hp + '%';
+  hpFill.style.background = hp>60 ? 'linear-gradient(90deg,#6BCB77,#44B853)' : hp>30 ? 'linear-gradient(90deg,#FF9F43,#E8861F)' : 'linear-gradient(90deg,#FF6B6B,#FF4757)';
 
-  // 魔王窟
-  try{
-    const nb = JSON.parse(localStorage.getItem(NB_KEY)||'{"wrong":[]}');
-    document.getElementById('monster-count').textContent = (nb.wrong||[]).length;
-  }catch(e){}
+  // 通關數
+  const allLevels = WORLDS.flatMap(w=>w.levels);
+  const doneCnt = allLevels.filter(l=>(g.progress[lvlKey(l)]||{}).stars>0).length;
+  document.getElementById('hud-done').textContent = doneCnt + '/41';
 
-  // 進度
-  const stageL = LEVELS.filter(l => l.stage === currentStage);
-  const doneCnt = stageL.filter(l => getStars(l, g) >= 1).length;
-  const perfCnt = stageL.filter(l => getStars(l, g) === 3).length;
-  const totalAll = LEVELS.filter(l=>getStars(l,g)>=1).length;
-  document.getElementById('total-done').textContent = totalAll;
-  document.getElementById('total-label').textContent = '/ 115 關已通關';
-
-  // 警告
-  const warnEl = document.getElementById('warn-banner');
-  const warnTxt = document.getElementById('warn-text');
-  const remaining = stageL.length - doneCnt;
-  if(daysLeft > 0 && remaining > 0){
-    const pace = (remaining / daysLeft).toFixed(1);
-    const msg = `${currentStage==='primary'?'初級':'中級'}賽道：已通關 ${doneCnt}/${stageL.length}（完美 ${perfCnt} 關）。剩餘 ${remaining} 關・${daysLeft} 天，每天需攻克 ${pace} 關。`;
-    warnTxt.textContent = msg;
-    warnEl.className = parseFloat(pace) > 3 ? 'warn-banner danger' : 'warn-banner';
-  } else if(remaining === 0){
-    warnTxt.textContent = `🎉 ${currentStage==='primary'?'初級':'中級'}賽道全部通關！繼續保持！`;
-    warnEl.className = 'warn-banner';
-  }
-
-  // 進度總覽
-  renderOverview(g);
-
-  // 關卡地圖
-  renderLevels(g);
+  // 地圖
+  renderMap(g);
 }
 
-function renderOverview(g){
-  const stageL = LEVELS.filter(l => l.stage === currentStage);
-  const groups = {};
-  stageL.forEach(l=>{
-    if(!groups[l.chapter]) groups[l.chapter] = {total:0, done:0};
-    groups[l.chapter].total++;
-    if(getStars(l,g) >= 1) groups[l.chapter].done++;
-  });
-  const el = document.getElementById('progress-overview');
-  let h = '<div style="font-size:13px;font-weight:900;margin-bottom:8px">📊 各區進度</div>';
-  Object.entries(groups).forEach(([ch, {total, done}])=>{
-    const pct = total > 0 ? Math.round(done/total*100) : 0;
-    h += `<div class="po-row"><span style="min-width:160px;font-size:12px">${ch}</span><div class="po-bar"><div class="po-fill" style="width:${pct}%"></div></div><span style="font-size:12px;min-width:60px;text-align:right">${done}/${total}</span></div>`;
-  });
-  el.innerHTML = h;
-}
-
-function renderLevels(g){
-  const stageL = LEVELS.filter(l => l.stage === currentStage);
-
-  // 按 chapter 分組
-  const groups = {};
-  stageL.forEach(l=>{
-    if(!groups[l.chapter]) groups[l.chapter]=[];
-    groups[l.chapter].push(l);
-  });
-
-  // 排序 chapter
-  const orderedChapters = Object.keys(groups).sort((a,b)=>{
-    const ai = CHAPTER_ORDER.indexOf(a), bi = CHAPTER_ORDER.indexOf(b);
-    return (ai<0?99:ai) - (bi<0?99:bi);
-  });
-
-  const container = document.getElementById('levels-container');
+function renderMap(g){
+  const container = document.getElementById('map-container');
   container.innerHTML = '';
 
-  orderedChapters.forEach(ch => {
-    const lvls = groups[ch];
-    const meta = TYPE_META[lvls[0].type];
+  WORLDS.forEach(world => {
+    const wEl = document.createElement('div');
+    wEl.className = 'world';
 
-    // Section header
-    const hdr = document.createElement('div');
-    hdr.className = 'sec-hdr';
-    hdr.innerHTML = `<span class="sec-badge ${meta.badgeCls}">${meta.label}</span><h2>${ch}</h2>`;
-    container.appendChild(hdr);
+    // 計算世界進度
+    const wDone = world.levels.filter(l=>(g.progress[lvlKey(l)]||{}).stars>0).length;
+    const wPerf = world.levels.filter(l=>(g.progress[lvlKey(l)]||{}).stars===3).length;
+    const wTotal = world.levels.length;
+    const wClear = wDone === wTotal;
 
-    // Grid
+    // World Clear Banner
+    if(wClear){
+      const cb = document.createElement('div');
+      cb.className = 'world-clear-banner';
+      cb.innerHTML = `<div class="wcb-icon">🏆</div><div class="wcb-text"><h4>World Clear！${world.icon} ${world.name.split('・')[1]||world.name}</h4><p>完成 ${wTotal}/${wTotal} 關・完美 ${wPerf} 關 — 繼續前進！</p></div>`;
+      wEl.appendChild(cb);
+    }
+
+    // Banner
+    const banner = document.createElement('div');
+    banner.className = `world-banner ${world.cls}`;
+    banner.innerHTML = `
+      <div class="wb-icon">${world.icon}</div>
+      <div class="wb-info">
+        <div class="wb-name">${world.name}</div>
+        <div class="wb-sub"><span style="background:rgba(255,255,255,.25);border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700">${world.badge}</span>　${world.levels.length} 個關卡</div>
+      </div>
+      <div class="wb-prog">
+        <div class="wp-num">${wDone}<span style="font-size:13px;font-weight:600;opacity:.8">/${wTotal}</span></div>
+        <div class="wp-lbl">通關數</div>
+        ${wPerf>0 ? `<div class="world-clear">⭐ 完美 ${wPerf}</div>` : ''}
+      </div>`;
+    wEl.appendChild(banner);
+
+    // 關卡格線
     const grid = document.createElement('div');
-    grid.className = 'levels-grid';
+    grid.className = 'quest-grid';
 
-    lvls.forEach(lvl => {
-      const stars = getStars(lvl, g);
-      const isMock = lvl.type === 'mock';
-      let mockScore = null;
-      if(isMock){
-        try{
-          const rs = JSON.parse(localStorage.getItem(MOCK_RES_KEY)||'[]');
-          const match = rs.find(r=>r.scope===lvl.scope);
-          if(match) mockScore = match;
-        }catch(e){}
-      }
+    world.levels.forEach(lvl => {
+      const key = lvlKey(lvl);
+      const prog = g.progress[key] || {};
+      const stars = prog.stars || 0;
+      const done = stars > 0;
+      const perfect = stars === 3;
 
       const card = document.createElement('div');
-      card.className = 'lvl-card' + (stars===3?' perfect':(stars>=1?' done':''));
+      card.className = `qcard ${world.cls}` + (perfect ? ' perfect' : done ? ' done' : '');
 
-      let starsHtml = '';
-      if(isMock && mockScore){
-        starsHtml = `<div class="stars">${starDisplay(stars)}</div><div class="stars auto-label">🤖 自動同步・${mockScore.score}分（${mockScore.date}）</div>`;
-      } else if(isMock){
-        starsHtml = `<div class="stars">${starDisplay(stars)}</div><div class="stars auto-label">🤖 自動同步・完成模擬考後更新</div>`;
-      } else {
-        starsHtml = `<div class="stars">${starDisplay(stars)}</div>`;
-      }
+      const starRow = done
+        ? '⭐'.repeat(stars) + '🫙'.repeat(3-stars)
+        : '<span style="color:#ccc;font-size:12px">尚未通關</span>';
+
+      const statusBadge = perfect
+        ? '<span class="status-badge sb-perfect">👑 完美</span>'
+        : done
+        ? '<span class="status-badge sb-done">✓ 通關</span>'
+        : '<span class="status-badge sb-new">NEW</span>';
+
+      const expGained = done ? EXP_PER_STAR[stars] : 0;
+      const url = `index.html?go=guide&gidx=${world.gidx}&sidx=${lvl.sid}`;
 
       card.innerHTML = `
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-          <span class="type-tag ${meta.cls}">${meta.label}</span>
-          ${lvl.code ? `<span class="lvl-code">${lvl.code}</span>` : ''}
+        <div class="qc-head">
+          <div class="qc-lvnum ${done?'lit':''}">${lvl.num}</div>
+          <div class="qc-meta">
+            <div class="qc-sec">${world.name.split('・')[0]} · ${lvl.sec}</div>
+            <div class="qc-title">${lvl.title}</div>
+            <div class="qc-desc">${lvl.desc}</div>
+          </div>
         </div>
-        <div class="lvl-chapter">${lvl.chapter}</div>
-        <div class="lvl-title">${lvl.title}</div>
-        ${lvl.desc ? `<div style="font-size:11px;color:#888">${lvl.desc}</div>` : ''}
-        ${starsHtml}
-        <div class="card-step"><span>Step 1</span>前往複習 → <span>Step 2</span>${isMock ? '完成模擬考自動記錄' : '回來打卡通關'}</div>
-        <div class="card-btns">
-          <a href="${lvl.url}" target="_blank" class="cbtn go">🚀 前往複習</a>
-          ${isMock
-            ? `<span class="cbtn synced">🤖 自動計分</span>`
-            : `<button class="cbtn punch" onclick="openModal('${lvl.id}')">🚩 打卡通關</button>`
-          }
+        <div class="qc-status">
+          <div class="stars-row">${starRow}</div>
+          ${statusBadge}
+          ${done ? `<div class="qc-exp">+${expGained} EXP</div>` : ''}
+        </div>
+        <div class="qc-btns">
+          <a href="${url}" target="_blank" class="qbtn go">🚀 開始關卡</a>
+          <button class="qbtn punch" onclick="openModal('${key}','${lvl.title}')">🚩 打卡通關</button>
         </div>`;
+
       grid.appendChild(card);
     });
 
-    container.appendChild(grid);
+    wEl.appendChild(grid);
+    container.appendChild(wEl);
   });
 }
 
-/* ════════════════════════════════════════════════════
+/* ═══════════════════════════════════════
    Modal
-   ════════════════════════════════════════════════════ */
-function openModal(levelId){
-  const lvl = LEVELS.find(l => l.id === levelId);
-  if(!lvl) return;
-  pendingLevelId = levelId;
-  document.getElementById('modal-title').textContent = lvl.title;
-  document.getElementById('modal-overlay').classList.remove('hide');
+   ═══════════════════════════════════════ */
+function openModal(key, title){
+  pendingId = key;
+  document.getElementById('modal-title').textContent = '「' + title + '」';
+  document.getElementById('modal-bg').classList.remove('hide');
 }
-
 function closeModal(){
-  pendingLevelId = null;
-  document.getElementById('modal-overlay').classList.add('hide');
+  pendingId = null;
+  document.getElementById('modal-bg').classList.add('hide');
 }
-
 function submitStar(stars){
-  if(!pendingLevelId) return;
-  const g = loadGame();
-  const old = (g.progress[pendingLevelId]||{}).stars || 0;
-  g.progress[pendingLevelId] = {stars, date: new Date().toISOString().slice(0,10)};
-
-  // HP 增減
+  if(!pendingId) return;
+  const g = loadG();
+  const old = (g.progress[pendingId]||{}).stars || 0;
+  g.progress[pendingId] = {stars, date: new Date().toISOString().slice(0,10)};
+  // HP & Streak
   if(stars > old){
-    if(stars === 3) g.hp = Math.min(100, g.hp + 15);
-    else if(stars === 2) g.hp = Math.min(100, g.hp + 5);
+    if(stars===3){ g.hp = Math.min(100, g.hp + 15); }
+    else if(stars===2){ g.hp = Math.min(100, g.hp + 5); }
   }
-  saveGame(g);
+  saveG(g);
   closeModal();
-
   if(stars >= 2){
-    confetti({particleCount: stars===3?150:80, spread:70, origin:{y:0.6}});
+    confetti({particleCount: stars===3?180:80, spread:75, origin:{y:0.6},
+      colors: stars===3 ? ['#FFD700','#FFA500','#FF6B6B','#4D96FF'] : ['#6BCB77','#4D96FF']});
   }
   render();
 }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-/* ════════════════════════════════════════════════════
-   其他
-   ════════════════════════════════════════════════════ */
-function switchStage(stage){
-  currentStage = stage;
-  document.getElementById('tab-primary').className = 'tab-btn' + (stage==='primary'?' active':'');
-  document.getElementById('tab-intermediate').className = 'tab-btn' + (stage==='intermediate'?' active':'');
-  render();
-}
-
-function goMonsterDen(){
-  window.open('index.html?go=bank', '_blank');
-}
-
-// ESC 關 Modal
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
-
-/* ════════════════════════════════════════════════════
+/* ═══════════════════════════════════════
    啟動
-   ════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════ */
 render();
 </script>
 </body>

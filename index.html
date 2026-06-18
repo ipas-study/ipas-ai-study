@@ -324,7 +324,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <button data-go="res">學習資源</button>
     <button data-go="info">📋 說明</button>
     <button data-go="arena">⚔️ 擂台</button>
-  <a href="game.html" target="_blank" style="background:linear-gradient(135deg,#ff6b6b,#ff4757);color:#fff;border:0;padding:5px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;">🎮 特訓</a>
+  <a href="game.html" target="_blank" style="background:linear-gradient(135deg,#ff6b6b,#ff4757);color:#fff;border:0;padding:5px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">🎮 特訓<span style="font-size:9px;background:rgba(0,0,0,.3);border-radius:4px;padding:1px 4px;font-weight:600;letter-spacing:.3px;">建置中</span></a>
   </div>
 </header>
 
@@ -1888,7 +1888,8 @@ $$('.nav button').forEach(b=>b.onclick=()=>{
   const go=sp.get('go')||location.hash.replace('#','');
   if(go){const b=document.querySelector(`[data-go="${go}"]`);if(b)b.click();}
   const gi=sp.get('gidx');
-  if(gi!=null){guideIdx=parseInt(gi)||0;renderGuide();}
+  /* gidx 需等 let guideIdx / renderGuide() 宣告後才能呼叫，用 setTimeout 跳出 TDZ */
+  if(gi!=null){setTimeout(function(){try{guideIdx=parseInt(gi)||0;renderGuide();}catch(e){}},150);}
 })();
 
 /* ---- countdown ---- */

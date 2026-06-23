@@ -1,14 +1,19 @@
-// 自動更新：2026-06-15（每週排程產生）
+// 自動更新：2026-06-24（每週排程產生）
 window.DYNAMIC = {
-  lastUpdated: "2026-06-15",
+  lastUpdated: "2026-06-24",
   news: [
+    {t:"8/15 iPAS AI 應用規劃師初級第三梯次倒數 52 天：官方考試資訊與備考重點整理", d:"115年第三梯次（8/15）進入衝刺備考階段，初級費用 400 元、四大考點擴及桃園嘉義屏東花蓮，成績考後約 2-3 週放榜。建議此時完成全科模擬考並聚焦錯題弱點。", u:"https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info"},
+    {t:"GTC Taipei 2026 黃仁勳宣告「代理式 AI 時代」全面到來：Vera Rubin 量產、Token 經濟學引爆新紀元", d:"黃仁勳於 GTC Taipei 2026（6/1-4）主題演講宣告 Agentic AI 時代正式開啟，Vera Rubin 平台全面量產可讓 AI 資料中心年營收從 300 億倍增至 3,000 億，並揭示 Token 經濟學將重塑企業 AI 商業模式，是備考「AI 導入與商業價值」科目的重要背景知識。", u:"https://cmnews.com.tw/article/cmoney-591aba04-5d96-11f1-b6cf-5734df6242f8"},
+    {t:"NVIDIA 攜手聯發科推 RTX Spark AI PC 晶片，台灣 150 家供應鏈夥伴締造工程奇蹟", d:"黃仁勳 GTC Taipei 2026 宣布與聯發科、台積電、微軟合作推出 RTX Spark 筆電晶片，150 家台灣供應鏈協同設計創新紀錄，呈現台灣在 Physical AI 與 AI PC 時代的關鍵地位。", u:"https://www.cna.com.tw/news/afe/202606010237.aspx"},
+    {t:"2026 生成式 AI 六大企業趨勢：從 Agentic 工作流到多模態記憶整合，AI 規劃師必備視野", d:"超智諮詢整理 2026 年生成式 AI 六大落地趨勢，涵蓋 Agentic 工作流自動化、多模態融合、RAG 2.0 升級、小型語言模型邊緣部署與 AI 治理框架，直接呼應 iPAS 中級考科核心範疇。", u:"https://www.meta-intelligence.tech/insight-genai-trends-2026"},
+    {t:"智慧製造 AI Agent 12 大落地場景：MES 異常檢測、動態排程到品質自動回報全解析", d:"Data-DI 整理 2026 年智慧製造廠房 AI Agent 的 12 個可落地場景，從設備異常自動分析、查詢歷史案例到通知相關單位，完整呈現 AI Agent 如何與 MES/ERP/SCM 整合，適合備考「AI 導入規劃」科目。", u:"https://www.data-di.com/blog/ai-lab-2026-smart-manufacturing-the-ultimate-ai-agent-adoption-guide"}
+  ],
+  newsHistory: [
     {t:"全職媽媽的 AI 認證故事感動校園：Vicky 分享 iPAS AI 應用規劃師帶來的人生轉變", d:"玲玲 Vicky 受邀返回輔仁大學日文系，以「文組不設限」為題演講，分享從全職媽媽考取 iPAS AI 應用規劃師、進而成為校園講者的歷程，激勵備考族群。下一梯次考試為 8/15，備考正當時。", u:"https://vocus.cc/article/6a143b7ffd8978000193e21e"},
     {t:"iKala 分析：2026 企業佈局 AI Agent 的 5 大技術趨勢與落地場景", d:"iKala AI 洞察報告指出，2026 年 AI Agent 從被動工具進化為「具推理決策能力的智慧引擎」，88% 早期導入者已在至少一個場景實現正向 ROI，並解析客服、行銷、內容生產三大落地場景。", u:"https://ikala.ai/zh-tw/blog/ikala-ai-insight/2026-ai-agent-trend/"},
     {t:"讓矽谷震驚的 Agentic AI 突破：工具呼叫精準度達 92%，企業主管的 5 步應對框架", d:"2026 年三大關鍵突破（工具呼叫精準度達 92%、多 Agent 協作框架商業化、跨平台記憶整合成熟）正在重塑企業流程。先行智庫提供企業主管制定 AI Agent 策略的5步驟行動框架。", u:"https://www.kscthinktank.com.tw/%E8%AE%93%E7%9F%BD%E8%B0%B7%E9%9C%87%E9%A9%9A%E7%9A%84-agentic-ai-%E7%AA%81%E7%A0%B4%EF%BC%8C%E8%88%87%E4%BC%81%E6%A5%AD%E4%B8%BB%E7%AE%A1%E7%9A%84-5-%E6%AD%A5%E6%87%89%E5%B0%8D%E6%A1%88%E6%9E%B6/"},
     {t:"2026 Agentic AI ROI 全解析：台灣企業四大代理式 AI 獲利工作流與轉型指南", d:"Microfusion 整理 UiPath CXO 報告與 BCG AI Radar 台灣數據，解析財務稽核、客服自動化、供應鏈與知識管理四大 Agentic AI 獲利場景，McKinsey 調查顯示三分之二台灣企業以資安風險為首要導入障礙。", u:"https://www.microfusion.cloud/news/2026-agentic-ai-roi-workflows/"},
-    {t:"2026 Generative AI 年會「Agent First」主題：從 Prompt 工程走向 Agent 驅動工作流", d:"台灣 2026 生成式 AI 年會以「Agent First」為核心命題，探討企業如何以 AI Agent 為驅動核心重構工作流，是了解台灣 AI 應用實踐現況的重要產業活動，也呼應 iPAS 考試的規劃師定位。", u:"https://blindegg.kktix.cc/events/2026gaiconf"}
-  ],
-  newsHistory: [
+    {t:"2026 Generative AI 年會「Agent First」主題：從 Prompt 工程走向 Agent 驅動工作流", d:"台灣 2026 生成式 AI 年會以「Agent First」為核心命題，探討企業如何以 AI Agent 為驅動核心重構工作流，是了解台灣 AI 應用實踐現況的重要產業活動，也呼應 iPAS 考試的規劃師定位。", u:"https://blindegg.kktix.cc/events/2026gaiconf"},
     {t:"大世科榮獲2026 AI Award優秀賞，鎖定 Agentic AI 助企業價值落地", d:"大同旗下大世科以人工智慧解決方案落地與企業應用整合成果獲獎，反映台灣 Agentic AI 商用化步伐加快，也是考試「AI導入成效評估」的實戰案例參考。", u:"https://money.udn.com/money/story/5612/9458197"},
     {t:"Google I/O 2026 轟炸式發布 Agent 工具，Antigravity CLI 接棒 Gemini CLI 正式亮相", d:"Google 推出新一代終端 AI 工具 Antigravity（Gemini CLI 升級版），支援 MCP Server 擴展、百萬 Token 超長上下文，免費開源可直接使用 Gemini 2.5 Pro，對標 Claude Code，是了解 AI 開發工具生態的重要指標。", u:"https://www.53ai.com/news/LargeLanguageModel/2026052071903.html"},
     {t:"UiPath 2026 CXO 報告：Agentic AI 代理式 AI 轉型四大獲利工作流解析", d:"UiPath 調查報告揭示企業 Agentic AI 規模化的四大場景：財務稽核、客服自動化、供應鏈與員工知識管理，並提出 ROI 計算框架，為 AI 應用規劃師提供具體落地藍圖。", u:"https://www.perform-global.com/blog/agentic-operating-model-2026-report"},
@@ -22,11 +27,13 @@ window.DYNAMIC = {
     {t:"臺灣資安大會：AI 演進下的四大資安風險", d:"趨勢科技預估2026年底多數資訊內容將由 AI 產生，提醒 AI 漏洞暴增與身分偽造等複合式威脅——也是中級考科的資安治理重點。", u:"https://www.ithome.com.tw/news/175591"}
   ],
   resources: [
-    {t:"Prompt Engineering 完整指南 2026：10 個必學技巧與繁中實戰範例", d:"涵蓋 Zero-shot、Few-shot、Chain of Thought、Role Prompting 等10大技巧，附繁體中文實戰範例與迭代優化方法，是備考「人工智慧基礎概論」提示工程單元的核心參考。", u:"https://blog.creatorhome.tw/what-is-prompt-engineering-complete-guide/"},
-    {t:"AI Agent 教學：從原理到實作，三種方法讓 AI 自主運行（2026）", d:"恆遠數位行銷整理 AI Agent 技術原理、Tool Use、RAG 記憶與多 Agent 協作三大實作路徑，附具體繁中範例，適合備考「AI 系統架構」與「AI 導入規劃」科目的深度學習。", u:"https://foreverwebs.com/blog/ai-agent-tutorial-from-chatbot-to-autonomous-2026"},
-    {t:"台大「AI Agent 開發與多智能體實作」2026 課程：LangGraph、AutoGen 到企業落地", d:"台灣大學資訊系統訓練班開設 AI Agent 開發實務課程，涵蓋多智能體框架、LangGraph、AutoGen 與企業落地案例，適合想深入了解 AI Agent 架構的進階學習者。", u:"https://train.csie.ntu.edu.tw/school/courses/course.php?id=6047"}
+    {t:"Claude Projects 完整教學 2026：RAG、模板與最佳實踐，讓 AI 真正記住你的專案脈絡", d:"Mason AI Lab 深度解析 Claude Projects 的 RAG 知識整合、Prompt 模板設定與常見反模式，說明如何讓 Claude 跨對話記憶專案背景，適合備考「AI 工具應用」及「提示工程」單元。", u:"https://masonailab.com/tools/claude-projects-guide-2026/"},
+    {t:"2026 AI Agent 代理時代全解析：從對話生成到自動執行，規劃師必懂的技術演進史", d:"AI Tool Lab 整理 AI Agent 從 Chatbot 到 Agentic AI 的完整技術演進脈絡，含工具呼叫（Tool Use）、記憶機制、多 Agent 協作框架，是備考「AI 系統架構」的優質中文導覽。", u:"https://aistoollab.com/zh/ai-agent-2026-agentic-ai-guide/"}
   ],
   resourcesHistory: [
+    {t:"Prompt Engineering 完整指南 2026：10 個必學技巧與繁中實戰範例", d:"涵蓋 Zero-shot、Few-shot、Chain of Thought、Role Prompting 等10大技巧，附繁體中文實戰範例與迭代優化方法，是備考「人工智慧基礎概論」提示工程單元的核心參考。", u:"https://blog.creatorhome.tw/what-is-prompt-engineering-complete-guide/"},
+    {t:"AI Agent 教學：從原理到實作，三種方法讓 AI 自主運行（2026）", d:"恆遠數位行銷整理 AI Agent 技術原理、Tool Use、RAG 記憶與多 Agent 協作三大實作路徑，附具體繁中範例，適合備考「AI 系統架構」與「AI 導入規劃」科目的深度學習。", u:"https://foreverwebs.com/blog/ai-agent-tutorial-from-chatbot-to-autonomous-2026"},
+    {t:"台大「AI Agent 開發與多智能體實作」2026 課程：LangGraph、AutoGen 到企業落地", d:"台灣大學資訊系統訓練班開設 AI Agent 開發實務課程，涵蓋多智能體框架、LangGraph、AutoGen 與企業落地案例，適合想深入了解 AI Agent 架構的進階學習者。", u:"https://train.csie.ntu.edu.tw/school/courses/course.php?id=6047"},
     {t:"2026 LLM 大語言模型資源懶人包｜Agent、RAG & Fine-tuning", d:"Deep Learning 101 彙整的 LLM 學習資源，涵蓋 RAG 防幻覺實作、AI Agent 框架、SLM 端側小模型與微調，是備考「AI系統架構」科目的優質補充材料。", u:"https://deep-learning-101.github.io/Large-Language-Model"},
     {t:"AI 名詞解釋：用白話講清楚 Agent、MCP、RAG 和 Token", d:"用非技術人員也能理解的方式解釋四大關鍵 AI 術語，特別適合 iPAS 初級考試「人工智慧基礎概論」單元的概念釐清。", u:"https://www.knightli.com/zh-tw/2026/04/23/ai-terms-agent-mcp-rag-token-explained/"},
     {t:"2026 最新 LangChain 教學：LCEL 基礎到企業級 RAG 實戰全攻略", d:"涵蓋 LangChain 最新架構 LCEL 與 LangGraph，從 RAG 知識庫搭建到 Multi-Agent 協作，附完整 Python 程式碼範例，適合中級考科深度學習。", u:"https://masonaibase.com/langchain-tutorial-2026-lcel-rag/"},
@@ -36,10 +43,11 @@ window.DYNAMIC = {
     {t:"iPAS AI 應用規劃師 2026 報名指南", d:"整理2026年報名時間、費用與流程的第三方指南，搭配官方簡章交叉確認。", u:"https://aiterms.tw/ipas/registration/"}
   ],
   tools: [
-    {n:"Perplexity Comet", d:"Perplexity 推出的 AI 瀏覽器，整合搜尋、研究、自動化操作於一體，可自動完成網頁任務（刪信件、整理資料、比價等），2026 年重磅登場，免費方案即可使用。", use:"快速查找 AI 考試知識來源、自動整理學習筆記、對比多方資料真偽", url:"https://www.perplexity.ai/comet", yt:""},
-    {n:"GitHub Copilot", d:"微軟與 GitHub 聯合推出的 AI 程式開發助手，整合於 VS Code，2026 年新增 Agent 模式與 MCP Server 支援，可自動修 Bug 並建立 Pull Request，免費方案每月 2000 次補全。", use:"AI 輔助程式碼撰寫、自動化開發流程、了解 AI 工具整合實例", url:"https://github.com/features/copilot", yt:""}
+    {n:"HeyGen", d:"AI 數位分身與多語言影片生成工具，可克隆聲音與形象、自動翻譯影片並保留原聲語調，2026 年新增即時直播分身功能，企業廣泛用於教育訓練與多語言行銷內容製作。", use:"製作 AI 數位分身教學影片、多語言內容轉製、了解生成式 AI 影音應用場景", url:"https://www.heygen.com", yt:""}
   ],
   toolsHistory: [
+    {n:"Perplexity Comet", d:"Perplexity 推出的 AI 瀏覽器，整合搜尋、研究、自動化操作於一體，可自動完成網頁任務（刪信件、整理資料、比價等），2026 年重磅登場，免費方案即可使用。", use:"快速查找 AI 考試知識來源、自動整理學習筆記、對比多方資料真偽", url:"https://www.perplexity.ai/comet", yt:""},
+    {n:"GitHub Copilot", d:"微軟與 GitHub 聯合推出的 AI 程式開發助手，整合於 VS Code，2026 年新增 Agent 模式與 MCP Server 支援，可自動修 Bug 並建立 Pull Request，免費方案每月 2000 次補全。", use:"AI 輔助程式碼撰寫、自動化開發流程、了解 AI 工具整合實例", url:"https://github.com/features/copilot", yt:""},
     {n:"NotebookLM", d:"Google 免費 AI 筆記研究工具，上傳資料即可問答、生成摘要、心智圖與中文 Podcast。", use:"整理學習指引與考古題重點、自動生成複習音檔", url:"https://notebooklm.google.com", yt:""},
     {n:"Gamma", d:"輸入大綱即自動生成設計精美的簡報、文件與網頁。", use:"快速產出 AI 導入提案簡報、讀書會教材", url:"https://gamma.app", yt:""},
     {n:"n8n", d:"開源工作流自動化平台，1200+ 節點可串接各種服務並內建 AI Agent 節點。", use:"打造企業自動化流程與 AI Agent 落地案例", url:"https://n8n.io", yt:""},

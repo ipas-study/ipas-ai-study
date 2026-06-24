@@ -55,90 +55,112 @@ window.DYNAMIC = {
   ],
   toolVideos: {
     "ChatGPT": [
-      {t:"【全網最細】OpenAI Codex 徹底免費！新手必學的進化版 ChatGPT，從 0 到 1 完整入門教學！10 個高頻功能快速學會指揮你的超級 AI Agent！", u:"https://www.youtube.com/watch?v=39_iw_KLEFk"},
-      {t:"一個 AI 助手打趴整套 Office 軟體！超強 Codex 從表格簡報、合併列印、架設網站全部一手包辦！", u:"https://www.youtube.com/watch?v=W5ymBPi53Tw"},,
-      {t:"這 5 個 AI 悄悄增加超扯新功能！ChatGPT、Grok、NotebookLM、Recraft、Perplexity 每一個都扯爆了！", u:"https://www.youtube.com/watch?v=3QcnVp3Bc9g"},,
-      {t:"新手必學的「進化版 ChatGPT」！快速打造 Codex 終極知識庫，用它秒做各種檔案！", u:"https://www.youtube.com/watch?v=pTO85XkruHI"},,
-      {t:"ChatGPT 超讚新功能「學習與研究」！私人家教學習模式實測，附3招技巧讓效果飆升", u:"https://www.youtube.com/watch?v=4eoqEoKqdhE"},,
-      {t:"Codex 保姆級完整教學：從入門到進階，自動生成內容、網頁、影片和App", u:"https://www.youtube.com/watch?v=tfeCwDT-5m0"},,
-      {t:"【2026最新】你不知道的20種 ChatGPT 使用方法與隱藏功能", u:"https://www.youtube.com/watch?v=04cz8zNr33Y"},,
-      {t:"ChatGPT 最全教程：16種使用技巧，從入門到精通", u:"https://www.youtube.com/watch?v=FRIa3T49urg"},,
-      {t:"6分鐘教會你用 ChatGPT：寫出正確有效的指令", u:"https://www.youtube.com/watch?v=hqujLMQ2UeM"}
+      {t:"【全網最細】OpenAI Codex 徹底免費！新手必學的進化版 ChatGPT，從 0 到 1 完整入門教學！10 個高頻功能快速學會指揮你的超級 AI Agent！", u:"https://www.youtube.com/watch?v=39_iw_KLEFk"}
     ],
     "Claude": [
       {t:"Claude Code 保姆級攻略 2.0：中文設定、第三方模型接入、MCP、Skill、Subagent 完整教學，省下 90% Token 費用", u:"https://www.youtube.com/watch?v=Czky9q7sOWU"},
       {t:"Claude Cowork 新手必看！零基礎初學者 10 個真實案例演示，手把手打造專屬 AI 自動化團隊", u:"https://www.youtube.com/watch?v=FrAAhSP9hPA"},
-      {t:"Claude Cowork/Code 保姆級完整教學：從入門到進階，自動生成內容、網頁和工作流，快速打造你的 AI 員工", u:"https://www.youtube.com/watch?v=Lq-wedAiffo"},
-      {t:"Claude Cowork 最友善的手把手教學！你還在叫 AI 幫你想答案？高手都已在用 AI 交成品了", u:"https://www.youtube.com/watch?v=_cVTzXvb7xs"},,
-      {t:"忘掉ChatGPT吧！Claude Cowork + Skills 才是你的全新自動化系統！零基礎初學者必看", u:"https://www.youtube.com/watch?v=a5OTTbSCpO8"},,
-      {t:"【超實用】一次搞懂 Claude AI 全生態！2026全新初學者完整教程，15個超棒使用方法", u:"https://www.youtube.com/watch?v=zm3K831v470"},,
-      {t:"6個 Claude 核心功能讓你超越99%的 AI 使用者！Cowork/Code 保姆級完整教學", u:"https://www.youtube.com/watch?v=8244knXN9e0"},,
-      {t:"10分鐘搞懂 Claude 基礎設定！Project、Skills、Style 讓 AI 成為最強代理人", u:"https://www.youtube.com/watch?v=5Aha8QOVke4"}
+      {t:"Claude Cowork/Code 保姆級完整教學：從入門到進階，自動生成內容、網頁和工作流，快速打造你的 AI 員工", u:"https://www.youtube.com/watch?v=Lq-wedAiffo"}
     ],
     "Gemini": [
       {t:"【Google I/O 2026 懶人包】再見龍蝦！Google 推出自家 AI Agent！24 小時私人助理 Gemini Spark！Gemini 3.5 Flash 美國現場直擊", u:"https://www.youtube.com/watch?v=npApPIYRm9U"},
       {t:"2026 Google Gemini 10 個實用示範｜文字轉錄、即時語音對話、即時翻譯、私隱設定一次看", u:"https://www.youtube.com/watch?v=Je9ssxv4tFQ"},
-      {t:"Gemini 3 教學簡單解說深度實測：AI 寫 game、寫程式、分析影片、畫圖、旅遊行程表全玩法合集", u:"https://www.youtube.com/watch?v=Po1niTUWXFA"},
-      {t:"ChatGPT 退訂潮擋不住了？Gemini 整合 Google Workspace 全功能詳解！保母級教學讓你從零到精通！", u:"https://www.youtube.com/watch?v=dHknQINzPdg"},,
-      {t:"無痛把 Gemini 裝進電腦！Gemini CLI 讓 AI 直接幫你處理所有檔案，無須寫程式", u:"https://www.youtube.com/watch?v=cXEZ50vgDPw"},,
-      {t:"【Google Antigravity CLI 實測】手把手安裝教學！從 Gemini CLI 完美過渡", u:"https://www.youtube.com/watch?v=0RPVIiIcD4g"},,
-      {t:"Google 全系列教學（上集）：21個超強 AI 應用", u:"https://www.youtube.com/watch?v=4n8jswc2pAI"},,
-      {t:"Gemini 3 最強教學＋15個超強功能全場景實測", u:"https://www.youtube.com/watch?v=8o737qKO3IM"},,
-      {t:"Gemini 網頁版7個實用示範：臨時對話、Gem 設定、連接 Google 服務", u:"https://www.youtube.com/watch?v=9872vJcRKLg"},,
-      {t:"Gemini CLI 官方神器實測：安裝到實戰完整教學", u:"https://www.youtube.com/watch?v=UfrXGfivlEQ"}
+      {t:"Gemini 3 教學簡單解說深度實測：AI 寫 game、寫程式、分析影片、畫圖、旅遊行程表全玩法合集", u:"https://www.youtube.com/watch?v=Po1niTUWXFA"}
     ],
     "NotebookLM": [
       {t:"【NotebookLM 教學】AI 瞬間整理百萬字資料！Google 最新筆記神器全功能解析", u:"https://www.youtube.com/watch?v=uU7ldTCFxYM"},
       {t:"1 分鐘開發！NotebookLM 簡報秒變可編輯的神級 AI 工作流（附超詳細步驟）", u:"https://www.youtube.com/watch?v=rcqXlO4sYkI"},
-      {t:"【AI神技】別再忙著手抄筆記！NotebookLM 教學：YT 影片、音檔秒變逐字稿與重點摘要", u:"https://www.youtube.com/watch?v=-BhyDONU8q8"},
-      {t:"Gemini 重要更新！合體 NotebookLM + 新版多模態輸出教學，一次生成多種格式", u:"https://www.youtube.com/watch?v=kSgxHy-mqxI"},,
-      {t:"重大更新！新版 Gemini 合體 NotebookLM：多模態輸出全公開，建立任何格式檔案", u:"https://www.youtube.com/watch?v=uE1XDwDOtbU"},,
-      {t:"NotebookLM 完整教學！93%的人還不知道的8個隱藏用法", u:"https://www.youtube.com/watch?v=zgWerTIynVA"},,
-      {t:"NotebookLM 完整教學！10個超強隱藏用法（2026）", u:"https://www.youtube.com/watch?v=pbds1YRoXJw"},,
-      {t:"Gemini × NotebookLM 史上最強合體：多筆記調用與互動儀表盤", u:"https://www.youtube.com/watch?v=41eyUBTDn3U"}
+      {t:"【AI神技】別再忙著手抄筆記！NotebookLM 教學：YT 影片、音檔秒變逐字稿與重點摘要", u:"https://www.youtube.com/watch?v=-BhyDONU8q8"}
     ],
     "Gamma": [
       {t:"Gamma 簡報 AI 生成工具真的強嗎？解析 Gamma 三大生成功能 10 分鐘學簡報", u:"https://www.youtube.com/watch?v=el7Y1Awb750"},
-      {t:"製作 PPT 太麻煩？Gamma AI 幾分鐘搞定高質感簡報，從排版到內容生成一站式解決", u:"https://www.youtube.com/watch?v=9PgHe_ThV4U"},
-      {t:"2026最新AI 簡報神器PK！40秒做完簡報！Gamma、AiPPT 一鍵比較", u:"https://www.youtube.com/watch?v=X5IToXLK5Pk"},,
-      {t:"它竟把6千字長文快速轉成簡報？Gamma 讓你用 AI 提示語生成最精準 PPT！", u:"https://www.youtube.com/watch?v=f0Tw2w-WxRs"},,
-      {t:"😱 只有老人才用 PPT 做簡報？新世代 AI 簡報神器 Gamma 讓你告別石器時代邁向新世紀！", u:"https://www.youtube.com/watch?v=nl-eVo1EhEQ"},,
-      {t:"【AI工作流】簡報神器 Gamma｜文字一鍵變 PPT，但別只用 AI 就交差", u:"https://www.youtube.com/watch?v=4A4RXctUSoM"}
+      {t:"製作 PPT 太麻煩？Gamma AI 幾分鐘搞定高質感簡報，從排版到內容生成一站式解決", u:"https://www.youtube.com/watch?v=9PgHe_ThV4U"}
     ],
     "Perplexity": [
       {t:"10 分鐘學會用 Perplexity，AI 教父都愛用！｜張邁可完整教學", u:"https://www.youtube.com/watch?v=SiCoXrlobec"},
-      {t:"0 元變 Pro！Perplexity Pro 免費一年訂閱全攻略，省下年費完整步驟", u:"https://www.youtube.com/watch?v=zk4zvx4rj3U"},
-      {t:"【最完整教學】Perplexity Comet AI 瀏覽器 10 大神級用法：工作效率、研究搜尋、生活資訊一次搞定！", u:"https://www.youtube.com/watch?v=oLn8dbfXH-0"},,
-      {t:"Perplexity Comet 憑什麼讓我徹底拋棄 Chrome？10個功能自動化你的工作！徹底改變我的工作方式！", u:"https://www.youtube.com/watch?v=Lbi_YrlOutM"},,
-      {t:"為什麼科技巨頭都愛用 Perplexity？網友用過後驚呼：終於可以跟滿是廣告的 Google 說拜拜了！！", u:"https://www.youtube.com/watch?v=ZC3L94U0_sc"},,
-      {t:"免費到Pro: 完整解鎖 Perplexity 所有功能！", u:"https://www.youtube.com/watch?v=5GD9agWsfAg"}
+      {t:"0 元變 Pro！Perplexity Pro 免費一年訂閱全攻略，省下年費完整步驟", u:"https://www.youtube.com/watch?v=zk4zvx4rj3U"}
     ],
     "n8n": [
       {t:"n8n 零基礎 AI 自動化教學｜6 大實戰 Lab 打造 LLM 與 AI Agent 工作流（含免費模板）", u:"https://www.youtube.com/watch?v=V-0UKJTqjSA"},
       {t:"【n8n AI 自動化保姆級教程】從 0 到 1 建立你的 AI 自動化工作流（JSON、API、節點邏輯一次搞懂）", u:"https://www.youtube.com/watch?v=02U_eT1S-AY"},
-      {t:"【n8n Webhook 應用】操作介面教學，整合 AI 打造訂單通知自動化！Portaly 傳送門案例", u:"https://www.youtube.com/watch?v=CgPEN3sewwA"},
-      {t:"學會 n8n 為你省下 80% 時間！(EP.2) 這個 AI 助理只認你這個主人，不但使命必達且全天候待命！", u:"https://www.youtube.com/watch?v=sRU6Y7DXkLI"},,
-      {t:"從零基礎到精通n8n！萬用三步驟做出AI自動化助理（超簡單）", u:"https://www.youtube.com/watch?v=mNRphFUPzjE"},,
-      {t:"學會 n8n 為你省下 80% 時間！AI 助理使命必達且全天候待命", u:"https://www.youtube.com/watch?v=r9mi3ZJIWbg"},,
-      {t:"【n8n 教學】一次自動發 IG/TikTok/YouTube！7 平台同步發布＋排程全自動化", u:"https://www.youtube.com/watch?v=QliMzK7aTAg"},,
-      {t:"n8n 手把手完整教學：從基礎到進階的自動化工作流", u:"https://www.youtube.com/watch?v=sYWCxgEF_yY"},,
-      {t:"2026 最強 n8n 教學！從零打造你的 AI 自動化工作流", u:"https://www.youtube.com/watch?v=6s_Z9Tl0sHU"},,
-      {t:"零基礎用 n8n 打造 AI 自動化工作流：抓資料到 AI 決策", u:"https://www.youtube.com/watch?v=-vKewrChihk"},
+      {t:"【n8n Webhook 應用】操作介面教學，整合 AI 打造訂單通知自動化！Portaly 傳送門案例", u:"https://www.youtube.com/watch?v=CgPEN3sewwA"}
     ],
     "Dify": [
       {t:"別再只會用 Dify！hello-agents 帶你從零打造 AI Agent 框架，超越基礎應用", u:"https://www.youtube.com/watch?v=Ze9DfZCdmP0"},
-      {t:"【套件教學】Make 自動化串接：LINE 官方帳號串接 Dify 建立 AI Agent 完整流程", u:"https://www.youtube.com/watch?v=CaA8cj1B6FI"},
-      {t:"使用 Dify 免費打造進階 AI 客服系統｜RAG 設定、禁用字、自訂回答、內容優化完整教學", u:"https://www.youtube.com/watch?v=wb6wHNBIqgs"},,
-      {t:"【使用 No Code 工具 Dify】設定懂公司產品的 AI Agent 銷售助手", u:"https://www.youtube.com/watch?v=A6zsqVDo8r4"},,
-      {t:"Dify 完整安裝教學：生成式 AI 應用創新引擎", u:"https://www.youtube.com/watch?v=kTpC6MtYuKc"},,
-      {t:"Dify 系統化教學：RAG 知識庫、自動化流程與企業級部署全解析", u:"https://www.youtube.com/watch?v=IX8g7l578oQ"},,
-      {t:"Dify 1.0 基礎教學：開發你的第一個 Agent", u:"https://www.youtube.com/watch?v=hDjubHZwilo"}
+      {t:"【套件教學】Make 自動化串接：LINE 官方帳號串接 Dify 建立 AI Agent 完整流程", u:"https://www.youtube.com/watch?v=CaA8cj1B6FI"}
     ],
     "GitHub Copilot": [
       {t:"GitHub Copilot Coding Agent 超實用教學｜自動修 Bug、寫測試、拉 PR 一次搞懂", u:"https://www.youtube.com/watch?v=Z9EVVDCgm8M"},
       {t:"Copilot 與 Agent：從入門到精通｜更聰明地編碼、更快速地開發 GitHub Copilot 應用實戰", u:"https://www.youtube.com/watch?v=BXr8sKvA1MU"},
-      {t:"GitHub Copilot 快速入門｜AI 程式開發的第一步！安裝啟用到實戰一步到位", u:"https://www.youtube.com/watch?v=v4J0MVQYfKQ"},
-      {t:"GitHub Copilot CLI 實戰教學｜從修 Bug 到自動建立 Pull Request（含 MCP 設定與切換 Model 示範）", u:"https://www.youtube.com/watch?v=KVht2h5fb9E"},,
+      {t:"GitHub Copilot 快速入門｜AI 程式開發的第一步！安裝啟用到實戰一步到位", u:"https://www.youtube.com/watch?v=v4J0MVQYfKQ"}
+    ],
+    "Cursor": []
+  },
+  toolVideosHistory: {
+    "ChatGPT": [
+      {t:"一個 AI 助手打趴整套 Office 軟體！超強 Codex 從表格簡報、合併列印、架設網站全部一手包辦！", u:"https://www.youtube.com/watch?v=W5ymBPi53Tw"},
+      {t:"這 5 個 AI 悄悄增加超扯新功能！ChatGPT、Grok、NotebookLM、Recraft、Perplexity 每一個都扯爆了！", u:"https://www.youtube.com/watch?v=3QcnVp3Bc9g"},
+      {t:"新手必學的「進化版 ChatGPT」！快速打造 Codex 終極知識庫，用它秒做各種檔案！", u:"https://www.youtube.com/watch?v=pTO85XkruHI"},
+      {t:"ChatGPT 超讚新功能「學習與研究」！私人家教學習模式實測，附3招技巧讓效果飆升", u:"https://www.youtube.com/watch?v=4eoqEoKqdhE"},
+      {t:"Codex 保姆級完整教學：從入門到進階，自動生成內容、網頁、影片和App", u:"https://www.youtube.com/watch?v=tfeCwDT-5m0"},
+      {t:"【2026最新】你不知道的20種 ChatGPT 使用方法與隱藏功能", u:"https://www.youtube.com/watch?v=04cz8zNr33Y"},
+      {t:"ChatGPT 最全教程：16種使用技巧，從入門到精通", u:"https://www.youtube.com/watch?v=FRIa3T49urg"},
+      {t:"6分鐘教會你用 ChatGPT：寫出正確有效的指令", u:"https://www.youtube.com/watch?v=hqujLMQ2UeM"}
+    ],
+    "Claude": [
+      {t:"Claude Cowork 最友善的手把手教學！你還在叫 AI 幫你想答案？高手都已在用 AI 交成品了", u:"https://www.youtube.com/watch?v=_cVTzXvb7xs"},
+      {t:"忘掉ChatGPT吧！Claude Cowork + Skills 才是你的全新自動化系統！零基礎初學者必看", u:"https://www.youtube.com/watch?v=a5OTTbSCpO8"},
+      {t:"【超實用】一次搞懂 Claude AI 全生態！2026全新初學者完整教程，15個超棒使用方法", u:"https://www.youtube.com/watch?v=zm3K831v470"},
+      {t:"6個 Claude 核心功能讓你超越99%的 AI 使用者！Cowork/Code 保姆級完整教學", u:"https://www.youtube.com/watch?v=8244knXN9e0"},
+      {t:"10分鐘搞懂 Claude 基礎設定！Project、Skills、Style 讓 AI 成為最強代理人", u:"https://www.youtube.com/watch?v=5Aha8QOVke4"}
+    ],
+    "Gemini": [
+      {t:"ChatGPT 退訂潮擋不住了？Gemini 整合 Google Workspace 全功能詳解！保母級教學讓你從零到精通！", u:"https://www.youtube.com/watch?v=dHknQINzPdg"},
+      {t:"無痛把 Gemini 裝進電腦！Gemini CLI 讓 AI 直接幫你處理所有檔案，無須寫程式", u:"https://www.youtube.com/watch?v=cXEZ50vgDPw"},
+      {t:"【Google Antigravity CLI 實測】手把手安裝教學！從 Gemini CLI 完美過渡", u:"https://www.youtube.com/watch?v=0RPVIiIcD4g"},
+      {t:"Google 全系列教學（上集）：21個超強 AI 應用", u:"https://www.youtube.com/watch?v=4n8jswc2pAI"},
+      {t:"Gemini 3 最強教學＋15個超強功能全場景實測", u:"https://www.youtube.com/watch?v=8o737qKO3IM"},
+      {t:"Gemini 網頁版7個實用示範：臨時對話、Gem 設定、連接 Google 服務", u:"https://www.youtube.com/watch?v=9872vJcRKLg"},
+      {t:"Gemini CLI 官方神器實測：安裝到實戰完整教學", u:"https://www.youtube.com/watch?v=UfrXGfivlEQ"}
+    ],
+    "NotebookLM": [
+      {t:"Gemini 重要更新！合體 NotebookLM + 新版多模態輸出教學，一次生成多種格式", u:"https://www.youtube.com/watch?v=kSgxHy-mqxI"},
+      {t:"重大更新！新版 Gemini 合體 NotebookLM：多模態輸出全公開，建立任何格式檔案", u:"https://www.youtube.com/watch?v=uE1XDwDOtbU"},
+      {t:"NotebookLM 完整教學！93%的人還不知道的8個隱藏用法", u:"https://www.youtube.com/watch?v=zgWerTIynVA"},
+      {t:"NotebookLM 完整教學！10個超強隱藏用法（2026）", u:"https://www.youtube.com/watch?v=pbds1YRoXJw"},
+      {t:"Gemini × NotebookLM 史上最強合體：多筆記調用與互動儀表盤", u:"https://www.youtube.com/watch?v=41eyUBTDn3U"}
+    ],
+    "Gamma": [
+      {t:"2026最新AI 簡報神器PK！40秒做完簡報！Gamma、AiPPT 一鍵比較", u:"https://www.youtube.com/watch?v=X5IToXLK5Pk"},
+      {t:"它竟把6千字長文快速轉成簡報？Gamma 讓你用 AI 提示語生成最精準 PPT！", u:"https://www.youtube.com/watch?v=f0Tw2w-WxRs"},
+      {t:"😱 只有老人才用 PPT 做簡報？新世代 AI 簡報神器 Gamma 讓你告別石器時代邁向新世紀！", u:"https://www.youtube.com/watch?v=nl-eVo1EhEQ"},
+      {t:"【AI工作流】簡報神器 Gamma｜文字一鍵變 PPT，但別只用 AI 就交差", u:"https://www.youtube.com/watch?v=4A4RXctUSoM"}
+    ],
+    "Perplexity": [
+      {t:"【最完整教學】Perplexity Comet AI 瀏覽器 10 大神級用法：工作效率、研究搜尋、生活資訊一次搞定！", u:"https://www.youtube.com/watch?v=oLn8dbfXH-0"},
+      {t:"Perplexity Comet 憑什麼讓我徹底拋棄 Chrome？10個功能自動化你的工作！徹底改變我的工作方式！", u:"https://www.youtube.com/watch?v=Lbi_YrlOutM"},
+      {t:"為什麼科技巨頭都愛用 Perplexity？網友用過後驚呼：終於可以跟滿是廣告的 Google 說拜拜了！！", u:"https://www.youtube.com/watch?v=ZC3L94U0_sc"},
+      {t:"免費到Pro: 完整解鎖 Perplexity 所有功能！", u:"https://www.youtube.com/watch?v=5GD9agWsfAg"}
+    ],
+    "n8n": [
+      {t:"學會 n8n 為你省下 80% 時間！(EP.2) 這個 AI 助理只認你這個主人，不但使命必達且全天候待命！", u:"https://www.youtube.com/watch?v=sRU6Y7DXkLI"},
+      {t:"從零基礎到精通n8n！萬用三步驟做出AI自動化助理（超簡單）", u:"https://www.youtube.com/watch?v=mNRphFUPzjE"},
+      {t:"學會 n8n 為你省下 80% 時間！AI 助理使命必達且全天候待命", u:"https://www.youtube.com/watch?v=r9mi3ZJIWbg"},
+      {t:"【n8n 教學】一次自動發 IG/TikTok/YouTube！7 平台同步發布＋排程全自動化", u:"https://www.youtube.com/watch?v=QliMzK7aTAg"},
+      {t:"n8n 手把手完整教學：從基礎到進階的自動化工作流", u:"https://www.youtube.com/watch?v=sYWCxgEF_yY"},
+      {t:"2026 最強 n8n 教學！從零打造你的 AI 自動化工作流", u:"https://www.youtube.com/watch?v=6s_Z9Tl0sHU"},
+      {t:"零基礎用 n8n 打造 AI 自動化工作流：抓資料到 AI 決策", u:"https://www.youtube.com/watch?v=-vKewrChihk"},
+      {t:"最完整的 n8n 自動化9小時全套教學（從新手到高手）", u:"https://www.youtube.com/watch?v=JnepOnstpAQ"}
+    ],
+    "Dify": [
+      {t:"使用 Dify 免費打造進階 AI 客服系統｜RAG 設定、禁用字、自訂回答、內容優化完整教學", u:"https://www.youtube.com/watch?v=wb6wHNBIqgs"},
+      {t:"【使用 No Code 工具 Dify】設定懂公司產品的 AI Agent 銷售助手", u:"https://www.youtube.com/watch?v=A6zsqVDo8r4"},
+      {t:"Dify 完整安裝教學：生成式 AI 應用創新引擎", u:"https://www.youtube.com/watch?v=kTpC6MtYuKc"},
+      {t:"Dify 系統化教學：RAG 知識庫、自動化流程與企業級部署全解析", u:"https://www.youtube.com/watch?v=IX8g7l578oQ"},
+      {t:"Dify 1.0 基礎教學：開發你的第一個 Agent", u:"https://www.youtube.com/watch?v=hDjubHZwilo"}
+    ],
+    "GitHub Copilot": [
+      {t:"GitHub Copilot CLI 實戰教學｜從修 Bug 到自動建立 Pull Request（含 MCP 設定與切換 Model 示範）", u:"https://www.youtube.com/watch?v=KVht2h5fb9E"},
       {t:"5 個必開新功能！GitHub Copilot 在 VS Code 的超實用更新", u:"https://www.youtube.com/watch?v=N3mOUj2vnE0"}
     ],
     "Cursor": [

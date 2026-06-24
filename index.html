@@ -2344,14 +2344,18 @@ renderTalent();
 /* ---- AI tools ---- */
 function toolCard(x){
   const nm=x.w?`<span class="tip" data-tip="${x.w}">${x.n}<span class="i">\u24D8</span></span>`:x.n;
-  // merge dynamic + embedded videos, dedupe by url
+  // merge dynamic current + embedded videos, dedupe by url
   const dyn=(window.DYNAMIC&&window.DYNAMIC.toolVideos&&window.DYNAMIC.toolVideos[x.n])||[];
-  const seen={}, vids=[];
+  const dynHist=(window.DYNAMIC&&window.DYNAMIC.toolVideosHistory&&window.DYNAMIC.toolVideosHistory[x.n])||[];
+  const seen={}, vids=[], histVids=[];
   dyn.concat(x.vids||[]).forEach(v=>{if(v&&v.u&&!seen[v.u]){seen[v.u]=1;vids.push(v);}});
-  const vlist=vids.length?`<details class="vids"><summary>\uD83C\uDFAC 教學影片 (${vids.length})</summary><ul>`+
+  dynHist.forEach(v=>{if(v&&v.u&&!seen[v.u]){seen[v.u]=1;histVids.push(v);}});
+  const vlist=vids.length?`<details class="vids"><summary>\uD83C\uDFAC 最新教學影片 (${vids.length})</summary><ul>`+
     vids.map(v=>`<li><a href="${v.u}" target="_blank"><span class="pl">\u25B6</span><span>${v.t}</span></a></li>`).join('')+`</ul></details>`:'';
+  const hlist=histVids.length?`<details class="vids"><summary>\uD83D\uDCFC 過往教學影片 (${histVids.length})</summary><ul>`+
+    histVids.map(v=>`<li><a href="${v.u}" target="_blank"><span class="pl">\u25B6</span><span>${v.t}</span></a></li>`).join('')+`</ul></details>`:'';
   return `<div class="toolcard"><h4>${nm}</h4><div class="td">${x.d}</div>`+
-    (x.use?`<div class="tool-use">${x.use}</div>`:'')+vlist+
+    (x.use?`<div class="tool-use">${x.use}</div>`:'')+vlist+hlist+
     `<div class="row"><a class="btn sm" href="${x.url}" target="_blank">前往工具</a></div></div>`;
 }
 function renderTools(){

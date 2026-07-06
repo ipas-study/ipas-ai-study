@@ -1,7 +1,34 @@
-// iPAS AI 應用規劃師學習網站 動態內容 — 週更 2026-07-05
+// iPAS AI 應用規劃師學習網站 動態內容 — 週更 2026-07-06
 window.DYNAMIC = {
-  "lastUpdated": "2026-07-05",
+  "lastUpdated": "2026-07-06",
   "news": [
+    {
+      "t": "iPAS 8/15 初級鑑定倒數 40 天：進入考前衝刺期，官方電腦測驗操作說明與考場資訊先確認",
+      "d": "距 115 年第三梯次初級考試（8/15）剩約 40 天。建議此階段以考古題複本與錯題複習為主，並提前確認考場位置與電腦測驗操作介面（作答畫面、標記題目、試題總覽），避免臨場生疏。最新公告以官網為準。",
+      "u": "https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info"
+    },
+    {
+      "t": "家樂福「AI 侍酒師」上線兩個月吸引 3 萬人使用，七成用戶下單：零售業生成式 AI 落地代表案例",
+      "d": "家樂福攜手宏庭科技推出 AI 侍酒師，依顧客口味與預算推薦葡萄酒，上線短短兩個月吸引超過 3 萬名消費者使用，其中高達七成用戶獲建議後實際下單，是「顧客體驗 × 生成式 AI」落地的具體範例。",
+      "u": "https://www.microfusion.cloud/news/mf-ai-customer-success-story/"
+    },
+    {
+      "t": "台灣正式進入 AI 基礎設施與 Agentic AI 經濟時代：企業投資從試點走向規模化",
+      "d": "產業觀察指出，台灣 2026 年已從生成式 AI 導入階段，邁向 AI 基礎設施建置與 Agentic AI（代理式 AI）規模化應用的新階段，企業評估重點從「能不能用」轉為「如何規模化與衡量 ROI」。",
+      "u": "https://www.digiknow.com.tw/knowledge/054e6e47f30e4"
+    },
+    {
+      "t": "天下雜誌打造 AI Hub：45 年編輯經驗轉化為 AI Agent，媒體業示範內容產製新分工",
+      "d": "面對生成式 AI 衝擊，天下雜誌選擇不以自動產文追求低成本大量內容，而是與業者合作打造 AI Hub，將編輯經驗、內容資料庫與記者工作流程轉化為 AI Agent，協助議題發想、資料整理與論點檢查，是知識工作導入 AI Agent 的參考案例。",
+      "u": "https://www.twreporter.org/a/taiwan-news-media-faces-survival-battle-against-generative-ai-wave"
+    },
+    {
+      "t": "OpenAI 發布 GPT-5.5：多模態與代理能力再升級，企業級應用場景持續擴大",
+      "d": "OpenAI 正式推出 GPT-5.5，強化推理與多模態理解能力，並持續朝向可自主執行任務的 Agent 化模型發展，反映 2026 年主流大型語言模型從「問答」走向「代理式任務執行」的趨勢，是 AI 應用規劃師須掌握的技術演進方向。",
+      "u": "https://openai.com/index/introducing-gpt-5-5/"
+    }
+  ],
+  "newsHistory": [
     {
       "t": "iPAS 8/15 初級鑑定倒數 41 天：進入考前六週衝刺期，官方電腦測驗操作說明先看熟",
       "d": "距 115 年第三梯次初級考試（8/15）剩約六週。建議此階段以考古題與錯題複習為主，並提前熟悉官方電腦測驗介面（作答畫面、標記題目、試題總覽），避免臨場生疏。最新公告以官網為準。",
@@ -26,9 +53,7 @@ window.DYNAMIC = {
       "t": "Gartner 調查：約四分之一企業已將 AI Agent 推進規模化部署，代理式營運模式成 CXO 課題",
       "d": "UiPath 報告引述 Gartner 最新調查，全球約 25% 企業已在至少一至兩個部門規模化部署 AI Agent，多數仍在試點；報告並提出代理式營運模式（Agentic Operating Model）與 ROI 評估框架。",
       "u": "https://www.perform-global.com/blog/agentic-operating-model"
-    }
-  ],
-  "newsHistory": [
+    },
     {
       "t": "Google Cloud Day Taipei 7/9 登場：代理式企業新時代，台灣年度雲端盛會重磅回歸",
       "d": "Google Cloud 繼 Next '26 大會發布「代理式企業」願景後，將於 7 月 9 日在台北南港展覽館二館舉辦年度盛會，聚焦 Gemini Enterprise Agent Platform、AI 資安與 Workspace Intelligence，是了解企業 AI Agent 落地路徑的重要實戰活動。",
@@ -48,11 +73,6 @@ window.DYNAMIC = {
       "t": "Gartner 示警：超過 40% Agentic AI 專案將在 2027 年前被取消，成本與商業價值是致命傷",
       "d": "鼎華智能整理 Gartner 最新報告指出，大多數 Agentic AI 導入失敗源於成本失控、商業價值不清與風險控制不足三大原因。文章同時解析 AI Agent 如何整合 MES/ERP/SCM 改造製造業，是備考「AI 導入規劃與評估」科目的重要反思材料。",
       "u": "https://digihua.com.tw/newsroom260608/"
-    },
-    {
-      "t": "8/15 iPAS AI 應用規劃師初級第三梯次倒數 52 天：官方考試資訊與備考重點整理",
-      "d": "115年第三梯次（8/15）進入衝刺備考階段，初級費用 400 元、四大考點擴及桃園嘉義屏東花蓮，成績考後約 2-3 週放榜。建議此時完成全科模擬考並聚焦錯題弱點。",
-      "u": "https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info"
     },
     {
       "t": "GTC Taipei 2026 黃仁勳宣告「代理式 AI 時代」全面到來：Vera Rubin 量產、Token 經濟學引爆新紀元",
@@ -135,11 +155,6 @@ window.DYNAMIC = {
       "u": "https://udn.com/news/story/7240/9536845"
     },
     {
-      "t": "2026 台灣進入 AI 基礎設施與 Agentic AI 經濟時代",
-      "d": "企業焦點從生成式 AI 工具導入，轉向 AI Agent 自主規劃、調用系統的流程級應用，製造業結合 MES/ERP 的案例增加。",
-      "u": "https://www.digiknow.com.tw/knowledge/054e6e47f30e4"
-    },
-    {
       "t": "Dcard 成立企業 AI Agent 事業 GNTC",
       "d": "Dcard 宣布將社群營運累積的 AI Agent 技術對外輸出，成立企業服務事業，反映台灣 AI Agent 商用化加速。",
       "u": "https://finance.technews.tw/2026/05/28/dcard-ai-agent-gntc/"
@@ -152,6 +167,23 @@ window.DYNAMIC = {
   ],
   "resources": [
     {
+      "t": "提示工程教學 2026：中文 Prompt 寫法、範例與常見錯誤（Mason AI Lab）",
+      "d": "繁體中文完整提示工程教學，涵蓋提示詞公式、Few-shot、結構化輸出、錯誤診斷與團隊共用檢查清單，2026/6/18 更新，適合強化科目二提示工程相關考點。",
+      "u": "https://masonailab.com/tech/prompt-engineering/"
+    },
+    {
+      "t": "2026 最新 LangChain 教學：從 LCEL 基礎到企業級 RAG 實戰全攻略（梅森 AI 實驗室）",
+      "d": "以繁體中文說明 LCEL 組合式管線、語義切分 RAG 系統與多代理人架構設計，適合補強科目二 RAG／Agent 架構的實作理解。",
+      "u": "https://masonaibase.com/langchain-tutorial-2026-lcel-rag/"
+    },
+    {
+      "t": "AI Agent 開發與多智能體實作（臺灣大學資訊系統訓練班，8/15-16 開課）",
+      "d": "臺大資訊系統訓練班開設 2 日密集課程，內容涵蓋 AI 與神經網路、大型語言模型、AI Agent 與多智能體實作，適合考後想進一步實作 AI Agent 的學習者參考課綱。",
+      "u": "https://train.csie.ntu.edu.tw/school/courses/course.php?id=6254"
+    }
+  ],
+  "resourcesHistory": [
+    {
       "t": "2026 最新 LangChain 教學：LCEL、RAG、LangGraph 繁中實戰路線（Mason AI Lab）",
       "d": "以繁體中文完整走過 LangChain 2026 主流架構：LCEL 組合式管線、RAG 檢索增強生成（混合檢索、知識圖譜）、LangGraph 代理人架構，適合準備科目二 RAG／Agent 考點的實作補充。",
       "u": "https://masonailab.com/tech/langchain-rag-2026/"
@@ -160,9 +192,7 @@ window.DYNAMIC = {
       "t": "iPAS AI 應用規劃師考古題與模擬測驗總整理（2026 更新版）",
       "d": "彙整初級／中級歷屆考題來源、模擬測驗與練習建議，並隨 115 年梯次持續更新，適合 8/15 考前搭配本站題庫交叉練習。",
       "u": "https://aiterms.tw/ipas/past-exams/"
-    }
-  ],
-  "resourcesHistory": [
+    },
     {
       "t": "2026 年 AI 必讀免費學習資源懶人包：Prompt、Agent、RAG 官方教材一站整理",
       "d": "整理 Google、OpenAI、Anthropic 等官方免費學習資源，涵蓋提示詞工程、AI Agent 設計、RAG 架構與模型評估，均附中文版或中文解說，是備考 iPAS 各科目的最佳補充材料一站式清單。",
@@ -209,11 +239,6 @@ window.DYNAMIC = {
       "u": "https://www.knightli.com/zh-tw/2026/04/23/ai-terms-agent-mcp-rag-token-explained/"
     },
     {
-      "t": "2026 最新 LangChain 教學：LCEL 基礎到企業級 RAG 實戰全攻略",
-      "d": "涵蓋 LangChain 最新架構 LCEL 與 LangGraph，從 RAG 知識庫搭建到 Multi-Agent 協作，附完整 Python 程式碼範例，適合中級考科深度學習。",
-      "u": "https://masonaibase.com/langchain-tutorial-2026-lcel-rag/"
-    },
-    {
       "t": "李宏毅：一堂課搞懂 AI Agent 的原理",
       "d": "台大課程影片，講解 AI 如何透過經驗調整行為、使用工具與做計劃，打好 Agent 觀念基礎。",
       "u": "https://www.youtube.com/watch?v=M2Yg1kwPpts"
@@ -236,19 +261,19 @@ window.DYNAMIC = {
   ],
   "tools": [
     {
-      "n": "MyEdit",
-      "d": "台灣訊連科技（CyberLink）推出的免費線上 AI 編輯平台，涵蓋圖片（AI 去背、局部重繪、畫質修復、擴圖）、音訊（AI 變聲、去人聲、降噪）與影片編輯，繁體中文介面完善、每日提供免費點數，獲台灣精品獎肯定。",
-      "use": "AI 圖片去背與修復、簡報與行銷素材快速產製、體驗台灣本土生成式 AI 產品的落地設計",
-      "url": "https://myedit.online",
-      "yt": ""
+      "n": "Manus",
+      "d": "由團隊打造、被稱為全球首款通用型 AI Agent 之一，能自主上網蒐集資料、寫程式、產出簡報與網站，不只是問答而是直接完成任務，繁中教學與實測影片眾多，免費帳號提供初始點數可體驗。",
+      "use": "自動化資料蒐集與研究、一鍵產出簡報／網站／報告、體驗通用型 AI Agent 的任務代理能力",
+      "url": "https://manus.im",
+      "yt": "https://www.youtube.com/watch?v=P4dO-vsiE1Q"
     }
   ],
   "toolsHistory": [
     {
-      "n": "Manus",
-      "d": "由 Monica 開發的全自主 AI Agent 平台，可獨立完成資料搜尋、報告撰寫、程式開發、試算表分析等複雜任務，2026 年全球用戶突破百萬。是體驗「AI Agent 自主規劃執行」概念的最佳免費實機工具，適合備考 AI 應用規劃師的 Agentic AI 場景理解。",
-      "use": "體驗 AI Agent 自主規劃複雜任務的完整流程、快速產出研究報告與分析文件、直觀理解 Agentic AI 如何分解任務並調用工具",
-      "url": "https://manus.im",
+      "n": "MyEdit",
+      "d": "台灣訊連科技（CyberLink）推出的免費線上 AI 編輯平台，涵蓋圖片（AI 去背、局部重繪、畫質修復、擴圖）、音訊（AI 變聲、去人聲、降噪）與影片編輯，繁體中文介面完善、每日提供免費點數，獲台灣精品獎肯定。",
+      "use": "AI 圖片去背與修復、簡報與行銷素材快速產製、體驗台灣本土生成式 AI 產品的落地設計",
+      "url": "https://myedit.online",
       "yt": ""
     },
     {
@@ -302,40 +327,93 @@ window.DYNAMIC = {
     }
   ],
   "toolVideos": {
-    "ChatGPT": [],
-    "Claude": [
+    "ChatGPT": [
       {
-        "t": "你唯一需要的 Claude 教學：從入門到打造你的 AI 團隊",
-        "u": "https://www.youtube.com/watch?v=qYKRiZBWrZ4"
+        "t": "新手必學的「進化版 ChatGPT」！快速打造 Codex 終極知識庫，用它秒做各種檔案！",
+        "u": "https://www.youtube.com/watch?v=pTO85XkruHI"
       },
       {
-        "t": "Claude Code 4 小時完整教學：學會 Skills／AI 自動工作／搜集資料（2026）",
-        "u": "https://www.youtube.com/watch?v=fYuohy6rQ9c"
+        "t": "傻子也能學會的 Codex 教學｜個人網站、YouTube爆款雷達、自動週報，零程式碼15分鐘全搞定",
+        "u": "https://www.youtube.com/watch?v=VMF4JWbdxhs"
+      }
+    ],
+    "Claude": [
+      {
+        "t": "【超實用】一次搞懂Claude AI全生態！2026全新初學者完整教程，15個Claude超棒的使用方法",
+        "u": "https://www.youtube.com/watch?v=zm3K831v470"
+      },
+      {
+        "t": "10分鐘搞懂 Claude 基礎設定！Project、Skills、Style 又是什麼？讓 AI 成為最強代理人｜泛科學院",
+        "u": "https://www.youtube.com/watch?v=5Aha8QOVke4"
       }
     ],
     "Gemini": [
       {
-        "t": "2026 必學！Gemini × NotebookLM 外掛全解析：5 大工具助你效率翻倍｜職能小真",
-        "u": "https://www.youtube.com/watch?v=UzyhbfkGknc"
+        "t": "2026 Google Gemini 10個實用示範｜文字轉錄+即時語音對話+即時翻譯+私隱設定｜AI生活科技",
+        "u": "https://www.youtube.com/watch?v=Je9ssxv4tFQ"
+      },
+      {
+        "t": "1分鐘用 Gemini 製作 LINE 貼圖並上架賺錢！2026 最新 AI 教學",
+        "u": "https://www.youtube.com/watch?v=BM8jilWRfZE"
       }
     ],
-    "NotebookLM": [],
-    "Gamma": [],
+    "NotebookLM": [
+      {
+        "t": "NotebookLM 完整教學！93%的人還不知道的8個隱藏用法，完勝ChatGPT｜分析報告｜會議記錄",
+        "u": "https://www.youtube.com/watch?v=zgWerTIynVA"
+      },
+      {
+        "t": "別再自己做簡報！NotebookLM 3分鐘直接幫你完成：一鍵去浮水印、換圖全流程公開！",
+        "u": "https://www.youtube.com/watch?v=yjFixFO5TUs"
+      }
+    ],
+    "Gamma": [
+      {
+        "t": "化創意為藝術 - Gamma的AI簡報魔法｜吳承穎線上講座【完整版】",
+        "u": "https://www.youtube.com/watch?v=4bMeGcHGpMs"
+      },
+      {
+        "t": "它竟把6千字長文快速轉成簡報？內容處理量更大贏 ChatGPT？｜Gamma｜泛科學院",
+        "u": "https://www.youtube.com/watch?v=f0Tw2w-WxRs"
+      }
+    ],
     "Perplexity": [],
     "n8n": [
       {
-        "t": "別再死磕 n8n 了！2026 年自動化新趨勢：Agent 工作流程完整教學",
-        "u": "https://www.youtube.com/watch?v=4w_RK3hZtWo"
+        "t": "別再手動做了！零基礎學會用n8n打造AI自動化工作流：從抓取資料到AI決策，全流程手把手教學｜Kelly Tsai",
+        "u": "https://www.youtube.com/watch?v=-vKewrChihk"
+      },
+      {
+        "t": "【n8n 教學】一次自動發 IG/TikTok/YouTube！7 平台同步發布＋排程全自動化",
+        "u": "https://www.youtube.com/watch?v=QliMzK7aTAg"
       }
     ],
     "Dify": [
       {
-        "t": "【2026 廣東話 AI 教學】10 分鐘用 Dify 從零開始打造企業級私有 AI 助手",
-        "u": "https://www.youtube.com/watch?v=1XxGaNkq_g4"
+        "t": "Dify 系統化教學｜Dify 零代碼革命：RAG 知識庫、自動化流程與企業級部署全解析",
+        "u": "https://www.youtube.com/watch?v=IX8g7l578oQ"
+      },
+      {
+        "t": "01_Dify_完整安裝教學｜生成式AI應用創新引擎｜企業落地AI應用最佳途徑",
+        "u": "https://www.youtube.com/watch?v=kTpC6MtYuKc"
       }
     ],
-    "GitHub Copilot": [],
-    "Cursor": []
+    "GitHub Copilot": [
+      {
+        "t": "如何正確使用GitHub Copilot Chat 以大幅提升編輯程式的效率",
+        "u": "https://www.youtube.com/watch?v=mFCryoMibBo"
+      },
+      {
+        "t": "GitHub Copilot CLI 實戰教學｜從修 Bug 到自動建立 Pull Request（含 MCP 設定與切換 Model 示範）",
+        "u": "https://www.youtube.com/watch?v=KVht2h5fb9E"
+      }
+    ],
+    "Cursor": [
+      {
+        "t": "【Cursor 教學】入門到實戰，用 AI Agent 自動化你的工作流！",
+        "u": "https://www.youtube.com/watch?v=kVniOF36GEk"
+      }
+    ]
   },
   "toolVideosHistory": {
     "ChatGPT": [
@@ -386,6 +464,14 @@ window.DYNAMIC = {
     ],
     "Claude": [
       {
+        "t": "你唯一需要的 Claude 教學：從入門到打造你的 AI 團隊",
+        "u": "https://www.youtube.com/watch?v=qYKRiZBWrZ4"
+      },
+      {
+        "t": "Claude Code 4 小時完整教學：學會 Skills／AI 自動工作／搜集資料（2026）",
+        "u": "https://www.youtube.com/watch?v=fYuohy6rQ9c"
+      },
+      {
         "t": "Claude基本功 EP01：一次搞懂 Claude 全生態——從聊天到全自動化寫程式",
         "u": "https://www.youtube.com/watch?v=luRFvHW0SF8"
       },
@@ -431,6 +517,10 @@ window.DYNAMIC = {
       }
     ],
     "Gemini": [
+      {
+        "t": "2026 必學！Gemini × NotebookLM 外掛全解析：5 大工具助你效率翻倍｜職能小真",
+        "u": "https://www.youtube.com/watch?v=UzyhbfkGknc"
+      },
       {
         "t": "必看！2026 Google Gemini 終極教學｜免寫 Code 手把手教你打造有靈魂的個人 AI 助手",
         "u": "https://www.youtube.com/watch?v=DMbg15Fj3Gg"
@@ -584,6 +674,10 @@ window.DYNAMIC = {
     ],
     "n8n": [
       {
+        "t": "別再死磕 n8n 了！2026 年自動化新趨勢：Agent 工作流程完整教學",
+        "u": "https://www.youtube.com/watch?v=4w_RK3hZtWo"
+      },
+      {
         "t": "【新手教學】只需 2 分鐘！在 Zeabur 自行安裝 n8n，免費無上限任用～",
         "u": "https://www.youtube.com/watch?v=07IL9i44z6k"
       },
@@ -633,6 +727,10 @@ window.DYNAMIC = {
       }
     ],
     "Dify": [
+      {
+        "t": "【2026 廣東話 AI 教學】10 分鐘用 Dify 從零開始打造企業級私有 AI 助手",
+        "u": "https://www.youtube.com/watch?v=1XxGaNkq_g4"
+      },
       {
         "t": "別再只會用 Dify！hello-agents 帶你從零打造 AI Agent 框架，超越基礎應用",
         "u": "https://www.youtube.com/watch?v=Ze9DfZCdmP0"

@@ -2,8 +2,12 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v4.1　|　日期 2026-06-18
+     版本 v5.0　|　日期 2026-07-13
      版本紀錄：
+       v5.0 (2026-07-13) 考古題「AI 導師解題」全面升級：463 題預先生成完整四段解析（為何對/為何錯/延伸重點/2026新發展），
+                         按鈕改為 Modal 彈窗直接顯示，不用再貼到其他 AI；解析內容存於獨立檔案 ai-tutor-data.js 動態載入，
+                         保留「複製 Prompt 給其他 AI」小連結備用選項
+       v4.5 (2026-06-24) 過往教學影片功能：toolCard() 新增「📼 過往教學影片」折疊區塊
        v3.7 (2026-06-18) 擂台 Modal 彈窗 + 33 組真實場景案例
        v3.4 (2026-06-14) 筆記與知識管理三工具影片全換 2026 最新繁中版
        v3.3 (2026-06-14) AI工具頁「本週新工具」標題加日期標示
@@ -301,6 +305,24 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 .arena-modal-close{background:#e53935;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap}
 .arena-modal-close:hover{background:#b71c1c}
 .arena-modal-body{padding:18px 20px}
+.tutor-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9100;overflow-y:auto;padding:16px}
+.tutor-modal-overlay.open{display:block}
+.tutor-modal{background:var(--surface);max-width:720px;margin:32px auto;border-radius:16px;box-shadow:0 10px 50px rgba(0,0,0,.35);overflow:hidden;animation:amIn .2s ease}
+.tutor-modal-hdr{padding:14px 18px;background:linear-gradient(135deg,#f3edff,#fdf0f8);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:1}
+.tutor-modal-title{font-weight:700;font-size:15px;flex:1;line-height:1.4;color:#5b21b6}
+.tutor-modal-close{background:#e53935;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap}
+.tutor-modal-close:hover{background:#b71c1c}
+.tutor-modal-body{padding:18px 20px;font-size:14px;line-height:1.85}
+.tutor-modal-body p{margin:0 0 12px}
+.tutor-modal-body strong{color:#5b21b6}
+.tutor-modal-body ul{margin:0 0 12px;padding-left:20px}
+.tutor-modal-body li{margin-bottom:6px}
+.tutor-table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:13px}
+.tutor-table th,.tutor-table td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+.tutor-table th{background:var(--surface2);font-weight:700}
+.tutor-modal-loading{color:var(--muted);font-size:13px;padding:20px 0;text-align:center}
+.ai-tutor-copy-link{display:inline-block;margin-top:6px;margin-left:8px;background:none;border:none;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer;padding:0}
+.ai-tutor-copy-link:hover{color:var(--brand)}
 .arena-idx{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:24px}
 .arena-idx-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:12.5px;cursor:pointer;transition:.15s;text-decoration:none;color:var(--txt);display:block}
 .arena-idx-item:hover{border-color:var(--brand);background:var(--chip);text-decoration:none}
@@ -557,7 +579,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <div class="info-card"><h4>🔤 名詞解釋</h4><p>384 個 AI 專有名詞，含英文原文與白話解釋。支援中英文搜尋及分類篩選。</p></div>
     <div class="info-card"><h4>🛠 AI工具</h4><p>22 個可落地工具（7 大類），每個附使用情境與教學影片，每週自動更新新工具與消息。課程、教學影片等學習資源請見「AI資源」分頁。</p></div>
     <div class="info-card"><h4>⭐ 錯題本 &amp; 收藏</h4><p>在考古題頁點 ★ 收藏題目；答錯時自動加入錯題。可切換「我的收藏」或「我的錯題」單獨複習。紀錄存在瀏覽器本機，請勿在無痕模式使用。</p></div>
-    <div class="info-card"><h4>🤖 AI 導師解題</h4><p>考古題答題後，點「🤖 呼叫 AI 導師」按鈕，自動複製精心設計的提問 Prompt，貼到 Claude（或其他 AI）即可獲得詳細解析。</p></div>
+    <div class="info-card"><h4>🤖 AI 導師解題</h4><p>每一題都已預先生成完整解析，點「🤖 呼叫 AI 導師解題」按鈕，直接彈出視窗顯示詳解（為何答案正確、其他選項錯在哪、延伸重點、2026年新發展），不用再貼到別的 AI 問。若想另外問其他 AI，題目下方也保留「📋 複製 Prompt 給其他 AI」小連結可用。</p></div>
     <div class="info-card"><h4>💕 Vicky 社群</h4><p>由 Vicky Mommy 玲玲經營的 AI 學習社群，含 iPAS 獲證者訪談影片牆、官方頻道、LINE 入群 QR code。</p></div>
     <div class="info-card"><h4>🗺 AI人才</h4><p>依數位發展部《AI產業人才認定指引 3.0》整理的人才地圖，幫你定位學習方向與對應證照。</p></div>
     <div class="info-card"><h4>⚔️ 技術擂台</h4><p>初級 13 組 ＋ 中級 20 組，共 <b>33 組</b>官方技術對決卡片。嚴格依據初級（科目一、二）＋ 中級（科目一、二、三）官方學習指引及勘誤表撰寫。每組對決並列核心優勢、致命弱點，是考前快速掌握「技術取捨邏輯」的利器。</p></div>
@@ -1856,6 +1878,16 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
   </div>
 </div>
 
+<div id="tutorModal" class="tutor-modal-overlay" onclick="if(event.target===this)closeTutorModal()">
+  <div class="tutor-modal">
+    <div class="tutor-modal-hdr">
+      <div class="tutor-modal-title" id="tutorModalTitle">🤖 AI 導師解析</div>
+      <button class="tutor-modal-close" onclick="closeTutorModal()">✕ 關閉</button>
+    </div>
+    <div class="tutor-modal-body" id="tutorModalBody"></div>
+  </div>
+</div>
+
 <div class="footer">
   本站由「<b>Justin-阿輝</b>」利用 AI 進行製作整理 © 2026<br>
   所有資料來源：題庫及學習指引皆取自 iPAS 官方公告試題及學習指引、考試資訊請以
@@ -2040,15 +2072,19 @@ function qCard(q,i){
   });
   c.appendChild(el('div','ans-line','✔ 正確答案：'+q.answer+(q.exp?'　—　'+q.exp:'')));
   const tb=el('button','ai-tutor-btn','🤖 呼叫 AI 導師解題');
-  tb.onclick=()=>{
+  tb.onclick=()=>{ openTutorModal(q); };
+  c.appendChild(tb);
+  const copyLink=el('button','ai-tutor-copy-link','📋 複製 Prompt 給其他 AI');
+  copyLink.onclick=(e)=>{
+    e.stopPropagation();
     const opts=LT.filter(l=>q.options[l]).map(l=>l+'. '+q.options[l]).join('\n');
     const prompt='你是 iPAS AI應用規劃師考試的專業輔導老師。請詳細分析以下考題：\n\n題目：'+q.q+'\n\n'+opts+'\n\n正確答案是【'+q.answer+'】\n\n請說明：\n1. 為什麼答案是 '+q.answer+'？\n2. 其他選項各自錯在哪裡？\n3. 這個概念在考試中還有哪些延伸重點需要記住？\n4. 此題涉及的技術或觀念在 2026 年是否有新發展或更新觀點？若有，請說明最新動態，以及此標準答案在當前的適用性。';
     navigator.clipboard.writeText(prompt).then(()=>{
-      tb.textContent='✅ Prompt 已複製！去貼給 Claude';tb.style.background='var(--good)';
-      setTimeout(()=>{tb.innerHTML='🤖 呼叫 AI 導師解題';tb.style.background='';},3000);
+      copyLink.textContent='✅ 已複製！去貼給其他 AI';
+      setTimeout(()=>{copyLink.textContent='📋 複製 Prompt 給其他 AI';},2500);
     }).catch(()=>{alert('複製失敗，請確認瀏覽器權限。');});
   };
-  c.appendChild(tb);
+  c.appendChild(copyLink);
   c.querySelector('.star-btn').onclick=(e)=>{
     e.stopPropagation();NB.toggleFav(q.id);
     e.target.classList.toggle('starred');NB.updateBadges();
@@ -2372,7 +2408,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v4.1（2026-06-18）';
+$('#build-stamp').textContent='　·　版本 v5.0（2026-07-13）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
@@ -2406,6 +2442,81 @@ function closeArenaModal(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaModal();});
+
+// ── 🤖 AI 導師解析 Modal（v5.0：預先生成內容，動態載入獨立檔案）─────────────────────────────
+function ensureAiTutorData(cb){
+  if(window.AI_TUTOR_DATA){cb();return;}
+  if(window._aiTutorLoading){window._aiTutorLoading.push(cb);return;}
+  window._aiTutorLoading=[cb];
+  var s=document.createElement('script');
+  s.src='ai-tutor-data.js';
+  s.onload=function(){
+    var cbs=window._aiTutorLoading||[];window._aiTutorLoading=null;
+    cbs.forEach(function(f){f();});
+  };
+  s.onerror=function(){
+    window._aiTutorLoading=null;
+    document.getElementById('tutorModalBody').innerHTML='<p>AI 導師資料載入失敗，請檢查網路連線後重新整理頁面。</p>';
+  };
+  document.head.appendChild(s);
+}
+function tutorMdToHtml(md){
+  var esc=md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function inline(s){return s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');}
+  var isTableRow=function(l){return/^\s*\|.*\|\s*$/.test(l);};
+  var isSepRow=function(l){return/^\s*\|(?:[\s:-]+\|)+\s*$/.test(l);};
+  var isListItem=function(l){return/^\s*-\s+/.test(l);};
+  var lines=esc.split('\n');
+  var out=[],buf=[],i=0;
+  function flushText(){
+    if(buf.length){out.push('<p>'+buf.map(inline).join('<br>')+'</p>');buf=[];}
+  }
+  while(i<lines.length){
+    var line=lines[i];
+    if(!line.trim()){flushText();i++;continue;}
+    if(isTableRow(line)){
+      flushText();
+      var tbl=[];
+      while(i<lines.length&&isTableRow(lines[i])){tbl.push(lines[i]);i++;}
+      var rows=tbl.filter(function(l){return!isSepRow(l);}).map(function(l){
+        return l.trim().replace(/^\||\|$/g,'').split('|').map(function(c){return c.trim();});
+      });
+      if(rows.length){
+        var head=rows[0],body=rows.slice(1);
+        var thead='<tr>'+head.map(function(c){return'<th>'+inline(c)+'</th>';}).join('')+'</tr>';
+        var tbody=body.map(function(r){return'<tr>'+r.map(function(c){return'<td>'+inline(c)+'</td>';}).join('')+'</tr>';}).join('');
+        out.push('<table class="tutor-table">'+thead+tbody+'</table>');
+      }
+      continue;
+    }
+    if(isListItem(line)){
+      flushText();
+      var items=[];
+      while(i<lines.length&&isListItem(lines[i])){items.push(lines[i]);i++;}
+      out.push('<ul>'+items.map(function(l){return'<li>'+inline(l.replace(/^\s*-\s+/,''))+'</li>';}).join('')+'</ul>');
+      continue;
+    }
+    buf.push(line);
+    i++;
+  }
+  flushText();
+  return out.join('');
+}
+function openTutorModal(q){
+  document.getElementById('tutorModalTitle').textContent='🤖 AI 導師解析 · 正確答案 '+q.answer;
+  document.getElementById('tutorModalBody').innerHTML='<div class="tutor-modal-loading">解析內容載入中…</div>';
+  document.getElementById('tutorModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  ensureAiTutorData(function(){
+    var content=window.AI_TUTOR_DATA&&window.AI_TUTOR_DATA[q.id];
+    document.getElementById('tutorModalBody').innerHTML=content?tutorMdToHtml(content):'<p>找不到這一題的解析內容，請改用下方「複製 Prompt 給其他 AI」功能。</p>';
+  });
+}
+function closeTutorModal(){
+  document.getElementById('tutorModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTutorModal();});
 </script>
 
 <!-- 🎮 特訓營回返懸浮按鈕（當由 game.html 帶 ?go= 參數開啟時顯示） -->

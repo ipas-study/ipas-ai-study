@@ -46,6 +46,14 @@ v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStora
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XJ1K6HESBD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XJ1K6HESBD');
+</script>
 <title>AI 應用規劃師（初級）學習網站</title>
 <style>
 :root{
@@ -2448,8 +2456,8 @@ $('#build-stamp').textContent='　·　版本 v6.0（2026-07-27）';
   var el=document.getElementById('visit-counter');
   if(!el)return;
   var ns='ipas-study-github-io', key='ipas-ai-study-home';
-  // 首選 counterapi v1 up（每次載入+1並回傳累計）
-  fetch('https://api.counterapi.dev/v1/'+ns+'/'+key+'/up')
+  // 2026-08-09：CounterAPI v1 已遭官方停用（回傳410），改用 abacus.jasoncameron.dev（免註冊、回傳格式相容 value 欄位）
+  fetch('https://abacus.jasoncameron.dev/hit/'+ns+'/'+key)
    .then(function(r){return r.json();})
    .then(function(d){
      var n=(d&&(d.count!=null?d.count:d.value));

@@ -2,8 +2,13 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v6.0　|　日期 2026-07-27
+     版本 v6.2　|　日期 2026-08-09
      版本紀錄：
+       v6.2 (2026-08-09) 新增「💌 考前心靈密語」按鈕：首頁倒數卡片下方新增按鈕，點擊彈出 Modal 隨機顯示一句
+                         中英對照的鼓勵語（共20句，涵蓋準備狀態肯定/情緒安撫/睡眠提醒/祝福等語氣），支援連續
+                         「再抽一句」不用重新點按鈕；沿用既有 arena-modal 樣式與互動模式（Esc/點背景關閉）
+       v6.1 (2026-08-09) 修復頁尾「累計瀏覽人數」消失問題（CounterAPI v1 遭官方停用，改用 abacus.jasoncameron.dev）；
+                         <head> 加入 GA4 追蹤碼（評估ID G-XJ1K6HESBD），已驗證即時報表正常收到訪客資料
        v6.0 (2026-07-27) 考古題庫重大擴充與修正：①新增 115年第一次中級考題 150 題（三科各50題，含官方答案＋AI導師
                          四段解析＋🧒小學生版＋🏢實際案例）；②修正等級/梯次篩選連動bug（選初級時梯次選單不再出現
                          中級的梯次，反之亦然）；③補齊中級114年第二梯次原本遺漏的16題（大數據科目11題、機器學習
@@ -327,6 +332,13 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 .arena-modal-close{background:#e53935;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap}
 .arena-modal-close:hover{background:#b71c1c}
 .arena-modal-body{padding:18px 20px}
+.mindnote-modal{max-width:480px}
+.mindnote-zh{font-size:21px;font-weight:700;line-height:1.7;margin-bottom:14px;color:var(--txt)}
+.mindnote-en{font-size:14px;font-style:italic;color:var(--muted);line-height:1.5}
+.mindnote-btn{background:linear-gradient(135deg,#f0f4ff,#f8f0ff);border:1px solid var(--line);
+  color:var(--brand-d);border-radius:999px;padding:9px 20px;font-size:14px;font-weight:700;
+  cursor:pointer;box-shadow:var(--shadow);margin-top:8px}
+.mindnote-btn:hover{border-color:var(--brand);filter:brightness(1.03)}
 .tutor-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9100;overflow-y:auto;padding:16px}
 .tutor-modal-overlay.open{display:block}
 .tutor-modal{background:var(--surface);max-width:720px;margin:32px auto;border-radius:16px;box-shadow:0 10px 50px rgba(0,0,0,.35);overflow:hidden;animation:amIn .2s ease}
@@ -389,6 +401,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <h1 style="margin-top:12px">距離考試還有</h1>
     <div class="cd" id="countdown"></div>
     <div class="muted" id="cd-date"></div>
+    <button class="mindnote-btn" onclick="openMindNote()">💌 抽一句考前心靈密語</button>
   </div>
 
   <h2><span class="bar"></span>考試介紹</h2>
@@ -1908,6 +1921,16 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
   </div>
 </div>
 
+<div id="mindnoteModal" class="arena-modal-overlay" onclick="if(event.target===this)closeMindNote()">
+  <div class="arena-modal mindnote-modal">
+    <div class="arena-modal-hdr">
+      <div class="arena-modal-title">💌 考前心靈密語</div>
+      <button class="arena-modal-close" onclick="closeMindNote()">✕ 關閉</button>
+    </div>
+    <div class="arena-modal-body" id="mindnoteBody" style="text-align:center;padding:36px 24px"></div>
+  </div>
+</div>
+
 <div id="tutorModal" class="tutor-modal-overlay" onclick="if(event.target===this)closeTutorModal()">
   <div class="tutor-modal">
     <div class="tutor-modal-hdr">
@@ -2450,7 +2473,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v6.0（2026-07-27）';
+$('#build-stamp').textContent='　·　版本 v6.2（2026-08-09）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
@@ -2484,6 +2507,50 @@ function closeArenaModal(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaModal();});
+
+// ── 💌 考前心靈密語 ─────────────────────────────
+var MIND_NOTES=[
+  {zh:'你已經準備好了，剩下的只是相信自己。',en:'You are ready. All that\'s left is to trust yourself.'},
+  {zh:'深呼吸，你比想像中更強大。',en:'Breathe. You are stronger than you think.'},
+  {zh:'630 題都刷過了，這份努力騙不了人。',en:'630 questions done. That effort doesn\'t lie.'},
+  {zh:'別怕犯錯，考場上的你，已經是準備最久的自己。',en:'Don\'t fear mistakes — today\'s you is the most prepared you\'ve ever been.'},
+  {zh:'緊張是正常的，代表你在乎；帶著它一起上場就好。',en:'Nervous is normal — it means you care. Just bring it along.'},
+  {zh:'你不需要完美，只需要盡力。',en:'You don\'t need to be perfect. Just do your best.'},
+  {zh:'今天的考試，只是你 AI 學習路上的一個小站牌。',en:'This exam is just one stop on your AI learning journey.'},
+  {zh:'祝你穩穩發揮，把該拿的分數都拿到手。',en:'Wishing you a steady performance — earn every point you deserve.'},
+  {zh:'錯題本裡的每一題，都是你進步的痕跡。',en:'Every question in your mistake notebook is proof of your growth.'},
+  {zh:'你走到這裡，已經贏過昨天猶豫不決的自己。',en:'Just getting here means you\'ve already beaten yesterday\'s hesitation.'},
+  {zh:'睡飽一點，比多刷十題更重要。',en:'A good night\'s sleep matters more than ten extra questions.'},
+  {zh:'不用跟別人比，你只需要贏過昨天的自己。',en:'No need to compare with others — just outdo who you were yesterday.'},
+  {zh:'考試結束後，記得好好犒賞自己一下。',en:'After the exam, remember to treat yourself well.'},
+  {zh:'你的努力，AI 導師都看在眼裡。',en:'Your AI Tutor has seen every bit of your effort.'},
+  {zh:'祝好運，也祝你看見自己這段時間的成長。',en:'Good luck — and may you also see how far you\'ve come.'},
+  {zh:'你不是一個人在準備，這整個網站都是為你而做的。',en:'You\'re not preparing alone — this whole site was built for you.'},
+  {zh:'你的每一次練習，都在悄悄堆疊你的實力。',en:'Every practice session quietly builds your strength.'},
+  {zh:'別小看自己走過的路，那些都是紮實的累積。',en:'Don\'t underestimate how far you\'ve come — it\'s all solid progress.'},
+  {zh:'考場很安靜，但你心裡可以很篤定。',en:'The exam hall may be quiet, but your heart can be certain.'},
+  {zh:'無論結果如何，敢於挑戰的你已經很棒了。',en:'Whatever the result, just having the courage to try makes you great.'}
+];
+var _lastMindNoteIdx=-1;
+function renderMindNote(){
+  var i;
+  do{ i=Math.floor(Math.random()*MIND_NOTES.length); }while(MIND_NOTES.length>1 && i===_lastMindNoteIdx);
+  _lastMindNoteIdx=i;
+  var n=MIND_NOTES[i];
+  document.getElementById('mindnoteBody').innerHTML=
+    '<div class="mindnote-zh">'+n.zh+'</div><div class="mindnote-en">'+n.en+'</div>'+
+    '<button class="mindnote-btn" onclick="renderMindNote()">🔄 再抽一句</button>';
+}
+function openMindNote(){
+  renderMindNote();
+  document.getElementById('mindnoteModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMindNote(){
+  document.getElementById('mindnoteModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMindNote();});
 
 // ── 🤖 AI 導師解析 Modal（v5.0：預先生成內容，動態載入獨立檔案）─────────────────────────────
 function ensureAiTutorData(cb){

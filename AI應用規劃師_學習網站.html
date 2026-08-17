@@ -2,9 +2,14 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v6.3　|　日期 2026-08-17
+     版本 v6.4　|　日期 2026-08-17
      版本紀錄：
-       v6.3 (2026-08-17) ①倒數計時目標改為 115/11/07（第四梯次初級鑑定），報名資訊更新為「已額滿」；
+       v6.4 (2026-08-17) 新增「💬 意見箱」：右下角全頁浮動按鈕，點擊彈出 Modal，內含兩個分頁——
+                         「📝 我要留言」內嵌 Google 表單（回饋建議／勘誤回報／許願新功能三分類，勘誤可選
+                         等級梯次、科目並填題號），「📢 大家的提問與回覆」動態抓取 Google 試算表「公開版」
+                         發布的 CSV，以網站自有樣式渲染成問答卡片。表單不收集任何個資（僅選填暱稱），
+                         站長標記為「公開」的留言才會顯示；資料抓取失敗時整區靜默降級不影響其他功能
+       v6.4 (2026-08-17) ①倒數計時目標改為 115/11/07（第四梯次初級鑑定），報名資訊更新為「已額滿」；
                          ②首頁倒數卡片下方新增「📮 8/15 考生看這裡」資訊卡（9/1 起網路查成績、10/20 起寄發證書），
                          並於 10/20 之後自動隱藏；報名資訊因第四梯次已額滿而移除；③「💌 考前心靈密語」升級為「備考心靈密語」：
                          語句庫依備考階段分為 起步期(>60天)／衝刺期(15–60天)／考前期(≤14天)／等成績期 四組，
@@ -337,6 +342,38 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 .arena-modal-close{background:#e53935;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap}
 .arena-modal-close:hover{background:#b71c1c}
 .arena-modal-body{padding:18px 20px}
+/* ── 💬 意見箱（v6.4）─────────────────────── */
+#fb-fab{position:fixed;bottom:20px;right:20px;z-index:9998;transition:bottom .2s}
+#fb-fab button{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:0;
+  border-radius:999px;padding:11px 18px;font-size:14px;font-weight:800;cursor:pointer;
+  box-shadow:0 4px 14px rgba(99,102,241,.45);font-family:inherit;display:flex;align-items:center;gap:6px}
+#fb-fab button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.fb-modal{max-width:760px}
+.fb-tabs{display:flex;gap:6px;padding:10px 18px 0;border-bottom:1px solid var(--line);background:var(--surface)}
+.fb-tab{background:transparent;border:1px solid var(--line);border-bottom:0;color:var(--muted);
+  border-radius:10px 10px 0 0;padding:8px 14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+.fb-tab.active{background:linear-gradient(135deg,#f0f4ff,#f8f0ff);color:var(--brand-d);border-color:var(--brand)}
+.fb-hint{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px}
+#fb-iframe{width:100%;height:620px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.fb-card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;background:var(--surface);box-shadow:var(--shadow)}
+.fb-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.fb-badge{font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.fb-b-err{background:#fee2e2;color:#b91c1c}
+.fb-b-fb{background:#e0e7ff;color:#4338ca}
+.fb-b-wish{background:#fef3c7;color:#b45309}
+.fb-meta{font-size:12px;color:var(--muted)}
+.fb-loc{font-size:12px;color:var(--brand-d);background:#f0f4ff;border:1px solid var(--line);
+  border-radius:8px;padding:2px 9px;white-space:nowrap}
+.fb-body{font-size:14px;line-height:1.75;white-space:pre-wrap;word-break:break-word}
+.fb-reply{margin-top:10px;padding:10px 12px;border-left:3px solid var(--brand);
+  background:linear-gradient(135deg,#f6f8ff,#fdf7ff);border-radius:0 10px 10px 0;
+  font-size:14px;line-height:1.75;white-space:pre-wrap;word-break:break-word}
+.fb-reply b{color:var(--brand-d);display:block;margin-bottom:4px;font-size:12px;letter-spacing:.3px}
+.fb-empty{text-align:center;color:var(--muted);font-size:14px;padding:40px 16px;line-height:1.8}
+@media(max-width:520px){
+  #fb-fab button{padding:10px 14px;font-size:13px}
+  #fb-iframe{height:560px}
+}
 .exam-result-card{margin-top:18px;border-left:4px solid #f59e0b;
   background:linear-gradient(135deg,#fffbeb,#fff7ed)}
 .erc-hd{font-weight:800;font-size:16px;margin-bottom:10px;color:#b45309}
@@ -2029,7 +2066,7 @@ function countdown(){
 }
 countdown();setInterval(countdown,1000);
 
-/* ---- v6.3 首頁：心靈密語按鈕文字隨階段變化、8/15 考生資訊卡到期自動隱藏 ---- */
+/* ---- v6.4 首頁：心靈密語按鈕文字隨階段變化、8/15 考生資訊卡到期自動隱藏 ---- */
 (function initHomeExtras(){
   try{
     var b=document.getElementById('mindnote-launch');
@@ -2545,7 +2582,7 @@ function closeArenaModal(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaModal();});
 
-// ── 💌 備考心靈密語（v6.3：依備考階段自動切換語句庫）─────────────
+// ── 💌 備考心靈密語（v6.4：依備考階段自動切換語句庫）─────────────
 // 階段判定：等成績期 → 起步期(>60天) → 衝刺期(15–60天) → 考前期(≤14天)
 var PREV_EXAM_DATE='2026-08-15';   // 上一梯次考試日
 var RESULT_DATE='2026-09-01';      // 成績開放查詢日
@@ -2755,6 +2792,30 @@ function closeTutorModal(){
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTutorModal();});
 </script>
 
+<!-- 💬 意見箱浮動按鈕（v6.4，全頁顯示） -->
+<div id="fb-fab"><button onclick="openFeedback()">💬 意見箱</button></div>
+
+<div id="feedbackModal" class="arena-modal-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="arena-modal fb-modal">
+    <div class="arena-modal-hdr">
+      <div class="arena-modal-title">💬 意見箱 — 回饋 / 勘誤 / 許願</div>
+      <button class="arena-modal-close" onclick="closeFeedback()">✕ 關閉</button>
+    </div>
+    <div class="fb-tabs">
+      <button class="fb-tab active" id="fb-tab-write" onclick="fbTab('write')">📝 我要留言</button>
+      <button class="fb-tab" id="fb-tab-wall" onclick="fbTab('wall')">📢 大家的提問與回覆</button>
+    </div>
+    <div class="arena-modal-body">
+      <div id="fb-write">
+        <p class="fb-hint">這裡不會收集任何個資，暱稱也可以不填。送出後，我會在「📢 大家的提問與回覆」分頁回覆你。</p>
+        <iframe id="fb-iframe" src="" title="意見箱表單" loading="lazy"></iframe>
+        <p class="fb-hint" style="margin:10px 0 0">表單載不出來？<a id="fb-newtab" href="#" target="_blank" rel="noopener">改用新分頁填寫</a></p>
+      </div>
+      <div id="fb-wall" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
 <!-- 🎮 特訓營回返懸浮按鈕（當由 game.html 帶 ?go= 參數開啟時顯示） -->
 <div id="game-back-btn" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999">
   <button onclick="window.close()" style="
@@ -2771,13 +2832,140 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTutorMo
   </button>
 </div>
 <script>
-/* 偵測從 game.html 帶 ?go= 開啟，顯示回返按鈕 */
+/* 偵測從 game.html 帶 ?go= 開啟，顯示回返按鈕；同時把意見箱按鈕往上挪，避免疊在一起 */
 (function(){
   if(new URLSearchParams(location.search).get('go')){
     var btn=document.getElementById('game-back-btn');
     if(btn)btn.style.display='block';
+    var fab=document.getElementById('fb-fab');
+    if(fab)fab.style.bottom='78px';
   }
 })();
+
+/* ══ 💬 意見箱（v6.4）══════════════════════════════════════
+   表單：Google 表單（不收集 Email、不需登入）
+   問答牆：Google 試算表「公開版」工作表發布的 CSV
+           只有站長在試算表把「公開」欄標記為「是」的留言才會出現
+   ══════════════════════════════════════════════════════ */
+var FB_FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSdc_IKdugJrR10ztAswQ7j035EZNnLjyya-Sl60tCxQLIwKJg/viewform';
+var FB_CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vTFhEij8bJ-44j79RIQAmOL5cURdGfVGhT82vNEdUOcxrqhQihI5tLi90tB_NPMH6052ZxCcqbk3CNa/pub?gid=1936293314&single=true&output=csv';
+
+var _fbWallLoaded=false, _fbIframeLoaded=false;
+
+function openFeedback(){
+  if(!_fbIframeLoaded){
+    var f=document.getElementById('fb-iframe');
+    if(f) f.src=FB_FORM_URL+'?embedded=true';
+    var a=document.getElementById('fb-newtab');
+    if(a) a.href=FB_FORM_URL;
+    _fbIframeLoaded=true;
+  }
+  document.getElementById('feedbackModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeFeedback(){
+  document.getElementById('feedbackModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&document.getElementById('feedbackModal').classList.contains('open'))closeFeedback();
+});
+
+function fbTab(which){
+  var w=which==='write';
+  document.getElementById('fb-write').style.display=w?'':'none';
+  document.getElementById('fb-wall').style.display=w?'none':'';
+  document.getElementById('fb-tab-write').classList.toggle('active',w);
+  document.getElementById('fb-tab-wall').classList.toggle('active',!w);
+  if(!w&&!_fbWallLoaded){_fbWallLoaded=true;loadFeedbackWall();}
+}
+
+/* 逐字元 CSV 解析（處理引號內的逗號與換行） */
+function fbParseCsv(text){
+  var rows=[],row=[],cur='',inQ=false;
+  text=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  for(var i=0;i<text.length;i++){
+    var c=text[i];
+    if(inQ){
+      if(c==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else inQ=false; }
+      else cur+=c;
+    }else{
+      if(c==='"')inQ=true;
+      else if(c===','){row.push(cur);cur='';}
+      else if(c==='\n'){row.push(cur);rows.push(row);row=[];cur='';}
+      else cur+=c;
+    }
+  }
+  if(cur!==''||row.length){row.push(cur);rows.push(row);}
+  return rows;
+}
+
+/* 日期：可能是 yyyy-MM-dd 字串，也可能是 Google 序號（防呆兩種都吃） */
+function fbDate(v){
+  v=(v||'').trim();
+  if(!v)return '';
+  if(/^\d+(\.\d+)?$/.test(v)){
+    var d=new Date(Math.round((parseFloat(v)-25569)*86400000));
+    if(isNaN(d))return '';
+    var p=function(n){return (n<10?'0':'')+n;};
+    /* 序號記錄的是試算表所在時區的時間，一律以 UTC 取值，避免依瀏覽器時區位移 */
+    return d.getUTCFullYear()+'-'+p(d.getUTCMonth()+1)+'-'+p(d.getUTCDate());
+  }
+  return v.split(' ')[0].split('T')[0];
+}
+
+function fbEsc(t){
+  return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function loadFeedbackWall(){
+  var box=document.getElementById('fb-wall');
+  box.innerHTML='<div class="fb-empty">載入中…</div>';
+  fetch(FB_CSV_URL,{cache:'no-store'})
+    .then(function(r){ if(!r.ok)throw new Error('HTTP '+r.status); return r.text(); })
+    .then(function(txt){
+      var rows=fbParseCsv(txt);
+      var out=[],n=0;
+      for(var i=1;i<rows.length;i++){          /* 第 0 列是標題 */
+        var r=rows[i];
+        if(!r||r.length<2)continue;
+        var when=fbDate(r[0]), cat=(r[1]||'').trim();
+        if(!cat)continue;
+        var lv=(r[2]||'').trim(), sub=(r[3]||'').trim(), no=(r[4]||'').trim();
+        var isErr=cat.indexOf('勘誤')>=0;
+        var f5=(r[5]||'').trim(), f6=(r[6]||'').trim();
+        var body=isErr?(f5||f6):(f6||f5);
+        var nick=(r[7]||'').trim()||'匿名考生';
+        var reply=(r[8]||'').trim();
+        if(!body)continue;
+        var cls='fb-b-fb';
+        if(isErr)cls='fb-b-err';
+        else if(cat.indexOf('許願')>=0)cls='fb-b-wish';
+        var loc='';
+        if(lv||sub||no){
+          var parts=[];
+          if(lv)parts.push(lv.replace(/\s*—\s*/g,' '));
+          if(sub)parts.push(sub.replace(/^.*?—\s*/,''));
+          if(no)parts.push('第 '+no+' 題');
+          loc='<span class="fb-loc">📍 '+fbEsc(parts.join('・'))+'</span>';
+        }
+        out.push(
+          '<div class="fb-card"><div class="fb-top">'+
+          '<span class="fb-badge '+cls+'">'+fbEsc(cat)+'</span>'+loc+
+          '<span class="fb-meta">'+fbEsc(nick)+(when?'　'+fbEsc(when):'')+'</span>'+
+          '</div><div class="fb-body">'+fbEsc(body)+'</div>'+
+          (reply?'<div class="fb-reply"><b>✍️ 站長回覆</b>'+fbEsc(reply)+'</div>':'')+
+          '</div>'
+        );
+        n++;
+      }
+      box.innerHTML = n ? out.join('') :
+        '<div class="fb-empty">目前還沒有公開的問答。<br>你可以到「📝 我要留言」當第一個 🙌</div>';
+    })
+    .catch(function(){
+      box.innerHTML='<div class="fb-empty">問答內容暫時載入不了，請稍後再試。<br>留言功能不受影響，可以正常送出。</div>';
+    });
+}
 </script>
 </body>
 </html>

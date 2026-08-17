@@ -2,19 +2,21 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v6.5　|　日期 2026-08-18
+     版本 v6.6　|　日期 2026-08-18
      版本紀錄：
-       v6.5 (2026-08-18) 修正 v6.5／v6.3 的兩個問題：①首頁「心靈密語」按鈕文字未隨備考階段變化——
+       v6.6 (2026-08-18) 意見箱「📝 我要留言」分頁的說明文字改寫：說明回覆是視問題性質選擇可處理的部分處理，
+                         並加上致謝語；原本單行改為兩行（加 <br>），語氣更貼近站長本人
+       v6.6 (2026-08-18) 修正 v6.6／v6.3 的兩個問題：①首頁「心靈密語」按鈕文字未隨備考階段變化——
                          initHomeExtras() 的呼叫位置在 MIND_NOTES_STAGES 賦值之前，讀取時為 undefined
                          而拋錯被 try/catch 吞掉，改為移至頁面最後方的 script 執行；
                          ②意見箱問答牆過濾過嚴——原本「留言內容為空就跳過」，導致只有站長回覆而無內文的
                          留言不會顯示，改為「內容與回覆兩者皆空才跳過」，內容為空時只渲染回覆區塊
-       v6.5 (2026-08-17) 新增「💬 意見箱」：右下角全頁浮動按鈕，點擊彈出 Modal，內含兩個分頁——
+       v6.6 (2026-08-17) 新增「💬 意見箱」：右下角全頁浮動按鈕，點擊彈出 Modal，內含兩個分頁——
                          「📝 我要留言」內嵌 Google 表單（回饋建議／勘誤回報／許願新功能三分類，勘誤可選
                          等級梯次、科目並填題號），「📢 大家的提問與回覆」動態抓取 Google 試算表「公開版」
                          發布的 CSV，以網站自有樣式渲染成問答卡片。表單不收集任何個資（僅選填暱稱），
                          站長標記為「公開」的留言才會顯示；資料抓取失敗時整區靜默降級不影響其他功能
-       v6.5 (2026-08-17) ①倒數計時目標改為 115/11/07（第四梯次初級鑑定），報名資訊更新為「已額滿」；
+       v6.6 (2026-08-17) ①倒數計時目標改為 115/11/07（第四梯次初級鑑定），報名資訊更新為「已額滿」；
                          ②首頁倒數卡片下方新增「📮 8/15 考生看這裡」資訊卡（9/1 起網路查成績、10/20 起寄發證書），
                          並於 10/20 之後自動隱藏；報名資訊因第四梯次已額滿而移除；③「💌 考前心靈密語」升級為「備考心靈密語」：
                          語句庫依備考階段分為 起步期(>60天)／衝刺期(15–60天)／考前期(≤14天)／等成績期 四組，
@@ -347,7 +349,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 .arena-modal-close{background:#e53935;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap}
 .arena-modal-close:hover{background:#b71c1c}
 .arena-modal-body{padding:18px 20px}
-/* ── 💬 意見箱（v6.5）─────────────────────── */
+/* ── 💬 意見箱（v6.6）─────────────────────── */
 #fb-fab{position:fixed;bottom:20px;right:20px;z-index:9998;transition:bottom .2s}
 #fb-fab button{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:0;
   border-radius:999px;padding:11px 18px;font-size:14px;font-weight:800;cursor:pointer;
@@ -2071,10 +2073,10 @@ function countdown(){
 }
 countdown();setInterval(countdown,1000);
 
-/* ---- v6.5 首頁：心靈密語按鈕文字隨階段變化、8/15 考生資訊卡到期自動隱藏 ---- */
+/* ---- v6.6 首頁：心靈密語按鈕文字隨階段變化、8/15 考生資訊卡到期自動隱藏 ---- */
 (function initHomeExtras(){
   /* 註：心靈密語按鈕文字的更新已移到頁面最後方的 script 執行，
-     因為 MIND_NOTES_STAGES 在這個位置之後才建立（v6.5 修正） */
+     因為 MIND_NOTES_STAGES 在這個位置之後才建立（v6.6 修正） */
   var card=document.getElementById('exam-result-card');
   if(card && new Date() > new Date('2026-10-20T23:59:59+08:00')) card.style.display='none';
 })();
@@ -2585,7 +2587,7 @@ function closeArenaModal(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaModal();});
 
-// ── 💌 備考心靈密語（v6.5：依備考階段自動切換語句庫）─────────────
+// ── 💌 備考心靈密語（v6.6：依備考階段自動切換語句庫）─────────────
 // 階段判定：等成績期 → 起步期(>60天) → 衝刺期(15–60天) → 考前期(≤14天)
 var PREV_EXAM_DATE='2026-08-15';   // 上一梯次考試日
 var RESULT_DATE='2026-09-01';      // 成績開放查詢日
@@ -2795,7 +2797,7 @@ function closeTutorModal(){
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTutorModal();});
 </script>
 
-<!-- 💬 意見箱浮動按鈕（v6.5，全頁顯示） -->
+<!-- 💬 意見箱浮動按鈕（v6.6，全頁顯示） -->
 <div id="fb-fab"><button onclick="openFeedback()">💬 意見箱</button></div>
 
 <div id="feedbackModal" class="arena-modal-overlay" onclick="if(event.target===this)closeFeedback()">
@@ -2810,7 +2812,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTutorMo
     </div>
     <div class="arena-modal-body">
       <div id="fb-write">
-        <p class="fb-hint">這裡不會收集任何個資，暱稱也可以不填。送出後，我會在「📢 大家的提問與回覆」分頁回覆你。</p>
+        <p class="fb-hint">這裡不會收集任何個資，暱稱也可以不填。<br>送出後，我會視問題的性質，選擇我可以處理的部分，於「📢 大家的提問與回覆」分頁回覆你，感謝大家，謝謝。</p>
         <iframe id="fb-iframe" src="" title="意見箱表單" loading="lazy"></iframe>
         <p class="fb-hint" style="margin:10px 0 0">表單載不出來？<a id="fb-newtab" href="#" target="_blank" rel="noopener">改用新分頁填寫</a></p>
       </div>
@@ -2843,7 +2845,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTutorMo
     var fab=document.getElementById('fb-fab');
     if(fab)fab.style.bottom='78px';
   }
-  /* v6.5：心靈密語按鈕文字隨備考階段變化。必須放在此處（全部定義完成之後），
+  /* v6.6：心靈密語按鈕文字隨備考階段變化。必須放在此處（全部定義完成之後），
      放在主程式的 countdown() 旁邊會因為 MIND_NOTES_STAGES 尚未賦值而失敗 */
   try{
     var mb=document.getElementById('mindnote-launch');
@@ -2853,7 +2855,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTutorMo
   }catch(e){}
 })();
 
-/* ══ 💬 意見箱（v6.5）══════════════════════════════════════
+/* ══ 💬 意見箱（v6.6）══════════════════════════════════════
    表單：Google 表單（不收集 Email、不需登入）
    問答牆：Google 試算表「公開版」工作表發布的 CSV
            只有站長在試算表把「公開」欄標記為「是」的留言才會出現

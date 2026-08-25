@@ -1,7 +1,34 @@
-// 每週內容更新 - 最後更新於 2026-08-17
+// 每週內容更新 - 最後更新於 2026-08-25
 window.DYNAMIC = {
-  "lastUpdated": "2026-08-17",
+  "lastUpdated": "2026-08-25",
   "news": [
+    {
+      "t": "iPAS 115年度AI應用規劃師簡章重點解析：CCChen整理報名、費用與科目異動",
+      "d": "針對115年度iPAS AI應用規劃師（初級、中級）最新簡章進行逐項分析，整理報名資格、考試科目配分與費用調整重點，適合準備11/7初級第四場、11/14中級第二場考試的考生對照官方簡章使用。",
+      "u": "https://vocus.cc/article/694bd68cfd897800011a6314"
+    },
+    {
+      "t": "iPAS AI應用規劃師（初級）能力鑑定簡介：104學習彙整考試科目與報名資訊",
+      "d": "104學習彙整iPAS AI應用規劃師初級能力鑑定的考試科目、報名管道與適用對象，適合尚未熟悉鑑定制度的初次備考者作為入門總覽。",
+      "u": "https://nabi.104.com.tw/ability/10049056"
+    },
+    {
+      "t": "CCChen 0805更新整理：2026台灣AI治理進入落地期，從AI基本法到人才教育制度",
+      "d": "彙整《人工智慧基本法》生效後台灣AI治理的最新進展，包含風險分類、AI產業人才認定指引3.0與AI公務人才認定指引Beta版的8大課程模組，是理解iPAS命題背景政策脈絡的重要參考。",
+      "u": "https://vocus.cc/article/6a72b810fd8978000157d077"
+    },
+    {
+      "t": "先行智庫 Agentic Automation Day 8/6登場：企業自動化架構設計與落地實戰",
+      "d": "聚焦AI Agent在企業自動化中的架構設計、開發實戰與落地應用場景，探討如何從試點走向規模化部署，可作為iPAS「AI導入規劃」科目的實務案例延伸學習。",
+      "u": "https://www.accupass.com/event/2607130955511519041589"
+    },
+    {
+      "t": "iPAS AI應用規劃師考試攻略：科目、通過率、報名費用與準備方式",
+      "d": "科技翰林院整理iPAS AI應用規劃師考試的科目架構、歷屆通過率、報名費用與各階段準備方式，提供有系統的備考規劃參考。",
+      "u": "https://www.techhanlin.tw/ipas-ai-application-planner/"
+    }
+  ],
+  "newsHistory": [
     {
       "t": "iPAS 115年度初級第三場(8/15)考試落幕，第四場11/7報名倒數至9/22中午12點",
       "d": "115年度AI應用規劃師初級考試共四場（3/21、5/16、8/15、11/7），第三場已於8月15日結束；第四場11月7日的個人報名期間為7月9日至9月22日中午12點止，中級第二場11月14日同步截止。115年考試費用調降為初級每科400元、中級500元，並新增桃園、嘉義、屏東、花蓮等考區。",
@@ -31,9 +58,7 @@ window.DYNAMIC = {
       "t": "代理式 AI 營運模式是什麼？2026 企業 Agentic AI 規模化與 ROI 全解析",
       "d": "從營運模式（Operating Model）角度說明企業如何把 AI Agent 從試點推向規模化，涵蓋組織分工、治理機制與成效衡量，適合準備 iPAS 導入規劃、專案管理相關題型的考生延伸閱讀。",
       "u": "https://www.perform-global.com/blog/agentic-operating-model"
-    }
-  ],
-  "newsHistory": [
+    },
     {
       "t": "iPAS 115年度AI應用規劃師第四場(11/7)報名倒數：報名期間至9/22截止，中級第二場(11/14)同步開放",
       "d": "115年度初級AI應用規劃師第四場考試將於11月7日舉行，個人報名期間為7月9日至9月22日中午12點止；中級第二場能力鑑定則於11月14日舉行，報名同樣至9月22日截止，且中級每梯次限額已倍增至3,000人，建議儘早完成報名。",
@@ -203,29 +228,26 @@ window.DYNAMIC = {
       "t": "UiPath 2026 CXO 報告：Agentic AI 代理式 AI 轉型四大獲利工作流解析",
       "d": "UiPath 調查報告揭示企業 Agentic AI 規模化的四大場景：財務稽核、客服自動化、供應鏈與員工知識管理，並提出 ROI 計算框架，為 AI 應用規劃師提供具體落地藍圖。",
       "u": "https://www.perform-global.com/blog/agentic-operating-model-2026-report"
-    },
-    {
-      "t": "AI Agent 記憶技術三路線解析：Context Window、RAG 與持久工作區的差異與選用",
-      "d": "2026年 AI Agent 記憶技術分成三路：短期記憶（Context Window）、知識庫（RAG）與外部資料庫，本文釐清各路線的應用場景，也是中級考科「AI系統設計」的核心觀念。",
-      "u": "https://felo.ai/zh-Hant/blog/ai-agent-memory-technology-explained/"
-    },
-    {
-      "t": "台灣 AI Agent 企業落地2026年三大場景：保險、物流與製造業實戰案例",
-      "d": "台灣企業 AI Agent 導入案例彙整：保險業法律諮詢30秒查判決書、物流業動態配送路徑規劃、製造業 MES 整合，呈現 Agentic AI 的具體效益，也是備考「AI導入規劃」的參考素材。",
-      "u": "https://www.data-di.com/blog/ai-lab-case2026"
-    },
-    {
-      "t": "初級學習指引勘誤表已公告",
-      "d": "官方公布「人工智慧基礎概論」等科目勘誤（如平均差定義、抽樣變異說明），備考請以最新版學習指引與勘誤表為準。",
-      "u": "https://www.ipas.org.tw/AIAP/AbilityBriefingList.aspx"
-    },
-    {
-      "t": "COMPUTEX 2026「AI TOGETHER」6/2-6/5 台北登場",
-      "d": "33國、1500家廠商規模創新高，聚焦 Agentic AI、Physical AI、Edge AI 與機器人專區，呈現 AI 從創新走向落地的趨勢。",
-      "u": "https://udn.com/news/story/7240/9536845"
     }
   ],
   "resources": [
+    {
+      "t": "RAG 教學 2026：Chunking、Hybrid Search、Rerank 完整實作＋Embedding模型評比",
+      "d": "涵蓋切分策略、混合檢索與重排序模型的三層架構實作，並比較Qwen3-Embedding、BGE-M3、Gemini Embedding等多款模型，搭配RAGAS評測框架降低幻覺率，適合深入理解RAG技術落地細節。",
+      "u": "https://deep-learning-101.github.io/RAG"
+    },
+    {
+      "t": "提示工程入門：把話講清楚，AI才答得好",
+      "d": "以淺顯易懂的方式說明提示工程的核心原則，包含角色與情境設定、明確任務與格式、少樣本示範與思維鏈技巧，適合初次接觸提示工程觀念的讀者建立基礎。",
+      "u": "https://ncu.uedu.tw/ai/a/prompt-engineering"
+    },
+    {
+      "t": "微軟推出免費課！教你從零開始打造AI Agent，1小時就能看完",
+      "d": "微軟推出的免費AI Agent入門課程，涵蓋代理框架、工具使用模式與系統訊息設計，1小時左右即可完整學習，適合想快速建立Agent開發基礎觀念的讀者。",
+      "u": "https://www.bnext.com.tw/article/89728/microsoft-developers-ai-agent-course"
+    }
+  ],
+  "resourcesHistory": [
     {
       "t": "iPAS AI 應用規劃師（初級）考前總整理：重點速記與應試策略",
       "d": "針對初級兩科考試整理的考前總複習，涵蓋高頻考點、易混淆名詞與應試節奏建議，適合考前一週衝刺使用。",
@@ -240,9 +262,7 @@ window.DYNAMIC = {
       "t": "免費 AI 課程大全：6 大平台推薦，完課可拿證書",
       "d": "盤點 Google、Microsoft、哈佛等 6 大平台的免費 AI 與 AI Agent 課程，多數提供結業證書，適合零基礎補強 AI 概念與代理式 AI 基礎。",
       "u": "https://www.bnext.com.tw/article/91411/free-ai-online-courses-certificate-guide"
-    }
-  ],
-  "resourcesHistory": [
+    },
     {
       "t": "提示工程教學2026：中文Prompt寫法、範例與常見錯誤",
       "d": "Mason AI Lab整理繁體中文提示工程教學，涵蓋中文Prompt寫法、Few-shot、結構化輸出與常見錯誤診斷，並強調任務目標、使用背景與輸出格式需清楚描述，適合準備iPAS生成式AI相關考題的讀者參考。",
@@ -347,24 +367,18 @@ window.DYNAMIC = {
       "t": "AI 名詞解釋：用白話講清楚 Agent、MCP、RAG 和 Token",
       "d": "用非技術人員也能理解的方式解釋四大關鍵 AI 術語，特別適合 iPAS 初級考試「人工智慧基礎概論」單元的概念釐清。",
       "u": "https://www.knightli.com/zh-tw/2026/04/23/ai-terms-agent-mcp-rag-token-explained/"
-    },
-    {
-      "t": "李宏毅：一堂課搞懂 AI Agent 的原理",
-      "d": "台大課程影片，講解 AI 如何透過經驗調整行為、使用工具與做計劃，打好 Agent 觀念基礎。",
-      "u": "https://www.youtube.com/watch?v=M2Yg1kwPpts"
-    },
-    {
-      "t": "n8n AI 實作 0 基礎入門到進階",
-      "d": "涵蓋 AI Agent、LLM、RAG、Webhook 與自動生成研究報告的繁中超詳細教學。",
-      "u": "https://www.youtube.com/watch?v=vvqhzbp4J5A"
-    },
-    {
-      "t": "15分鐘學會 AI Agent（完整講解）",
-      "d": "快速理解 AI Agent 的組成與運作流程，適合考前快速複習觀念。",
-      "u": "https://www.youtube.com/watch?v=fwdzsY9KWKk"
     }
   ],
   "tools": [
+    {
+      "n": "Google Antigravity CLI",
+      "d": "Google 以 Go 語言重新撰寫的新一代終端機 AI 助理，取代原本的 Gemini CLI，免費用戶即可使用 Gemini 3 Pro／3.1 Pro 頂級模型，執行速度更快、每日提供大方使用額度，官方腳本一鍵安裝、不需另外安裝 Node.js。",
+      "use": "透過終端機以自然語言下達指令，讓 AI 直接協助操作電腦、安裝軟體、排查系統問題與輔助程式開發，適合體驗新一代 Agentic CLI 工具的免費落地應用。",
+      "url": "https://pcrookie.com/antigravity-cli-windows-tutorial/",
+      "yt": "https://www.youtube.com/watch?v=0RPVIiIcD4g"
+    }
+  ],
+  "toolsHistory": [
     {
       "n": "Vocol.ai",
       "d": "台灣團隊開發的語音協作平台，結合多種大型語言模型，將會議錄音自動轉成逐字稿、摘要與主題，支援中英日辨識、自動區分講者，並可整合 Microsoft Teams 與 Google Meet。",
@@ -378,9 +392,7 @@ window.DYNAMIC = {
       "use": "在 Canva 中開啟 AI 對話框，用自然語言描述需求（如「做一份 10 頁的 AI 導入提案簡報」），再以追問方式逐步修改版面與內容。",
       "url": "https://www.canva.com/",
       "yt": "https://www.youtube.com/watch?v=9ntGQXAFp3Q"
-    }
-  ],
-  "toolsHistory": [
+    },
     {
       "n": "Google Opal",
       "d": "Google Labs推出的免程式碼AI應用建構工具，只要用自然語言描述需求，就能自動拆解成可視化工作流程，產出能執行、能分享的AI迷你應用程式，2026年已對台灣用戶免費開放，操作介面類似流程圖編輯器。",
@@ -474,57 +486,101 @@ window.DYNAMIC = {
     }
   ],
   "toolVideos": {
-    "HeyGen": [
+    "ChatGPT": [],
+    "Claude": [
       {
-        "t": "用 AI 做出任何一個人講話的影片！HeyGen 只要 2 分鐘做出分不出真假的「你」",
-        "u": "https://www.youtube.com/watch?v=O6VzvCYkOVg"
+        "t": "Claude Code 教學 2026：別再找神提示詞，先學會控制 AI 工作節奏和上下文",
+        "u": "https://www.youtube.com/watch?v=vDQiM0ml4c4"
       },
       {
-        "t": "3 分鐘 AI 製作影片 HeyGen 教學：虛擬主播、聲音複製與 Faceswap 使用方法",
-        "u": "https://www.youtube.com/watch?v=KbGd84wYMhE"
+        "t": "2026 最新奇工具！Claude Design 教學：設計 UI 介面及 PPT，還懂得自動修正設計細節",
+        "u": "https://www.youtube.com/watch?v=NLdtSahDoxo"
       }
     ],
-    "Dify": [],
-    "Gamma": [
-      {
-        "t": "一分鐘快速做簡報！三大 AI 工具比較：Gamma、NotebookLM、Manus",
-        "u": "https://www.youtube.com/watch?v=OYuIBgK9dec"
-      },
-      {
-        "t": "Gamma AI 簡報生成，徹底改變你對簡報製作的想像（教學影片）",
-        "u": "https://www.youtube.com/watch?v=MdA2Wm4nZPo"
-      }
-    ],
-    "NotebookLM": [
-      {
-        "t": "NotebookLM 超完整攻略繁體中文教學：自動生成中文 Podcast 的 AI 知識管理工具",
-        "u": "https://www.youtube.com/watch?v=IEcBHoZfH_E"
-      },
-      {
-        "t": "NotebookLM 完整攻略：生成中文版 Podcast，超強 AI 筆記工具",
-        "u": "https://www.youtube.com/watch?v=WHX3iAMbk9I"
-      }
-    ],
+    "Gemini": [],
+    "Perplexity": [],
+    "NotebookLM": [],
+    "Gamma": [],
+    "Canva": [],
     "Midjourney": [],
-    "GitHub Copilot": [
-      {
-        "t": "GitHub Copilot 最佳實務：不要這麼做就對了！",
-        "u": "https://www.youtube.com/watch?v=QW9bu2aeQC8"
-      }
-    ],
-    "Gemini": [
-      {
-        "t": "「問問 Gemini」48 個免費 Skills 一鍵複製（中文版）｜學生、老師、上班族都用得到",
-        "u": "https://www.youtube.com/watch?v=tDzNXs31Dl4"
-      }
-    ],
+    "HeyGen": [],
+    "GitHub Copilot": [],
+    "Cursor": [],
+    "n8n": [],
+    "Dify": [],
+    "Coze": []
+  },
+  "toolVideosHistory": {
     "ChatGPT": [
       {
         "t": "ChatGPT Work 完整教學｜目標模式／規劃模式＋Sites 互動網站實測",
         "u": "https://www.youtube.com/watch?v=WnzM4ir4AWk"
+      },
+      {
+        "t": "【2026最新】ChatGPT沒人談論的隱藏功能和技巧完整教學",
+        "u": "https://www.youtube.com/watch?v=04cz8zNr33Y"
+      },
+      {
+        "t": "【ChatGPT 教學】最新最全，9成人冇用嘅功能＋新出Work自動幫你做嘢（廣東話）",
+        "u": "https://www.youtube.com/watch?v=o7AUbq28-Ss"
+      },
+      {
+        "t": "【入門教學】手把手教你設定 ChatGPT 桌面版，讓 AI 讀懂你的檔案、畫出精美截圖",
+        "u": "https://www.youtube.com/watch?v=houWoGOXAZs"
+      },
+      {
+        "t": "ChatGPT 不只會回答了！GPT-5.6 Work、桌面操作完整解析",
+        "u": "https://www.youtube.com/watch?v=iP9Oy7naM1s"
+      },
+      {
+        "t": "ChatGPT 大改版：5 個變化一次看懂！【會自己幹活、Work、GPT-5.6】",
+        "u": "https://www.youtube.com/watch?v=Au206yH7ufE"
+      },
+      {
+        "t": "新手必學的「進化版 ChatGPT」！快速打造 Codex 終極知識庫，用它秒做各種檔案！",
+        "u": "https://www.youtube.com/watch?v=pTO85XkruHI"
+      },
+      {
+        "t": "傻子也能學會的 Codex 教學｜個人網站、YouTube爆款雷達、自動週報，零程式碼15分鐘全搞定",
+        "u": "https://www.youtube.com/watch?v=VMF4JWbdxhs"
+      },
+      {
+        "t": "一次帶你搞懂 ChatGPT「4種用戶」「8種模型」功能解析！選對模型比課金還重要！同一個指令差異這麼大！｜泛科學院",
+        "u": "https://www.youtube.com/watch?v=-UvK-SYXpaw"
+      },
+      {
+        "t": "Canva 新功能直接屌打 PPT！現在支援 ChatGPT 連動，一鍵生成繁中簡報，內容設計同步完成！｜泛科學院",
+        "u": "https://www.youtube.com/watch?v=UA0IXlFzDdI"
+      },
+      {
+        "t": "【全網最細】OpenAI Codex 徹底免費！新手必學的進化版 ChatGPT，從 0 到 1 完整入門教學！10 個高頻功能快速學會指揮你的超級 AI Agent！",
+        "u": "https://www.youtube.com/watch?v=39_iw_KLEFk"
+      },
+      {
+        "t": "一個 AI 助手打趴整套 Office 軟體！超強 Codex 從表格簡報、合併列印、架設網站全部一手包辦！",
+        "u": "https://www.youtube.com/watch?v=W5ymBPi53Tw"
+      },
+      {
+        "t": "這 5 個 AI 悄悄增加超扯新功能！ChatGPT、Grok、NotebookLM、Recraft、Perplexity 每一個都扯爆了！",
+        "u": "https://www.youtube.com/watch?v=3QcnVp3Bc9g"
+      },
+      {
+        "t": "ChatGPT 超讚新功能「學習與研究」！私人家教學習模式實測，附3招技巧讓效果飆升",
+        "u": "https://www.youtube.com/watch?v=4eoqEoKqdhE"
+      },
+      {
+        "t": "Codex 保姆級完整教學：從入門到進階，自動生成內容、網頁、影片和App",
+        "u": "https://www.youtube.com/watch?v=tfeCwDT-5m0"
+      },
+      {
+        "t": "ChatGPT 最全教程：16種使用技巧，從入門到精通",
+        "u": "https://www.youtube.com/watch?v=FRIa3T49urg"
+      },
+      {
+        "t": "6分鐘教會你用 ChatGPT：寫出正確有效的指令",
+        "u": "https://www.youtube.com/watch?v=hqujLMQ2UeM"
       }
     ],
-    "Cursor": [],
     "Claude": [
       {
         "t": "我用 Claude Skills 把 1 小時的工作縮成 5 分鐘（完整教學）",
@@ -533,278 +589,77 @@ window.DYNAMIC = {
       {
         "t": "Claude Skill 完整教學：讓 AI 變成你的專屬員工，12 分鐘打造自動化系統",
         "u": "https://www.youtube.com/watch?v=lK7mOQ5DwtY"
-      }
-    ],
-    "n8n": [
-      {
-        "t": "超詳細教學：n8n AI 實作 0 基礎入門到進階（AI Agent／LLM／RAG／Webhook）",
-        "u": "https://www.youtube.com/watch?v=vvqhzbp4J5A"
-      }
-    ],
-    "Canva": [
-      {
-        "t": "Canva AI 教學：簡報 PPT、圖片影片生成、圖片文字辨識與 AI 處理",
-        "u": "https://www.youtube.com/watch?v=mABXWZdUysY"
       },
       {
-        "t": "Canva AI 新功能：讓 AI 助力創作，輕鬆打造驚艷作品",
-        "u": "https://www.youtube.com/watch?v=bvXggfsPU_Y"
-      }
-    ],
-    "Perplexity": [
-      {
-        "t": "Perplexity AI 登陸 WhatsApp：生成 AI 圖像與錄音對話實測",
-        "u": "https://www.youtube.com/watch?v=vLlU2mZ_vdQ"
-      }
-    ],
-    "Coze": []
-  },
-  "toolVideosHistory": {
-    "HeyGen": [
-      {
-        "t": "竟然用AI說流利日文，教你用HeyGen創建虛擬分身（免費）",
-        "u": "https://www.youtube.com/watch?v=1rW8KfprMtY"
+        "t": "CLAUDE CODE 4小時完整教學：學會Skills／AI自動工作／搜集資料(2026)",
+        "u": "https://www.youtube.com/watch?v=fYuohy6rQ9c"
       },
       {
-        "t": "【秒變語言天才！HeyGen AI教學＋實戰（三種語言現場實測）】",
-        "u": "https://www.youtube.com/watch?v=jGYbWOGX5ZE"
+        "t": "10分鐘搞懂Claude基礎設定！Project、Skills、Style又是什麼？｜泛科學院",
+        "u": "https://www.youtube.com/watch?v=5Aha8QOVke4"
       },
       {
-        "t": "不露臉也能拍YouTube：HeyGen AI 數字人全流程無痛上手｜0基礎，新手友好",
-        "u": "https://www.youtube.com/watch?v=soIjjhcrtqY"
+        "t": "【超級新手指南】我如何使用Claude Code？基礎知識和驚人用途一次說清楚！",
+        "u": "https://www.youtube.com/watch?v=wW6_Q-5aH5o"
       },
       {
-        "t": "Heygen AI工具教學：打造你第一個數位複製人",
-        "u": "https://www.youtube.com/watch?v=O18DWm7Lkts"
+        "t": "Claude Code 速成教學｜前 TikTok 工程師帶你學｜MCP, Skills, Subagents, Context, Vibe Coding",
+        "u": "https://www.youtube.com/watch?v=zZ6Rc0jrJZc"
       },
       {
-        "t": "Heygen AI 影片生成工具介紹及教學｜AI 影片產生工具推薦",
-        "u": "https://www.youtube.com/watch?v=eeJ2L0Q0lUA"
-      }
-    ],
-    "Dify": [
-      {
-        "t": "Dify系統化教學｜Dify零代碼革命：RAG知識庫、自動化流程與企業級部署全解析",
-        "u": "https://www.youtube.com/watch?v=IX8g7l578oQ"
+        "t": "Claude Sonnet 5 发布解析：高性价比 Agent 时代来临【AI日报 2026-07-01】",
+        "u": "https://www.youtube.com/watch?v=bBRmzPy5ySg"
       },
       {
-        "t": "【2026廣東話AI教學】10分鐘用Dify從零開始打造企業級私有部署",
-        "u": "https://www.youtube.com/watch?v=1XxGaNkq_g4"
+        "t": "【超實用】一次搞懂Claude AI全生態！2026全新初學者完整教程，15個Claude超棒的使用方法",
+        "u": "https://www.youtube.com/watch?v=zm3K831v470"
       },
       {
-        "t": "【套件教學】make 自動化串接教學 - Dify Knowledge 知識庫管理套件",
-        "u": "https://www.youtube.com/watch?v=QR9tI9_1yio"
+        "t": "你唯一需要的 Claude 教學：從入門到打造你的 AI 團隊",
+        "u": "https://www.youtube.com/watch?v=qYKRiZBWrZ4"
       },
       {
-        "t": "AI+工作流：解鎖ChatGPT全部能力，繁瑣工作自動化｜Dify發布Workflow實操教程！",
-        "u": "https://www.youtube.com/watch?v=Cr7laD5kQD0"
+        "t": "Claude基本功 EP01：一次搞懂 Claude 全生態——從聊天到全自動化寫程式",
+        "u": "https://www.youtube.com/watch?v=luRFvHW0SF8"
       },
       {
-        "t": "Master Dify AI in 1 Hour: Complete Beginner's Guide for 2026",
-        "u": "https://www.youtube.com/watch?v=f-rvwoywUgM"
+        "t": "超強的 AI 前端設計師來了！Claude Design 跟你聊聊天就把網站設計出來，而且還貼心地幫你一鍵上線！",
+        "u": "https://www.youtube.com/watch?v=JxaI6HK2onc"
       },
       {
-        "t": "使用 Dify 工作流｜10 分鐘打造高效 AI 客服系統！（附 CC 字幕）",
-        "u": "https://www.youtube.com/watch?v=ZeBMzx4y8l0"
+        "t": "還在羨慕別人用 AI 開發酷產品？Claude Code 保姆級教學讓你輕鬆體驗 Vibe Coding，動動嘴就能做出 Anything！",
+        "u": "https://www.youtube.com/watch?v=2pM-7fBXc_M"
       },
       {
-        "t": "01_Dify_完整安裝教學｜生成式AI應用創新引擎｜企業落地AI應用最佳途徑",
-        "u": "https://www.youtube.com/watch?v=kTpC6MtYuKc"
+        "t": "Claude Code 保姆級攻略 2.0：中文設定、第三方模型接入、MCP、Skill、Subagent 完整教學，省下 90% Token 費用",
+        "u": "https://www.youtube.com/watch?v=Czky9q7sOWU"
       },
       {
-        "t": "別再只會用 Dify！hello-agents 帶你從零打造 AI Agent 框架，超越基礎應用",
-        "u": "https://www.youtube.com/watch?v=Ze9DfZCdmP0"
+        "t": "Claude Cowork 新手必看！零基礎初學者 10 個真實案例演示，手把手打造專屬 AI 自動化團隊",
+        "u": "https://www.youtube.com/watch?v=FrAAhSP9hPA"
       },
       {
-        "t": "【套件教學】Make 自動化串接：LINE 官方帳號串接 Dify 建立 AI Agent 完整流程",
-        "u": "https://www.youtube.com/watch?v=CaA8cj1B6FI"
+        "t": "Claude Cowork/Code 保姆級完整教學：從入門到進階，自動生成內容、網頁和工作流，快速打造你的 AI 員工",
+        "u": "https://www.youtube.com/watch?v=Lq-wedAiffo"
       },
       {
-        "t": "使用 Dify 免費打造進階 AI 客服系統｜RAG 設定、禁用字、自訂回答、內容優化完整教學",
-        "u": "https://www.youtube.com/watch?v=wb6wHNBIqgs"
+        "t": "Claude Cowork 最友善的手把手教學！你還在叫 AI 幫你想答案？高手都已在用 AI 交成品了",
+        "u": "https://www.youtube.com/watch?v=_cVTzXvb7xs"
       },
       {
-        "t": "【使用 No Code 工具 Dify】設定懂公司產品的 AI Agent 銷售助手",
-        "u": "https://www.youtube.com/watch?v=A6zsqVDo8r4"
+        "t": "忘掉ChatGPT吧！Claude Cowork + Skills 才是你的全新自動化系統！零基礎初學者必看",
+        "u": "https://www.youtube.com/watch?v=a5OTTbSCpO8"
       },
       {
-        "t": "Dify 1.0 基礎教學：開發你的第一個 Agent",
-        "u": "https://www.youtube.com/watch?v=hDjubHZwilo"
-      }
-    ],
-    "Gamma": [
-      {
-        "t": "AI自動化簡報Gamma AI presentations【可可研究室】",
-        "u": "https://www.youtube.com/watch?v=XkIWOjUO0O4"
-      },
-      {
-        "t": "簡報製作教學，Gamma.app：AI幫你做簡報",
-        "u": "https://www.youtube.com/watch?v=YHmM2Xavjc0"
-      },
-      {
-        "t": "最強 AI 簡報生成工具 Gamma 大更新，多了 AI 生簡報配圖給讚，還有其他好用的新功能｜泛科學院",
-        "u": "https://www.youtube.com/watch?v=JBpgSgiMqE8"
-      },
-      {
-        "t": "一分鐘 文字生成簡報 PPT 檔案｜Gamma 詳細操作｜現代人不可不會",
-        "u": "https://www.youtube.com/watch?v=XYqexBVGUCE"
-      },
-      {
-        "t": "【Gamma AI 最新教學-AI簡報PPT】Gamma+ChatGPT強強聯手，生成、改進到講稿，效率翻倍",
-        "u": "https://www.youtube.com/watch?v=sYSyRGx6B2Q"
-      },
-      {
-        "t": "化創意為藝術 - Gamma的AI簡報魔法｜吳承穎線上講座【完整版】",
-        "u": "https://www.youtube.com/watch?v=4bMeGcHGpMs"
-      },
-      {
-        "t": "它竟把6千字長文快速轉成簡報？內容處理量更大贏 ChatGPT？｜Gamma｜泛科學院",
-        "u": "https://www.youtube.com/watch?v=f0Tw2w-WxRs"
-      },
-      {
-        "t": "Gamma 簡報 AI 生成工具真的強嗎？解析 Gamma 三大生成功能 10 分鐘學簡報",
-        "u": "https://www.youtube.com/watch?v=el7Y1Awb750"
-      },
-      {
-        "t": "製作 PPT 太麻煩？Gamma AI 幾分鐘搞定高質感簡報，從排版到內容生成一站式解決",
-        "u": "https://www.youtube.com/watch?v=9PgHe_ThV4U"
-      },
-      {
-        "t": "2026最新AI 簡報神器PK！40秒做完簡報！Gamma、AiPPT 一鍵比較",
-        "u": "https://www.youtube.com/watch?v=X5IToXLK5Pk"
-      },
-      {
-        "t": "😱 只有老人才用 PPT 做簡報？新世代 AI 簡報神器 Gamma 讓你告別石器時代邁向新世紀！",
-        "u": "https://www.youtube.com/watch?v=nl-eVo1EhEQ"
-      },
-      {
-        "t": "【AI工作流】簡報神器 Gamma｜文字一鍵變 PPT，但別只用 AI 就交差",
-        "u": "https://www.youtube.com/watch?v=4A4RXctUSoM"
-      }
-    ],
-    "NotebookLM": [
-      {
-        "t": "NotebookLM完整教學！93%的人還不知道的8個隱藏用法，完勝ChatGPT",
-        "u": "https://www.youtube.com/watch?v=zgWerTIynVA"
-      },
-      {
-        "t": "NotebookLM 2.0徹底變了：2026年最重要更新一次看懂！",
-        "u": "https://www.youtube.com/watch?v=mBoxAlg7V3M"
-      },
-      {
-        "t": "免費用NotebookLM，在10分鐘內，100%掌握任何最新知識",
-        "u": "https://www.youtube.com/watch?v=TK9q8IjkO8s"
-      },
-      {
-        "t": "NotebookLM 0-1終極攻略，90%的人都不知道的隱藏功能",
-        "u": "https://www.youtube.com/watch?v=JtvSCXz3A6w"
-      },
-      {
-        "t": "別再自己做簡報！NotebookLM 3分鐘直接幫你完成：一鍵去浮水印、換圖全流程公開！",
-        "u": "https://www.youtube.com/watch?v=yjFixFO5TUs"
-      },
-      {
-        "t": "終於等到了！NotebookLM 簡報修改＋PPT 匯出｜去除浮水印、神速更換多頁風格（附 32 種神級咒語）",
-        "u": "https://www.youtube.com/watch?v=PhrJWeJWe0Y"
-      },
-      {
-        "t": "【AI神技】手寫紀錄難整理？NotebookLM 教學｜圖片快速讀取，產出各類報告分析！",
-        "u": "https://www.youtube.com/watch?v=R80ZOBQ7buM"
-      },
-      {
-        "t": "【NotebookLM 教學】AI 瞬間整理百萬字資料！Google 最新筆記神器全功能解析",
-        "u": "https://www.youtube.com/watch?v=uU7ldTCFxYM"
-      },
-      {
-        "t": "1 分鐘開發！NotebookLM 簡報秒變可編輯的神級 AI 工作流（附超詳細步驟）",
-        "u": "https://www.youtube.com/watch?v=rcqXlO4sYkI"
-      },
-      {
-        "t": "【AI神技】別再忙著手抄筆記！NotebookLM 教學：YT 影片、音檔秒變逐字稿與重點摘要",
-        "u": "https://www.youtube.com/watch?v=-BhyDONU8q8"
-      },
-      {
-        "t": "Gemini 重要更新！合體 NotebookLM + 新版多模態輸出教學，一次生成多種格式",
-        "u": "https://www.youtube.com/watch?v=kSgxHy-mqxI"
-      },
-      {
-        "t": "重大更新！新版 Gemini 合體 NotebookLM：多模態輸出全公開，建立任何格式檔案",
-        "u": "https://www.youtube.com/watch?v=uE1XDwDOtbU"
-      },
-      {
-        "t": "NotebookLM 完整教學！10個超強隱藏用法（2026）",
-        "u": "https://www.youtube.com/watch?v=pbds1YRoXJw"
-      },
-      {
-        "t": "Gemini × NotebookLM 史上最強合體：多筆記調用與互動儀表盤",
-        "u": "https://www.youtube.com/watch?v=41eyUBTDn3U"
-      }
-    ],
-    "Midjourney": [
-      {
-        "t": "2026最新Midjourney完整教程｜從註冊訂閱到高級提示詞，零基礎快速上手AI繪畫",
-        "u": "https://www.youtube.com/watch?v=U1yxkWu1CQY"
-      },
-      {
-        "t": "Midjourney V7網頁版攻略，玩AI影片前必學｜提示詞、設定到修圖全流程",
-        "u": "https://www.youtube.com/watch?v=EiUFzuSaL1U"
-      },
-      {
-        "t": "【AI工作流】五分鐘搞懂Midjourney｜生圖核心是任務＋關鍵字",
-        "u": "https://www.youtube.com/watch?v=uSIDOquH-DU"
-      },
-      {
-        "t": "Midjourney 保姆級完整教學01：10分鐘学会Midjouney，如何註冊、使用",
-        "u": "https://www.youtube.com/watch?v=VSzIn_kkwiQ"
-      },
-      {
-        "t": "Midjourney 教學｜AI 生圖｜新手｜初學｜基本教學",
-        "u": "https://www.youtube.com/watch?v=ScSsmw_oYgQ"
-      }
-    ],
-    "GitHub Copilot": [
-      {
-        "t": "GitHub Copilot CLI實戰教學｜從修Bug到自動建立Pull Request（含MCP設定與切換Model示範）",
-        "u": "https://www.youtube.com/watch?v=KVht2h5fb9E"
-      },
-      {
-        "t": "【GitHub Copilot】完整範例與步驟解說教你開始使用｜用AI配對程式設計師幫你寫程式",
-        "u": "https://www.youtube.com/watch?v=5MZyLmxOx0Q"
-      },
-      {
-        "t": "Copilot Agent Mode 大解放！用 GitHub MCP Server 強化 AI 開發流程",
-        "u": "https://www.youtube.com/watch?v=c1ZvgYa8m-k"
-      },
-      {
-        "t": "GitHub Copilot - 01 基本程式碼生成與QA",
-        "u": "https://www.youtube.com/watch?v=5vJ05skCULg"
-      },
-      {
-        "t": "GitHub Copilot 在 VS Code 上實用功能！你都用過了嗎？",
-        "u": "https://www.youtube.com/watch?v=U3o9PFI5xVg"
-      },
-      {
-        "t": "如何正確使用GitHub Copilot Chat 以大幅提升編輯程式的效率",
-        "u": "https://www.youtube.com/watch?v=mFCryoMibBo"
-      },
-      {
-        "t": "GitHub Copilot Coding Agent 超實用教學｜自動修 Bug、寫測試、拉 PR 一次搞懂",
-        "u": "https://www.youtube.com/watch?v=Z9EVVDCgm8M"
-      },
-      {
-        "t": "Copilot 與 Agent：從入門到精通｜更聰明地編碼、更快速地開發 GitHub Copilot 應用實戰",
-        "u": "https://www.youtube.com/watch?v=BXr8sKvA1MU"
-      },
-      {
-        "t": "GitHub Copilot 快速入門｜AI 程式開發的第一步！安裝啟用到實戰一步到位",
-        "u": "https://www.youtube.com/watch?v=v4J0MVQYfKQ"
-      },
-      {
-        "t": "5 個必開新功能！GitHub Copilot 在 VS Code 的超實用更新",
-        "u": "https://www.youtube.com/watch?v=N3mOUj2vnE0"
+        "t": "6個 Claude 核心功能讓你超越99%的 AI 使用者！Cowork/Code 保姆級完整教學",
+        "u": "https://www.youtube.com/watch?v=8244knXN9e0"
       }
     ],
     "Gemini": [
+      {
+        "t": "「問問 Gemini」48 個免費 Skills 一鍵複製（中文版）｜學生、老師、上班族都用得到",
+        "u": "https://www.youtube.com/watch?v=tDzNXs31Dl4"
+      },
       {
         "t": "2026 Google Gemini 10個實用示範｜文字轉錄+即時語音對話+即時翻譯",
         "u": "https://www.youtube.com/watch?v=Je9ssxv4tFQ"
@@ -878,70 +733,302 @@ window.DYNAMIC = {
         "u": "https://www.youtube.com/watch?v=UfrXGfivlEQ"
       }
     ],
-    "ChatGPT": [
+    "Perplexity": [
       {
-        "t": "【2026最新】ChatGPT沒人談論的隱藏功能和技巧完整教學",
-        "u": "https://www.youtube.com/watch?v=04cz8zNr33Y"
+        "t": "Perplexity AI 登陸 WhatsApp：生成 AI 圖像與錄音對話實測",
+        "u": "https://www.youtube.com/watch?v=vLlU2mZ_vdQ"
       },
       {
-        "t": "【ChatGPT 教學】最新最全，9成人冇用嘅功能＋新出Work自動幫你做嘢（廣東話）",
-        "u": "https://www.youtube.com/watch?v=o7AUbq28-Ss"
+        "t": "【最完整教學】Perplexity Comet AI瀏覽器10大神級用法：工作效率、研究搜尋、生活資訊",
+        "u": "https://www.youtube.com/watch?v=oLn8dbfXH-0"
       },
       {
-        "t": "【入門教學】手把手教你設定 ChatGPT 桌面版，讓 AI 讀懂你的檔案、畫出精美截圖",
-        "u": "https://www.youtube.com/watch?v=houWoGOXAZs"
+        "t": "Perplexity使用全攻略：10分鐘內學會80%功能！",
+        "u": "https://www.youtube.com/watch?v=qE3o03JKsVw"
       },
       {
-        "t": "ChatGPT 不只會回答了！GPT-5.6 Work、桌面操作完整解析",
-        "u": "https://www.youtube.com/watch?v=iP9Oy7naM1s"
+        "t": "擁有Perplexity，等於擁有Google+GPT4o+Claude3.5，我心中的最佳AI神器",
+        "u": "https://www.youtube.com/watch?v=oe20a1BWiSg"
       },
       {
-        "t": "ChatGPT 大改版：5 個變化一次看懂！【會自己幹活、Work、GPT-5.6】",
-        "u": "https://www.youtube.com/watch?v=Au206yH7ufE"
+        "t": "節省90%的研究時間？AI研究工具Perplexity介紹",
+        "u": "https://www.youtube.com/watch?v=NiZREM3aSGk"
       },
       {
-        "t": "新手必學的「進化版 ChatGPT」！快速打造 Codex 終極知識庫，用它秒做各種檔案！",
-        "u": "https://www.youtube.com/watch?v=pTO85XkruHI"
+        "t": "Perplexity Pro 免費領取攻略，AI 神助手用一年！完整步驟＋常見問題解答",
+        "u": "https://www.youtube.com/watch?v=PWsyLdmf1Dg"
       },
       {
-        "t": "傻子也能學會的 Codex 教學｜個人網站、YouTube爆款雷達、自動週報，零程式碼15分鐘全搞定",
-        "u": "https://www.youtube.com/watch?v=VMF4JWbdxhs"
+        "t": "10 分鐘學會用 Perplexity，AI 教父都愛用！｜張邁可完整教學",
+        "u": "https://www.youtube.com/watch?v=SiCoXrlobec"
       },
       {
-        "t": "一次帶你搞懂 ChatGPT「4種用戶」「8種模型」功能解析！選對模型比課金還重要！同一個指令差異這麼大！｜泛科學院",
-        "u": "https://www.youtube.com/watch?v=-UvK-SYXpaw"
+        "t": "0 元變 Pro！Perplexity Pro 免費一年訂閱全攻略，省下年費完整步驟",
+        "u": "https://www.youtube.com/watch?v=zk4zvx4rj3U"
       },
       {
-        "t": "Canva 新功能直接屌打 PPT！現在支援 ChatGPT 連動，一鍵生成繁中簡報，內容設計同步完成！｜泛科學院",
-        "u": "https://www.youtube.com/watch?v=UA0IXlFzDdI"
+        "t": "Perplexity Comet 憑什麼讓我徹底拋棄 Chrome？10個功能自動化你的工作！徹底改變我的工作方式！",
+        "u": "https://www.youtube.com/watch?v=Lbi_YrlOutM"
       },
       {
-        "t": "【全網最細】OpenAI Codex 徹底免費！新手必學的進化版 ChatGPT，從 0 到 1 完整入門教學！10 個高頻功能快速學會指揮你的超級 AI Agent！",
-        "u": "https://www.youtube.com/watch?v=39_iw_KLEFk"
+        "t": "為什麼科技巨頭都愛用 Perplexity？網友用過後驚呼：終於可以跟滿是廣告的 Google 說拜拜了！！",
+        "u": "https://www.youtube.com/watch?v=ZC3L94U0_sc"
       },
       {
-        "t": "一個 AI 助手打趴整套 Office 軟體！超強 Codex 從表格簡報、合併列印、架設網站全部一手包辦！",
-        "u": "https://www.youtube.com/watch?v=W5ymBPi53Tw"
+        "t": "免費到Pro: 完整解鎖 Perplexity 所有功能！",
+        "u": "https://www.youtube.com/watch?v=5GD9agWsfAg"
+      }
+    ],
+    "NotebookLM": [
+      {
+        "t": "NotebookLM 超完整攻略繁體中文教學：自動生成中文 Podcast 的 AI 知識管理工具",
+        "u": "https://www.youtube.com/watch?v=IEcBHoZfH_E"
       },
       {
-        "t": "這 5 個 AI 悄悄增加超扯新功能！ChatGPT、Grok、NotebookLM、Recraft、Perplexity 每一個都扯爆了！",
-        "u": "https://www.youtube.com/watch?v=3QcnVp3Bc9g"
+        "t": "NotebookLM 完整攻略：生成中文版 Podcast，超強 AI 筆記工具",
+        "u": "https://www.youtube.com/watch?v=WHX3iAMbk9I"
       },
       {
-        "t": "ChatGPT 超讚新功能「學習與研究」！私人家教學習模式實測，附3招技巧讓效果飆升",
-        "u": "https://www.youtube.com/watch?v=4eoqEoKqdhE"
+        "t": "NotebookLM完整教學！93%的人還不知道的8個隱藏用法，完勝ChatGPT",
+        "u": "https://www.youtube.com/watch?v=zgWerTIynVA"
       },
       {
-        "t": "Codex 保姆級完整教學：從入門到進階，自動生成內容、網頁、影片和App",
-        "u": "https://www.youtube.com/watch?v=tfeCwDT-5m0"
+        "t": "NotebookLM 2.0徹底變了：2026年最重要更新一次看懂！",
+        "u": "https://www.youtube.com/watch?v=mBoxAlg7V3M"
       },
       {
-        "t": "ChatGPT 最全教程：16種使用技巧，從入門到精通",
-        "u": "https://www.youtube.com/watch?v=FRIa3T49urg"
+        "t": "免費用NotebookLM，在10分鐘內，100%掌握任何最新知識",
+        "u": "https://www.youtube.com/watch?v=TK9q8IjkO8s"
       },
       {
-        "t": "6分鐘教會你用 ChatGPT：寫出正確有效的指令",
-        "u": "https://www.youtube.com/watch?v=hqujLMQ2UeM"
+        "t": "NotebookLM 0-1終極攻略，90%的人都不知道的隱藏功能",
+        "u": "https://www.youtube.com/watch?v=JtvSCXz3A6w"
+      },
+      {
+        "t": "別再自己做簡報！NotebookLM 3分鐘直接幫你完成：一鍵去浮水印、換圖全流程公開！",
+        "u": "https://www.youtube.com/watch?v=yjFixFO5TUs"
+      },
+      {
+        "t": "終於等到了！NotebookLM 簡報修改＋PPT 匯出｜去除浮水印、神速更換多頁風格（附 32 種神級咒語）",
+        "u": "https://www.youtube.com/watch?v=PhrJWeJWe0Y"
+      },
+      {
+        "t": "【AI神技】手寫紀錄難整理？NotebookLM 教學｜圖片快速讀取，產出各類報告分析！",
+        "u": "https://www.youtube.com/watch?v=R80ZOBQ7buM"
+      },
+      {
+        "t": "【NotebookLM 教學】AI 瞬間整理百萬字資料！Google 最新筆記神器全功能解析",
+        "u": "https://www.youtube.com/watch?v=uU7ldTCFxYM"
+      },
+      {
+        "t": "1 分鐘開發！NotebookLM 簡報秒變可編輯的神級 AI 工作流（附超詳細步驟）",
+        "u": "https://www.youtube.com/watch?v=rcqXlO4sYkI"
+      },
+      {
+        "t": "【AI神技】別再忙著手抄筆記！NotebookLM 教學：YT 影片、音檔秒變逐字稿與重點摘要",
+        "u": "https://www.youtube.com/watch?v=-BhyDONU8q8"
+      },
+      {
+        "t": "Gemini 重要更新！合體 NotebookLM + 新版多模態輸出教學，一次生成多種格式",
+        "u": "https://www.youtube.com/watch?v=kSgxHy-mqxI"
+      },
+      {
+        "t": "重大更新！新版 Gemini 合體 NotebookLM：多模態輸出全公開，建立任何格式檔案",
+        "u": "https://www.youtube.com/watch?v=uE1XDwDOtbU"
+      },
+      {
+        "t": "NotebookLM 完整教學！10個超強隱藏用法（2026）",
+        "u": "https://www.youtube.com/watch?v=pbds1YRoXJw"
+      },
+      {
+        "t": "Gemini × NotebookLM 史上最強合體：多筆記調用與互動儀表盤",
+        "u": "https://www.youtube.com/watch?v=41eyUBTDn3U"
+      }
+    ],
+    "Gamma": [
+      {
+        "t": "一分鐘快速做簡報！三大 AI 工具比較：Gamma、NotebookLM、Manus",
+        "u": "https://www.youtube.com/watch?v=OYuIBgK9dec"
+      },
+      {
+        "t": "Gamma AI 簡報生成，徹底改變你對簡報製作的想像（教學影片）",
+        "u": "https://www.youtube.com/watch?v=MdA2Wm4nZPo"
+      },
+      {
+        "t": "AI自動化簡報Gamma AI presentations【可可研究室】",
+        "u": "https://www.youtube.com/watch?v=XkIWOjUO0O4"
+      },
+      {
+        "t": "簡報製作教學，Gamma.app：AI幫你做簡報",
+        "u": "https://www.youtube.com/watch?v=YHmM2Xavjc0"
+      },
+      {
+        "t": "最強 AI 簡報生成工具 Gamma 大更新，多了 AI 生簡報配圖給讚，還有其他好用的新功能｜泛科學院",
+        "u": "https://www.youtube.com/watch?v=JBpgSgiMqE8"
+      },
+      {
+        "t": "一分鐘 文字生成簡報 PPT 檔案｜Gamma 詳細操作｜現代人不可不會",
+        "u": "https://www.youtube.com/watch?v=XYqexBVGUCE"
+      },
+      {
+        "t": "【Gamma AI 最新教學-AI簡報PPT】Gamma+ChatGPT強強聯手，生成、改進到講稿，效率翻倍",
+        "u": "https://www.youtube.com/watch?v=sYSyRGx6B2Q"
+      },
+      {
+        "t": "化創意為藝術 - Gamma的AI簡報魔法｜吳承穎線上講座【完整版】",
+        "u": "https://www.youtube.com/watch?v=4bMeGcHGpMs"
+      },
+      {
+        "t": "它竟把6千字長文快速轉成簡報？內容處理量更大贏 ChatGPT？｜Gamma｜泛科學院",
+        "u": "https://www.youtube.com/watch?v=f0Tw2w-WxRs"
+      },
+      {
+        "t": "Gamma 簡報 AI 生成工具真的強嗎？解析 Gamma 三大生成功能 10 分鐘學簡報",
+        "u": "https://www.youtube.com/watch?v=el7Y1Awb750"
+      },
+      {
+        "t": "製作 PPT 太麻煩？Gamma AI 幾分鐘搞定高質感簡報，從排版到內容生成一站式解決",
+        "u": "https://www.youtube.com/watch?v=9PgHe_ThV4U"
+      },
+      {
+        "t": "2026最新AI 簡報神器PK！40秒做完簡報！Gamma、AiPPT 一鍵比較",
+        "u": "https://www.youtube.com/watch?v=X5IToXLK5Pk"
+      },
+      {
+        "t": "😱 只有老人才用 PPT 做簡報？新世代 AI 簡報神器 Gamma 讓你告別石器時代邁向新世紀！",
+        "u": "https://www.youtube.com/watch?v=nl-eVo1EhEQ"
+      },
+      {
+        "t": "【AI工作流】簡報神器 Gamma｜文字一鍵變 PPT，但別只用 AI 就交差",
+        "u": "https://www.youtube.com/watch?v=4A4RXctUSoM"
+      }
+    ],
+    "Canva": [
+      {
+        "t": "Canva AI 教學：簡報 PPT、圖片影片生成、圖片文字辨識與 AI 處理",
+        "u": "https://www.youtube.com/watch?v=mABXWZdUysY"
+      },
+      {
+        "t": "Canva AI 新功能：讓 AI 助力創作，輕鬆打造驚艷作品",
+        "u": "https://www.youtube.com/watch?v=bvXggfsPU_Y"
+      },
+      {
+        "t": "【Canva教學2026】15個你一定要會的Canva實用技巧（新手到進階）",
+        "u": "https://www.youtube.com/watch?v=-MmZ3V5WKfA"
+      },
+      {
+        "t": "Canva AI 2.0完整教學！對話式設計怎麼用？7天免費試用",
+        "u": "https://www.youtube.com/watch?v=9ntGQXAFp3Q"
+      },
+      {
+        "t": "【CANVA教學】最新AI Visual Suite 2.0廣東話詳細教學｜批量生成設計怎麼用｜AI網頁",
+        "u": "https://www.youtube.com/watch?v=1j644p5V44M"
+      },
+      {
+        "t": "Canva AI也太強了!八分鐘寫二個數位教具還可以直接發佈成網頁",
+        "u": "https://www.youtube.com/watch?v=oVAUNGPXTR8"
+      },
+      {
+        "t": "【Canva 新手完整教學】2026 最新入門指南｜從 0 開始快速上手",
+        "u": "https://www.youtube.com/watch?v=QQdVJcCvVH0"
+      }
+    ],
+    "Midjourney": [
+      {
+        "t": "2026最新Midjourney完整教程｜從註冊訂閱到高級提示詞，零基礎快速上手AI繪畫",
+        "u": "https://www.youtube.com/watch?v=U1yxkWu1CQY"
+      },
+      {
+        "t": "Midjourney V7網頁版攻略，玩AI影片前必學｜提示詞、設定到修圖全流程",
+        "u": "https://www.youtube.com/watch?v=EiUFzuSaL1U"
+      },
+      {
+        "t": "【AI工作流】五分鐘搞懂Midjourney｜生圖核心是任務＋關鍵字",
+        "u": "https://www.youtube.com/watch?v=uSIDOquH-DU"
+      },
+      {
+        "t": "Midjourney 保姆級完整教學01：10分鐘学会Midjouney，如何註冊、使用",
+        "u": "https://www.youtube.com/watch?v=VSzIn_kkwiQ"
+      },
+      {
+        "t": "Midjourney 教學｜AI 生圖｜新手｜初學｜基本教學",
+        "u": "https://www.youtube.com/watch?v=ScSsmw_oYgQ"
+      }
+    ],
+    "HeyGen": [
+      {
+        "t": "用 AI 做出任何一個人講話的影片！HeyGen 只要 2 分鐘做出分不出真假的「你」",
+        "u": "https://www.youtube.com/watch?v=O6VzvCYkOVg"
+      },
+      {
+        "t": "3 分鐘 AI 製作影片 HeyGen 教學：虛擬主播、聲音複製與 Faceswap 使用方法",
+        "u": "https://www.youtube.com/watch?v=KbGd84wYMhE"
+      },
+      {
+        "t": "竟然用AI說流利日文，教你用HeyGen創建虛擬分身（免費）",
+        "u": "https://www.youtube.com/watch?v=1rW8KfprMtY"
+      },
+      {
+        "t": "【秒變語言天才！HeyGen AI教學＋實戰（三種語言現場實測）】",
+        "u": "https://www.youtube.com/watch?v=jGYbWOGX5ZE"
+      },
+      {
+        "t": "不露臉也能拍YouTube：HeyGen AI 數字人全流程無痛上手｜0基礎，新手友好",
+        "u": "https://www.youtube.com/watch?v=soIjjhcrtqY"
+      },
+      {
+        "t": "Heygen AI工具教學：打造你第一個數位複製人",
+        "u": "https://www.youtube.com/watch?v=O18DWm7Lkts"
+      },
+      {
+        "t": "Heygen AI 影片生成工具介紹及教學｜AI 影片產生工具推薦",
+        "u": "https://www.youtube.com/watch?v=eeJ2L0Q0lUA"
+      }
+    ],
+    "GitHub Copilot": [
+      {
+        "t": "GitHub Copilot 最佳實務：不要這麼做就對了！",
+        "u": "https://www.youtube.com/watch?v=QW9bu2aeQC8"
+      },
+      {
+        "t": "GitHub Copilot CLI實戰教學｜從修Bug到自動建立Pull Request（含MCP設定與切換Model示範）",
+        "u": "https://www.youtube.com/watch?v=KVht2h5fb9E"
+      },
+      {
+        "t": "【GitHub Copilot】完整範例與步驟解說教你開始使用｜用AI配對程式設計師幫你寫程式",
+        "u": "https://www.youtube.com/watch?v=5MZyLmxOx0Q"
+      },
+      {
+        "t": "Copilot Agent Mode 大解放！用 GitHub MCP Server 強化 AI 開發流程",
+        "u": "https://www.youtube.com/watch?v=c1ZvgYa8m-k"
+      },
+      {
+        "t": "GitHub Copilot - 01 基本程式碼生成與QA",
+        "u": "https://www.youtube.com/watch?v=5vJ05skCULg"
+      },
+      {
+        "t": "GitHub Copilot 在 VS Code 上實用功能！你都用過了嗎？",
+        "u": "https://www.youtube.com/watch?v=U3o9PFI5xVg"
+      },
+      {
+        "t": "如何正確使用GitHub Copilot Chat 以大幅提升編輯程式的效率",
+        "u": "https://www.youtube.com/watch?v=mFCryoMibBo"
+      },
+      {
+        "t": "GitHub Copilot Coding Agent 超實用教學｜自動修 Bug、寫測試、拉 PR 一次搞懂",
+        "u": "https://www.youtube.com/watch?v=Z9EVVDCgm8M"
+      },
+      {
+        "t": "Copilot 與 Agent：從入門到精通｜更聰明地編碼、更快速地開發 GitHub Copilot 應用實戰",
+        "u": "https://www.youtube.com/watch?v=BXr8sKvA1MU"
+      },
+      {
+        "t": "GitHub Copilot 快速入門｜AI 程式開發的第一步！安裝啟用到實戰一步到位",
+        "u": "https://www.youtube.com/watch?v=v4J0MVQYfKQ"
+      },
+      {
+        "t": "5 個必開新功能！GitHub Copilot 在 VS Code 的超實用更新",
+        "u": "https://www.youtube.com/watch?v=N3mOUj2vnE0"
       }
     ],
     "Cursor": [
@@ -974,73 +1061,11 @@ window.DYNAMIC = {
         "u": "https://www.youtube.com/watch?v=sSkveJtpHtg"
       }
     ],
-    "Claude": [
-      {
-        "t": "CLAUDE CODE 4小時完整教學：學會Skills／AI自動工作／搜集資料(2026)",
-        "u": "https://www.youtube.com/watch?v=fYuohy6rQ9c"
-      },
-      {
-        "t": "10分鐘搞懂Claude基礎設定！Project、Skills、Style又是什麼？｜泛科學院",
-        "u": "https://www.youtube.com/watch?v=5Aha8QOVke4"
-      },
-      {
-        "t": "【超級新手指南】我如何使用Claude Code？基礎知識和驚人用途一次說清楚！",
-        "u": "https://www.youtube.com/watch?v=wW6_Q-5aH5o"
-      },
-      {
-        "t": "Claude Code 速成教學｜前 TikTok 工程師帶你學｜MCP, Skills, Subagents, Context, Vibe Coding",
-        "u": "https://www.youtube.com/watch?v=zZ6Rc0jrJZc"
-      },
-      {
-        "t": "Claude Sonnet 5 发布解析：高性价比 Agent 时代来临【AI日报 2026-07-01】",
-        "u": "https://www.youtube.com/watch?v=bBRmzPy5ySg"
-      },
-      {
-        "t": "【超實用】一次搞懂Claude AI全生態！2026全新初學者完整教程，15個Claude超棒的使用方法",
-        "u": "https://www.youtube.com/watch?v=zm3K831v470"
-      },
-      {
-        "t": "你唯一需要的 Claude 教學：從入門到打造你的 AI 團隊",
-        "u": "https://www.youtube.com/watch?v=qYKRiZBWrZ4"
-      },
-      {
-        "t": "Claude基本功 EP01：一次搞懂 Claude 全生態——從聊天到全自動化寫程式",
-        "u": "https://www.youtube.com/watch?v=luRFvHW0SF8"
-      },
-      {
-        "t": "超強的 AI 前端設計師來了！Claude Design 跟你聊聊天就把網站設計出來，而且還貼心地幫你一鍵上線！",
-        "u": "https://www.youtube.com/watch?v=JxaI6HK2onc"
-      },
-      {
-        "t": "還在羨慕別人用 AI 開發酷產品？Claude Code 保姆級教學讓你輕鬆體驗 Vibe Coding，動動嘴就能做出 Anything！",
-        "u": "https://www.youtube.com/watch?v=2pM-7fBXc_M"
-      },
-      {
-        "t": "Claude Code 保姆級攻略 2.0：中文設定、第三方模型接入、MCP、Skill、Subagent 完整教學，省下 90% Token 費用",
-        "u": "https://www.youtube.com/watch?v=Czky9q7sOWU"
-      },
-      {
-        "t": "Claude Cowork 新手必看！零基礎初學者 10 個真實案例演示，手把手打造專屬 AI 自動化團隊",
-        "u": "https://www.youtube.com/watch?v=FrAAhSP9hPA"
-      },
-      {
-        "t": "Claude Cowork/Code 保姆級完整教學：從入門到進階，自動生成內容、網頁和工作流，快速打造你的 AI 員工",
-        "u": "https://www.youtube.com/watch?v=Lq-wedAiffo"
-      },
-      {
-        "t": "Claude Cowork 最友善的手把手教學！你還在叫 AI 幫你想答案？高手都已在用 AI 交成品了",
-        "u": "https://www.youtube.com/watch?v=_cVTzXvb7xs"
-      },
-      {
-        "t": "忘掉ChatGPT吧！Claude Cowork + Skills 才是你的全新自動化系統！零基礎初學者必看",
-        "u": "https://www.youtube.com/watch?v=a5OTTbSCpO8"
-      },
-      {
-        "t": "6個 Claude 核心功能讓你超越99%的 AI 使用者！Cowork/Code 保姆級完整教學",
-        "u": "https://www.youtube.com/watch?v=8244knXN9e0"
-      }
-    ],
     "n8n": [
+      {
+        "t": "超詳細教學：n8n AI 實作 0 基礎入門到進階（AI Agent／LLM／RAG／Webhook）",
+        "u": "https://www.youtube.com/watch?v=vvqhzbp4J5A"
+      },
       {
         "t": "2026最強N8N教學！從零開始打造你的AI自動化工作流！",
         "u": "https://www.youtube.com/watch?v=6s_Z9Tl0sHU"
@@ -1106,68 +1131,54 @@ window.DYNAMIC = {
         "u": "https://www.youtube.com/watch?v=JnepOnstpAQ"
       }
     ],
-    "Canva": [
+    "Dify": [
       {
-        "t": "【Canva教學2026】15個你一定要會的Canva實用技巧（新手到進階）",
-        "u": "https://www.youtube.com/watch?v=-MmZ3V5WKfA"
+        "t": "Dify系統化教學｜Dify零代碼革命：RAG知識庫、自動化流程與企業級部署全解析",
+        "u": "https://www.youtube.com/watch?v=IX8g7l578oQ"
       },
       {
-        "t": "Canva AI 2.0完整教學！對話式設計怎麼用？7天免費試用",
-        "u": "https://www.youtube.com/watch?v=9ntGQXAFp3Q"
+        "t": "【2026廣東話AI教學】10分鐘用Dify從零開始打造企業級私有部署",
+        "u": "https://www.youtube.com/watch?v=1XxGaNkq_g4"
       },
       {
-        "t": "【CANVA教學】最新AI Visual Suite 2.0廣東話詳細教學｜批量生成設計怎麼用｜AI網頁",
-        "u": "https://www.youtube.com/watch?v=1j644p5V44M"
+        "t": "【套件教學】make 自動化串接教學 - Dify Knowledge 知識庫管理套件",
+        "u": "https://www.youtube.com/watch?v=QR9tI9_1yio"
       },
       {
-        "t": "Canva AI也太強了!八分鐘寫二個數位教具還可以直接發佈成網頁",
-        "u": "https://www.youtube.com/watch?v=oVAUNGPXTR8"
+        "t": "AI+工作流：解鎖ChatGPT全部能力，繁瑣工作自動化｜Dify發布Workflow實操教程！",
+        "u": "https://www.youtube.com/watch?v=Cr7laD5kQD0"
       },
       {
-        "t": "【Canva 新手完整教學】2026 最新入門指南｜從 0 開始快速上手",
-        "u": "https://www.youtube.com/watch?v=QQdVJcCvVH0"
-      }
-    ],
-    "Perplexity": [
-      {
-        "t": "【最完整教學】Perplexity Comet AI瀏覽器10大神級用法：工作效率、研究搜尋、生活資訊",
-        "u": "https://www.youtube.com/watch?v=oLn8dbfXH-0"
+        "t": "Master Dify AI in 1 Hour: Complete Beginner's Guide for 2026",
+        "u": "https://www.youtube.com/watch?v=f-rvwoywUgM"
       },
       {
-        "t": "Perplexity使用全攻略：10分鐘內學會80%功能！",
-        "u": "https://www.youtube.com/watch?v=qE3o03JKsVw"
+        "t": "使用 Dify 工作流｜10 分鐘打造高效 AI 客服系統！（附 CC 字幕）",
+        "u": "https://www.youtube.com/watch?v=ZeBMzx4y8l0"
       },
       {
-        "t": "擁有Perplexity，等於擁有Google+GPT4o+Claude3.5，我心中的最佳AI神器",
-        "u": "https://www.youtube.com/watch?v=oe20a1BWiSg"
+        "t": "01_Dify_完整安裝教學｜生成式AI應用創新引擎｜企業落地AI應用最佳途徑",
+        "u": "https://www.youtube.com/watch?v=kTpC6MtYuKc"
       },
       {
-        "t": "節省90%的研究時間？AI研究工具Perplexity介紹",
-        "u": "https://www.youtube.com/watch?v=NiZREM3aSGk"
+        "t": "別再只會用 Dify！hello-agents 帶你從零打造 AI Agent 框架，超越基礎應用",
+        "u": "https://www.youtube.com/watch?v=Ze9DfZCdmP0"
       },
       {
-        "t": "Perplexity Pro 免費領取攻略，AI 神助手用一年！完整步驟＋常見問題解答",
-        "u": "https://www.youtube.com/watch?v=PWsyLdmf1Dg"
+        "t": "【套件教學】Make 自動化串接：LINE 官方帳號串接 Dify 建立 AI Agent 完整流程",
+        "u": "https://www.youtube.com/watch?v=CaA8cj1B6FI"
       },
       {
-        "t": "10 分鐘學會用 Perplexity，AI 教父都愛用！｜張邁可完整教學",
-        "u": "https://www.youtube.com/watch?v=SiCoXrlobec"
+        "t": "使用 Dify 免費打造進階 AI 客服系統｜RAG 設定、禁用字、自訂回答、內容優化完整教學",
+        "u": "https://www.youtube.com/watch?v=wb6wHNBIqgs"
       },
       {
-        "t": "0 元變 Pro！Perplexity Pro 免費一年訂閱全攻略，省下年費完整步驟",
-        "u": "https://www.youtube.com/watch?v=zk4zvx4rj3U"
+        "t": "【使用 No Code 工具 Dify】設定懂公司產品的 AI Agent 銷售助手",
+        "u": "https://www.youtube.com/watch?v=A6zsqVDo8r4"
       },
       {
-        "t": "Perplexity Comet 憑什麼讓我徹底拋棄 Chrome？10個功能自動化你的工作！徹底改變我的工作方式！",
-        "u": "https://www.youtube.com/watch?v=Lbi_YrlOutM"
-      },
-      {
-        "t": "為什麼科技巨頭都愛用 Perplexity？網友用過後驚呼：終於可以跟滿是廣告的 Google 說拜拜了！！",
-        "u": "https://www.youtube.com/watch?v=ZC3L94U0_sc"
-      },
-      {
-        "t": "免費到Pro: 完整解鎖 Perplexity 所有功能！",
-        "u": "https://www.youtube.com/watch?v=5GD9agWsfAg"
+        "t": "Dify 1.0 基礎教學：開發你的第一個 Agent",
+        "u": "https://www.youtube.com/watch?v=hDjubHZwilo"
       }
     ],
     "Coze": [

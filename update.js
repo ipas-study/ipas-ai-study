@@ -1,7 +1,59 @@
-// 每週內容更新：2026-09-07
+// 每週內容更新：2026-09-16
 window.DYNAMIC = {
-  "lastUpdated": "2026-09-07",
+  "lastUpdated": "2026-09-16",
   "news": [
+    {
+      "t": "iPAS AI應用規劃師(中級)學習指引核心知識點與新趨勢關鍵字分析整理",
+      "d": "彙整iPAS AI應用規劃師中級學習指引最新版本的核心知識點與新趨勢關鍵字，涵蓋L21、L22、L23三科目重點，適合中級考生對照官方學習指引複習。",
+      "u": "https://vocus.cc/article/68eceef5fd89780001fbb2bd"
+    },
+    {
+      "t": "台灣理光推AI文件管理，搶企業數位轉型商機",
+      "d": "台灣理光以企業內容管理軟體DocuWare為核心，結合AI文件辨識、合約與財務單據管理功能，協助企業降低文件搜尋與人工登打時間，醫材業客戶導入後稽核作業時間縮短逾50%，可作為AI導入規劃科目的企業實務案例。",
+      "u": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%81%A3%E7%90%86%E5%85%89%E6%8E%A8ai%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-%E6%90%B6%E4%BC%81%E6%A5%AD%E6%95%B8%E4%BD%8D%E8%BD%89%E5%9E%8B%E5%95%86%E6%A9%9F-024200258.html"
+    },
+    {
+      "t": "台灣大硬科技日發表15項AI成果，台日四大講者Keynote拆解Agentic AI落地路徑",
+      "d": "台灣大哥大第四屆D.E.E.P. Tech Day會後報導，彙整發表的15項自研AI成果與台日講者對Agentic AI企業落地路徑的分析，呼應AI導入規劃科目中從技術到治理的完整佈局概念。",
+      "u": "https://www.allnews.tw/news/94119"
+    },
+    {
+      "t": "台灣創新技術博覽會聚焦AI創新應用：資策會多模態技術讓記憶場景再現，走入失智照護",
+      "d": "2026台灣創新技術博覽會（9/17-19）資策會AI研究院展出「多模態即時數位場景生成技術應用服務」，運用生成式AI將長者熟悉的人事時地物轉化為個人化數位場景，應用於失智復健與懷舊治療，是生成式AI落地社會照護場景的實務案例。",
+      "u": "https://technews.tw/2026/09/15/tie-iii-multimodal-technology-dementia-care"
+    },
+    {
+      "t": "台積電：AI需求成長迅猛是30年未見，全球20座廠同時推進",
+      "d": "台積電高層指出AI需求在短短6個月內近乎翻倍成長，為30年來首見，全球近20座晶圓廠同時施工仍供不應求，反映AI基礎設施需求持續攀升的產業背景，可作為理解AI導入規劃總體環境的參考。",
+      "u": "https://newtalk.tw/news/view/2026-09-02/1057435"
+    }
+  ],
+  "newsHistory": [
+    {
+      "t": "iPAS AI應用規劃師(中級)學習指引核心知識點與新趨勢關鍵字分析整理",
+      "d": "彙整iPAS AI應用規劃師中級學習指引最新版本的核心知識點與新趨勢關鍵字，涵蓋L21、L22、L23三科目重點，適合中級考生對照官方學習指引複習。",
+      "u": "https://vocus.cc/article/68eceef5fd89780001fbb2bd"
+    },
+    {
+      "t": "台灣理光推AI文件管理，搶企業數位轉型商機",
+      "d": "台灣理光以企業內容管理軟體DocuWare為核心，結合AI文件辨識、合約與財務單據管理功能，協助企業降低文件搜尋與人工登打時間，醫材業客戶導入後稽核作業時間縮短逾50%，可作為AI導入規劃科目的企業實務案例。",
+      "u": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%81%A3%E7%90%86%E5%85%89%E6%8E%A8ai%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-%E6%90%B6%E4%BC%81%E6%A5%AD%E6%95%B8%E4%BD%8D%E8%BD%89%E5%9E%8B%E5%95%86%E6%A9%9F-024200258.html"
+    },
+    {
+      "t": "台灣大硬科技日發表15項AI成果，台日四大講者Keynote拆解Agentic AI落地路徑",
+      "d": "台灣大哥大第四屆D.E.E.P. Tech Day會後報導，彙整發表的15項自研AI成果與台日講者對Agentic AI企業落地路徑的分析，呼應AI導入規劃科目中從技術到治理的完整佈局概念。",
+      "u": "https://www.allnews.tw/news/94119"
+    },
+    {
+      "t": "台灣創新技術博覽會聚焦AI創新應用：資策會多模態技術讓記憶場景再現，走入失智照護",
+      "d": "2026台灣創新技術博覽會（9/17-19）資策會AI研究院展出「多模態即時數位場景生成技術應用服務」，運用生成式AI將長者熟悉的人事時地物轉化為個人化數位場景，應用於失智復健與懷舊治療，是生成式AI落地社會照護場景的實務案例。",
+      "u": "https://technews.tw/2026/09/15/tie-iii-multimodal-technology-dementia-care"
+    },
+    {
+      "t": "台積電：AI需求成長迅猛是30年未見，全球20座廠同時推進",
+      "d": "台積電高層指出AI需求在短短6個月內近乎翻倍成長，為30年來首見，全球近20座晶圓廠同時施工仍供不應求，反映AI基礎設施需求持續攀升的產業背景，可作為理解AI導入規劃總體環境的參考。",
+      "u": "https://newtalk.tw/news/view/2026-09-02/1057435"
+    },
     {
       "t": "iPAS官方公告：2026年iPAS AI應用規劃師為何爆滿？考照熱潮與高效備考方法解析",
       "d": "彙整2026年iPAS AI應用規劃師考照熱潮的成因，包含初級四梯次、中級兩梯次的報名爆滿現象，並提供高效備考方法建議，適合準備近期考試的考生參考。",
@@ -26,9 +78,7 @@ window.DYNAMIC = {
       "t": "第四屆台灣大硬科技日9/8登場：萬人集團實戰驗證MyAgent平台引領企業Agentic AI落地",
       "d": "台灣大硬科技日發表自研MyAgent智能體平台，展示企業級Agentic AI從技術、平台到流程的完整落地實戰，呼應2026年台灣產業從生成式AI導入邁向自主行動代理的轉折，可作為AI導入規劃科目的實務案例。",
       "u": "https://www.stufftaiwan.com/2026/08/26/%E8%90%AC%E4%BA%BA%E9%9B%86%E5%9C%98%E5%AF%A6%E6%88%B0%E9%A9%97%E8%AD%89%EF%BC%81%E7%AC%AC%E5%9B%9B%E5%B1%86%E3%80%8C%E5%8F%B0%E7%81%A3%E5%A4%A7%E7%A1%AC%E7%A7%91%E6%8A%80%E6%97%A5%E3%80%8D9%E6%9C%88/"
-    }
-  ],
-  "newsHistory": [
+    },
     {
       "t": "iPAS官方報名系統：初級第四場（11/7）、中級第二場（11/14）同步開放報名",
       "d": "勞動部勞動力發展署iPAS能力鑑定官方報名系統公告，115年度AI應用規劃師初級第四梯次考試訂於11月7日、中級第二梯次訂於11月14日舉行，個人報名分別於7/9–9/22（初級）與5/22–9/22（中級）截止，考生請儘速至官網完成報名。",
@@ -178,59 +228,41 @@ window.DYNAMIC = {
       "t": "MoBagel攜手高通、宜鼎與安提展示企業地端Agentic AI平台：台灣AI Agent落地邁向規模化",
       "d": "MoBagel與高通、宜鼎、安提合作，展示企業可地端部署的Agentic AI平台，協助企業以AI Agent自動化不同功能需求的工作流程，反映台灣企業級AI代理應用正從概念驗證走向實際部署。",
       "u": "https://www.chinatimes.com/newspapers/20260717000557-260210"
-    },
-    {
-      "t": "Google Cloud Day Taipei 2026揭示多模態AI代理元年：台灣在「代理式企業」浪潮下的關鍵優勢",
-      "d": "Google Cloud Day Taipei 2026聚焦多模態AI Agent發展，說明台灣企業在資料基礎建設、人才與產業聚落上的優勢，如何在「代理式企業（Agentic Enterprise）」浪潮中掌握先機。",
-      "u": "https://mashdigi.com/ushering-in-the-year-of-multimodal-ai-agents-google-cloud-day-taipei-2026-reveals-taiwans-key-advantages-in-the-wave-of-agency-based-enterprises/"
-    },
-    {
-      "t": "iPAS 8/15 初級鑑定倒數 40 天：進入考前衝刺期，官方電腦測驗操作說明與考場資訊先確認",
-      "d": "距 115 年第三梯次初級考試（8/15）剩約 40 天。建議此階段以考古題複本與錯題複習為主，並提前確認考場位置與電腦測驗操作介面（作答畫面、標記題目、試題總覽），避免臨場生疏。最新公告以官網為準。",
-      "u": "https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info"
-    },
-    {
-      "t": "家樂福「AI 侍酒師」上線兩個月吸引 3 萬人使用，七成用戶下單：零售業生成式 AI 落地代表案例",
-      "d": "家樂福攜手宏庭科技推出 AI 侍酒師，依顧客口味與預算推薦葡萄酒，上線短短兩個月吸引超過 3 萬名消費者使用，其中高達七成用戶獲建議後實際下單，是「顧客體驗 × 生成式 AI」落地的具體範例。",
-      "u": "https://www.microfusion.cloud/news/mf-ai-customer-success-story/"
-    },
-    {
-      "t": "天下雜誌打造 AI Hub：45 年編輯經驗轉化為 AI Agent，媒體業示範內容產製新分工",
-      "d": "面對生成式 AI 衝擊，天下雜誌選擇不以自動產文追求低成本大量內容，而是與業者合作打造 AI Hub，將編輯經驗、內容資料庫與記者工作流程轉化為 AI Agent，協助議題發想、資料整理與論點檢查，是知識工作導入 AI Agent 的參考案例。",
-      "u": "https://www.twreporter.org/a/taiwan-news-media-faces-survival-battle-against-generative-ai-wave"
-    },
-    {
-      "t": "OpenAI 發布 GPT-5.5：多模態與代理能力再升級，企業級應用場景持續擴大",
-      "d": "OpenAI 正式推出 GPT-5.5，強化推理與多模態理解能力，並持續朝向可自主執行任務的 Agent 化模型發展，反映 2026 年主流大型語言模型從「問答」走向「代理式任務執行」的趨勢，是 AI 應用規劃師須掌握的技術演進方向。",
-      "u": "https://openai.com/index/introducing-gpt-5-5/"
-    },
-    {
-      "t": "AI WAVE SHOW 2026 於 7/30～8/1 台北世貿一館登場：聚焦 AI Agent、Edge AI 與 LLM 三大領域",
-      "d": "由數位發展部指導、數位產業署與台北市電腦公會主辦，主題「AI Ready 即刻實戰」，鎖定企業導入實戰與變現場景，是考前了解台灣 AI 落地生態的絕佳現場觀察機會。",
-      "u": "https://newtalk.tw/news/view/2026-04-02/1027814"
-    },
-    {
-      "t": "Notion Custom Agents 全面開放：工作空間裡自動做事的「AI 員工」正式上線",
-      "d": "Notion 3.3 推出 Custom Agents，AI 不再只是問答，而是可自動執行、持續運作的代理，商業與事業方案用戶皆可使用。是「知識管理 × Agentic AI」落地的代表案例。",
-      "u": "https://vocus.cc/article/69a109d3fd897800019ccfc6"
-    },
-    {
-      "t": "Google Cloud Day Taipei 7/9 登場：代理式企業新時代，台灣年度雲端盛會重磅回歸",
-      "d": "Google Cloud 繼 Next '26 大會發布「代理式企業」願景後，將於 7 月 9 日在台北南港展覽館二館舉辦年度盛會，聚焦 Gemini Enterprise Agent Platform、AI 資安與 Workspace Intelligence，是了解企業 AI Agent 落地路徑的重要實戰活動。",
-      "u": "https://www.thenewslens.com/article/268076"
-    },
-    {
-      "t": "2026 FCA 創新商務獎揭曉：36 家企業 AI 落地成果，AI Agent 平台奪金獎",
-      "d": "第 12 屆 FCA 創新商務獎從 159 件作品選出 40 強，企業 AI Agent 平台 EgentHub 以免程式碼架構整合知識庫奪金獎；永聯物流以 AI 影像辨識整合自動導航奪技術創新金獎。AI Agent 技術全面從 PoC 走向量產是最大趨勢。",
-      "u": "https://www.bnext.com.tw/article/91328/2026-future-commerce-awards"
-    },
-    {
-      "t": "2026 AI TAIWAN 未來商務展 6/24 圓滿落幕：200+ 跨國 AI 解方，B2B 落地需求大爆發",
-      "d": "全台最大 B2B AI 實戰展覽於花博爭艷館登場，集結 170 國內＋40 國際解方，橫跨 AI 基礎設施、數據工程、資安治理與行銷零售，是掌握 2026 台灣企業 AI 採購趨勢的最佳指標活動。",
-      "u": "https://fc.bnext.com.tw/articles/view/4704"
     }
   ],
   "resources": [
+    {
+      "t": "GPT-5.6 Prompt教學：官方提示詞指南、範例與Evals優化",
+      "d": "整理GPT-5.6官方提示詞撰寫指南與範例，並說明如何透過Evals優化提示詞效果，適合補強提示工程科目的最新模型應用技巧。",
+      "u": "https://www.aiposthub.com/gpt-5-6-prompt-guide/"
+    },
+    {
+      "t": "RAG檢索優化指南：為什麼別人的知識庫回答比你的精準？（2026）",
+      "d": "說明Chunk策略、Metadata設計、Hybrid Search與Rerank等RAG檢索優化實作重點，並建議追蹤Recall@K、MRR@K等核心指標，適合強化RAG實作科目的評估方法。",
+      "u": "https://fordige.com/blog/rag-retrieval-optimization-guide"
+    },
+    {
+      "t": "AI Agent 零基礎打造個人工作流｜數位員工✕AI工具整合✕Agent生態串接",
+      "d": "天下學習線上課程，教授零基礎學員如何整合AI工具打造個人化數位員工工作流，並串接Agent生態系，適合補強AI導入規劃科目中流程設計的實務操作能力。",
+      "u": "https://www.cwlearning.com.tw/courses/1788e9e4-577e-4433-8c64-7764ea083fb9"
+    }
+  ],
+  "resourcesHistory": [
+    {
+      "t": "GPT-5.6 Prompt教學：官方提示詞指南、範例與Evals優化",
+      "d": "整理GPT-5.6官方提示詞撰寫指南與範例，並說明如何透過Evals優化提示詞效果，適合補強提示工程科目的最新模型應用技巧。",
+      "u": "https://www.aiposthub.com/gpt-5-6-prompt-guide/"
+    },
+    {
+      "t": "RAG檢索優化指南：為什麼別人的知識庫回答比你的精準？（2026）",
+      "d": "說明Chunk策略、Metadata設計、Hybrid Search與Rerank等RAG檢索優化實作重點，並建議追蹤Recall@K、MRR@K等核心指標，適合強化RAG實作科目的評估方法。",
+      "u": "https://fordige.com/blog/rag-retrieval-optimization-guide"
+    },
+    {
+      "t": "AI Agent 零基礎打造個人工作流｜數位員工✕AI工具整合✕Agent生態串接",
+      "d": "天下學習線上課程，教授零基礎學員如何整合AI工具打造個人化數位員工工作流，並串接Agent生態系，適合補強AI導入規劃科目中流程設計的實務操作能力。",
+      "u": "https://www.cwlearning.com.tw/courses/1788e9e4-577e-4433-8c64-7764ea083fb9"
+    },
     {
       "t": "如何建立AI Agent？實戰教學：先「反向拆解工作流」",
       "d": "數位時代提供的AI Agent建置實戰教學，強調從反向拆解工作流開始設計，適合補強AI導入規劃科目中流程設計與落地場景規劃的實務理解。",
@@ -245,9 +277,7 @@ window.DYNAMIC = {
       "t": "提示工程到脈絡工程：2026 AI Prompt頂尖框架",
       "d": "介紹2026年提示工程從單句指令優化演進為「脈絡工程（Context Engineering）」的趨勢，強調整體上下文設計的重要性，適合補強提示工程科目的進階概念。",
       "u": "https://www.data-di.com/blog/ai-lab-prompt-2026-q1"
-    }
-  ],
-  "resourcesHistory": [
+    },
     {
       "t": "什麼是AI Agent？2026年完整入門指南＋熱門工具推薦",
       "d": "以淺顯方式說明AI Agent的核心概念、運作原理與常見應用場景，並整理當前熱門的Agent開發工具，適合尚未建立AI Agent基礎觀念的初學者作為入門讀物。",
@@ -337,48 +367,32 @@ window.DYNAMIC = {
       "t": "提示工程指南（Learn Prompting 繁體中文版）：從基礎到進階提示工程技術完整教程",
       "d": "國際知名提示工程教學網站的繁體中文版，涵蓋基礎知識、Few-shot、Chain-of-Thought、提示注入與工具應用等主題，適合系統性複習科目二提示工程考點。",
       "u": "https://learnprompting.org/zh-tw/docs/introduction"
-    },
-    {
-      "t": "AI Agent 地端實戰-打造企業專屬智能助理（中國生產力中心）",
-      "d": "聚焦Dify與地端LLM整合的實作課程，涵蓋RAG、提示工程與Agent工作流設計，協助理解企業如何落地建置可控管的AI Agent。",
-      "u": "https://edu.cpc.org.tw/class/content/1462"
-    },
-    {
-      "t": "2026 最新 LangChain 教學：從 LCEL 基礎到企業級 RAG 實戰全攻略（梅森 AI 實驗室）",
-      "d": "以繁體中文說明 LCEL 組合式管線、語義切分 RAG 系統與多代理人架構設計，適合補強科目二 RAG／Agent 架構的實作理解。",
-      "u": "https://masonaibase.com/langchain-tutorial-2026-lcel-rag/"
-    },
-    {
-      "t": "iPAS AI 應用規劃師考古題與模擬測驗總整理（2026 更新版）",
-      "d": "彙整初級／中級歷屆考題來源、模擬測驗與練習建議，並隨 115 年梯次持續更新，適合 8/15 考前搭配本站題庫交叉練習。",
-      "u": "https://aiterms.tw/ipas/past-exams/"
-    },
-    {
-      "t": "2026 年 AI 必讀免費學習資源懶人包：Prompt、Agent、RAG 官方教材一站整理",
-      "d": "整理 Google、OpenAI、Anthropic 等官方免費學習資源，涵蓋提示詞工程、AI Agent 設計、RAG 架構與模型評估，均附中文版或中文解說，是備考 iPAS 各科目的最佳補充材料一站式清單。",
-      "u": "https://futureweb.pro/tools/ai-web3-blog/best-free-ai-learning-resources/"
-    },
-    {
-      "t": "2026 台灣 AI 十大熱點深度解析：Agentic AI 從生成內容走向自主行動的產業轉折點",
-      "d": "CCChen 分析台灣 2026 年 AI 十大趨勢，重點聚焦 Agentic AI 從生成走向自主行動的關鍵轉折，涵蓋 Tool Use、記憶架構、Multi-Agent 協作等 iPAS 中級核心觀念，附台灣企業實戰案例說明。",
-      "u": "https://vocus.cc/article/6a1e95a1fd897800019760e0"
-    },
-    {
-      "t": "Claude Projects 完整教學 2026：RAG、模板與最佳實踐，讓 AI 真正記住你的專案脈絡",
-      "d": "Mason AI Lab 深度解析 Claude Projects 的 RAG 知識整合、Prompt 模板設定與常見反模式，說明如何讓 Claude 跨對話記憶專案背景，適合備考「AI 工具應用」及「提示工程」單元。",
-      "u": "https://masonailab.com/tools/claude-projects-guide-2026/"
     }
   ],
   "tools": [
+    {
+      "n": "Genspark",
+      "d": "整合搜尋、簡報、試算表、網頁生成與多智能體協作的一站式AI工作空間，2026年推出Workspace 6.0版本，新增SecondBrain記憶層與Super Agent智能引擎，可依指令自動規劃並產出多種格式內容。",
+      "use": "免費註冊後於首頁輸入需求指令，例如「幫我做一份產業分析簡報」，AI會自動規劃步驟並產出簡報、網頁或試算表；基本功能免費使用，進階功能與更大用量需訂閱付費方案。",
+      "url": "https://www.genspark.ai",
+      "yt": "https://www.youtube.com/watch?v=h5T45yrlZZQ"
+    }
+  ],
+  "toolsHistory": [
+    {
+      "n": "Genspark",
+      "d": "整合搜尋、簡報、試算表、網頁生成與多智能體協作的一站式AI工作空間，2026年推出Workspace 6.0版本，新增SecondBrain記憶層與Super Agent智能引擎，可依指令自動規劃並產出多種格式內容。",
+      "use": "免費註冊後於首頁輸入需求指令，例如「幫我做一份產業分析簡報」，AI會自動規劃步驟並產出簡報、網頁或試算表；基本功能免費使用，進階功能與更大用量需訂閱付費方案。",
+      "url": "https://www.genspark.ai",
+      "yt": "https://www.youtube.com/watch?v=h5T45yrlZZQ"
+    },
     {
       "n": "Nano Banana Pro",
       "d": "基於Gemini 3 Pro架構的專業級影像生成模型，徹底解決過去AI生圖繁體中文字亂碼的問題，能精準渲染繁體中文字形，並支援多圖合併、角色一致性與資訊圖表生成。",
       "use": "透過Gemini網頁版或APP，於對話框選擇「工具」→「建立圖像」，並將模型切換為「3 Pro思考型模型」，即可直接生成含正確繁體中文字的海報、資訊圖表與教學圖卡，免費版每日有額度限制。",
       "url": "https://www.gvm.com.tw/article/126036",
       "yt": "https://www.youtube.com/watch?v=zvW9wEHGWyM"
-    }
-  ],
-  "toolsHistory": [
+    },
     {
       "n": "Perplexity Comet",
       "d": "Perplexity推出的免費AI原生瀏覽器，2026年已開放Android版免費下載，整個瀏覽器圍繞AI助理打造，能讀取當前頁面內容回答問題，並代為執行訂位、填表、摘要等多步驟任務，台灣用戶免VPN即可使用核心功能。",
@@ -476,126 +490,103 @@ window.DYNAMIC = {
       "use": "整理學習指引與考古題重點、自動生成複習音檔",
       "url": "https://notebooklm.google.com",
       "yt": ""
-    },
-    {
-      "n": "Gamma",
-      "d": "輸入大綱即自動生成設計精美的簡報、文件與網頁。",
-      "use": "快速產出 AI 導入提案簡報、讀書會教材",
-      "url": "https://gamma.app",
-      "yt": ""
-    },
-    {
-      "n": "n8n",
-      "d": "開源工作流自動化平台，1200+ 節點可串接各種服務並內建 AI Agent 節點。",
-      "use": "打造企業自動化流程與 AI Agent 落地案例",
-      "url": "https://n8n.io",
-      "yt": ""
     }
   ],
   "toolVideos": {
-    "ChatGPT": [],
-    "Claude": [
+    "ChatGPT": [
       {
-        "t": "Claude Code 教學 2026：別再找神提示詞，先學會控制AI工作節奏和上下文",
-        "u": "https://www.youtube.com/watch?v=vDQiM0ml4c4"
+        "t": "ChatGPT 2026年已經完全不一樣了！多數人還不知道的10個新功能",
+        "u": "https://www.youtube.com/watch?v=6Y_SoDw7rS8"
       },
       {
-        "t": "Claude Code保姆級攻略2.0：中文語言設定、第三方模型接入、MCP、Skill、Subagent完整教學",
-        "u": "https://www.youtube.com/watch?v=Czky9q7sOWU"
+        "t": "ChatGPT大改版！GPT 5.6實戰：用Work模式一鍵做簡報、Codex自動寫程式全攻略",
+        "u": "https://www.youtube.com/watch?v=jvJDPqjNQBE"
+      }
+    ],
+    "Claude": [
+      {
+        "t": "史詩級更新！Claude Dispatch完整教學：用手機遠端遙控你的電腦AI助理",
+        "u": "https://www.youtube.com/watch?v=ib7HdjsU9nI"
+      },
+      {
+        "t": "最聰明的AI工具？Claude免費版5大神功能：一鍵生成Excel分析與Office檔案",
+        "u": "https://www.youtube.com/watch?v=114H9EWKfzM"
       }
     ],
     "Gemini": [
       {
-        "t": "Google Gemini 3最強教學＋15個超強功能全場景實測",
-        "u": "https://www.youtube.com/watch?v=8o737qKO3IM"
+        "t": "20分鐘掌握Google Gemini的一切！2026最新功能實戰",
+        "u": "https://www.youtube.com/watch?v=EgMRHi9ytPY"
       },
       {
-        "t": "強到離譜！谷歌免費Gemini 3的15個神應用",
-        "u": "https://www.youtube.com/watch?v=49HLhRPL5f0"
+        "t": "Gemini爆改研究功能！「建立功能」讓Deep Research能直接做網頁、圖表、測驗",
+        "u": "https://www.youtube.com/watch?v=AxH-oFZQMRs"
       }
     ],
     "Perplexity": [],
-    "NotebookLM": [
-      {
-        "t": "NotebookLM 2.0徹底變了：2026年最重要更新一次看懂",
-        "u": "https://www.youtube.com/watch?v=mBoxAlg7V3M"
-      }
-    ],
-    "Gamma": [
-      {
-        "t": "Gamma簡報AI生成工具真的強嗎！？解析Gamma三大生成功能",
-        "u": "https://www.youtube.com/watch?v=el7Y1Awb750"
-      }
-    ],
+    "NotebookLM": [],
+    "Gamma": [],
     "Canva": [],
     "Midjourney": [
       {
-        "t": "Midjourney V7網頁版攻略，玩AI影片前必學｜細節大師的提示詞、設定到修圖全流程",
-        "u": "https://www.youtube.com/watch?v=EiUFzuSaL1U"
+        "t": "【MidJourney線上網頁版最新教學】不需再用Discord了",
+        "u": "https://www.youtube.com/watch?v=GAQ6HRktsoY"
       },
       {
-        "t": "Midjourney 教學｜AI生圖｜新手｜初學｜基本教學",
-        "u": "https://www.youtube.com/watch?v=ScSsmw_oYgQ"
+        "t": "Midjourney教學、怎麼用、指令、技巧、免費，輸入關鍵字讓AI生成絕美圖片",
+        "u": "https://www.youtube.com/watch?v=MZlPQjhlvMk"
       }
     ],
     "HeyGen": [
       {
-        "t": "秒變語言天才！HeyGen AI教學＋實戰（三種語言現場實測）",
-        "u": "https://www.youtube.com/watch?v=jGYbWOGX5ZE"
+        "t": "【神級AI粵語視頻配音】HeyGen實戰教學：專業級「廣東話配音」終極秘密武器",
+        "u": "https://www.youtube.com/watch?v=1z-gAuu4zrw"
       },
       {
-        "t": "用AI就能做出任何一個人講話的影片！HeyGen只要2分鐘製作",
-        "u": "https://www.youtube.com/watch?v=O6VzvCYkOVg"
+        "t": "打造專屬數字人分身＆Heygen免費用技巧｜虛擬主播",
+        "u": "https://www.youtube.com/watch?v=TcIhyOPEkn4"
       }
     ],
     "GitHub Copilot": [
       {
-        "t": "GitHub Copilot Coding Agent超實用教學｜自動修Bug、寫測試、拉PR一次搞懂",
-        "u": "https://www.youtube.com/watch?v=Z9EVVDCgm8M"
-      },
-      {
-        "t": "GitHub Copilot快速入門｜AI程式開發的第一步",
-        "u": "https://www.youtube.com/watch?v=v4J0MVQYfKQ"
+        "t": "GitHub Copilot快速入門｜掌握Ask、Edit與Agent模式全新功能",
+        "u": "https://www.youtube.com/watch?v=OBoDchKNKPE"
       }
     ],
     "Cursor": [
       {
-        "t": "Cursor AI教學－實戰4個月後的終極使用心得！10x你的Programming效率",
-        "u": "https://www.youtube.com/watch?v=yHiYyiWMhlI"
+        "t": "Cursor除了AI對話功能，亦可選取程式碼直接編輯",
+        "u": "https://www.youtube.com/watch?v=PaYV7ZIlNGU"
       },
       {
-        "t": "0基礎也能開始！用Cursor打造你的第一個AI專案",
-        "u": "https://www.youtube.com/watch?v=3RAsnOmrW-c"
+        "t": "AI幫你寫完+測完，Cursor一鏡到底全流程：規則→方案→Agent編碼→自動化測試",
+        "u": "https://www.youtube.com/watch?v=zX6Bi2OFIGY"
       }
     ],
     "n8n": [
       {
-        "t": "學會n8n為你省下80%時間！這個AI助理只認你這個主人",
-        "u": "https://www.youtube.com/watch?v=r9mi3ZJIWbg"
-      },
-      {
-        "t": "超詳細教學：n8n AI實作0基礎入門到進階",
-        "u": "https://www.youtube.com/watch?v=vvqhzbp4J5A"
+        "t": "n8n入門教程：創建您的第一個自動化工作流",
+        "u": "https://www.youtube.com/watch?v=OVz5DyqANeY"
       }
     ],
     "Dify": [
       {
-        "t": "Dify 1.0基礎教學第二課：開發你第一個Agent",
-        "u": "https://www.youtube.com/watch?v=hDjubHZwilo"
+        "t": "Dify零基礎教程：手把手教你搭建第一個AI工作流｜Workflow與Chatflow模式詳解",
+        "u": "https://www.youtube.com/watch?v=ZKmVvtSAEek"
       },
       {
-        "t": "01_Dify_完整安裝教學｜生成式AI應用創新引擎",
-        "u": "https://www.youtube.com/watch?v=kTpC6MtYuKc"
+        "t": "【Dify實戰教學】掌握Context Engineering：打造低成本、高效能AI應用",
+        "u": "https://www.youtube.com/watch?v=Otf4J7o1Sq8"
       }
     ],
     "Coze": [
       {
-        "t": "宏國德霖科大會展系coze操作教學",
-        "u": "https://www.youtube.com/watch?v=ikaOA3BeSCs"
+        "t": "【高階實操教程】Coze工作流的手把手教程，讓你的Bot高品質處理複雜任務",
+        "u": "https://www.youtube.com/watch?v=zNJRa7pFmUM"
       },
       {
-        "t": "Coze收費不用慌！4款免費平替AI工具使用教學",
-        "u": "https://www.youtube.com/watch?v=aPyI87C0hKA"
+        "t": "使用Coze打造全能AI助理，免費使用GPT4、多平台兼容",
+        "u": "https://www.youtube.com/watch?v=V734Ibxgoso"
       }
     ]
   },
@@ -672,6 +663,14 @@ window.DYNAMIC = {
     ],
     "Claude": [
       {
+        "t": "Claude Code 教學 2026：別再找神提示詞，先學會控制AI工作節奏和上下文",
+        "u": "https://www.youtube.com/watch?v=vDQiM0ml4c4"
+      },
+      {
+        "t": "Claude Code保姆級攻略2.0：中文語言設定、第三方模型接入、MCP、Skill、Subagent完整教學",
+        "u": "https://www.youtube.com/watch?v=Czky9q7sOWU"
+      },
+      {
         "t": "【超實用】一次搞懂Claude AI全生態！2026全新初學者完整教程",
         "u": "https://www.youtube.com/watch?v=zm3K831v470"
       },
@@ -745,6 +744,14 @@ window.DYNAMIC = {
       }
     ],
     "Gemini": [
+      {
+        "t": "Google Gemini 3最強教學＋15個超強功能全場景實測",
+        "u": "https://www.youtube.com/watch?v=8o737qKO3IM"
+      },
+      {
+        "t": "強到離譜！谷歌免費Gemini 3的15個神應用",
+        "u": "https://www.youtube.com/watch?v=49HLhRPL5f0"
+      },
       {
         "t": "2026 Google Gemini 10個實用示範｜文字轉錄+即時語音對話+即時翻譯+私隱設定",
         "u": "https://www.youtube.com/watch?v=Je9ssxv4tFQ"
@@ -862,6 +869,10 @@ window.DYNAMIC = {
     ],
     "NotebookLM": [
       {
+        "t": "NotebookLM 2.0徹底變了：2026年最重要更新一次看懂",
+        "u": "https://www.youtube.com/watch?v=mBoxAlg7V3M"
+      },
+      {
         "t": "NotebookLM完整教學！93%的人還不知道的8個隱藏用法",
         "u": "https://www.youtube.com/watch?v=zgWerTIynVA"
       },
@@ -923,6 +934,10 @@ window.DYNAMIC = {
       }
     ],
     "Gamma": [
+      {
+        "t": "Gamma簡報AI生成工具真的強嗎！？解析Gamma三大生成功能",
+        "u": "https://www.youtube.com/watch?v=el7Y1Awb750"
+      },
       {
         "t": "AI自動化簡報Gamma AI presentations【可可研究室】",
         "u": "https://www.youtube.com/watch?v=XkIWOjUO0O4"
@@ -1008,6 +1023,14 @@ window.DYNAMIC = {
     ],
     "Midjourney": [
       {
+        "t": "Midjourney V7網頁版攻略，玩AI影片前必學｜細節大師的提示詞、設定到修圖全流程",
+        "u": "https://www.youtube.com/watch?v=EiUFzuSaL1U"
+      },
+      {
+        "t": "Midjourney 教學｜AI生圖｜新手｜初學｜基本教學",
+        "u": "https://www.youtube.com/watch?v=ScSsmw_oYgQ"
+      },
+      {
         "t": "2026最新Midjourney完整教程｜從註冊訂閱到高級提示詞，零基礎快速上手AI繪畫",
         "u": "https://www.youtube.com/watch?v=U1yxkWu1CQY"
       },
@@ -1021,6 +1044,14 @@ window.DYNAMIC = {
       }
     ],
     "HeyGen": [
+      {
+        "t": "秒變語言天才！HeyGen AI教學＋實戰（三種語言現場實測）",
+        "u": "https://www.youtube.com/watch?v=jGYbWOGX5ZE"
+      },
+      {
+        "t": "用AI就能做出任何一個人講話的影片！HeyGen只要2分鐘製作",
+        "u": "https://www.youtube.com/watch?v=O6VzvCYkOVg"
+      },
       {
         "t": "竟然用AI說流利日文 教你用HeyGen創建虛擬分身，免費",
         "u": "https://www.youtube.com/watch?v=1rW8KfprMtY"
@@ -1043,6 +1074,14 @@ window.DYNAMIC = {
       }
     ],
     "GitHub Copilot": [
+      {
+        "t": "GitHub Copilot Coding Agent超實用教學｜自動修Bug、寫測試、拉PR一次搞懂",
+        "u": "https://www.youtube.com/watch?v=Z9EVVDCgm8M"
+      },
+      {
+        "t": "GitHub Copilot快速入門｜AI程式開發的第一步",
+        "u": "https://www.youtube.com/watch?v=v4J0MVQYfKQ"
+      },
       {
         "t": "GitHub Copilot CLI實戰教學｜從修Bug到自動建立Pull Request",
         "u": "https://www.youtube.com/watch?v=KVht2h5fb9E"
@@ -1082,6 +1121,14 @@ window.DYNAMIC = {
     ],
     "Cursor": [
       {
+        "t": "Cursor AI教學－實戰4個月後的終極使用心得！10x你的Programming效率",
+        "u": "https://www.youtube.com/watch?v=yHiYyiWMhlI"
+      },
+      {
+        "t": "0基礎也能開始！用Cursor打造你的第一個AI專案",
+        "u": "https://www.youtube.com/watch?v=3RAsnOmrW-c"
+      },
+      {
         "t": "Cursor AI教學－2分鐘學會使用寫Code神器Cursor",
         "u": "https://www.youtube.com/shorts/BVtwaUlJSa8"
       },
@@ -1111,6 +1158,14 @@ window.DYNAMIC = {
       }
     ],
     "n8n": [
+      {
+        "t": "學會n8n為你省下80%時間！這個AI助理只認你這個主人",
+        "u": "https://www.youtube.com/watch?v=r9mi3ZJIWbg"
+      },
+      {
+        "t": "超詳細教學：n8n AI實作0基礎入門到進階",
+        "u": "https://www.youtube.com/watch?v=vvqhzbp4J5A"
+      },
       {
         "t": "2026最強N8N教學！從零開始打造你的AI自動化工作流",
         "u": "https://www.youtube.com/watch?v=6s_Z9Tl0sHU"
@@ -1174,6 +1229,14 @@ window.DYNAMIC = {
     ],
     "Dify": [
       {
+        "t": "Dify 1.0基礎教學第二課：開發你第一個Agent",
+        "u": "https://www.youtube.com/watch?v=hDjubHZwilo"
+      },
+      {
+        "t": "01_Dify_完整安裝教學｜生成式AI應用創新引擎",
+        "u": "https://www.youtube.com/watch?v=kTpC6MtYuKc"
+      },
+      {
         "t": "Dify系統化教學｜零代碼革命：RAG知識庫、自動化流程與企業級部署全解析",
         "u": "https://www.youtube.com/watch?v=IX8g7l578oQ"
       },
@@ -1216,6 +1279,14 @@ window.DYNAMIC = {
     ],
     "Coze": [
       {
+        "t": "宏國德霖科大會展系coze操作教學",
+        "u": "https://www.youtube.com/watch?v=ikaOA3BeSCs"
+      },
+      {
+        "t": "Coze收費不用慌！4款免費平替AI工具使用教學",
+        "u": "https://www.youtube.com/watch?v=aPyI87C0hKA"
+      },
+      {
         "t": "無需購買GPT4！Coze使用免費GPT Bot聊天機器人｜Coze AI教學",
         "u": "https://www.youtube.com/watch?v=234OUKQhFyo"
       },
@@ -1233,82 +1304,82 @@ window.DYNAMIC = {
     {
       "id": "lwfZBpOfMnE",
       "t": "【AI 應用交流分享會】AI 分身是什麼？林思翰 Hans：別再只跟 AI 聊天，讓 AI 真正接手你的工作",
-      "m": "觀看 186 · 1 天前"
+      "m": "觀看次數：381次 • 10天前"
     },
     {
       "id": "8oWidT_LEL4",
       "t": "【iPAS REAL TALK】台北場：50 位獲證者齊聚，討論獲證之後，如何讓證照發揮價值？",
-      "m": "觀看 188 · 2 週前"
+      "m": "觀看次數：203次 • 3週前"
     },
     {
       "id": "wuwaZfbk9zM",
       "t": "近 20 位 iPAS AI 應用規劃師面對面交流 💕【iPAS 獲證者交流群】、【媽咪 AI 賦能共學團】社群聚會 💕",
-      "m": "觀看 429 · 1 個月前"
+      "m": "觀看次數：445次 • 1個月前"
     },
     {
       "id": "1zvDOxElnvI",
-      "t": "【端午節 AI 創意素材分享會】6 位 AI 應用規劃師陪你過端午｜用 AI 製作端午節創意圖片、影片、音樂、Vibe Coding 小遊戲",
-      "m": "觀看 222 · 2 個月前"
+      "t": "【端午節 AI 創意素材分享會】6 位 AI 應用規劃師陪你過端午 | 用 AI 製作端午節創意圖片、影片、音樂、Vibe Coding 小遊戲",
+      "m": "觀看次數：231次 • 2個月前"
     },
     {
       "id": "9gdiyY3mwxU",
-      "t": "【端午節 AI 創作分享會】「小小香包」AI 創作影片｜AI 應用規劃師聯合分享會",
-      "m": "觀看 150 · 2 個月前"
+      "t": "【 端午節 AI 創作分享會 】「小小香包」AI 創作影片 | AI 應用規劃師聯合分享會",
+      "m": "觀看次數：156次 • 3個月前"
     },
     {
       "id": "CyrGQ-K8-4Y",
       "t": "iPAS 考前必看｜iPAS 經濟部產業人才能力鑑定【電腦測驗操作說明】：作答畫面、標記題目、試題總覽一次看懂",
-      "m": "觀看 408 · 3 個月前"
+      "m": "觀看次數：427次 • 4個月前"
     },
     {
       "id": "L0BTTmsCr6k",
-      "t": "【AI 應用交流分享會7】iPAS 獲證學長姊的考前陪伴分享會｜AI 應用規劃師 & 淨零碳規劃管理師",
-      "m": "觀看 218 · 3 個月前"
+      "t": "【AI 應用交流分享會7】iPAS 獲證學長姊的考前陪伴分享會 | AI 應用規劃師 & 淨零碳規劃管理師",
+      "m": "觀看次數：223次 • 4個月前"
     },
     {
       "id": "m-y10bR6DZI",
-      "t": "【AI 應用交流分享會6】Sandy x Vicky Mommy 玲玲｜AI 影片、AI 複製人、104 人力銀行 AI 通用素養檢測",
-      "m": "觀看 314 · 4 個月前"
+      "t": "【AI 應用交流分享會6】Sandy x Vicky Mommy 玲玲 | AI 影片、AI 複製人、104 人力銀行 AI 通用素養檢測",
+      "m": "觀看次數：320次 • 5個月前"
     },
     {
       "id": "xNJeNzmxbjc",
-      "t": "【iPAS 實踐小聚】AI 淨零雙軌轉型｜2026智慧城市展暨淨零城市展｜經濟部 iPAS AI 應用規劃師 & 淨零碳規劃管理師",
-      "m": "觀看 218 · 5 個月前"
+      "t": "【iPAS 實踐小聚】AI 淨零雙軌轉型 | 2026智慧城市展暨淨零城市展 | 經濟部 iPAS AI 應用規劃師 & 淨零碳規劃管理師",
+      "m": "觀看次數：221次 • 5個月前"
     },
     {
       "id": "6jjWzIZb20o",
-      "t": "【2025 AI 作品集】AI 應用規劃師媽媽的 52 種 AI 生活應用｜從寫日記、陪孩子創作遊戲網頁，到贏得國家級 AI 競賽，平凡媽媽的成長祕訣 ✨",
-      "m": "觀看 702 · 6 個月前"
+      "t": "【2025 AI 作品集】AI 應用規劃師媽媽的 52 種 AI 生活應用 | 從寫日記、陪孩子創作遊戲網頁，到贏得國家級 AI 競賽，平凡媽媽的成長祕訣 ✨",
+      "m": "觀看次數：738次 • 6個月前"
     },
     {
       "id": "iTOMiP0uxFs",
-      "t": "【AI 應用交流分享會5】AI 新創顧問與資料分析師，帶來企業 AI 導入流程與案例分享｜OpenCloud 龍蝦應用",
-      "m": "觀看 277 · 6 個月前"
+      "t": "【AI 應用交流分享會5】AI 新創顧問與資料分析師，帶來企業 AI 導入流程與案例分享 | OpenCloud 龍蝦應用",
+      "m": "觀看次數：279次 • 7個月前"
     },
     {
       "id": "a8ijPPUpdVc",
-      "t": "【AI 應用交流分享會 4】Jenny x Vicky Mommy 玲玲｜AI 應用規劃師｜資策會「生成式 AI 美術設計能力認證」",
-      "m": "觀看 521 · 8 個月前"
+      "t": "【AI 應用交流分享會 4】Jenny x Vicky Mommy 玲玲 | AI 應用規劃師 | 資策會「生成式 AI 美術設計能力認證」",
+      "m": "觀看次數：531次 • 8個月前"
     },
     {
       "id": "ImcHmd7IqL8",
       "t": "⭐️ AI 應用規劃師小聚 ⭐️ 實戰 x 經驗交流座談會 北部場",
-      "m": "觀看 400 · 8 個月前"
+      "m": "觀看次數：403次 • 8個月前"
     },
     {
       "id": "F-z1GKE-KvA",
-      "t": "【AI 應用交流分享會 3】CCChen x Vicky Mommy 玲玲｜AI 應用規劃師初級證照攻略｜科目重點 + 考試策略",
-      "m": "觀看 1459 · 9 個月前"
+      "t": "【AI 應用交流分享會 3】CCChen x Vicky Mommy 玲玲 | AI 應用規劃師初級證照攻略｜科目重點 + 考試策略",
+      "m": "觀看次數：1489次 • 9個月前"
     },
     {
       "id": "X-cuxs0TBQc",
       "t": "經濟部 iPAS AI 應用規劃師🏅 AI 應用規劃師的價值、四大核心職責、認證路徑一次解析🎯",
-      "m": "觀看 746 · 9 個月前"
+      "m": "觀看次數：755次 • 9個月前"
     },
     {
       "id": "ceAwiCdy2uE",
-      "t": "【AI 應用交流分享會 2】江江教練 x Vicky Mommy 玲玲｜AI 應用規劃師、隱性知識提煉術、三層次會議紀錄法",
-      "m": "觀看 355 · 9 個月前"
+      "t": "【AI 應用交流分享會 2】江江教練 x Vicky Mommy 玲玲 | AI 應用規劃師、隱性知識提煉術、三層次會議紀錄法",
+      "m": "觀看次數：374次 • 9個月前"
     }
   ],
   "ipasVideos": [

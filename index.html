@@ -2,8 +2,14 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v7.0　|　日期 2026-09-16
+     版本 v7.1　|　日期 2026-09-17
      版本紀錄：
+       v7.1 (2026-09-17) 資安健檢與強化（無使用者可見功能變動）：①game.html 載入的 canvas-confetti
+                         第三方套件加上 SRI（Subresource Integrity）完整性雜湊，防止 CDN 遭入侵置換惡意程式碼；
+                         ②index.html／AI應用規劃師_學習網站.html／game.html 三檔皆加上 CSP（Content-Security-Policy）
+                         meta 標籤，限制可載入的外部資源網域（僅允許 GA4、cdn.jsdelivr.net、docs.google.com、
+                         abacus.jasoncameron.dev 等既有使用中的網域），降低 XSS/資料外洩風險；③GitHub 個人存取金鑰
+                         因曾於對話中以明文出現而重新產生（改為 90 天效期，取代原本無到期日設定）
        v7.0 (2026-09-16) 重大擴充：①新增 115年第三次初級考題 100 題（兩科各50題，含官方答案＋AI導師
                          四段解析＋🧒小學生版＋🏢實際案例），題庫總數由630題增至730題（官方700＋自編30），
                          並於 game.html 特訓營地圖新增 Q04 關卡；②全部730題補上官方「評鑑內容範圍參考」
@@ -76,6 +82,7 @@ v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStora
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://firebasestorage.googleapis.com https://img.portaly.cc; connect-src 'self' https://abacus.jasoncameron.dev https://docs.google.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com;">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJ1K6HESBD"></script>
 <script>
@@ -2586,7 +2593,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v7.0（2026-09-16）';
+$('#build-stamp').textContent='　·　版本 v7.1（2026-09-17）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

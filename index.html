@@ -2,8 +2,11 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v7.1　|　日期 2026-09-17
+     版本 v7.2　|　日期 2026-10-07
      版本紀錄：
+       v7.2 (2026-10-07) 修正意見箱「大家的提問與回覆」載不出來：v7.1 加入的 CSP connect-src 只允許 docs.google.com，
+                         但 Google 試算表發布的 CSV 會轉址到 *.googleusercontent.com 而被擋（v7.1～v7.2 之間問答牆皆無法顯示）。
+                         connect-src 加上 https://*.googleusercontent.com（只允許讀取連線，不允許載入程式）。無其他變動。
        v7.1 (2026-09-17) 資安健檢與強化（無使用者可見功能變動）：①game.html 載入的 canvas-confetti
                          第三方套件加上 SRI（Subresource Integrity）完整性雜湊，防止 CDN 遭入侵置換惡意程式碼；
                          ②index.html／AI應用規劃師_學習網站.html／game.html 三檔皆加上 CSP（Content-Security-Policy）
@@ -82,7 +85,7 @@ v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStora
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://firebasestorage.googleapis.com https://img.portaly.cc; connect-src 'self' https://abacus.jasoncameron.dev https://docs.google.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://firebasestorage.googleapis.com https://img.portaly.cc; connect-src 'self' https://abacus.jasoncameron.dev https://docs.google.com https://*.googleusercontent.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com;">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJ1K6HESBD"></script>
 <script>
@@ -2593,7 +2596,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v7.1（2026-09-17）';
+$('#build-stamp').textContent='　·　版本 v7.2（2026-10-07）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');

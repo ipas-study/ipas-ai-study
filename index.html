@@ -2,17 +2,19 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v7.2　|　日期 2026-10-07
+     版本 v8.0　|　日期 2026-10-07
      版本紀錄：
+       v8.0 (2026-10-07) 動態內容改由 Google 試算表 CSV 提供（Gemini 雲端排程產出＋AI 審核），新增 📡 AI 每日情報、
+                         🍳 AI 應用食譜、❓ 每日一題、LINE 分享、GA4 事件、工具卡（可由設定開關）、考試資訊自動更新；
+                         所有外部內容一律跳脫與網址白名單，讀取失敗時退回瀏覽器快取或 update.js。
        v7.2 (2026-10-07) 修正意見箱「大家的提問與回覆」載不出來：v7.1 加入的 CSP connect-src 只允許 docs.google.com，
                          但 Google 試算表發布的 CSV 會轉址到 *.googleusercontent.com 而被擋（v7.1～v7.2 之間問答牆皆無法顯示）。
                          connect-src 加上 https://*.googleusercontent.com（只允許讀取連線，不允許載入程式）。無其他變動。
        v7.1 (2026-09-17) 資安健檢與強化（無使用者可見功能變動）：①game.html 載入的 canvas-confetti
                          第三方套件加上 SRI（Subresource Integrity）完整性雜湊，防止 CDN 遭入侵置換惡意程式碼；
                          ②index.html／AI應用規劃師_學習網站.html／game.html 三檔皆加上 CSP（Content-Security-Policy）
-                         meta 標籤，限制可載入的外部資源網域（僅允許 GA4、cdn.jsdelivr.net、docs.google.com、
-                         abacus.jasoncameron.dev 等既有使用中的網域），降低 XSS/資料外洩風險；③GitHub 個人存取金鑰
-                         因曾於對話中以明文出現而重新產生（改為 90 天效期，取代原本無到期日設定）
+                         meta 標籤，限制可載入的外部資源網域（僅允許 GA4、docs.google.com、
+                         abacus.jasoncameron.dev 等既有使用中的網域），降低 XSS/資料外洩風險
        v7.0 (2026-09-16) 重大擴充：①新增 115年第三次初級考題 100 題（兩科各50題，含官方答案＋AI導師
                          四段解析＋🧒小學生版＋🏢實際案例），題庫總數由630題增至730題（官方700＋自編30），
                          並於 game.html 特訓營地圖新增 Q04 關卡；②全部730題補上官方「評鑑內容範圍參考」
@@ -85,7 +87,7 @@ v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStora
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://firebasestorage.googleapis.com https://img.portaly.cc; connect-src 'self' https://abacus.jasoncameron.dev https://docs.google.com https://*.googleusercontent.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://firebasestorage.googleapis.com https://img.portaly.cc https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://abacus.jasoncameron.dev https://docs.google.com https://*.googleusercontent.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://www.google.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com;">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJ1K6HESBD"></script>
 <script>
@@ -451,6 +453,98 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 .arena-idx-item:hover{border-color:var(--brand);background:var(--chip);text-decoration:none}
 .arena-idx-item .anum{font-weight:700;color:var(--brand);font-size:13px}
 .arena-idx-item .adim{color:var(--muted);font-size:12px}
+
+/* ══ v8.0：AI 每日情報、AI 應用食譜、每日一題（2026-10-07）══ */
+.v8-notice{display:flex;gap:10px;align-items:center;background:#eaf7f6;border:1px solid #bfe6e2;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:14px 0 0}
+.v8-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));margin-top:18px}
+.v8-grid>.card{min-width:0}
+.v8-h{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;margin:0 0 6px}
+.v8-h .bar{width:5px;height:20px;border-radius:3px;background:linear-gradient(var(--brand),var(--brand2))}
+.v8-small{font-size:13px}
+.v8-chip{display:inline-flex;align-items:center;gap:4px;background:var(--chip);color:var(--brand-d);border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:600;border:0;cursor:pointer;text-decoration:none;line-height:1.6}
+.v8-chip:hover{text-decoration:none;filter:brightness(.97)}
+.v8-chip.code{font-family:ui-monospace,Consolas,monospace;font-weight:500}
+.v8-chip.term{background:#eaf7f6;color:var(--brand2)}
+.v8-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.v8-btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:10px;padding:7px 13px;font-weight:700;cursor:pointer;text-decoration:none;font-size:13.5px;line-height:1.4}
+.v8-btn:hover{text-decoration:none;filter:brightness(.96)}
+.v8-btn.pri{background:linear-gradient(135deg,var(--brand),var(--brand-d));color:#fff}
+.v8-btn.ghost{background:var(--surface2);color:var(--txt);border:1px solid var(--line)}
+.v8-btn.line{background:#06c755;color:#fff}
+.v8-disc{font-size:13px;color:#7a4a00;background:#fff4dc;border:1px solid #f5c26b;border-left:5px solid #f59e0b;border-radius:10px;padding:10px 12px;line-height:1.65}
+.v8-disc b{color:#9a5b00}
+.v8-cdisc{color:#b45309;font-weight:600}
+.v8-q{font-weight:600;margin:6px 0 10px}
+.v8-opts{display:grid;gap:8px}
+.v8-opt{text-align:left;border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:10px;padding:9px 12px;cursor:pointer;font-size:14.5px;line-height:1.55}
+.v8-opt:hover:not(:disabled){border-color:var(--brand)}
+.v8-opt:disabled{cursor:default}
+.v8-opt.right{border-color:var(--good);background:#eefaf2}
+.v8-opt.wrong{border-color:var(--bad);background:#fdf0f0}
+.v8-tip{font-size:13.5px;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-top:8px}
+.v8-streak{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.v8-mini{display:grid;gap:8px}
+.v8-mini button{all:unset;cursor:pointer;display:block;border-bottom:1px solid var(--line);padding-bottom:8px}
+.v8-mini button:last-child{border-bottom:0}
+.v8-mini b{display:block;color:var(--txt)}
+.v8-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-end;margin-bottom:12px}
+.v8-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:14px 0}
+.v8-kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.v8-kpi .n{font-size:26px;font-weight:800;color:var(--brand);font-variant-numeric:tabular-nums;line-height:1.2}
+.v8-kpi .l{font-size:12.5px;color:var(--muted)}
+.v8-digest{background:linear-gradient(135deg,#e9effe,#eafaf8);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.v8-digest .eb{font-size:12px;letter-spacing:.12em;color:var(--brand-d);font-weight:700}
+.v8-digest h3{font-size:19px;margin:4px 0 6px}
+.v8-filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.v8-filters button{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:4px 12px;cursor:pointer;font-size:13px;font-weight:600}
+.v8-filters button[aria-pressed="true"]{background:var(--brand-d);border-color:var(--brand-d);color:#fff}
+.v8-list{display:grid;gap:14px}
+.v8-card{display:grid;gap:9px}
+.v8-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.v8-cat{font-weight:700;color:var(--brand-d)}
+.v8-imp{letter-spacing:2px;color:#b45309}
+.v8-card h3{font-size:17px;line-height:1.45;margin:0}
+.v8-rel{background:#f3efff;border:1px solid #d6c8fb;border-left:5px solid #7c3aed;border-radius:10px;padding:8px 12px;font-size:14px}
+.v8-rel b{color:#6d28d9}
+.v8-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.v8-day{margin-top:14px}
+.v8-day>summary{cursor:pointer;font-weight:700;color:var(--muted);padding:6px 0}
+.v8-rgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));margin-bottom:16px}
+.v8-rcard{display:grid;gap:8px;cursor:pointer;text-align:left;font:inherit;color:inherit;min-width:0}
+.v8-rcard:hover,.v8-rcard.sel{border-color:var(--brand)}
+.v8-rcard h3{font-size:16px;margin:0;line-height:1.45}
+.v8-badge{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:1px 8px}
+.v8-free{background:#eefaf2;color:var(--good)}
+.v8-paid{background:#fff4e5;color:#b45309}
+.v8-ver{background:var(--chip);color:var(--brand-d)}
+.v8-detail{display:grid;gap:14px}
+.v8-detail h3{font-size:20px;margin:0}
+.v8-sec h4{font-size:15px;margin:0 0 6px}
+.v8-steps{margin:0;padding-left:22px;display:grid;gap:6px}
+.v8-plain{margin:0;padding-left:20px}
+.v8-prompt{background:#f3f6fc;border:1px solid var(--line);border-radius:12px;padding:14px;font-family:ui-monospace,Consolas,monospace;font-size:13.5px;white-space:pre-wrap;overflow-wrap:anywhere}
+.v8-prompt mark{background:#fff4e5;color:#b45309;border-radius:4px;padding:0 2px}
+.v8-result{background:var(--surface2);border-left:3px solid var(--brand2);padding:10px 14px;border-radius:0 10px 10px 0;white-space:pre-wrap;font-size:14px}
+.v8-fail{display:grid;gap:6px}
+.v8-fail div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px;font-size:14px}
+.v8-fail div:last-child{border-bottom:0}
+.v8-safe{background:#fdecec;border:1px solid #f3b4b4;border-left:5px solid #dc2626;border-radius:10px;padding:10px 12px;font-size:14px;color:#991b1b;font-weight:600}
+.v8-safe b{color:#b91c1c}
+.v8-ok{font-size:12px;color:var(--good)}
+.v8-toolcard{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px;margin-top:8px}
+.v8-toolcard b{color:var(--brand2)}
+.v8-empty{color:var(--muted);padding:12px 0}
+.nav button.v8-new{position:relative}
+.nav button.v8-new::after{content:"新";position:absolute;top:-6px;right:-4px;background:var(--bad);color:#fff;font-size:10px;line-height:1;padding:2px 4px;border-radius:6px}
+@media (max-width:520px){.v8-fail div{grid-template-columns:1fr}}
+.v8-notice[hidden],section.page h2[hidden],.v8-card[hidden],.v8-grid>.card[hidden],.v8-tip[hidden],.v8-ok[hidden],.v8-disc[hidden],.nav button[hidden],section.page [data-tipbox][hidden]{display:none!important}
+.v8-help{background:#eef4ff;border:1px solid #c7d7fb;border-radius:12px;padding:0 14px;margin-bottom:12px;font-size:14px}
+.v8-help>summary{cursor:pointer;font-weight:700;color:var(--brand-d);padding:10px 0}
+.v8-help-body{padding:0 0 12px;line-height:1.7}
+.v8-help-body ol{margin:6px 0 0;padding-left:22px;display:grid;gap:4px}
+#v8-back{position:fixed;left:16px;bottom:20px;z-index:9997;border:0;border-radius:999px;padding:10px 16px;font-weight:700;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-d));box-shadow:0 4px 14px rgba(0,0,0,.22);cursor:pointer}
+#v8-back[hidden]{display:none!important}
+.v8-host{font-weight:500;font-size:11.5px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -458,6 +552,8 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
   <div class="nav">
     <div class="logo"><span class="dot"></span>AI 應用規劃師 · 初級備考站</div>
     <button data-go="home" class="active">首頁</button>
+    <button data-go="intel" class="v8-new">📡 每日情報</button>
+    <button data-go="recipes" class="v8-new">🍳 AI食譜</button>
     <button data-go="vicky" class="vickybtn">💕 Vicky社群</button>
     <button data-go="study">學習重點</button>
     <button data-go="guide">學習指引</button>
@@ -469,7 +565,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <button data-go="res">學習資源</button>
     <button data-go="info">📋 說明</button>
     <button data-go="arena">⚔️ 擂台</button>
-  <a href="game.html" target="_blank" style="background:linear-gradient(135deg,#ff6b6b,#ff4757);color:#fff;border:0;padding:5px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">🗺️ 闖關地圖</a>
+  <a href="game.html" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#ff6b6b,#ff4757);color:#fff;border:0;padding:5px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">🗺️ 闖關地圖</a>
   </div>
 </header>
 
@@ -485,13 +581,20 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
     <button class="mindnote-btn" id="mindnote-launch" onclick="openMindNote()">💌 抽一句備考心靈密語</button>
   </div>
 
+  <div class="v8-notice" id="v8-notice" hidden></div>
+  <div class="v8-grid">
+    <div class="card"><div class="v8-h"><span class="bar"></span>❓ 每日一題</div><div id="v8-dq"></div></div>
+    <div class="card" hidden><div class="v8-h"><span class="bar"></span>🍳 本週 AI 食譜</div><div class="v8-mini" id="v8-recipe-home"></div>
+      <div class="v8-row" style="margin-top:10px"><button class="v8-btn pri" data-goto="recipes">看全部食譜 →</button></div></div>
+  </div>
+
   <div class="card exam-result-card" id="exam-result-card">
     <div class="erc-hd">📮 8/15（第三梯次）考生看這裡</div>
     <div class="erc-row"><span class="erc-ic">📊</span><div><b>9/1（二）起</b>可至 iPAS 官網線上查詢成績</div></div>
     <div class="erc-row"><span class="erc-ic">📜</span><div><b>10/20（二）起</b>陸續寄發合格證書</div></div>
     <div class="erc-row erc-links">
-      <a class="btn" href="https://www.ipas.org.tw/AIAP/" target="_blank">成績查詢／官方專區</a>
-      <a class="btn ghost" href="https://reg.ipas.org.tw/" target="_blank">線上報名系統</a>
+      <a class="btn" href="https://www.ipas.org.tw/AIAP/" target="_blank" rel="noopener">成績查詢／官方專區</a>
+      <a class="btn ghost" href="https://reg.ipas.org.tw/" target="_blank" rel="noopener">線上報名系統</a>
     </div>
     <div class="erc-note">💛 考完了，先讓自己喘口氣。點上方「💌 抽一句備考心靈密語」，這段等待期也有專屬的話想對你說。</div>
   </div>
@@ -506,14 +609,14 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       <div class="kv"><b>報名</b><span id="i-signup"></span></div></div>
   </div>
   <div class="row" style="margin-top:14px">
-    <a class="btn" href="https://www.ipas.org.tw/AIAP/" target="_blank">前往官方專區</a>
-    <a class="btn ghost" href="https://reg.ipas.org.tw/" target="_blank">線上報名系統</a>
+    <a class="btn" href="https://www.ipas.org.tw/AIAP/" target="_blank" rel="noopener">前往官方專區</a>
+    <a class="btn ghost" href="https://reg.ipas.org.tw/" target="_blank" rel="noopener">線上報名系統</a>
   </div>
 
-  <h2><span class="bar"></span>最新消息 / 自動更新資源 <span class="muted" id="home-news-updated" style="font-size:13px;font-weight:400"></span></h2>
+  <h2><span class="bar"></span>📢 考試動態 <span class="muted" id="home-news-updated" style="font-size:13px;font-weight:400"></span></h2>
   <div id="dynamic-home"></div>
 
-  <h2><span class="bar"></span>AI 新知 / 最新動態 <span class="muted" id="home-ai-updated" style="font-size:13px;font-weight:400"></span></h2>
+  <h2><span class="bar"></span>📡 今日 AI 情報 <span class="muted" id="home-ai-updated" style="font-size:13px;font-weight:400"></span></h2>
   <div id="news-home"></div>
 
   <h2><span class="bar"></span>30 天衝刺建議</h2>
@@ -529,6 +632,10 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       <li>反覆檢討錯題類型，補強弱點章節。</li></ul></div>
   </div>
 </section>
+
+<!-- v8.0 INTEL / RECIPES -->
+<section id="intel" class="page"><div id="v8-intel"></div></section>
+<section id="recipes" class="page"><div id="v8-recipes"></div></section>
 
 <!-- STUDY -->
 <section id="study" class="page">
@@ -660,7 +767,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
   <div class="vicky-hero"><img id="vicky-img" alt="Vicky Mommy 玲玲 的 AI 社群"></div>
   <div id="vicky-groups"></div>
   <div class="row" style="margin:6px 0 8px">
-    <a class="btn vbtn-pink" id="vicky-pl" target="_blank">▶ 前往完整播放清單</a>
+    <a class="btn vbtn-pink" id="vicky-pl" target="_blank" rel="noopener">▶ 前往完整播放清單</a>
   </div>
   <h2><span class="bar"></span>iPAS 官方 YouTube 頻道</h2>
   <div id="vicky-ipas"></div>
@@ -673,6 +780,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 <section id="tools" class="page">
   <h1>AI 工具（可實際落地）</h1>
   <p class="sub">考 AI 應用規劃師不只是為了通過考試，更是為了把 AI <b>真的用出來</b>。以下精選 22 個可立即上手的工具（7 大類），每個附「落地情境」與教學影片。課程類學習資源請見「AI資源」分頁。<span class="muted" id="tools-updated"></span></p>
+  <div class="v8-disc v8-disc-slot" hidden></div>
   <div id="tools-dynamic"></div>
   <div id="tools-list"></div>
   <div class="notice" style="margin-top:14px">🔄 此區每週自動更新：最新工具與消息會出現在最上方。建議邊讀學習指引、邊挑 2–3 個工具動手做，學習效果最好。課程與教學影片請見「<a href="javascript:void(0)" onclick="go('res')">AI 資源</a>」分頁。</div>
@@ -685,7 +793,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
   <h2><span class="bar"></span>官方資源</h2><div id="res-official"></div>
   <h2><span class="bar"></span>文章 / 教材</h2><div id="res-articles"></div>
   <h2><span class="bar"></span>YouTube 影片</h2><div id="res-youtube"></div>
-  <h2><span class="bar"></span>每週自動更新</h2><div id="res-dynamic"></div>
+  <h2><span class="bar"></span>每週自動更新</h2><div class="v8-disc v8-disc-slot" hidden></div><div id="res-dynamic"></div>
 </section>
 
 <!-- 模擬考中斷恢復 Modal -->
@@ -2035,9 +2143,9 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 </div>
 
 <div class="footer">
-  本站由「<b>Justin-阿輝</b>」利用 AI 進行製作整理 © 2026<br>
+  本站由「<b>AI應用規劃師 Justin-阿輝</b>」利用 AI 進行製作整理 © 2026<br>
   所有資料來源：題庫及學習指引皆取自 iPAS 官方公告試題及學習指引、考試資訊請以
-  <a href="https://www.ipas.org.tw/AIAP/" target="_blank">官方網站</a> 為準，及 Vicky 提供社群交流圈等資訊<br>
+  <a href="https://www.ipas.org.tw/AIAP/" target="_blank" rel="noopener">官方網站</a> 為準，及 Vicky 提供社群交流圈等資訊<br>
   主要為個人備考整理使用，請勿作為商業用途<span id="build-stamp"></span>
   <div id="visit-counter" style="margin-top:10px;font-size:13px;color:var(--muted)"></div>
 </div>
@@ -2084,6 +2192,7 @@ $$('.nav button').forEach(b=>b.onclick=()=>{
 function countdown(){
   const target=new Date(D.examDate+'T09:00:00+08:00');
   const now=new Date();
+  if(target<now){$('#countdown').innerHTML='<div class="box"><div class="lab" style="letter-spacing:1px">下一梯次考試日期請見 iPAS 官網公告</div></div>';$('#cd-date').textContent='';return;}
   let diff=Math.max(0,target-now);
   const d=Math.floor(diff/864e5);diff-=d*864e5;
   const h=Math.floor(diff/36e5);diff-=h*36e5;
@@ -2091,7 +2200,7 @@ function countdown(){
   const s=Math.floor(diff/1e3);
   const box=(n,l)=>`<div class="box"><div class="num">${n}</div><div class="lab">${l}</div></div>`;
   $('#countdown').innerHTML=box(d,'天')+box(h,'時')+box(m,'分')+box(s,'秒');
-  $('#cd-date').textContent='考試日：'+D.examDate+'（星期六）';
+  $('#cd-date').textContent='考試日：'+D.examDate+'（星期'+'日一二三四五六'[new Date(D.examDate+'T12:00:00Z').getUTCDay()]+'）';
 }
 countdown();setInterval(countdown,1000);
 
@@ -2334,7 +2443,7 @@ $('#t-search').oninput=renderTerms;$('#t-cat').onchange=renderTerms;
 renderTerms();
 
 /* ---- resources ---- */
-function resCard(r,ic){return `<a class="res" href="${r.u}" target="_blank"><div class="ic">${ic}</div>
+function resCard(r,ic){return `<a class="res" href="${r.u}" target="_blank" rel="noopener"><div class="ic">${ic}</div>
   <div><div class="t">${r.t}</div><div class="d">${r.d}</div></div></a>`;}
 $('#res-official').innerHTML=D.resources.official.map(r=>resCard(r,'🏛️')).join('');
 $('#res-articles').innerHTML=D.resources.articles.map(r=>resCard(r,'📄')).join('');
@@ -2350,7 +2459,7 @@ function renderDynamic(){
   }
   if(dyn.lastUpdated){const _d='更新於 '+dyn.lastUpdated;const _e1=$('#home-news-updated');if(_e1)_e1.textContent=_d;const _e2=$('#home-ai-updated');if(_e2)_e2.textContent=_d;}
   $('#res-updated').textContent=dyn.lastUpdated?('最後更新：'+dyn.lastUpdated):'';
-  const news=(dyn.news||[]).map(n=>`<a class="res" href="${n.u||'#'}" target="_blank"><div class="ic">📰</div>
+  const news=(dyn.news||[]).map(n=>`<a class="res" href="${n.u||'#'}" target="_blank" rel="noopener"><div class="ic">📰</div>
     <div><div class="t">${n.t}</div><div class="d">${n.d||''}</div></div></a>`).join('');
   $('#dynamic-home').innerHTML=news||'<div class="notice">本週暫無新公告。</div>';
   const dres=(dyn.resources||[]).map(r=>resCard(r,'✨')).join('');
@@ -2460,7 +2569,7 @@ $('#r-review').onclick=()=>{
 /* ---- vicky ---- */
 function vcard(v){
   const meta=v.m?`<div class="vm">${v.m}</div>`:'';
-  return `<a class="vcard" href="https://www.youtube.com/watch?v=${v.id}" target="_blank">`+
+  return `<a class="vcard" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">`+
     `<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="">`+
     `<div class="vt">${v.t}</div>${meta}</a>`;
 }
@@ -2483,7 +2592,7 @@ function renderVicky(){
     sec('📌 更多精選',gOther);
   const ivids=(window.DYNAMIC&&window.DYNAMIC.ipasVideos&&window.DYNAMIC.ipasVideos.length)?window.DYNAMIC.ipasVideos:V.ipas.videos;
   $('#vicky-ipas').innerHTML=
-    `<div class="row" style="margin-bottom:12px"><a class="btn ghost" href="${V.ipas.url}" target="_blank">📺 ${V.ipas.name}</a></div>`+
+    `<div class="row" style="margin-bottom:12px"><a class="btn ghost" href="${V.ipas.url}" target="_blank" rel="noopener">📺 ${V.ipas.name}</a></div>`+
     `<div class="vgrid">${ivids.map(vcard).join('')}</div>`;
   const C=V.course;
   if(C){$('#vicky-course').innerHTML=`<div class="course-card">
@@ -2493,7 +2602,7 @@ function renderVicky(){
       <ul>${C.topics.map(x=>`<li>${x}</li>`).join('')}</ul>
       <div class="cc-spec">📦 ${C.spec}　｜　${C.fit}</div>
       <div class="cc-price">💕 ${C.price}</div>
-      <a class="btn vbtn-pink" href="${C.url}" target="_blank">前往課程頁面</a>
+      <a class="btn vbtn-pink" href="${C.url}" target="_blank" rel="noopener">前往課程頁面</a>
     </div></div>`;}
 }
 renderVicky();
@@ -2542,7 +2651,7 @@ function renderGuide(){
 renderGuide();
 
 /* ---- news ---- */
-function newsCard(n){return `<a class="newscard" href="${n.u||'#'}" target="_blank"><div class="ic">📰</div><div><div class="t" style="font-weight:700">${n.t}</div><div class="d muted" style="font-size:13px">${n.d||''}</div></div></a>`;}
+function newsCard(n){return `<a class="newscard" href="${n.u||'#'}" target="_blank" rel="noopener"><div class="ic">📰</div><div><div class="t" style="font-weight:700">${n.t}</div><div class="d muted" style="font-size:13px">${n.d||''}</div></div></a>`;}
 function renderNews(){
   const dyn=(window.DYNAMIC&&window.DYNAMIC.news)?window.DYNAMIC.news:[];
   const items=dyn.concat(D.news||[]);
@@ -2560,7 +2669,7 @@ function renderTalent(){
   $('#talent-types').innerHTML=T.types.map(x=>`<div class="tcard"><h4>${x.name}</h4><div>${x.desc}</div></div>`).join('');
   $('#talent-roles').innerHTML=T.roles.map(x=>`<div class="tcard"><h4>${x.name}</h4><div>${x.desc}</div></div>`).join('');
   $('#talent-certs').innerHTML=T.certs.map(x=>`<div class="tcard"><span class="badge">${x.cat}</span><div style="margin-top:4px">${x.items}</div></div>`).join('');
-  $('#talent-res').innerHTML=D.talentRes.map(r=>`<a class="res" href="${r.u}" target="_blank"><div class="ic">🎓</div><div><div class="t">${r.t}</div><div class="d">${r.d}</div></div></a>`).join('');
+  $('#talent-res').innerHTML=D.talentRes.map(r=>`<a class="res" href="${r.u}" target="_blank" rel="noopener"><div class="ic">🎓</div><div><div class="t">${r.t}</div><div class="d">${r.d}</div></div></a>`).join('');
   $('#talent-note').textContent='💡 '+T.note;
 }
 renderTalent();
@@ -2575,12 +2684,12 @@ function toolCard(x){
   dyn.concat(x.vids||[]).forEach(v=>{if(v&&v.u&&!seen[v.u]){seen[v.u]=1;vids.push(v);}});
   dynHist.forEach(v=>{if(v&&v.u&&!seen[v.u]){seen[v.u]=1;histVids.push(v);}});
   const vlist=vids.length?`<details class="vids"><summary>\uD83C\uDFAC 最新教學影片 (${vids.length})</summary><ul>`+
-    vids.map(v=>`<li><a href="${v.u}" target="_blank"><span class="pl">\u25B6</span><span>${v.t}</span></a></li>`).join('')+`</ul></details>`:'';
+    vids.map(v=>`<li><a href="${v.u}" target="_blank" rel="noopener"><span class="pl">\u25B6</span><span>${v.t}</span></a></li>`).join('')+`</ul></details>`:'';
   const hlist=histVids.length?`<details class="vids"><summary>\uD83D\uDCFC 過往教學影片 (${histVids.length})</summary><ul>`+
-    histVids.map(v=>`<li><a href="${v.u}" target="_blank"><span class="pl">\u25B6</span><span>${v.t}</span></a></li>`).join('')+`</ul></details>`:'';
+    histVids.map(v=>`<li><a href="${v.u}" target="_blank" rel="noopener"><span class="pl">\u25B6</span><span>${v.t}</span></a></li>`).join('')+`</ul></details>`:'';
   return `<div class="toolcard"><h4>${nm}</h4><div class="td">${x.d}</div>`+
-    (x.use?`<div class="tool-use">${x.use}</div>`:'')+vlist+hlist+
-    `<div class="row"><a class="btn sm" href="${x.url}" target="_blank">前往工具</a></div></div>`;
+    (x.use?`<div class="tool-use">${x.use}</div>`:'')+((window.V8&&V8.cardHtml)?V8.cardHtml(x.n):'')+vlist+hlist+
+    `<div class="row"><a class="btn sm" href="${x.url}" target="_blank" rel="noopener">前往工具</a></div></div>`;
 }
 function renderTools(){
   const dyn=(window.DYNAMIC&&window.DYNAMIC.tools)?window.DYNAMIC.tools:[];
@@ -2596,7 +2705,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v7.2（2026-10-07）';
+$('#build-stamp').textContent='　·　版本 v8.0（2026-10-07）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
@@ -3026,6 +3135,382 @@ function loadFeedbackWall(){
       box.innerHTML='<div class="fb-empty">問答內容暫時載入不了，請稍後再試。<br>留言功能不受影響，可以正常送出。</div>';
     });
 }
+</script>
+<script>
+/* ══ v8.0 動態內容（2026-10-07）══════════════════════════════════════
+   資料來源：Google 試算表「iPAS網站動態內容總表」發布的 3 個 CSV
+     公開版（內容）、公開版_食譜、設定；只有審核通過的列會出現在 CSV。
+   安全：所有來自 CSV 的文字在進入任何畫面前一律跳脫；連結只接受 https；
+         ID、考點代碼、影片 ID 都以白名單格式檢查；設定值只接受「是／否」。
+   失敗時：先用瀏覽器內上次成功的資料（7 天內），再不行就維持 update.js 舊資料。
+   ════════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+var CSV_BASE='https://docs.google.com/spreadsheets/d/e/2PACX-1vQjSGE13aueE6ad4sqY7Vnl_1MJUIFw6hIkvI98r0QjNrZT_98nEAJDK7BH7NHcIEqzms__PuVrNh3f/pub?single=true&output=csv&gid=';
+var GID={pub:'1483752671',rec:'314074620',set:'193310455'};
+var SITE='https://ipas-study.github.io/ipas-ai-study/';
+var CACHE_KEY='v8cache_v1', CACHE_DAYS=7;
+var ID_RE=/^([IDEXTCVSK]\d{8}-\d{2}|OLD-[NRTVK]-\d{3})$/, RID_RE=/^R\d{8}-\d{2}$/;
+var TYPES=['情報','導讀','考試動態','考試資訊','工具','工具卡','影片','資源','Vicky','舊消息'];
+var NEED_LINK=['情報','考試動態','工具','工具卡','影片','資源','Vicky','舊消息','考試資訊'];
+var VIDEO_TOOLS=['ChatGPT','Claude','Gemini','Perplexity','NotebookLM','Gamma','Canva','Midjourney','HeyGen','GitHub Copilot','Cursor','n8n','Dify','Coze'];
+var DISC='🤖 <b>關於本區內容</b>：本區資訊由 AI 每日自動搜尋、整理，並經另一道 AI 審核程序交叉檢查後發布，<b>未經人工逐則審核</b>。內容可能有錯誤、遺漏或已經過時，僅供學習參考，不構成任何專業、投資或法律建議。考試資訊請以 iPAS 官方網站公告為準；工具的功能與價格請以各工具官網為準。發現錯誤歡迎透過右下角「💬 意見箱」告訴我們。';
+var CARD_DISC='🤖 AI 自動整理，未經人工審核，僅供參考，請以原始來源為準。';
+var SAFE='🔒 <b>安全提醒</b>：請勿把身分證字號、密碼、信用卡號、客戶個資或公司機密貼進任何 AI 工具。';
+var HELP={intel:'<b>這一頁是什麼？</b>每天早上由 AI 搜尋 48 小時內的 AI 新消息，經另一道 AI 審核後才會出現（上午陸續更新），每天 5～8 則。'+
+ '<ol><li><b>先看「今日導讀」</b>：一段話掌握今天重點。</li>'+
+ '<li><b>點上方類別按鈕</b>：只看你有興趣的類別；「●●●」越多代表越重要。</li>'+
+ '<li><b>看紫色「這跟你有什麼關係？」</b>：這則消息對你的工作或生活有什麼用。</li>'+
+ '<li><b>藍色 L 開頭按鈕＝iPAS 考點</b>：點了會跳到相關考古題；練完按畫面左下角「← 回到每日情報」就能回來。</li>'+
+ '<li><b>綠色名詞按鈕</b>：點一下看白話解釋（可聽英文發音）。</li>'+
+ '<li><b>讀原文</b>看完整報導；<b>LINE 分享</b>傳給朋友。往下還能看最近 30 天的過往情報。</li></ol>',
+recipes:'<b>這一頁是什麼？</b>「食譜」是一件可以交給 AI 做的實際任務（例如整理會議紀錄、做簡報），像做菜一樣照著步驟做就能完成。每週一新增 2～3 道。'+
+ '<ol><li><b>用上方按鈕篩選</b>：依身分（上班族／家庭主婦／考生）、情境，或「只看免費」。</li>'+
+ '<li><b>點一張食譜卡</b>：完整作法會在卡片下方展開。</li>'+
+ '<li><b>照「跟著做」一步一步操作</b>。</li>'+
+ '<li><b>按「複製提示詞」</b>，貼到 AI 工具裡，把黃色【】的地方換成你自己的內容再送出。</li>'+
+ '<li><b>看標籤</b>：免費／付費；✅ AI 代測＝AI 實際跑過、📘 依官方文件＝照官方說明整理、💳 付費未實測＝需付費功能。</li>'+
+ '<li><b>卡住了</b>：看「常見卡關與解法」。</li></ol>'+
+ '<div class="v8-safe" style="margin-top:6px">'+SAFE+'</div>'};
+function helpBox(k){var open=true;try{open=localStorage.getItem('v8help_'+k)!=='0';}catch(e){}
+  return '<details class="v8-help" data-help="'+k+'"'+(open?' open':'')+'><summary>📖 第一次來？看這一頁怎麼用</summary><div class="v8-help-body">'+HELP[k]+'</div></details>';}
+document.addEventListener('toggle',function(ev){var d=ev.target;if(!d.dataset||!d.dataset.help)return;try{localStorage.setItem('v8help_'+d.dataset.help,d.open?'1':'0');}catch(e){}},true);
+var LEGACY=window.DYNAMIC||null;
+var V8={ready:false,set:{show_intel:true,show_recipes:true,show_daily_question:true,show_tool_cards:false,show_line_share:true,notice:''},intel:[],digest:[],examNews:[],recipes:[],cards:{}};
+window.V8=V8;
+
+/* ---------- 小工具 ---------- */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function url(s){s=String(s||'').trim();return (/^https:\/\/[^\s"'<>\\]+$/.test(s)&&s.length<=600)?s:'';}
+function cap(s,n){s=String(s==null?'':s).replace(/[\u202A-\u202E\u2066-\u2069\u200E\u200F]/g,'').trim();return s.length>n?s.slice(0,n)+'…':s;}
+function lines(s){return String(s||'').split(/⏎|\n/).map(function(x){return x.trim();}).filter(Boolean);}
+function ga(ev,p){try{if(typeof window.gtag==='function')window.gtag('event',ev,p||{});}catch(e){}}
+function $id(i){return document.getElementById(i);}
+function tpeNow(){return new Date(Date.now()+8*3600e3);}
+function tpeDate(d){return (d||tpeNow()).toISOString().slice(0,10);}
+function parseT(s){var m=/^(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2}))?/.exec(String(s||''));return m?Date.UTC(+m[1],m[2]-1,+m[3],(+m[4]||0)-8,+m[5]||0):0;}
+function daysAgo(t){return (Date.now()-t)/864e5;}
+function validDate(ed){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ed||''));if(!m)return false;
+  var d=new Date(Date.UTC(+m[1],m[2]-1,+m[3]));return d.getUTCFullYear()===+m[1]&&d.getUTCMonth()===m[2]-1&&d.getUTCDate()===+m[3];}
+var EXAM_KEYS=['examDate','signup','rounds','fee','pass'];
+function examValid(k,v){if(EXAM_KEYS.indexOf(k)<0)return false;v=String(v||'');if(k==='examDate')return validDate(v)&&parseT(v)>Date.now()-864e5&&parseT(v)<Date.now()+548*864e5;return !!v.trim()&&v.length<=100&&!/[\r\n]/.test(v);}
+function lineShare(text,u){return 'https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(u||SITE)+'&text='+encodeURIComponent(text||'');}
+function lineBtn(text,u,ev){return V8.set.show_line_share?'<a class="v8-btn line" href="'+esc(lineShare(text,u))+'" target="_blank" rel="noopener" data-ga="'+esc(ev)+'">分享到 LINE</a>':'';}
+function host(u){try{return new URL(u).hostname.replace(/^www\./,'');}catch(e){return '';}}
+function indName(c){try{return (typeof INDICATOR_NAMES!=='undefined'&&INDICATOR_NAMES[c])||'';}catch(e){return '';}}
+function glossary(zh){try{for(var i=0;i<D.glossary.length;i++){if(D.glossary[i].zh===zh)return D.glossary[i];}}catch(e){}return null;}
+function codeChips(s){return String(s||'').split(',').map(function(x){return x.trim();}).filter(function(c){return /^L\d{5}$/.test(c)&&indName(c);}).slice(0,3)
+  .map(function(c){return '<button class="v8-chip code" data-code="'+c+'" title="看這個能力指標的考古題">'+c+' '+esc(indName(c))+'</button>';}).join('');}
+function termChips(s){return String(s||'').split(',').map(function(x){return x.trim();}).filter(Boolean).slice(0,3)
+  .map(function(t){return glossary(t)?'<button class="v8-chip term" data-term="'+esc(t)+'">'+esc(t)+' ▸</button>':'<span class="v8-chip term">'+esc(t)+'</span>';}).join('');}
+
+/* ---------- CSV → 物件（已驗證） ---------- */
+function toObjs(text){
+  var rows=fbParseCsv(text);if(!rows.length)return [];
+  var h=rows[0].map(function(x){return String(x).trim();});
+  return rows.slice(1).map(function(r){var o={};h.forEach(function(k,i){o[k]=r[i]==null?'':String(r[i]);});return o;});
+}
+function cleanContent(list){
+  var seen=Object.create(null),out=[];
+  list.forEach(function(o){
+    var id=String(o['ID']||'').trim(), ty=String(o['類型']||'').trim();
+    if(!ID_RE.test(id)||seen[id]||TYPES.indexOf(ty)<0)return;
+    var tt=parseT(o['寫入時間']);if(!tt||tt>Date.now()+864e5)return;
+    var link=url(o['連結']);
+    if(NEED_LINK.indexOf(ty)>=0&&!link)return;
+    if(ty==='考試資訊'&&!/^https:\/\/([a-z0-9-]+\.)*(ipas\.org\.tw|ipd\.nat\.gov\.tw)\//i.test(link))return;
+    seen[id]=1;
+    out.push({id:id,type:ty,t:parseT(o['寫入時間']),wday:String(o['寫入時間']||'').slice(0,10),pub:cap(o['發布日期'],10),
+      title:cap(o['標題'],120),sum:cap(o['摘要'],400),rel:cap(o['與你的關係'],200),link:link,src:cap(o['來源'],40),
+      cat:cap(o['分類'],12),codes:cap(o['考點代碼'],40),terms:cap(o['相關名詞'],60),imp:Math.min(3,Math.max(1,parseInt(o['重要度'],10)||1)),
+      tool:cap(o['工具名'],40),k:cap(o['鍵'],80),v:cap(o['值'],600)});
+  });
+  return out;
+}
+function cleanRecipes(list){
+  var seen=Object.create(null),out=[];
+  list.forEach(function(o){
+    var id=String(o['ID']||'').trim();
+    if(!RID_RE.test(id)||seen[id])return;var rt=parseT(o['寫入時間']);if(!rt||rt>Date.now()+864e5)return;seen[id]=1;
+    var r={id:id,t:parseT(o['寫入時間']),title:cap(o['標題'],80),scene:cap(o['情境分類'],10),who:cap(o['適合誰'],60),prob:cap(o['解決什麼問題'],200),
+      tool:cap(o['工具'],40),site:url(o['工具官網']),fee:cap(o['費用'],8),lv:cap(o['難度'],6),time:cap(o['所需時間'],10),prep:cap(o['準備'],600),
+      steps:cap(o['步驟'],3000),prompt:cap(o['提示詞'],4000),result:cap(o['預期成果範例'],1500),fail:cap(o['常見失敗與解法'],1500),adv:cap(o['進階變化'],800),
+      ver:cap(o['驗證等級'],10),vdate:cap(o['驗證日期'],10),doc:url(o['官方說明連結']),codes:cap(o['考點代碼'],40)};
+    if(!r.title||!r.steps||!r.prompt)return;
+    out.push(r);
+  });
+  return out.sort(function(a,b){return b.t-a.t||(a.id<b.id?-1:1);});
+}
+function cleanSettings(list){
+  var s={show_intel:true,show_recipes:true,show_daily_question:true,show_tool_cards:false,show_line_share:true,notice:''};
+  list.forEach(function(o){var k=String(o['鍵']||'').trim(),v=String(o['值']||'').trim();
+    if(k==='notice'){s.notice=cap(v,120);return;}
+    if(Object.prototype.hasOwnProperty.call(s,k)&&(v==='是'||v==='否'))s[k]=(v==='是');});
+  return s;
+}
+
+/* ---------- 建立舊版相容的 DYNAMIC（讓既有畫面繼續運作） ---------- */
+function build(content,recipes,settings){
+  V8.set=settings;
+  var byType=Object.create(null);content.forEach(function(x){(byType[x.type]=byType[x.type]||[]).push(x);});
+  function sorted(t){return (byType[t]||[]).slice().sort(function(a,b){return b.t-a.t||(a.id<b.id?-1:1);});}
+  V8.intel=sorted('情報');V8.digest=sorted('導讀');V8.examNews=sorted('考試動態');V8.recipes=recipes;
+  V8.oldNews=sorted('舊消息');
+  /* 工具卡：每個工具取最新一張 */
+  V8.cards=Object.create(null);sorted('工具卡').forEach(function(x){if(x.tool&&!V8.cards[x.tool])V8.cards[x.tool]=x;});
+  /* 考試資訊：每個鍵取最新一筆 */
+  V8.exam=Object.create(null);sorted('考試資訊').forEach(function(x){if(x.k&&!V8.exam[x.k]&&examValid(x.k,x.v))V8.exam[x.k]=x;});
+  var isNew=function(x){return x.id.indexOf('OLD-')!==0&&daysAgo(x.t)<=7;};
+  function nr(x){return {t:esc(x.title),d:esc(x.sum),u:esc(x.link)};}
+  function tl(x){return {n:esc(x.title||x.tool),d:esc(x.sum),use:esc(x.rel),url:esc(x.link),yt:(x.k==='教學影片'&&url(x.v))?esc(x.v):''};}
+  var res=sorted('資源'),tools=sorted('工具'),vids=sorted('影片');
+  var tv=Object.create(null),tvh=Object.create(null);VIDEO_TOOLS.forEach(function(n){tv[n]=[];tvh[n]=[];});
+  vids.forEach(function(x){if(VIDEO_TOOLS.indexOf(x.tool)<0)return;(isNew(x)?tv:tvh)[x.tool].push({t:esc(x.title),u:esc(x.link)});});
+  VIDEO_TOOLS.forEach(function(n){tv[n]=tv[n].slice(0,5);tvh[n]=tvh[n].slice(0,30);});
+  var vk=sorted('Vicky').filter(function(x){return /^[\w-]{11}$/.test(x.v);}).map(function(x){return {id:x.v,t:esc(x.title),m:''};});
+  var last=content.reduce(function(m,x){return x.t>m?x.t:m;},0);
+  window.DYNAMIC={
+    lastUpdated:last?tpeDate(new Date(last+8*3600e3)):'',
+    news:[],newsHistory:[],
+    resources:res.filter(isNew).map(nr),resourcesHistory:res.filter(function(x){return !isNew(x);}).slice(0,40).map(nr),
+    tools:tools.filter(isNew).map(tl),toolsHistory:tools.filter(function(x){return !isNew(x);}).slice(0,24).map(tl),
+    toolVideos:tv,toolVideosHistory:tvh,
+    vickyVideos:vk.length?vk:((LEGACY&&LEGACY.vickyVideos)||[]),
+    ipasVideos:(LEGACY&&LEGACY.ipasVideos)||[]
+  };
+}
+
+/* ---------- 首頁 ---------- */
+function dayIndex(){var d=tpeNow();return Math.floor(d.getTime()/864e5);}
+function dqStore(v){try{if(v===undefined)return JSON.parse(localStorage.getItem('v8dq')||'{}');localStorage.setItem('v8dq',JSON.stringify(v));}catch(e){return {};}}
+function pickQuestion(){
+  var pool=(D.questions||[]).filter(function(q){return q.level==='初級';});
+  if(!pool.length)return null;
+  return pool[(dayIndex()*7919)%pool.length];
+}
+function renderDailyQ(){
+  var box=$id('v8-dq');if(!box)return;
+  box.closest('.card').hidden=!V8.set.show_daily_question;
+  if(!V8.set.show_daily_question)return;
+  var q=pickQuestion();if(!q){box.innerHTML='';return;}
+  var today=tpeDate(),st=dqStore(),done=st.date===today?st.choice:null;
+  var opts=Object.keys(q.options).map(function(k){return '<button class="v8-opt" data-k="'+k+'">'+k+'. '+esc(q.options[k])+'</button>';}).join('');
+  box.innerHTML='<div class="v8-small muted">'+esc(q.level)+'・'+esc(q.exam)+'・'+esc(q.subjectName)+'</div>'+
+    '<div class="v8-q">'+esc(q.q)+'</div><div class="v8-opts">'+opts+'</div><div id="v8-dq-res"></div>'+
+    '<div class="v8-row" style="justify-content:space-between;margin-top:10px"><span class="v8-streak" id="v8-dq-streak"></span>'+lineBtn('今天的 iPAS 每日一題，你會嗎？',SITE,'dq_line_share')+'</div>';
+  function show(choice,first){
+    box.querySelectorAll('.v8-opt').forEach(function(o){o.disabled=true;if(o.dataset.k===q.answer)o.classList.add('right');if(o.dataset.k===choice&&choice!==q.answer)o.classList.add('wrong');});
+    var r=$id('v8-dq-res');
+    r.innerHTML='<div style="margin-top:10px;font-weight:700">'+(choice===q.answer?'✅ 答對了！':'❌ 正確答案是 '+esc(q.answer)+'。')+'</div><div class="v8-tip" id="v8-dq-kid">🧒 解說載入中…</div>'+
+      '<button class="v8-btn ghost" id="v8-dq-tutor" style="margin-top:8px">開啟 AI 導師完整解析</button>';
+    $id('v8-dq-tutor').onclick=function(){ga('dq_open_tutor');openTutorModal(q);};
+    ensureAiTutorData(function(){var en=window.AI_TUTOR_DATA&&window.AI_TUTOR_DATA[q.id];var t=en&&(en.kid||'');
+      $id('v8-dq-kid').textContent=t?('🧒 '+String(t).replace(/[*#>`|]/g,'').slice(0,260)):'🧒 點下方按鈕看完整解析。';});
+    if(first){var s=dqStore(),y=tpeDate(new Date(tpeNow().getTime()-864e5));
+      s.streak=(s.date===y)?(s.streak||0)+1:(s.date===today?(s.streak||1):1);s.date=today;s.choice=choice;dqStore(s);
+      ga('dq_answer',{correct:choice===q.answer,qid:q.id});}
+    var s2=dqStore();$id('v8-dq-streak').textContent=s2.streak?('連續作答 '+s2.streak+' 天（記錄在你的瀏覽器）'):'';
+  }
+  box.querySelectorAll('.v8-opt').forEach(function(b){b.onclick=function(){show(b.dataset.k,true);};});
+  if(done)show(done,false);
+}
+function renderHome(){
+  var n=$id('v8-notice');
+  if(n){n.hidden=!V8.set.notice;n.innerHTML=V8.set.notice?'📢 <span>'+esc(V8.set.notice)+'</span>':'';}
+  renderDailyQ();
+  var rb=$id('v8-recipe-home');
+  if(rb){rb.closest('.card').hidden=!V8.set.show_recipes||!V8.recipes.length;
+    rb.innerHTML=V8.recipes.slice(0,4).map(function(r){return '<button data-recipe="'+esc(r.id)+'"><b>'+esc(r.title)+'</b><span class="v8-small muted">'+esc(r.fee)+'・'+esc(r.time)+'・'+esc(r.prob)+'</span></button>';}).join('');}
+  /* 考試動態 */
+  var dh=$id('dynamic-home');
+  if(dh&&V8.ready){var ex=V8.examNews.filter(function(x){return daysAgo(x.t)<=45;}).slice(0,5);
+    dh.innerHTML=ex.length?ex.map(function(x){return '<a class="res" href="'+esc(x.link)+'" target="_blank" rel="noopener"><div class="ic">📢</div><div><div class="t">'+esc(x.title)+'</div><div class="d">'+esc(x.rel||x.sum)+'</div></div></a>';}).join('')
+      :'<div class="notice">近期沒有新的 iPAS 考試公告；報名與考試日期請以 <a href="https://www.ipas.org.tw/AIAP/" target="_blank" rel="noopener">iPAS 官網</a>為準。</div>';}
+  /* 今日 AI 情報（首頁預覽） */
+  var nh=$id('news-home');
+  if(nh&&V8.ready){
+    var it=latestDayIntel();
+    if(!V8.set.show_intel){nh.innerHTML='';}
+    else nh.innerHTML=(it.length?'<div class="v8-mini">'+it.slice(0,5).map(function(x){return '<button data-goto="intel"><b>'+esc(x.title)+'</b><span class="v8-small muted">'+esc(x.rel)+'</span></button>';}).join('')+'</div>':'<p class="muted">今天的情報整理中。</p>')+
+      '<div class="v8-row" style="margin-top:12px"><button class="v8-btn pri" data-goto="intel">看完整 AI 每日情報 →</button></div>'+
+      (V8.oldNews.length?'<details class="hist" style="margin-top:12px"><summary>📜 過往消息（'+V8.oldNews.length+' 則，2026-09-16 前）</summary>'+V8.oldNews.map(function(x){return '<a class="res" href="'+esc(x.link)+'" target="_blank" rel="noopener"><div class="ic">📰</div><div><div class="t">'+esc(x.title)+'</div><div class="d">'+esc(x.sum)+'</div></div></a>';}).join('')+'</details>':'');
+  }
+  var hn=$id('home-news-updated');if(hn&&V8.ready)hn.textContent=window.DYNAMIC&&window.DYNAMIC.lastUpdated?'更新於 '+window.DYNAMIC.lastUpdated:'';
+  var ha=$id('home-ai-updated');if(ha&&V8.ready)ha.textContent=(V8.intel[0]?'更新於 '+V8.intel[0].wday:'');
+}
+function latestDayIntel(){var d=V8.intel[0]&&V8.intel[0].wday;return V8.intel.filter(function(x){return x.wday===d;});}
+
+/* ---------- 📡 AI 每日情報 ---------- */
+function intelCard(x){
+  return '<article class="card v8-card" data-cat="'+esc(x.cat)+'">'+
+    '<div class="v8-top"><span><span class="v8-cat">'+esc(x.cat||'情報')+'</span>　<span class="v8-imp" title="重要度">'+'●'.repeat(x.imp)+'○'.repeat(3-x.imp)+'</span></span><span>'+esc(x.src)+(x.pub?'・'+esc(x.pub):'')+'</span></div>'+
+    '<h3>'+esc(x.title)+'</h3><div>'+esc(x.sum)+'</div>'+
+    (x.rel?'<div class="v8-rel"><b>這跟你有什麼關係？</b> '+esc(x.rel)+'</div>':'')+
+    '<div class="v8-row">'+codeChips(x.codes)+termChips(x.terms)+'</div><div class="v8-tip" hidden data-tipbox></div>'+
+    '<div class="v8-foot"><span class="v8-cdisc">⚠️ '+CARD_DISC+'</span><span class="v8-row"><a class="v8-btn ghost" href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer" data-ga="intel_open_source" title="'+esc(host(x.link))+'">讀原文 ↗ <span class="v8-host">'+esc(host(x.link))+'</span></a>'+lineBtn(x.title,SITE+'#intel','intel_line_share')+'</span></div></article>';
+}
+function renderIntel(){
+  var box=$id('v8-intel');if(!box)return;
+  if(V8.ready&&!V8.set.show_intel){box.innerHTML='';return;}
+  if(!V8.ready||!V8.intel.length){box.innerHTML='<div class="v8-disc">'+DISC+'</div><p class="v8-empty">AI 每日情報整理中，請稍後再來看看。</p>';return;}
+  var today=latestDayIntel(),day=today[0].wday;
+  var dg=V8.digest.filter(function(x){return x.wday===day;})[0];
+  var cats=[];today.forEach(function(x){if(cats.indexOf(x.cat)<0)cats.push(x.cat);});
+  var codes={};today.forEach(function(x){String(x.codes).split(',').forEach(function(c){c=c.trim();if(/^L\d{5}$/.test(c))codes[c]=1;});});
+  var groups=Object.create(null);V8.intel.forEach(function(x){if(x.wday!==day)(groups[x.wday]=groups[x.wday]||[]).push(x);});
+  var hist=Object.keys(groups).sort().reverse().slice(0,30).map(function(d){var dd=V8.digest.filter(function(x){return x.wday===d;})[0];
+    return '<details class="v8-day"><summary>'+esc(d)+'　'+(dd?esc(dd.title):groups[d].length+' 則')+'</summary><div class="v8-list">'+groups[d].map(intelCard).join('')+'</div></details>';}).join('');
+  box.innerHTML='<div class="v8-head"><div><h1>📡 AI 每日情報</h1><div class="sub">給對 AI 陌生的上班族、家庭主婦與考生：每天 5～8 則，只收 48 小時內的新聞</div></div><div class="muted v8-small">'+esc(day)+' 更新</div></div>'+
+    helpBox('intel')+'<div class="v8-disc">'+DISC+'</div>'+
+    '<div class="v8-kpis"><div class="v8-kpi"><div class="n">'+today.length+'</div><div class="l">今日情報</div></div><div class="v8-kpi"><div class="n">'+Object.keys(codes).length+'</div><div class="l">涵蓋考點</div></div><div class="v8-kpi"><div class="n">'+cats.length+'</div><div class="l">情報類別</div></div><div class="v8-kpi"><div class="n">48h</div><div class="l">只收最新</div></div></div>'+
+    (dg?'<div class="v8-digest"><div class="eb">今日導讀</div><h3>'+esc(dg.title)+'</h3><div>'+esc(dg.sum)+'</div></div>':'')+
+    '<div class="v8-filters" role="group" aria-label="依類別篩選"><button aria-pressed="true" data-f="">全部 '+today.length+'</button>'+cats.map(function(c){return '<button aria-pressed="false" data-f="'+esc(c)+'">'+esc(c)+' '+today.filter(function(x){return x.cat===c;}).length+'</button>';}).join('')+'</div>'+
+    '<div class="v8-list" id="v8-ilist">'+today.map(intelCard).join('')+'</div>'+
+    (hist?'<h2><span class="bar"></span>過往情報</h2>'+hist:'');
+  box.querySelectorAll('.v8-filters button').forEach(function(b){b.onclick=function(){
+    box.querySelectorAll('.v8-filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+    box.querySelectorAll('#v8-ilist .v8-card').forEach(function(c){c.hidden=!!b.dataset.f&&c.dataset.cat!==b.dataset.f;});
+    ga('intel_filter',{cat:b.dataset.f||'all'});};});
+}
+
+/* ---------- 🍳 AI 應用食譜 ---------- */
+var recipeSel=null, recipeFilter='';
+function verLabel(r){return r.ver==='Gemini代測'?'✅ AI 代測':(r.ver==='官方文件'?'📘 依官方文件':'💳 付費未實測');}
+function verNote(r){var d=esc(r.vdate);
+  if(r.ver==='Gemini代測')return '✅ <b>AI 代測</b>：本食譜的提示詞已由 AI 實際執行驗證（'+d+'）。不同 AI 工具或版本的結果可能略有不同，請依自身情況調整。';
+  if(r.ver==='官方文件')return '📘 <b>依官方文件整理</b>：依工具官方說明整理（查核日期 '+d+'），AI 未實際操作，介面可能因改版而不同。';
+  return '💳 <b>含付費功能</b>：使用付費方案才有的功能，AI 未實際操作驗證。付費前請先到官網確認最新方案與價格，本站不推薦任何付費購買。';}
+function feeBadge(f){return f==='付費'?'<span class="v8-badge v8-paid">付費</span>':'<span class="v8-badge v8-free">'+esc(f||'免費')+'</span>';}
+function recipeMatch(r){if(!recipeFilter)return true;if(recipeFilter==='免費')return r.fee!=='付費';return r.who.indexOf(recipeFilter)>=0||r.scene===recipeFilter;}
+function renderRecipes(){
+  var box=$id('v8-recipes');if(!box)return;
+  if(V8.ready&&!V8.set.show_recipes){box.innerHTML='';return;}
+  if(!V8.ready||!V8.recipes.length){box.innerHTML='<div class="v8-disc">'+DISC+'</div><p class="v8-empty">AI 應用食譜每週一更新，第一批整理中。</p>';return;}
+  var list=V8.recipes.filter(recipeMatch);
+  if(!recipeSel||!list.some(function(r){return r.id===recipeSel;}))recipeSel=list[0]?list[0].id:null;
+  var r=V8.recipes.filter(function(x){return x.id===recipeSel;})[0];
+  var F=['','上班族','家庭主婦','考生','免費','工作效率','家庭生活','寫作溝通','學習成長'];
+  box.innerHTML='<div class="v8-head"><div><h1>🍳 AI 應用食譜</h1><div class="sub">照著做就能用：每道都有完整步驟、可直接複製的提示詞，以及驗證紀錄</div></div><div class="muted v8-small">每週一更新 2～3 道</div></div>'+
+    helpBox('recipes')+'<div class="v8-disc">'+DISC+'</div>'+
+    '<div class="v8-filters" role="group" aria-label="篩選">'+F.map(function(f){return '<button aria-pressed="'+(f===recipeFilter)+'" data-rf="'+esc(f)+'">'+(f===''?'全部':(f==='免費'?'只看免費':esc(f)))+'</button>';}).join('')+'</div>'+
+    (list.length?'<div class="v8-rgrid">'+list.map(function(x){return '<button class="card v8-rcard'+(x.id===recipeSel?' sel':'')+'" data-recipe="'+esc(x.id)+'"><div class="v8-row">'+feeBadge(x.fee)+'<span class="v8-badge v8-ver">'+verLabel(x)+'</span><span class="v8-badge v8-ver">'+esc(x.lv)+'・'+esc(x.time)+'</span></div><h3>'+esc(x.title)+'</h3><div class="v8-small muted">'+esc(x.prob)+'</div><div class="v8-small">適合：'+esc(x.who.replace(/,/g,'、'))+'</div></button>';}).join('')+'</div>':'<p class="v8-empty">這個分類目前還沒有食譜。</p>')+
+    (r?recipeDetail(r):'');
+  box.querySelectorAll('[data-rf]').forEach(function(b){b.onclick=function(){recipeFilter=b.dataset.rf;renderRecipes();ga('recipe_filter',{f:recipeFilter||'all'});};});
+  var cp=$id('v8-copy');
+  if(cp)cp.onclick=function(){var t=lines(r.prompt).join('\n');ga('recipe_copy',{rid:r.id});
+    var done=function(){$id('v8-copied').hidden=false;};
+    try{navigator.clipboard.writeText(t).then(done,function(){selectPrompt();});}catch(e){selectPrompt();}};
+}
+function selectPrompt(){try{var rg=document.createRange();rg.selectNodeContents($id('v8-prompt'));var s=window.getSelection();s.removeAllRanges();s.addRange(rg);}catch(e){}}
+function recipeDetail(r){
+  var fails=lines(r.fail).map(function(l){var p=l.split('｜');return '<div><b>'+esc(p[0])+'</b><span>'+esc(p.slice(1).join('｜'))+'</span></div>';}).join('');
+  return '<article class="card v8-detail" id="v8-rdetail"><div class="v8-row">'+feeBadge(r.fee)+'<span class="v8-badge v8-ver">'+verLabel(r)+'</span><span class="v8-badge v8-ver">'+esc(r.scene)+'</span></div>'+
+    '<h3>'+esc(r.title)+'</h3><div class="muted">'+esc(r.prob)+'</div>'+
+    '<div class="v8-sec"><h4>🧰 需要準備</h4><ul class="v8-plain">'+lines(r.prep).map(function(l){return '<li>'+esc(l)+'</li>';}).join('')+'</ul></div>'+
+    '<div class="v8-sec"><h4>👣 跟著做</h4><ol class="v8-steps">'+lines(r.steps).map(function(l){return '<li>'+esc(l.replace(/^\d+[.、]\s*/,''))+'</li>';}).join('')+'</ol></div>'+
+    '<div class="v8-sec"><h4>📋 可直接複製的提示詞 <span class="v8-small muted">（黃色【】的地方換成你的內容）</span></h4><div class="v8-prompt" id="v8-prompt">'+esc(lines(r.prompt).join('\n')).replace(/【([^】]{0,80})】/g,'<mark>【$1】</mark>')+'</div>'+
+    '<div class="v8-row" style="margin-top:8px"><button class="v8-btn pri" id="v8-copy">複製提示詞</button><span class="v8-ok" id="v8-copied" hidden>已複製</span></div></div>'+
+    (r.result?'<div class="v8-sec"><h4>🎯 做出來會像這樣</h4><div class="v8-result">'+esc(lines(r.result).join('\n'))+'</div></div>':'')+
+    (fails?'<div class="v8-sec"><h4>🛠️ 常見卡關與解法</h4><div class="v8-fail">'+fails+'</div></div>':'')+
+    (r.adv?'<div class="v8-sec"><h4>🚀 進階玩法</h4><ul class="v8-plain">'+lines(r.adv).map(function(l){return '<li>'+esc(l)+'</li>';}).join('')+'</ul></div>':'')+
+    '<div class="v8-safe">'+SAFE+'</div><div class="v8-disc">'+verNote(r)+'</div>'+
+    '<div class="v8-row">'+codeChips(r.codes)+(r.site?'<a class="v8-btn ghost" href="'+esc(r.site)+'" target="_blank" rel="noopener">前往 '+esc(r.tool)+' ↗</a>':'')+(r.doc?'<a class="v8-btn ghost" href="'+esc(r.doc)+'" target="_blank" rel="noopener">官方說明 ↗</a>':'')+lineBtn(r.title,SITE+'#recipes','recipe_line_share')+'</div></article>';
+}
+
+/* ---------- 工具卡（AI工具頁，設定 show_tool_cards＝是 才顯示） ---------- */
+V8.cardHtml=function(name){
+  if(!V8.set.show_tool_cards)return '';
+  var c=V8.cards[String(name).replace(/&amp;/g,'&')];if(!c)return '';
+  return '<div class="v8-toolcard"><div><b>適合誰：</b>'+esc(c.rel)+'</div><div><b>免費額度：</b>'+esc(c.k)+'</div><div><b>三步上手：</b>'+lines(c.v).map(esc).join('　')+'</div><div class="v8-small muted">AI 查核 '+esc(c.wday)+'，價格請以官網為準</div></div>';
+};
+
+/* ---------- 考試資訊 ---------- */
+function applyExam(){
+  var E=V8.exam||{};
+  try{
+    var ed=E.examDate&&E.examDate.v, pill=document.querySelector('#home .hero .pill');
+    if(ed&&examValid('examDate',ed)){D.examDate=ed;var m=ed.split('-');
+      if(pill)pill.textContent='🎯 下一場初級鑑定：'+(+m[0]-1911)+' 年 '+(+m[1])+' 月 '+(+m[2])+' 日';}
+    else if(parseT(D.examDate)+86400e3<Date.now()&&pill){pill.textContent='🎯 下一梯次考試日期請見 iPAS 官網公告';}
+    if(typeof countdown==='function')countdown();
+    var map={signup:'#i-signup',rounds:'#i-rounds',fee:'#i-fee',pass:'#i-pass'};
+    Object.keys(map).forEach(function(k){if(E[k]&&E[k].v){var el=document.querySelector(map[k]);if(el)el.textContent=E[k].v;}});
+  }catch(e){}
+}
+
+/* ---------- 跳到考古題後「回到剛才」按鈕 ---------- */
+var BACK_NAME={home:'首頁',intel:'每日情報',recipes:'AI 食譜'},backState=null,backNav=false;
+function setBack(page,y,el){backState={page:page,y:y,el:el};var b=$id('v8-back');
+  if(!b){b=document.createElement('button');b.id='v8-back';b.type='button';document.body.appendChild(b);
+    b.onclick=function(){if(!backState)return;var s=backState;hideBack();var nb=document.querySelector('.nav button[data-go="'+s.page+'"]');
+      backNav=true;if(nb)nb.click();backNav=false;var go=function(){if(s.el&&document.body.contains(s.el))s.el.scrollIntoView({block:'center'});else window.scrollTo(0,s.y);};setTimeout(go,60);setTimeout(go,450);ga('code_back',{page:s.page});};}
+  b.textContent='← 回到'+(BACK_NAME[page]||'剛才的頁面');b.hidden=false;}
+function hideBack(){backState=null;var b=$id('v8-back');if(b)b.hidden=true;}
+document.addEventListener('click',function(ev){var nb=ev.target.closest('.nav button');if(nb&&!backNav&&backState&&nb.dataset.go!=='bank')hideBack();},true);
+/* ---------- 開關與事件 ---------- */
+function applySettings(){
+  [['intel','show_intel'],['recipes','show_recipes']].forEach(function(p){
+    var b=document.querySelector('.nav button[data-go="'+p[0]+'"]');if(b)b.hidden=!V8.set[p[1]];
+    var sec=$id(p[0]);if(sec&&!V8.set[p[1]]&&sec.classList.contains('active')){var h=document.querySelector('.nav button[data-go="home"]');if(h)h.click();}});
+  var nh=$id('news-home'),h2=nh&&nh.previousElementSibling;
+  if(nh){nh.hidden=!V8.set.show_intel;if(h2&&h2.tagName==='H2')h2.hidden=!V8.set.show_intel;}
+}
+function renderAll(){
+  try{document.querySelectorAll('.v8-disc-slot').forEach(function(e){e.innerHTML=DISC;e.hidden=false;});}catch(e){}
+  try{applySettings();}catch(e){}
+  try{if(typeof renderDynamic==='function')renderDynamic();}catch(e){}
+  try{if(typeof renderTools==='function')renderTools();}catch(e){}
+  try{if(typeof renderVicky==='function')renderVicky();}catch(e){}
+  try{applyExam();}catch(e){}
+  try{renderHome();}catch(e){}
+  try{renderIntel();}catch(e){}
+  try{renderRecipes();}catch(e){}
+}
+document.addEventListener('click',function(ev){
+  var t=ev.target.closest('[data-goto],[data-recipe],[data-code],[data-term],[data-ga]');if(!t)return;
+  if(t.dataset.ga){ga(t.dataset.ga);return;}
+  if(t.dataset.goto){var b=document.querySelector('.nav button[data-go="'+t.dataset.goto+'"]');if(b)b.click();return;}
+  if(t.dataset.recipe){recipeSel=t.dataset.recipe;recipeFilter='';ga('recipe_open',{rid:recipeSel});
+    var nb=document.querySelector('.nav button[data-go="recipes"]');
+    if(!$id('recipes').classList.contains('active')&&nb)nb.click();
+    renderRecipes();var d=$id('v8-rdetail');if(d)d.scrollIntoView({behavior:'smooth',block:'start'});return;}
+  if(t.dataset.code){ga('code_jump',{code:t.dataset.code});
+    var cur=document.querySelector('section.page.active');setBack(cur?cur.id:'home',window.scrollY,t.closest('article,.card'));
+    try{if(typeof switchBank==='function')switchBank('all');
+      var lv=document.querySelector('#f-level');if(lv)lv.value='';
+      if(typeof fillExamFilter==='function')fillExamFilter();
+      ['#f-subj','#f-exam'].forEach(function(s){var x=document.querySelector(s);if(x)x.value='';});
+      $id('f-indicator').value=t.dataset.code;filterBank();}catch(e){}
+    var bb=document.querySelector('.nav button[data-go="bank"]');if(bb)bb.click();return;}
+  if(t.dataset.term){var g=glossary(t.dataset.term),card=t.closest('.v8-card'),box=card&&card.querySelector('[data-tipbox]');
+    if(!g||!box)return;var same=!box.hidden&&box.dataset.t===t.dataset.term;box.hidden=same;box.dataset.t=t.dataset.term;
+    box.innerHTML='📘 <b>'+esc(g.zh)+'</b>（'+esc(g.en)+'）'+((typeof TTS_SUPPORTED!=='undefined'&&TTS_SUPPORTED)?' <button class="term-speak-btn" data-en="'+esc(g.en)+'" title="播放英文發音">🔊</button>':'')+'<br>'+esc(g.kid);
+    var sp=box.querySelector('.term-speak-btn');if(sp)sp.onclick=function(){try{speakEn(sp.dataset.en);}catch(e){}};
+    if(!same)ga('term_open',{term:t.dataset.term});}
+});
+document.querySelectorAll('.nav button').forEach(function(b){b.addEventListener('click',function(){ga('tab_view',{tab:b.dataset.go});});});
+
+/* ---------- 載入 ---------- */
+function fetchText(gid){
+  var ctl=('AbortController' in window)?new AbortController():null;var tm=setTimeout(function(){if(ctl)ctl.abort();},12000);
+  return fetch(CSV_BASE+gid,{cache:'no-store',signal:ctl?ctl.signal:undefined}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text();}).then(function(t){clearTimeout(tm);if(t.length>5e6)throw new Error('too large');return t;},function(e){clearTimeout(tm);throw e;});
+}
+var lastGood=null;
+function recOk(t){return /^ID,寫入時間,/.test(String(t||'').replace(/^\uFEFF/,''));}
+function apply(raw){
+  if(!recOk(raw.rec)&&lastGood&&recOk(lastGood.rec))raw.rec=lastGood.rec;
+  var c=cleanContent(toObjs(raw.pub)),rc=recOk(raw.rec)?cleanRecipes(toObjs(raw.rec)):[],st=cleanSettings(toObjs(raw.set));
+  if(!c.length)throw new Error('empty content');
+  build(c,rc,st);V8.ready=true;lastGood=raw;renderAll();
+}
+try{var cache=JSON.parse(localStorage.getItem(CACHE_KEY)||'null');
+  if(cache&&typeof cache.at==='number'&&cache.at<=Date.now()&&(Date.now()-cache.at)<CACHE_DAYS*864e5)apply(cache);}catch(e){}
+Promise.all([fetchText(GID.pub),fetchText(GID.rec),fetchText(GID.set)]).then(function(a){
+  var raw={pub:a[0],rec:a[1],set:a[2],at:Date.now()};
+  if(!/^ID,/.test(raw.pub.replace(/^﻿/,''))||!/^鍵,/.test(raw.set.replace(/^﻿/,'')))throw new Error('unexpected csv');
+  apply(raw);if(recOk(raw.rec)){try{localStorage.setItem(CACHE_KEY,JSON.stringify(raw));}catch(e){}}
+}).catch(function(){ if(!V8.ready){try{renderHome();renderIntel();renderRecipes();}catch(e){}} });
+})();
 </script>
 </body>
 </html>

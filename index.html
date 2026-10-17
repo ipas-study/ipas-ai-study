@@ -2,8 +2,11 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v8.0　|　日期 2026-10-07
+     版本 v8.1　|　日期 2026-10-17
      版本紀錄：
+       v8.1 (2026-10-17) 防線四：讀試算表 CSV 的日期改成寬鬆解析（normT）。除了 2026-10-15 07:00，也看得懂
+                         2026/10/15、上午／下午 7:00:00、試算表日期數值（46310.29167）。10/15 試算表把日期轉成數值，
+                         網站把那 10 筆靜默丟掉，只顯示到 10/14。情報、食譜被略過時，會在主控台印出「略過 N 筆＋原因」。
        v8.0 (2026-10-07) 動態內容改由 Google 試算表 CSV 提供（Gemini 雲端排程產出＋AI 審核），新增 📡 AI 每日情報、
                          🍳 AI 應用食譜、❓ 每日一題、LINE 分享、GA4 事件、工具卡（可由設定開關）、考試資訊自動更新；
                          所有外部內容一律跳脫與網址白名單，讀取失敗時退回瀏覽器快取或 update.js。
@@ -2705,7 +2708,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v8.0（2026-10-07）';
+$('#build-stamp').textContent='　·　版本 v8.1（2026-10-17）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
@@ -3188,7 +3191,21 @@ function ga(ev,p){try{if(typeof window.gtag==='function')window.gtag('event',ev,
 function $id(i){return document.getElementById(i);}
 function tpeNow(){return new Date(Date.now()+8*3600e3);}
 function tpeDate(d){return (d||tpeNow()).toISOString().slice(0,10);}
-function parseT(s){var m=/^(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2}))?/.exec(String(s||''));return m?Date.UTC(+m[1],m[2]-1,+m[3],(+m[4]||0)-8,+m[5]||0):0;}
+/* v8.1 防線四：日期寬鬆解析。試算表可能把日期轉成數值（46310.29167）或輸出 2026/10/15、上午 7:00:00 等格式，
+   一律先轉回「YYYY-MM-DD HH:MM」（台北時間）再換算；看不懂才回傳空字串／0。 */
+function normT(s){s=String(s==null?'':s).trim();if(!s)return '';
+  function p2(n){return (n<10?'0':'')+n;}
+  if(/^\d{5}(\.\d+)?$/.test(s)){var n=+s;if(n<40000||n>80000)return '';
+    var d=new Date(Math.round((n-25569)*1440)*6e4);
+    return d.getUTCFullYear()+'-'+p2(d.getUTCMonth()+1)+'-'+p2(d.getUTCDate())+(n%1?' '+p2(d.getUTCHours())+':'+p2(d.getUTCMinutes()):'');}
+  var m=/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})(?:(?:\s+|T)(上午|下午|AM|PM)?\s*(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?)?/i.exec(s);
+  if(!m||+m[2]<1||+m[2]>12||+m[3]<1||+m[3]>31)return '';
+  var out=m[1]+'-'+p2(+m[2])+'-'+p2(+m[3]);if(m[5]==null)return out;
+  var h=+m[5],ap=String(m[4]||m[7]||'').toUpperCase();
+  if((ap==='下午'||ap==='PM')&&h<12)h+=12;if((ap==='上午'||ap==='AM')&&h===12)h=0;
+  if(h>23||+m[6]>59)return out;return out+' '+p2(h)+':'+m[6];}
+function parseT(s){var m=/^(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2}))?/.exec(normT(s));return m?Date.UTC(+m[1],m[2]-1,+m[3],(+m[4]||0)-8,+m[5]||0):0;}
+function skipLog(name,sk){var k=Object.keys(sk);if(k.length&&window.console)console.warn('[iPAS] '+name+' 略過 '+k.map(function(x){return x+' '+sk[x]+' 筆';}).join('、'));}
 function daysAgo(t){return (Date.now()-t)/864e5;}
 function validDate(ed){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ed||''));if(!m)return false;
   var d=new Date(Date.UTC(+m[1],m[2]-1,+m[3]));return d.getUTCFullYear()===+m[1]&&d.getUTCMonth()===m[2]-1&&d.getUTCDate()===+m[3];}
@@ -3211,34 +3228,36 @@ function toObjs(text){
   return rows.slice(1).map(function(r){var o={};h.forEach(function(k,i){o[k]=r[i]==null?'':String(r[i]);});return o;});
 }
 function cleanContent(list){
-  var seen=Object.create(null),out=[];
+  var seen=Object.create(null),out=[],sk=Object.create(null);function skip(r){sk[r]=(sk[r]||0)+1;}
   list.forEach(function(o){
     var id=String(o['ID']||'').trim(), ty=String(o['類型']||'').trim();
-    if(!ID_RE.test(id)||seen[id]||TYPES.indexOf(ty)<0)return;
-    var tt=parseT(o['寫入時間']);if(!tt||tt>Date.now()+864e5)return;
+    if(!ID_RE.test(id)||seen[id]||TYPES.indexOf(ty)<0)return skip('ID或類型不符');
+    var tt=parseT(o['寫入時間']);if(!tt)return skip('寫入時間看不懂');if(tt>Date.now()+864e5)return skip('寫入時間在未來');
     var link=url(o['連結']);
-    if(NEED_LINK.indexOf(ty)>=0&&!link)return;
-    if(ty==='考試資訊'&&!/^https:\/\/([a-z0-9-]+\.)*(ipas\.org\.tw|ipd\.nat\.gov\.tw)\//i.test(link))return;
+    if(NEED_LINK.indexOf(ty)>=0&&!link)return skip('缺連結');
+    if(ty==='考試資訊'&&!/^https:\/\/([a-z0-9-]+\.)*(ipas\.org\.tw|ipd\.nat\.gov\.tw)\//i.test(link))return skip('考試資訊網址不在白名單');
     seen[id]=1;
-    out.push({id:id,type:ty,t:parseT(o['寫入時間']),wday:String(o['寫入時間']||'').slice(0,10),pub:cap(o['發布日期'],10),
+    out.push({id:id,type:ty,t:tt,wday:normT(o['寫入時間']).slice(0,10),pub:cap(normT(o['發布日期']).slice(0,10)||o['發布日期'],10),
       title:cap(o['標題'],120),sum:cap(o['摘要'],400),rel:cap(o['與你的關係'],200),link:link,src:cap(o['來源'],40),
       cat:cap(o['分類'],12),codes:cap(o['考點代碼'],40),terms:cap(o['相關名詞'],60),imp:Math.min(3,Math.max(1,parseInt(o['重要度'],10)||1)),
       tool:cap(o['工具名'],40),k:cap(o['鍵'],80),v:cap(o['值'],600)});
   });
+  skipLog('情報',sk);
   return out;
 }
 function cleanRecipes(list){
-  var seen=Object.create(null),out=[];
+  var seen=Object.create(null),out=[],sk=Object.create(null);function skip(r){sk[r]=(sk[r]||0)+1;}
   list.forEach(function(o){
     var id=String(o['ID']||'').trim();
-    if(!RID_RE.test(id)||seen[id])return;var rt=parseT(o['寫入時間']);if(!rt||rt>Date.now()+864e5)return;seen[id]=1;
-    var r={id:id,t:parseT(o['寫入時間']),title:cap(o['標題'],80),scene:cap(o['情境分類'],10),who:cap(o['適合誰'],60),prob:cap(o['解決什麼問題'],200),
+    if(!RID_RE.test(id)||seen[id])return skip('ID不符或重複');var rt=parseT(o['寫入時間']);if(!rt)return skip('寫入時間看不懂');if(rt>Date.now()+864e5)return skip('寫入時間在未來');seen[id]=1;
+    var r={id:id,t:rt,title:cap(o['標題'],80),scene:cap(o['情境分類'],10),who:cap(o['適合誰'],60),prob:cap(o['解決什麼問題'],200),
       tool:cap(o['工具'],40),site:url(o['工具官網']),fee:cap(o['費用'],8),lv:cap(o['難度'],6),time:cap(o['所需時間'],10),prep:cap(o['準備'],600),
       steps:cap(o['步驟'],3000),prompt:cap(o['提示詞'],4000),result:cap(o['預期成果範例'],1500),fail:cap(o['常見失敗與解法'],1500),adv:cap(o['進階變化'],800),
-      ver:cap(o['驗證等級'],10),vdate:cap(o['驗證日期'],10),doc:url(o['官方說明連結']),codes:cap(o['考點代碼'],40)};
-    if(!r.title||!r.steps||!r.prompt)return;
+      ver:cap(o['驗證等級'],10),vdate:cap(normT(o['驗證日期']).slice(0,10)||o['驗證日期'],10),doc:url(o['官方說明連結']),codes:cap(o['考點代碼'],40)};
+    if(!r.title||!r.steps||!r.prompt)return skip('缺標題、步驟或提示詞');
     out.push(r);
   });
+  skipLog('食譜',sk);
   return out.sort(function(a,b){return b.t-a.t||(a.id<b.id?-1:1);});
 }
 function cleanSettings(list){

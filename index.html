@@ -2,8 +2,11 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v8.1　|　日期 2026-10-17
+     版本 v8.2　|　日期 2026-11-01
      版本紀錄：
+       v8.2 (2026-11-01) 考試日期也走寬鬆解析：試算表「考試資訊」的 examDate 先 normT 再檢查，2026/11/07、試算表日期數值
+                         （46333）都看得懂；換掉 404 連結（信義房屋改指房訊知識、Spotify Research 拿掉連結保留文字）；
+                         game.html CSP script-src 縮小到 canvas-confetti@1.6.0 路徑。
        v8.1 (2026-10-17) 防線四：讀試算表 CSV 的日期改成寬鬆解析（normT）。除了 2026-10-15 07:00，也看得懂
                          2026/10/15、上午／下午 7:00:00、試算表日期數值（46310.29167）。10/15 試算表把日期轉成數值，
                          網站把那 10 筆靜默丟掉，只顯示到 10/14。情報、食譜被略過時，會在主控台印出「略過 N 筆＋原因」。
@@ -940,7 +943,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>標記資料完整度↑ → 監督式優勢增 ／ 資料規模無標記量↑ → 非監督式優勢增</div>
       <div class="arena-errata"><b>勘誤：</b>K-Means 特點答案由 B（可結合其他方法較彈性）修正為 <b>A（原理相對簡單）</b></div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📸 <b>監督式：</b><a href="https://blog.google/products/photos/" target="_blank" rel="noopener">Google Photos</a> 自動標注人臉相簿（有標籤分類訓練）</span><br><span class="rw-item">🎵 <b>非監督式：</b><a href="https://research.atspotify.com/2020/09/understanding-users-music-listening-sessions/" target="_blank" rel="noopener">Spotify</a> 將數百萬首歌曲自動分群，發現「深夜 Lo-Fi」等隱性類別（<a href="https://research.atspotify.com/" target="_blank" rel="noopener">Spotify Research</a>）</span></div><div class="arena-kid"><b>📖 小學生這樣懂</b><span class="kid-story">監督式學習就像你在學寫字，媽媽一直在旁邊說「這個對了！那個寫錯了！」，有老師一直給回饋，你很快就學會了。非監督式學習就像你自己整理玩具，沒有人告訴你規則，你自己發現「把紅色的放一堆、藍色的放一堆」，學到的東西有時候讓人驚喜！</span><b>🎯 案例故事：</b><span class="kid-case">📸 <b>Google Photos：</b>就像媽媽幫每張照片貼上名字標籤（「這是弟弟」「這是爺爺」），AI 看了幾千張有標籤的照片後，自己就學會認臉了！</span><span class="kid-case">🎵 <b>Spotify 分群：</b>就像 DJ 把幾百萬首歌全部丟在一起，沒有人告訴他怎麼分，他自己發現「這些歌很輕柔、慢節奏」，自動幫它們歸成一類！</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📸 <b>監督式：</b><a href="https://blog.google/products/photos/" target="_blank" rel="noopener">Google Photos</a> 自動標注人臉相簿（有標籤分類訓練）</span><br><span class="rw-item">🎵 <b>非監督式：</b><a href="https://research.atspotify.com/2020/09/understanding-users-music-listening-sessions/" target="_blank" rel="noopener">Spotify</a> 將數百萬首歌曲自動分群，發現「深夜 Lo-Fi」等隱性類別（Spotify Research）</span></div><div class="arena-kid"><b>📖 小學生這樣懂</b><span class="kid-story">監督式學習就像你在學寫字，媽媽一直在旁邊說「這個對了！那個寫錯了！」，有老師一直給回饋，你很快就學會了。非監督式學習就像你自己整理玩具，沒有人告訴你規則，你自己發現「把紅色的放一堆、藍色的放一堆」，學到的東西有時候讓人驚喜！</span><b>🎯 案例故事：</b><span class="kid-case">📸 <b>Google Photos：</b>就像媽媽幫每張照片貼上名字標籤（「這是弟弟」「這是爺爺」），AI 看了幾千張有標籤的照片後，自己就學會認臉了！</span><span class="kid-case">🎵 <b>Spotify 分群：</b>就像 DJ 把幾百萬首歌全部丟在一起，沒有人告訴他怎麼分，他自己發現「這些歌很輕柔、慢節奏」，自動幫它們歸成一類！</span></div>
     </div>
   </details>
 
@@ -1323,7 +1326,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>極端值比例↑ → 中位數更可靠 ／ 資料對稱性↑ → 平均數更精確</div>
       <div class="arena-errata"><b>勘誤：</b>平均差（Mean Deviation）定義修正為「<b>所有觀察值與平均數之間絕對差值的平均</b>」（非單一觀察值與平均數的差距）</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📊 <b>平均數：</b><a href="https://www.dgbas.gov.tw/News.aspx?n=3403&sms=11459" target="_blank" rel="noopener">行政院主計總處</a>公告「台灣平均薪資 67K」（被高薪族群拉高，常被批評失真）</span><br><span class="rw-item">🏠 <b>中位數：</b><a href="https://www.sinyi.com.tw/knowledge/article/" target="_blank" rel="noopener">信義房屋</a>公布「台北市中位數房價」（抗高價豪宅干擾，更代表市場實態）</span></div><div class="arena-kid"><b>📖 小學生這樣懂</b><span class="kid-story">平均數就像全班分糖果，把所有糖果加起來再除以人數。但如果班上有一個同學帶了 1000 顆糖，平均數就被拉高，讓你以為大家都很有糖。中位數是找站在最中間的那個同學，他有幾顆就是幾顆，不怕被那個帶 1000 顆糖的同學影響！</span><b>🎯 案例故事：</b><span class="kid-case">💰 <b>平均薪資：</b>就像算全班平均糖果數，但因為有同學家裡是糖果工廠，帶了 1000 顆來，平均數被拉高了，讓大家誤以為每個人都很有糖！</span><span class="kid-case">🏠 <b>中位數房價：</b>就像找「站在最中間的那個同學」，豪宅再貴也影響不了他，更能反映一般人真正需要花多少錢買房！</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📊 <b>平均數：</b><a href="https://www.dgbas.gov.tw/News.aspx?n=3403&sms=11459" target="_blank" rel="noopener">行政院主計總處</a>公告「台灣平均薪資 67K」（被高薪族群拉高，常被批評失真）</span><br><span class="rw-item">🏠 <b>中位數：</b><a href="https://www.sinyi.com.tw/expertise" target="_blank" rel="noopener">信義房屋</a>公布「台北市中位數房價」（抗高價豪宅干擾，更代表市場實態）</span></div><div class="arena-kid"><b>📖 小學生這樣懂</b><span class="kid-story">平均數就像全班分糖果，把所有糖果加起來再除以人數。但如果班上有一個同學帶了 1000 顆糖，平均數就被拉高，讓你以為大家都很有糖。中位數是找站在最中間的那個同學，他有幾顆就是幾顆，不怕被那個帶 1000 顆糖的同學影響！</span><b>🎯 案例故事：</b><span class="kid-case">💰 <b>平均薪資：</b>就像算全班平均糖果數，但因為有同學家裡是糖果工廠，帶了 1000 顆來，平均數被拉高了，讓大家誤以為每個人都很有糖！</span><span class="kid-case">🏠 <b>中位數房價：</b>就像找「站在最中間的那個同學」，豪宅再貴也影響不了他，更能反映一般人真正需要花多少錢買房！</span></div>
     </div>
   </details>
 
@@ -2708,7 +2711,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v8.1（2026-10-17）';
+$('#build-stamp').textContent='　·　版本 v8.2（2026-11-01）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
@@ -3210,7 +3213,7 @@ function daysAgo(t){return (Date.now()-t)/864e5;}
 function validDate(ed){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ed||''));if(!m)return false;
   var d=new Date(Date.UTC(+m[1],m[2]-1,+m[3]));return d.getUTCFullYear()===+m[1]&&d.getUTCMonth()===m[2]-1&&d.getUTCDate()===+m[3];}
 var EXAM_KEYS=['examDate','signup','rounds','fee','pass'];
-function examValid(k,v){if(EXAM_KEYS.indexOf(k)<0)return false;v=String(v||'');if(k==='examDate')return validDate(v)&&parseT(v)>Date.now()-864e5&&parseT(v)<Date.now()+548*864e5;return !!v.trim()&&v.length<=100&&!/[\r\n]/.test(v);}
+function examValid(k,v){if(EXAM_KEYS.indexOf(k)<0)return false;v=String(v==null?'':v);if(k==='examDate'){v=normT(v).slice(0,10);return validDate(v)&&parseT(v)>Date.now()-864e5&&parseT(v)<Date.now()+548*864e5;}return !!v.trim()&&v.length<=100&&!/[\r\n]/.test(v);}
 function lineShare(text,u){return 'https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(u||SITE)+'&text='+encodeURIComponent(text||'');}
 function lineBtn(text,u,ev){return V8.set.show_line_share?'<a class="v8-btn line" href="'+esc(lineShare(text,u))+'" target="_blank" rel="noopener" data-ga="'+esc(ev)+'">分享到 LINE</a>':'';}
 function host(u){try{return new URL(u).hostname.replace(/^www\./,'');}catch(e){return '';}}
@@ -3447,7 +3450,7 @@ V8.cardHtml=function(name){
 function applyExam(){
   var E=V8.exam||{};
   try{
-    var ed=E.examDate&&E.examDate.v, pill=document.querySelector('#home .hero .pill');
+    var ed=E.examDate&&normT(E.examDate.v).slice(0,10), pill=document.querySelector('#home .hero .pill');
     if(ed&&examValid('examDate',ed)){D.examDate=ed;var m=ed.split('-');
       if(pill)pill.textContent='🎯 下一場初級鑑定：'+(+m[0]-1911)+' 年 '+(+m[1])+' 月 '+(+m[2])+' 日';}
     else if(parseT(D.examDate)+86400e3<Date.now()&&pill){pill.textContent='🎯 下一梯次考試日期請見 iPAS 官網公告';}

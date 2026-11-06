@@ -99,6 +99,9 @@ v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStora
   gtag('js', new Date());
   gtag('config', 'G-XJ1K6HESBD');
 </script>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3667e0">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>AI 應用規劃師（初級）學習網站</title>
 <style>
 :root{
@@ -3530,6 +3533,9 @@ Promise.all([fetchText(GID.pub),fetchText(GID.rec),fetchText(GID.set)]).then(fun
   apply(raw);if(recOk(raw.rec)){try{localStorage.setItem(CACHE_KEY,JSON.stringify(raw));}catch(e){}}
 }).catch(function(){ if(!V8.ready){try{renderHome();renderIntel();renderRecipes();}catch(e){}} });
 })();
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('./sw.js').catch(function(){});}
 </script>
 </body>
 </html>

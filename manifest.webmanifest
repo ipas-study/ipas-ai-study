@@ -1,0 +1,19 @@
+{
+  "name": "AI 應用規劃師學習網站",
+  "short_name": "AI應用規劃師",
+  "description": "iPAS AI 應用規劃師（初級）學習網站",
+  "lang": "zh-Hant",
+  "id": "./ipas-app",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#eef1f8",
+  "theme_color": "#3667e0",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

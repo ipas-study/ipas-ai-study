@@ -2,11 +2,13 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v8.2　|　日期 2026-11-01
+     版本 v8.2　|　日期 2026-11-16
      版本紀錄：
        v8.2 (2026-11-01) 考試日期也走寬鬆解析：試算表「考試資訊」的 examDate 先 normT 再檢查，2026/11/07、試算表日期數值
                          （46333）都看得懂；換掉 404 連結（信義房屋改指房訊知識、Spotify Research 拿掉連結保留文字）；
                          game.html CSP script-src 縮小到 canvas-confetti@1.6.0 路徑。
+                         11/16 補：心靈密語考試日過後改判「等成績期」（原本 11/7 考完落到考前期），等成績期語句拿掉寫死日期；
+                         考後首頁標題改「下一梯次考試」；信義房屋網址實測是房產稅務頁，對不上中位數房價，改成只留文字。
        v8.1 (2026-10-17) 防線四：讀試算表 CSV 的日期改成寬鬆解析（normT）。除了 2026-10-15 07:00，也看得懂
                          2026/10/15、上午／下午 7:00:00、試算表日期數值（46310.29167）。10/15 試算表把日期轉成數值，
                          網站把那 10 筆靜默丟掉，只顯示到 10/14。情報、食譜被略過時，會在主控台印出「略過 N 筆＋原因」。
@@ -584,7 +586,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
 <section id="home" class="page active">
   <div class="hero">
     <div class="pill">🎯 目標：115 年 11 月 7 日（第四梯次）初級鑑定</div>
-    <h1 style="margin-top:12px">距離考試還有</h1>
+    <h1 style="margin-top:12px" id="cd-title">距離考試還有</h1>
     <div class="cd" id="countdown"></div>
     <div class="muted" id="cd-date"></div>
     <button class="mindnote-btn" id="mindnote-launch" onclick="openMindNote()">💌 抽一句備考心靈密語</button>
@@ -1329,7 +1331,7 @@ details[open] .arena-sum{border-bottom:1px solid var(--line);background:linear-g
       </div>
       <div class="arena-tradeoff"><b>核心消長：</b>極端值比例↑ → 中位數更可靠 ／ 資料對稱性↑ → 平均數更精確</div>
       <div class="arena-errata"><b>勘誤：</b>平均差（Mean Deviation）定義修正為「<b>所有觀察值與平均數之間絕對差值的平均</b>」（非單一觀察值與平均數的差距）</div>
-      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📊 <b>平均數：</b><a href="https://www.dgbas.gov.tw/News.aspx?n=3403&sms=11459" target="_blank" rel="noopener">行政院主計總處</a>公告「台灣平均薪資 67K」（被高薪族群拉高，常被批評失真）</span><br><span class="rw-item">🏠 <b>中位數：</b><a href="https://www.sinyi.com.tw/expertise" target="_blank" rel="noopener">信義房屋</a>公布「台北市中位數房價」（抗高價豪宅干擾，更代表市場實態）</span></div><div class="arena-kid"><b>📖 小學生這樣懂</b><span class="kid-story">平均數就像全班分糖果，把所有糖果加起來再除以人數。但如果班上有一個同學帶了 1000 顆糖，平均數就被拉高，讓你以為大家都很有糖。中位數是找站在最中間的那個同學，他有幾顆就是幾顆，不怕被那個帶 1000 顆糖的同學影響！</span><b>🎯 案例故事：</b><span class="kid-case">💰 <b>平均薪資：</b>就像算全班平均糖果數，但因為有同學家裡是糖果工廠，帶了 1000 顆來，平均數被拉高了，讓大家誤以為每個人都很有糖！</span><span class="kid-case">🏠 <b>中位數房價：</b>就像找「站在最中間的那個同學」，豪宅再貴也影響不了他，更能反映一般人真正需要花多少錢買房！</span></div>
+      <div class="arena-realworld"><b>🌍 真實市場案例</b><br><span class="rw-item">📊 <b>平均數：</b><a href="https://www.dgbas.gov.tw/News.aspx?n=3403&sms=11459" target="_blank" rel="noopener">行政院主計總處</a>公告「台灣平均薪資 67K」（被高薪族群拉高，常被批評失真）</span><br><span class="rw-item">🏠 <b>中位數：</b>信義房屋公布「台北市中位數房價」（抗高價豪宅干擾，更代表市場實態）</span></div><div class="arena-kid"><b>📖 小學生這樣懂</b><span class="kid-story">平均數就像全班分糖果，把所有糖果加起來再除以人數。但如果班上有一個同學帶了 1000 顆糖，平均數就被拉高，讓你以為大家都很有糖。中位數是找站在最中間的那個同學，他有幾顆就是幾顆，不怕被那個帶 1000 顆糖的同學影響！</span><b>🎯 案例故事：</b><span class="kid-case">💰 <b>平均薪資：</b>就像算全班平均糖果數，但因為有同學家裡是糖果工廠，帶了 1000 顆來，平均數被拉高了，讓大家誤以為每個人都很有糖！</span><span class="kid-case">🏠 <b>中位數房價：</b>就像找「站在最中間的那個同學」，豪宅再貴也影響不了他，更能反映一般人真正需要花多少錢買房！</span></div>
     </div>
   </details>
 
@@ -2201,6 +2203,7 @@ $$('.nav button').forEach(b=>b.onclick=()=>{
 function countdown(){
   const target=new Date(D.examDate+'T09:00:00+08:00');
   const now=new Date();
+  var cdt=document.getElementById('cd-title');if(cdt)cdt.textContent=(target<now)?'下一梯次考試':'距離考試還有';
   if(target<now){$('#countdown').innerHTML='<div class="box"><div class="lab" style="letter-spacing:1px">下一梯次考試日期請見 iPAS 官網公告</div></div>';$('#cd-date').textContent='';return;}
   let diff=Math.max(0,target-now);
   const d=Math.floor(diff/864e5);diff-=d*864e5;
@@ -2714,7 +2717,7 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v8.2（2026-11-01）';
+$('#build-stamp').textContent='　·　版本 v8.2（2026-11-16）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
@@ -2751,6 +2754,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeArenaMo
 
 // ── 💌 備考心靈密語（v6.6：依備考階段自動切換語句庫）─────────────
 // 階段判定：等成績期 → 起步期(>60天) → 衝刺期(15–60天) → 考前期(≤14天)
+// 11/16 起階段改看 examDate，PREV_EXAM_DATE／RESULT_DATE 已不使用（保留備查）
 var PREV_EXAM_DATE='2026-08-15';   // 上一梯次考試日
 var RESULT_DATE='2026-09-01';      // 成績開放查詢日
 
@@ -2760,14 +2764,14 @@ var MIND_NOTES_STAGES={
     notes:[
       {zh:'考卷交出去的那一刻，你的努力就已經完成了；剩下的日子，交給時間就好。',en:'The moment you handed in the paper, your work was done. Let time handle the rest.'},
       {zh:'等成績的日子最難熬，但別讓它偷走你這段時間累積的成長。',en:'Waiting is the hardest part — don\'t let it steal the growth you\'ve earned.'},
-      {zh:'你在 8/15 寫下的每一題，都是好幾個月的早起與晚睡換來的。',en:'Every answer you wrote was paid for with months of early mornings and late nights.'},
-      {zh:'不管 9/1 看到什麼數字，你已經比當初只是「想考看看」的自己走得更遠。',en:'Whatever the number says, you\'ve come far past the you who only thought about trying.'},
+      {zh:'你在考場寫下的每一題，都是好幾個月的早起與晚睡換來的。',en:'Every answer you wrote was paid for with months of early mornings and late nights.'},
+      {zh:'不管查到什麼數字，你已經比當初只是「想考看看」的自己走得更遠。',en:'Whatever the number says, you\'ve come far past the you who only thought about trying.'},
       {zh:'成績會告訴你分數，但不會告訴你——你現在真的看得懂 AI 在做什麼了。',en:'A score tells you a number. It won\'t tell you that you finally understand what AI is doing.'},
       {zh:'這段等待，剛好可以想想：接下來要把 AI 用在自己的工作哪一段？',en:'Use this pause to ask: which part of my work should AI touch next?'},
-      {zh:'過了，10/20 的證書會替你說話；沒過，11/7 也還在那裡等你。',en:'Pass, and the certificate speaks for you. Miss it, and November 7th is still waiting.'},
+      {zh:'過了，證書會替你說話；沒過，下一梯次也還在那裡等你。',en:'Pass, and the certificate speaks for you. Miss it, and the next round is still waiting.'},
       {zh:'一次考試決定不了什麼，但你當初按下報名的那個決定，已經改變了很多。',en:'One exam decides little. The decision to sign up already changed a lot.'},
       {zh:'先放自己一個小假吧，你值得。等成績單來了再說。',en:'Take a short break — you\'ve earned it. The results can wait.'},
-      {zh:'願你 9/1 打開查詢頁面時，笑得比自己想像中還大聲。',en:'May you laugh louder than you expect when the results page loads.'}
+      {zh:'願你打開成績查詢頁面時，笑得比自己想像中還大聲。',en:'May you laugh louder than you expect when the results page loads.'}
     ]
   },
   early:{
@@ -2837,10 +2841,10 @@ var MIND_NOTES_STAGES={
 
 function mindNoteStage(){
   var now=new Date();
-  var prev=new Date(PREV_EXAM_DATE+'T00:00:00+08:00');
-  var res=new Date(RESULT_DATE+'T23:59:59+08:00');
-  if(now>=prev && now<=res) return MIND_NOTES_STAGES.waiting;
+  /* 2026-11-16：考試日一過就進等成績期（原本只看 8/15～9/1，11/7 考完會落到考前期）；
+     下一梯次日期在試算表「設定」填好 examDate 後，自動回到起步／衝刺／考前期 */
   var target=new Date((window.APP_DATA?APP_DATA.examDate:'2026-11-07')+'T09:00:00+08:00');
+  if(now>=target) return MIND_NOTES_STAGES.waiting;
   var days=Math.ceil((target-now)/864e5);
   if(days>60) return MIND_NOTES_STAGES.early;
   if(days>14) return MIND_NOTES_STAGES.sprint;

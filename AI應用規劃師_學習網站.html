@@ -2,8 +2,11 @@
 <!-- ============================================================
      AI 應用規劃師（初級）學習網站
      製作者：Justin-阿輝 © 2026
-     版本 v8.3　|　日期 2026-11-17
+     版本 v8.4　|　日期 2026-11-17
      版本紀錄：
+       v8.4 (2026-11-17) 頁尾「累計瀏覽人數」改用自建計數器（Cloudflare Worker ipas-counter.ipas-study.workers.dev，從 3,900 接續）：
+                         原本的 abacus.jasoncameron.dev 大多 20 秒後回 500，網站讀不到就隱藏；CSP connect-src 同步換掉 abacus；
+                         加 6 秒逾時，讀不到一樣隱藏。
        v8.3 (2026-11-17) 基本維護：iPAS 官網搬家（www.ipas.org.tw → ipd.nat.gov.tw/ipas），2 個 404 學習資源連結與 5 個官方專區連結
                          改新網址；考古題庫、AI 導師視窗、每日一題加「原題 © 經濟部產業發展署，本站僅作教學解析使用」與官方原文 PDF
                          連結，AI 導師解析標示「由 AI 生成、未經人工逐題審核」；NotebookLM 改名 Gemini Notebook（連結 notebook.google）；
@@ -99,7 +102,7 @@ v3.0 (2026-06-13) 新增「使用說明」分頁；錯題本+收藏（localStora
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://firebasestorage.googleapis.com https://img.portaly.cc https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://abacus.jasoncameron.dev https://docs.google.com https://*.googleusercontent.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://www.google.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://firebasestorage.googleapis.com https://img.portaly.cc https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://ipas-counter.ipas-study.workers.dev https://docs.google.com https://*.googleusercontent.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://www.google.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com;">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJ1K6HESBD"></script>
 <script>
@@ -2722,14 +2725,16 @@ function renderTools(){
 }
 renderTools();
 
-$('#build-stamp').textContent='　·　版本 v8.3（2026-11-17）';
+$('#build-stamp').textContent='　·　版本 v8.4（2026-11-17）';
 /* ---- 瀏覽人數統計（免註冊計數服務；失敗則不顯示）---- */
 (function(){
   var el=document.getElementById('visit-counter');
   if(!el)return;
-  var ns='ipas-study-github-io', key='ipas-ai-study-home';
-  // 2026-08-09：CounterAPI v1 已遭官方停用（回傳410），改用 abacus.jasoncameron.dev（免註冊、回傳格式相容 value 欄位）
-  fetch('https://abacus.jasoncameron.dev/hit/'+ns+'/'+key)
+  // 2026-08-09：CounterAPI v1 遭官方停用，改用 abacus.jasoncameron.dev
+  // 2026-11-17：abacus 不穩（大多 20 秒後回 500），改用自建 Cloudflare Worker（帳戶 ipas-study，從 3,900 接續）
+  var ctl=('AbortController' in window)?new AbortController():null;
+  if(ctl)setTimeout(function(){ctl.abort();},6000);
+  fetch('https://ipas-counter.ipas-study.workers.dev/hit',ctl?{signal:ctl.signal}:{})
    .then(function(r){return r.json();})
    .then(function(d){
      var n=(d&&(d.count!=null?d.count:d.value));
